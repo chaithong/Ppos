@@ -188,6 +188,10 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.visible_dis_round = Convert.ToBoolean(dt.Rows[i]["value"].ToString()!);
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "keypad_numeric")
+                                    {
+                                        Class_Parameter.keypad_numeric = Convert.ToBoolean(dt.Rows[i]["value"].ToString()!);
+                                    }
                                 }
                             }
 

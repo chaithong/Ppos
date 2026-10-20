@@ -14,10 +14,10 @@ namespace Ppos
     public partial class Form_Select_Member : Form
     {
         public string id_member;
-        public bool exit = true;
+        public bool exit = true , add_member = false;
         int count_search = 0, set_search = 5;
         string set_member_total;
-        int Limit = 50;
+        int Limit = 20;
         public Form_Select_Member()
         {
             InitializeComponent();
@@ -36,6 +36,8 @@ namespace Ppos
                 dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.Cyan;
                 dataGridView_member.EnableHeadersVisualStyles = false;
                 dataGridView_member.MouseWheel += new MouseEventHandler(dataGridView_item_MouseWheel!);
+
+                button_add_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
             }
             catch
             {
@@ -177,9 +179,18 @@ namespace Ppos
         {
             try
             {
-                textBox_search.Enabled = true;
+               // textBox_search.Enabled = true;
                 dataGridView_member.Enabled = true;
                 textBox_search.Focus();
+                //dataGridView_member.ScrollBars = ScrollBars.Both;
+                if (textBox_search.Text != string.Empty && dataGridView_member.RowCount == 0 && int.TryParse(textBox_search.Text, out _))
+                {
+                    button_add_member.Visible = true;
+                }
+                else
+                {
+                    button_add_member.Visible = false;
+                }
 
             }
             catch (Exception ex)
@@ -246,10 +257,12 @@ namespace Ppos
             try
             {
                 count_search = 0;
+                button_add_member.Visible = false;
                 if (!timer_search.Enabled)
                 {
                     timer_search.Start();
                 }
+
             }
             catch (Exception ex)
             {
@@ -267,13 +280,12 @@ namespace Ppos
 
                     timer_search.Stop();
 
-                    textBox_search.Enabled = false;
+                   // textBox_search.Enabled = false;
                     dataGridView_member.Rows.Clear();
                     dataGridView_member.Enabled = false;
                     count_search = 0;
-
-                    // แสดงจำนวนบรรทัดสินค้า
                     dataGridView_member.Columns["sex"]!.HeaderText = "0/" + set_member_total;
+                  //  dataGridView_member.ScrollBars = ScrollBars.None;
                     backgroundWorker_search.RunWorkerAsync();
                 }
             }
@@ -338,6 +350,50 @@ namespace Ppos
             {
 
             }
+        }
+
+        private void button_add_member_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                button_add_member.Visible = false;
+                // เริ่ม เพิ่ม
+                Class_Member_Detail.Add(
+                    textBox_search.Text.Trim(),
+                    "ชาย",
+                    "",
+                    DateTime.Now.ToString("dd/MM/yyyy"),
+                    DateTime.Now.ToString("HH:mm:ss"),
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "0",
+                    "1"
+                    );
+                add_member = true;
+               // textBox_search.Enabled = false;
+                dataGridView_member.Enabled = false;
+               // dataGridView_member.ScrollBars = ScrollBars.None;
+                backgroundWorker_search.RunWorkerAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_add_member_MouseEnter(object sender, EventArgs e)
+        {
+            button_add_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+
+        }
+
+        private void button_add_member_MouseLeave(object sender, EventArgs e)
+        {
+            button_add_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
+
         }
     }
 }

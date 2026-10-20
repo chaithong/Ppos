@@ -82,7 +82,7 @@
             tableLayoutPanel_back.RowCount = 2;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Size = new Size(1247, 700);
+            tableLayoutPanel_back.Size = new Size(1247, 793);
             tableLayoutPanel_back.TabIndex = 0;
             // 
             // panel_back
@@ -97,7 +97,7 @@
             panel_back.Location = new Point(0, 20);
             panel_back.Margin = new Padding(0);
             panel_back.Name = "panel_back";
-            panel_back.Size = new Size(1247, 680);
+            panel_back.Size = new Size(1247, 773);
             panel_back.TabIndex = 3;
             // 
             // customPanel_all_item
@@ -107,7 +107,7 @@
             customPanel_all_item.BorderRadius = 30;
             customPanel_all_item.Controls.Add(label_item_all);
             customPanel_all_item.Controls.Add(label1);
-            customPanel_all_item.Location = new Point(299, 199);
+            customPanel_all_item.Location = new Point(309, 199);
             customPanel_all_item.Name = "customPanel_all_item";
             customPanel_all_item.Size = new Size(600, 90);
             customPanel_all_item.TabIndex = 2;
@@ -146,7 +146,7 @@
             button_download_all_item.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_download_all_item.FlatStyle = FlatStyle.Flat;
             button_download_all_item.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_download_all_item.Location = new Point(299, 15);
+            button_download_all_item.Location = new Point(309, 15);
             button_download_all_item.Margin = new Padding(5);
             button_download_all_item.Name = "button_download_all_item";
             button_download_all_item.Size = new Size(600, 130);
@@ -169,7 +169,7 @@
             customGroupBox_add_item.Controls.Add(tableLayoutPanel_load);
             customGroupBox_add_item.Controls.Add(tableLayoutPanel_button);
             customGroupBox_add_item.Controls.Add(button_upload);
-            customGroupBox_add_item.Location = new Point(299, 293);
+            customGroupBox_add_item.Location = new Point(309, 293);
             customGroupBox_add_item.Name = "customGroupBox_add_item";
             customGroupBox_add_item.Padding = new Padding(7);
             customGroupBox_add_item.Size = new Size(600, 400);
@@ -412,7 +412,7 @@
             pictureBox_load_all_item.Anchor = AnchorStyles.Top;
             pictureBox_load_all_item.BackColor = Color.Transparent;
             pictureBox_load_all_item.Image = Properties.Resources.load;
-            pictureBox_load_all_item.Location = new Point(299, 15);
+            pictureBox_load_all_item.Location = new Point(309, 15);
             pictureBox_load_all_item.Name = "pictureBox_load_all_item";
             pictureBox_load_all_item.Size = new Size(600, 130);
             pictureBox_load_all_item.SizeMode = PictureBoxSizeMode.Zoom;
@@ -454,7 +454,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1247, 700);
+            ClientSize = new Size(1247, 793);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;

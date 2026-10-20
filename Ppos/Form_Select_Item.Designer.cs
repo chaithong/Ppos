@@ -37,7 +37,6 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Select_Item));
-            customGroupBox_back = new CustomGroupBox();
             tableLayoutPanel_back = new TableLayoutPanel();
             dataGridView_item = new DataGridView();
             code = new DataGridViewTextBoxColumn();
@@ -48,29 +47,16 @@
             item_unit = new DataGridViewTextBoxColumn();
             item_price = new DataGridViewTextBoxColumn();
             select = new DataGridViewImageColumn();
+            tableLayoutPanel_top = new TableLayoutPanel();
+            customGroupBox_search = new CustomGroupBox();
             textBox_search = new TextBox();
             backgroundWorker_search = new System.ComponentModel.BackgroundWorker();
             timer_search = new System.Windows.Forms.Timer(components);
-            customGroupBox_back.SuspendLayout();
             tableLayoutPanel_back.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
+            tableLayoutPanel_top.SuspendLayout();
+            customGroupBox_search.SuspendLayout();
             SuspendLayout();
-            // 
-            // customGroupBox_back
-            // 
-            customGroupBox_back.BorderColor = Color.Cyan;
-            customGroupBox_back.BorderRadius = 10;
-            customGroupBox_back.BorderThickness = 10;
-            customGroupBox_back.Controls.Add(tableLayoutPanel_back);
-            customGroupBox_back.Dock = DockStyle.Fill;
-            customGroupBox_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_back.Location = new Point(0, 0);
-            customGroupBox_back.Margin = new Padding(0);
-            customGroupBox_back.Name = "customGroupBox_back";
-            customGroupBox_back.Padding = new Padding(20);
-            customGroupBox_back.Size = new Size(886, 565);
-            customGroupBox_back.TabIndex = 4;
-            customGroupBox_back.TabStop = false;
             // 
             // tableLayoutPanel_back
             // 
@@ -79,15 +65,15 @@
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_back.Controls.Add(dataGridView_item, 0, 1);
-            tableLayoutPanel_back.Controls.Add(textBox_search, 0, 0);
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_top, 0, 0);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
-            tableLayoutPanel_back.Location = new Point(20, 23);
+            tableLayoutPanel_back.Location = new Point(0, 0);
             tableLayoutPanel_back.Margin = new Padding(0);
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
             tableLayoutPanel_back.RowCount = 2;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Size = new Size(846, 522);
+            tableLayoutPanel_back.Size = new Size(886, 565);
             tableLayoutPanel_back.TabIndex = 2;
             // 
             // dataGridView_item
@@ -132,7 +118,7 @@
             dataGridView_item.RowTemplate.Height = 50;
             dataGridView_item.RowTemplate.ReadOnly = true;
             dataGridView_item.ScrollBars = ScrollBars.None;
-            dataGridView_item.Size = new Size(846, 422);
+            dataGridView_item.Size = new Size(886, 465);
             dataGridView_item.TabIndex = 0;
             dataGridView_item.CellMouseDoubleClick += dataGridView_item_CellMouseDoubleClick;
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
@@ -228,14 +214,48 @@
             select.SortMode = DataGridViewColumnSortMode.Automatic;
             select.Width = 125;
             // 
+            // tableLayoutPanel_top
+            // 
+            tableLayoutPanel_top.ColumnCount = 3;
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_top.Controls.Add(customGroupBox_search, 1, 1);
+            tableLayoutPanel_top.Dock = DockStyle.Fill;
+            tableLayoutPanel_top.Location = new Point(3, 3);
+            tableLayoutPanel_top.Name = "tableLayoutPanel_top";
+            tableLayoutPanel_top.RowCount = 3;
+            tableLayoutPanel_top.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_top.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            tableLayoutPanel_top.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_top.Size = new Size(880, 94);
+            tableLayoutPanel_top.TabIndex = 1;
+            // 
+            // customGroupBox_search
+            // 
+            customGroupBox_search.BorderColor = Color.FromArgb(128, 255, 255);
+            customGroupBox_search.BorderRadius = 30;
+            customGroupBox_search.BorderThickness = 20;
+            customGroupBox_search.Controls.Add(textBox_search);
+            customGroupBox_search.Dock = DockStyle.Fill;
+            customGroupBox_search.Font = new Font("Segoe UI", 1F);
+            customGroupBox_search.Location = new Point(290, 12);
+            customGroupBox_search.Margin = new Padding(0);
+            customGroupBox_search.Name = "customGroupBox_search";
+            customGroupBox_search.Padding = new Padding(10);
+            customGroupBox_search.Size = new Size(300, 70);
+            customGroupBox_search.TabIndex = 1;
+            customGroupBox_search.TabStop = false;
+            // 
             // textBox_search
             // 
-            textBox_search.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_search.Enabled = false;
+            textBox_search.BackColor = Color.FromArgb(128, 255, 255);
+            textBox_search.BorderStyle = BorderStyle.None;
+            textBox_search.Dock = DockStyle.Fill;
             textBox_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_search.Location = new Point(3, 24);
+            textBox_search.Location = new Point(10, 13);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(840, 51);
+            textBox_search.Size = new Size(280, 44);
             textBox_search.TabIndex = 1;
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.TextChanged += textBox_search_TextChanged;
@@ -257,23 +277,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(886, 565);
-            Controls.Add(customGroupBox_back);
+            Controls.Add(tableLayoutPanel_back);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "Form_Select_Item";
             StartPosition = FormStartPosition.CenterParent;
             Text = "ค้นหาสินค้า";
             Load += Form_Select_Item_Load;
-            customGroupBox_back.ResumeLayout(false);
             tableLayoutPanel_back.ResumeLayout(false);
-            tableLayoutPanel_back.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).EndInit();
+            tableLayoutPanel_top.ResumeLayout(false);
+            customGroupBox_search.ResumeLayout(false);
+            customGroupBox_search.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private CustomGroupBox customGroupBox_back;
         private TableLayoutPanel tableLayoutPanel_back;
         private DataGridView dataGridView_item;
         private TextBox textBox_search;
@@ -287,5 +306,7 @@
         private DataGridViewTextBoxColumn item_unit;
         private DataGridViewTextBoxColumn item_price;
         private DataGridViewImageColumn select;
+        private TableLayoutPanel tableLayoutPanel_top;
+        private CustomGroupBox customGroupBox_search;
     }
 }

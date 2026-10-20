@@ -15,7 +15,7 @@ namespace Ppos
     {
         public bool exit = true;
         int count_search = 0, set_search = 5;
-        int Limit = 50;
+        int Limit = 20;
         string set_item_total;
         public string barcode;
         public Form_Select_Item()
@@ -212,7 +212,7 @@ namespace Ppos
         {
             try
             {
-                textBox_search.Enabled = true;
+              //  textBox_search.Enabled = true;
                 dataGridView_item.Enabled = true;
                 textBox_search.Focus();
                 timer_search.Stop();
@@ -273,7 +273,7 @@ namespace Ppos
 
                     timer_search.Stop();
 
-                    textBox_search.Enabled = false;
+                    //textBox_search.Enabled = false;
                     dataGridView_item.Rows.Clear();
                     dataGridView_item.Enabled = false;
                     count_search = 0;

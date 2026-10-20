@@ -19,28 +19,44 @@ namespace Ppos.Class
                     using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                     {
                         // 
-                        cmd_sqlite.CommandText = @"SELECT max(ib.id),ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
-                                                   from Invoice_Body ib 
-                                                   where ib.void = false
-                                                   and date(ib.created_date) >= date('now', 'localtime', '-" + Class_Parameter.hotkey_last_sale_back_date+@" days')
-                                                   group by ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
-                                                   order by ib.id desc
-                                                   LIMIT "+Class_Parameter.hotkey_last_sale_limit;
+                        cmd_sqlite.CommandText = @"delete from Item_Hotkey where pag = 4";
+                        cmd_sqlite.ExecuteNonQuery();
+                        cmd_sqlite.CommandText = @"INSERT INTO Item_Hotkey (created_by,created_date,updated_by,updated_date,pag,item_code,small_barcode,barcode,column,row)  
+                                                   select '" + Class_Parameter.User_Login + @"',datetime('now', 'localtime'),'','',4,last.item_code,last.small_barcode,last.item_barcode,0,0
+                                                   from (
+                                                    SELECT max(ib.id),ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
+                                                    from Invoice_Body ib 
+                                                    join Item i on i.code = ib.item_code and i.effective_hotkey = true
+                                                    where ib.void = false
+                                                    and date(ib.created_date) >= date('now', 'localtime', '-" + Class_Parameter.hotkey_last_sale_back_date + @" days')
+                                                    group by ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
+                                                    order by ib.id desc
+                                                    LIMIT " + Class_Parameter.hotkey_last_sale_limit +
+                                                    @") last";
+                        cmd_sqlite.ExecuteNonQuery();
+                        /* cmd_sqlite.CommandText = @"SELECT max(ib.id),ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
+                                                    from Invoice_Body ib 
+                                                    join Item i on i.code = ib.item_code and i.effective_hotkey = true
+                                                    where ib.void = false
+                                                    and date(ib.created_date) >= date('now', 'localtime', '-" + Class_Parameter.hotkey_last_sale_back_date+@" days')
+                                                    group by ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
+                                                    order by ib.id desc
+                                                    LIMIT "+Class_Parameter.hotkey_last_sale_limit;
 
-                        var er = cmd_sqlite.ExecuteReader();
-                        DataTable dt = new DataTable();
-                        dt.Load(er);
-                        if (dt.Rows.Count > 0)
-                        {
-                            cmd_sqlite.CommandText = @"delete from Item_Hotkey where pag = 4";
-                            cmd_sqlite.ExecuteNonQuery();
-                            for (int i = 0; i < dt.Rows.Count; i++)
-                            {
-                                cmd_sqlite.CommandText = @"INSERT INTO Item_Hotkey (created_by,created_date,updated_by,updated_date,pag,item_code,small_barcode,barcode,column,row)
-                                                   VALUES('" + Class_Parameter.User_Login + "',datetime('now', 'localtime'), '', '',4,'" + dt.Rows[i]["item_code"] + "','" + dt.Rows[i]["small_barcode"] + "','" + dt.Rows[i]["item_barcode"] + "',0,0 )";
-                                cmd_sqlite.ExecuteNonQuery();
-                            }
-                        }
+                         var er = cmd_sqlite.ExecuteReader();
+                         DataTable dt = new DataTable();
+                         dt.Load(er);
+                         if (dt.Rows.Count > 0)
+                         {
+                             cmd_sqlite.CommandText = @"delete from Item_Hotkey where pag = 4";
+                             cmd_sqlite.ExecuteNonQuery();
+                             for (int i = 0; i < dt.Rows.Count; i++)
+                             {
+                                 cmd_sqlite.CommandText = @"INSERT INTO Item_Hotkey (created_by,created_date,updated_by,updated_date,pag,item_code,small_barcode,barcode,column,row)
+                                                    VALUES('" + Class_Parameter.User_Login + "',datetime('now', 'localtime'), '', '',4,'" + dt.Rows[i]["item_code"] + "','" + dt.Rows[i]["small_barcode"] + "','" + dt.Rows[i]["item_barcode"] + "',0,0 )";
+                                 cmd_sqlite.ExecuteNonQuery();
+                             }
+                         }*/
                     }
                 }
             }

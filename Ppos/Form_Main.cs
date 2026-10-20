@@ -180,7 +180,7 @@ namespace Ppos
             {
                 label_date.Text = DateTime.Now.ToString("dd/MM/yyyy", cultures);
                 label_time.Text = DateTime.Now.ToString("HH:mm:ss", cultures);
-                  drive = new DriveInfo(mainDriveLetter);
+                 /* drive = new DriveInfo(mainDriveLetter);
 
                   if (drive.IsReady)
                   {
@@ -196,7 +196,7 @@ namespace Ppos
                   " DISK : " + _monitor.GetDiskUsagePercentage().ToString("00.00") + "% , " +
                   " DRIVE : " + usedPercentage.ToString("00.00") + "% )";
 
-                  }
+                  }*/
   
             }
             catch

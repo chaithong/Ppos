@@ -18,9 +18,9 @@ namespace Ppos
             InitializeComponent();
             try
             {
-                button_check_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(60, 60));
+                button_check_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(60, 60));
                 button_check_promotion.Image = Class_Image.resizeImage(Ppos.Properties.Resources.promotions, new Size(60, 60));
-                button_check_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.male, new Size(50, 50));
+               
                 button_check_invoice.Image = Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(50, 50));
                 button_exit.Image = Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(50, 50));
 
@@ -48,20 +48,8 @@ namespace Ppos
                     form_show.BringToFront();
                     form_show.Dock = DockStyle.Fill;
                     form_show.Show();
-                }
-                else if (Class_Parameter.menu_check == 3) // ตรวจสอบสมาชิก
-                {
-                    // เปลี่ยนสีปุ่ม
-                    button_check_member.FlatStyle = FlatStyle.Standard;
-
-                    Form_Check_Member form_show = new Form_Check_Member();
-                    form_show.TopLevel = false;
-                    panel_check.Controls.Add(form_show);
-                    form_show.BringToFront();
-                    form_show.Dock = DockStyle.Fill;
-                    form_show.Show();
-                }
-                else if (Class_Parameter.menu_check == 4) // ตรวจสอบบิลขาย
+                }              
+                else if (Class_Parameter.menu_check == 3) // ตรวจสอบบิลขาย
                 {
                     // เปลี่ยนสีปุ่ม
                     button_check_invoice.FlatStyle = FlatStyle.Standard;
@@ -138,7 +126,6 @@ namespace Ppos
                         // เปลี่ยนสีปุ่ม
                         button_check_item.FlatStyle = FlatStyle.Standard;
                         button_check_promotion.FlatStyle = FlatStyle.Flat;
-                        button_check_member.FlatStyle = FlatStyle.Flat;
                         button_check_invoice.FlatStyle = FlatStyle.Flat;
                     }
                     else if (b.Name == "button_check_promotion" && Class_Parameter.menu_check != 2)
@@ -165,39 +152,12 @@ namespace Ppos
                         // เปลี่ยนสีปุ่ม
                         button_check_item.FlatStyle = FlatStyle.Flat;
                         button_check_promotion.FlatStyle = FlatStyle.Standard;
-                        button_check_member.FlatStyle = FlatStyle.Flat;
                         button_check_invoice.FlatStyle = FlatStyle.Flat;
                     }
-                    else if (b.Name == "button_check_member" && Class_Parameter.menu_check != 3)
+                   
+                    else if (b.Name == "button_check_invoice" && Class_Parameter.menu_check != 3)
                     {
                         Class_Parameter.menu_check = 3;
-                        foreach (Control ctrl in panel_check.Controls)
-                        {
-                            if (ctrl is Form f && ctrl.Name != "Form_Check_Member")
-                            {
-                                f.Close();
-                                ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
-                            }
-                        }
-                        if (panel_check.Controls.Find("Form_Check_Member", true).FirstOrDefault() == null)
-                        {
-                            Form_Check_Member form_Check_Member = new Form_Check_Member();
-                            form_Check_Member.TopLevel = false;
-                            panel_check.Controls.Add(form_Check_Member);
-                            form_Check_Member.BringToFront();
-                            form_Check_Member.Dock = DockStyle.Fill;
-                            form_Check_Member.Show();
-
-                        }
-                        // เปลี่ยนสีปุ่ม
-                        button_check_item.FlatStyle = FlatStyle.Flat;
-                        button_check_promotion.FlatStyle = FlatStyle.Flat;
-                        button_check_member.FlatStyle = FlatStyle.Standard;
-                        button_check_invoice.FlatStyle = FlatStyle.Flat;
-                    }
-                    else if (b.Name == "button_check_invoice" && Class_Parameter.menu_check != 4)
-                    {
-                        Class_Parameter.menu_check = 4;
                         foreach (Control ctrl in panel_check.Controls)
                         {
                             if (ctrl is Form f && ctrl.Name != "Form_Check_Invoice")
@@ -219,7 +179,6 @@ namespace Ppos
                         // เปลี่ยนสีปุ่ม
                         button_check_item.FlatStyle = FlatStyle.Flat;
                         button_check_promotion.FlatStyle = FlatStyle.Flat;
-                        button_check_member.FlatStyle = FlatStyle.Flat;
                         button_check_invoice.FlatStyle = FlatStyle.Standard;
                     }
                 }

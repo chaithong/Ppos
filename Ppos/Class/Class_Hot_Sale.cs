@@ -20,8 +20,24 @@ namespace Ppos.Class
                     using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                     {
                         // 
-                        cmd_sqlite.CommandText = @"SELECT ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name ,sum(ib.item_qty)
+                        cmd_sqlite.CommandText = @"delete from Item_Hotkey where pag = 5";
+                        cmd_sqlite.ExecuteNonQuery();
+                        cmd_sqlite.CommandText = @"INSERT INTO Item_Hotkey (created_by,created_date,updated_by,updated_date,pag,item_code,small_barcode,barcode,column,row)  
+                                                   select '"+ Class_Parameter.User_Login + @"',datetime('now', 'localtime'),'','',5,hot.item_code,hot.small_barcode,hot.item_barcode,0,0
+                                                   from (
+                                                   SELECT ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name ,sum(ib.item_qty)
                                                    from Invoice_Body ib 
+                                                   join Item i on i.code = ib.item_code and i.effective_hotkey = true
+                                                   where ib.void = false
+                                                   and date(ib.created_date) >= date('now', 'localtime', '-" + Class_Parameter.hotkey_hot_sale_back_date+@" days')
+                                                   group by ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
+                                                   order by sum(ib.item_qty) desc
+                                                   LIMIT " + Class_Parameter.hotkey_hot_sale_limit + 
+                                                   @") hot";
+                        cmd_sqlite.ExecuteNonQuery();
+                      /*  cmd_sqlite.CommandText = @"SELECT ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name ,sum(ib.item_qty)
+                                                   from Invoice_Body ib 
+                                                   join Item i on i.code = ib.item_code and i.effective_hotkey = true
                                                    where ib.void = false
                                                    and date(ib.created_date) >= date('now', 'localtime', '-" + Class_Parameter.hotkey_hot_sale_back_date+@" days')
                                                    group by ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 
@@ -41,7 +57,7 @@ namespace Ppos.Class
                                                    VALUES('" + Class_Parameter.User_Login + "',datetime('now', 'localtime'), '', '',5,'" + dt.Rows[i]["item_code"] + "','" + dt.Rows[i]["small_barcode"] + "','" + dt.Rows[i]["item_barcode"] + "',0,0 )";
                                 cmd_sqlite.ExecuteNonQuery();
                             }
-                        }
+                        }*/
                     }
                 }
             }

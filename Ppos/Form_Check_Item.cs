@@ -137,24 +137,24 @@ namespace Ppos
                                                     coalesce(p.pro_type,pp.pro_type,'') as pro_type,
                                                     coalesce(p.pro_desc,pp.pro_desc,'') as pro_desc,
                                                     coalesce(p.criterion_type,pp.criterion_type,'') as criterion_type,
-                                                    coalesce(p.criterion_value,pp.criterion_value,'') as criterion_value,
+                                                    coalesce(p.criterion_value,pp.criterion_value,0) as criterion_value,
                                                     coalesce(p.offer_type,pp.offer_type,'') as offer_type,
-                                                    coalesce(p.offer_value,pp.offer_value,'') as offer_value,
+                                                    coalesce(p.offer_value,pp.offer_value,0) as offer_value,
                                                     coalesce(p.discount_type,pp.discount_type,'') as discount_type,
                                                     coalesce(p.repeat,pp.repeat,'') as repeat,
                                                     coalesce(p.start_date,pp.start_date,'') as start_date,
                                                     coalesce(p.end_date,pp.end_date,'') as end_date,
                                                     coalesce(p.start_time,pp.start_time,'') as start_time,
                                                     coalesce(p.end_time,pp.end_time,'') as end_time,
-                                                    coalesce(p.mon,pp.mon,'') as mon,
-                                                    coalesce(p.tue,pp.tue,'') as tue,
-                                                    coalesce(p.wed,pp.wed,'') as wed,
-                                                    coalesce(p.thu,pp.thu,'') as thu,
-                                                    coalesce(p.fri,pp.fri,'') as fri,
-                                                    coalesce(p.sat,pp.sat,'') as sat,
-                                                    coalesce(p.sun,pp.sun,'') as sun,
-                                                    coalesce(p.item_code,'') as pro,
-                                                    coalesce(pp.item_code,'') as premium
+                                                    coalesce(p.mon,pp.mon,0) as mon,
+                                                    coalesce(p.tue,pp.tue,0) as tue,
+                                                    coalesce(p.wed,pp.wed,0) as wed,
+                                                    coalesce(p.thu,pp.thu,0) as thu,
+                                                    coalesce(p.fri,pp.fri,0) as fri,
+                                                    coalesce(p.sat,pp.sat,0) as sat,
+                                                    coalesce(p.sun,pp.sun,0) as sun,
+                                                    coalesce(cast(p.item_code as text),'') as pro,
+                                                    coalesce(cast(pp.item_code as text),'') as premium
                                                     from ( 
                                                     SELECT code,small_barcode,small_barcode as barcode,code,group_main,group_sub,name,
                                                     small_qty as qty,small_unit as unit,small_price as price 
@@ -228,19 +228,23 @@ namespace Ppos
                                                          when strftime('%w', 'now', 'localtime') = '5' then p.fri = 1
                                                          when strftime('%w', 'now', 'localtime') = '6' then p.sat = 1
                                                      end ) pp on pp.item_code = i.code 
-                                                    where i.barcode like '" + textBox_search.Text.Trim() + "' " +
-                                                    "or i.name like '" + textBox_search.Text.Trim() + "'";
+                                                    where i.barcode like '%" + textBox_search.Text.Trim() + "%' " +
+                                                    "or i.name like '%" + textBox_search.Text.Trim() + "%'";
                         SQLiteDataReader er = cmd_sqlite.ExecuteReader();
                         DataTable dt = new System.Data.DataTable();
                         dt.Load(er);
-                        if (dt.Rows.Count == 1)
-                        {
+                      //  if (dt.Rows.Count >= 1 && dt.Rows.Count <= 3)
+                            if (dt.Rows.Count > 0)
+                            {
+           
                             dataGridView_item.Rows.Add("บาร์โค้ด :", dt.Rows[0]["barcode"].ToString()!);
                             dataGridView_item.Rows.Add("ชื่อสินค้า :", dt.Rows[0]["name"].ToString()!);
                             dataGridView_item.Rows.Add("คงเหลือ :", Convert.ToDouble(dt.Rows[0]["qty"]).ToString("#,##0.###") + " " + dt.Rows[0]["unit"].ToString()!);
-                            dataGridView_item.Rows.Add("ราคา :", Convert.ToDouble(dt.Rows[0]["pirce"]).ToString("#,##0.##"));
+                            dataGridView_item.Rows.Add("ราคา :", Convert.ToDouble(dt.Rows[0]["price"]).ToString("#,##0.##"));
+                           
                             if (dt.Rows[0]["pro_type"].ToString()! != string.Empty)
                             {
+         
                                 if(dt.Rows[0]["pro"].ToString()! != string.Empty)
                                 {
                                     dataGridView_item.Rows.Add("สินค้าโปรโมชั่น :", "สินค้าโปร");
@@ -259,14 +263,14 @@ namespace Ppos
 
                                 dataGridView_item.Rows.Add("ประเภทส่วนลด :", dt.Rows[0]["offer_type"].ToString()! + " " + dt.Rows[0]["offer_value"].ToString()! +" "+ dt.Rows[0]["discount_type"].ToString()!);
                                 dataGridView_item.Rows.Add("การใช้งานต่อบิล :", dt.Rows[0]["repeat"].ToString()!);
-                                dataGridView_item.Rows.Add("วันที่ใช้โปรโมชั่น :", dt.Rows[0]["start_date"].ToString()! +" ถึง "+ dt.Rows[0]["end_date"].ToString()!);
+                                dataGridView_item.Rows.Add("วันที่ใช้งาน :", dt.Rows[0]["start_date"].ToString()! +" ถึง "+ dt.Rows[0]["end_date"].ToString()!);
                                 if( dt.Rows[0]["end_time"].ToString()! != "00:00")
                                 {
-                                    dataGridView_item.Rows.Add("ช่วงเวลา :", dt.Rows[0]["start_time"].ToString()! + " ถึง " + dt.Rows[0]["end_time"].ToString()!);
+                                    dataGridView_item.Rows.Add("เวลาใช้งาน :", dt.Rows[0]["start_time"].ToString()! + " ถึง " + dt.Rows[0]["end_time"].ToString()!);
                                 }
                                 else
                                 {
-                                    dataGridView_item.Rows.Add("ช่วงเวลา :", "24 ชั่งโมง");
+                                    dataGridView_item.Rows.Add("เวลาใช้งาน :", "24 ชั่งโมง");
                                 }
                                 string day = "";
                                 if(Convert.ToBoolean(dt.Rows[0]["mon"]))
@@ -297,8 +301,12 @@ namespace Ppos
                                 {
                                     day += "อาทิตย์";
                                 }
-
-                                dataGridView_item.Rows.Add("วันใช้โปรโมชั่น :", day);
+                                // เชค all day
+                                if (day == "จันทร์ อังคาร พุธ พฤหัส ศุกร์ เสาร์ อาทิตย์")
+                                {
+                                    day = "ทุกวัน";
+                                }
+                                dataGridView_item.Rows.Add("วันใช้งาน :", day);
                             }
                            
                         }
@@ -306,9 +314,9 @@ namespace Ppos
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

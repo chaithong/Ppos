@@ -32,12 +32,25 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
                 button_cash.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(40, 40));
-                button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(40, 40));
+                button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.QR_Code, new System.Drawing.Size(40, 40));
                 button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new System.Drawing.Size(40, 40));
 
 
                 button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(70, 70));
                 button_exit.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new System.Drawing.Size(70, 70));
+
+                button_1.Image = Class_Image.resizeImage(Ppos.Properties.Resources.coin_1, new System.Drawing.Size(100, 100));
+                button_5.Image = Class_Image.resizeImage(Ppos.Properties.Resources.coin_5, new System.Drawing.Size(100, 100));
+                button_10.Image = Class_Image.resizeImage(Ppos.Properties.Resources.coin_10, new System.Drawing.Size(100, 100));
+                button_20.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_20, new System.Drawing.Size(200, 100));
+                button_50.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_50, new System.Drawing.Size(200, 100));
+                button_100.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_100, new System.Drawing.Size(200, 100));
+                button_500.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_500, new System.Drawing.Size(200, 100));
+                button_1000.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_1000, new System.Drawing.Size(200, 100));
+
+                button_numeric.Image = Class_Image.resizeImage(Ppos.Properties.Resources.key_number, new System.Drawing.Size(50, 50));
+
+                button_coin.Image = Class_Image.resizeImage(Ppos.Properties.Resources.coin, new System.Drawing.Size(50, 40));
 
                 // ถ้ามีสมาชิก
                 if (Form_Sale.id_member != "")
@@ -52,7 +65,7 @@ namespace Ppos
                             SQLiteDataReader reader = cmd_sqlite.ExecuteReader();
                             System.Data.DataTable dt = new System.Data.DataTable();
                             dt.Load(reader);
-                      
+
                             // ถ้าไม่มีสินค้าที่มีผลกับสมาชิก จะไม่แสดง point
                             if (dt.Rows.Count == 0)
                             {
@@ -60,7 +73,7 @@ namespace Ppos
                             }
                         }
                     }
-                               
+
                 }
                 else
                 {
@@ -93,6 +106,18 @@ namespace Ppos
                     tableLayoutPanel_back.Controls.Add(customGroupBox_left, 1, 0);
                 }
 
+                // ตัวเลข
+                if (Class_Parameter.keypad_numeric)
+                {
+                    tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 100;
+                    tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 0;
+                }
+                else
+                {
+                    tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 0;
+                    tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 100;
+                }
+
             }
             catch
             {
@@ -100,7 +125,7 @@ namespace Ppos
             }
 
         }
-        
+
         private void button_enter(object sender, EventArgs e)
         {
             try
@@ -145,7 +170,7 @@ namespace Ppos
         {
             try
             {
-               // customGroupBox_back.Visible = false;
+                // customGroupBox_back.Visible = false;
 
                 this.BackColor = Color.White;
                 this.Size = new System.Drawing.Size(this.Width, this.Height - 100);
@@ -189,11 +214,9 @@ namespace Ppos
                 {
                     SendKeys.Send("{BACKSPACE}");
                 }
-                else if(button.Name == "button00")
+                else if (button.Name == "button00")
                 {
-
-                    SendKeys.Send("0");
-                    SendKeys.Send("0");
+                    SendKeys.Send("00");
                 }
                 else
                 {
@@ -337,7 +360,7 @@ namespace Ppos
                 {
                     label_transfer.Text = "0";
 
-                    button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(40, 40));
+                    button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.QR_Code, new System.Drawing.Size(40, 40));
                     cal_change();
                 }
 
@@ -406,20 +429,20 @@ namespace Ppos
         {
             try
             {
-                
+
                 if (e.KeyCode == Keys.Escape)
                 {
                     e.SuppressKeyPress = true;
                     button_exit_Click(sender, e);
-                   
+
                 }
-                else if(e.KeyCode == Keys.Enter && complete)// ถ้ากด enter และมูลค่าพร้อมจ่าย
+                else if (e.KeyCode == Keys.Enter && complete)// ถ้ากด enter และมูลค่าพร้อมจ่าย
                 {
                     e.SuppressKeyPress = true;
                     button_confirm_Click(sender, e);
-                    
+
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -433,7 +456,7 @@ namespace Ppos
             {
                 cal_change();
             }
-        
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -527,7 +550,7 @@ namespace Ppos
                 {
                     this.Enabled = false;
                     backgroundWorker_confirm.RunWorkerAsync();
-                  
+
                 }
 
 
@@ -544,12 +567,12 @@ namespace Ppos
             try
             {
                 double cash = 0;
-                if(textBox_cash.Text != string.Empty)
+                if (textBox_cash.Text != string.Empty)
                 {
                     cash = Convert.ToDouble(textBox_cash.Text);
                 }
                 Class_Pay.update_pay(cash,
-                                     Convert.ToDouble(label_transfer.Text), 
+                                     Convert.ToDouble(label_transfer.Text),
                                      Convert.ToInt32(label_point.Text),
                                      Convert.ToDouble(label_change.Text)
                                      );
@@ -565,6 +588,7 @@ namespace Ppos
         {
             try
             {
+
                 exit = false;
                 button_exit_Click(sender, e);
             }
@@ -572,6 +596,104 @@ namespace Ppos
             {
                 this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_numeric_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!Class_Parameter.keypad_numeric)
+                {
+                    Class_Parameter.keypad_numeric = true;
+                    tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 100;
+                    tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 0;
+                    using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                    {
+                        con_sqlite.Open();
+                        using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                        {
+                            // update
+                            cmd_sqlite.CommandText = "UPDATE Sale_Display_Set SET " +
+                                                     "updated_date = datetime('now', 'localtime'), " +
+                                                     "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                     "value = 'True' " +
+                                                     "where title = 'keypad_numeric'";
+
+                            cmd_sqlite.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_coin_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Class_Parameter.keypad_numeric)
+                {
+                    Class_Parameter.keypad_numeric = false;
+                    tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 0;
+                    tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 100;
+
+                    using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                    {
+                        con_sqlite.Open();
+                        using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                        {
+                            // update
+                            cmd_sqlite.CommandText = "UPDATE Sale_Display_Set SET " +
+                                                     "updated_date = datetime('now', 'localtime'), " +
+                                                     "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                     "value = 'False' " +
+                                                     "where title = 'keypad_numeric'";
+
+                            cmd_sqlite.ExecuteNonQuery();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void coin_click(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
+
+                if(button.Text != "ลบ")
+                {
+                    double cash = 0;
+                    if (textBox_cash.Text == string.Empty)
+                    {
+                        cash = 0;
+                    }
+                    else
+                    {
+                        cash = Convert.ToDouble(textBox_cash.Text);
+                        textBox_cash.Text = "";
+                    }
+
+                    SendKeys.Send((Convert.ToDouble(cash) + Convert.ToDouble(button.Text)).ToString());
+                }
+                else
+                {
+                    textBox_cash.Text = "";
+                }
+               
+            }
+            catch
+            {
+
             }
         }
     }

@@ -59,6 +59,8 @@ namespace Ppos
                 pictureBox_load_hotkey.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox_load_hotkey.BackColor = System.Drawing.Color.Transparent;
 
+              
+
 
                 button_hotkey_1.Image = Class_Image.resizeImage(Ppos.Properties.Resources.additem, new Size(40, 40));
                 button_hotkey_2.Image = Class_Image.resizeImage(Ppos.Properties.Resources.additem, new Size(40, 40));
@@ -189,6 +191,10 @@ namespace Ppos
             try
             {
                 search();
+
+                pictureBox_load_hotkey.Location = new System.Drawing.Point(
+                 panel_detail.Location.X + (panel_detail.Width / 2) - (pictureBox_load_hotkey.Width / 2),
+                 panel_detail.Location.Y + (panel_detail.Height / 2) - (pictureBox_load_hotkey.Height / 2));
 
                 backgroundWorker_load.RunWorkerAsync();
             }

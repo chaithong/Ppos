@@ -63,6 +63,10 @@
             label_change = new Label();
             customGroupBox_left = new CustomGroupBox();
             tableLayoutPanel_left = new TableLayoutPanel();
+            tableLayoutPanel_button_pay = new TableLayoutPanel();
+            button_numeric = new Button();
+            button_coin = new Button();
+            tableLayoutPanel_select_keypad = new TableLayoutPanel();
             tableLayoutPanel_keypad = new TableLayoutPanel();
             button1 = new Button();
             button2 = new Button();
@@ -76,6 +80,16 @@
             button00 = new Button();
             button0 = new Button();
             button_delete = new Button();
+            tableLayoutPanel_coin = new TableLayoutPanel();
+            button_1 = new Button();
+            button_clear_coin = new Button();
+            button_5 = new Button();
+            button_10 = new Button();
+            button_20 = new Button();
+            button_50 = new Button();
+            button_100 = new Button();
+            button_500 = new Button();
+            button_1000 = new Button();
             timer_close = new System.Windows.Forms.Timer(components);
             backgroundWorker_confirm = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_back.SuspendLayout();
@@ -96,7 +110,10 @@
             tableLayoutPanel_change.SuspendLayout();
             customGroupBox_left.SuspendLayout();
             tableLayoutPanel_left.SuspendLayout();
+            tableLayoutPanel_button_pay.SuspendLayout();
+            tableLayoutPanel_select_keypad.SuspendLayout();
             tableLayoutPanel_keypad.SuspendLayout();
+            tableLayoutPanel_coin.SuspendLayout();
             SuspendLayout();
             // 
             // button_exit
@@ -146,10 +163,10 @@
             customGroupBox_right.Dock = DockStyle.Fill;
             customGroupBox_right.Font = new Font("Segoe UI", 1F);
             customGroupBox_right.Location = new Point(593, 0);
-            customGroupBox_right.Margin = new Padding(0, 0, 3, 10);
+            customGroupBox_right.Margin = new Padding(0, 0, 3, 3);
             customGroupBox_right.Name = "customGroupBox_right";
             customGroupBox_right.Padding = new Padding(30);
-            customGroupBox_right.Size = new Size(590, 799);
+            customGroupBox_right.Size = new Size(590, 806);
             customGroupBox_right.TabIndex = 2;
             customGroupBox_right.TabStop = false;
             customGroupBox_right.Text = " ";
@@ -176,7 +193,7 @@
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
-            tableLayoutPanel_right.Size = new Size(530, 736);
+            tableLayoutPanel_right.Size = new Size(530, 743);
             tableLayoutPanel_right.TabIndex = 0;
             // 
             // customGroupBox_price_net_back
@@ -252,7 +269,7 @@
             tableLayoutPanel_button_confirm_exit.Controls.Add(customGroupBox_confirm, 0, 0);
             tableLayoutPanel_button_confirm_exit.Controls.Add(customGroupBox_exit, 1, 0);
             tableLayoutPanel_button_confirm_exit.Dock = DockStyle.Fill;
-            tableLayoutPanel_button_confirm_exit.Location = new Point(0, 616);
+            tableLayoutPanel_button_confirm_exit.Location = new Point(0, 623);
             tableLayoutPanel_button_confirm_exit.Margin = new Padding(0);
             tableLayoutPanel_button_confirm_exit.Name = "tableLayoutPanel_button_confirm_exit";
             tableLayoutPanel_button_confirm_exit.RowCount = 1;
@@ -385,7 +402,7 @@
             // button_cash
             // 
             button_cash.Dock = DockStyle.Fill;
-            button_cash.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_cash.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             button_cash.Location = new Point(354, 0);
             button_cash.Margin = new Padding(0);
             button_cash.Name = "button_cash";
@@ -468,8 +485,9 @@
             // 
             // button_transfer
             // 
+            button_transfer.BackgroundImageLayout = ImageLayout.Zoom;
             button_transfer.Dock = DockStyle.Fill;
-            button_transfer.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_transfer.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             button_transfer.Location = new Point(354, 0);
             button_transfer.Margin = new Padding(0);
             button_transfer.Name = "button_transfer";
@@ -553,7 +571,7 @@
             // button_member
             // 
             button_member.Dock = DockStyle.Fill;
-            button_member.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_member.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
             button_member.Location = new Point(354, 0);
             button_member.Margin = new Padding(0);
             button_member.Name = "button_member";
@@ -575,7 +593,7 @@
             customGroupBox_change_back.Controls.Add(tableLayoutPanel_change);
             customGroupBox_change_back.Dock = DockStyle.Fill;
             customGroupBox_change_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_change_back.Location = new Point(3, 509);
+            customGroupBox_change_back.Location = new Point(3, 516);
             customGroupBox_change_back.Name = "customGroupBox_change_back";
             customGroupBox_change_back.Padding = new Padding(10);
             customGroupBox_change_back.Size = new Size(524, 104);
@@ -641,10 +659,10 @@
             customGroupBox_left.Dock = DockStyle.Fill;
             customGroupBox_left.Font = new Font("Segoe UI", 1F);
             customGroupBox_left.Location = new Point(0, 0);
-            customGroupBox_left.Margin = new Padding(0, 0, 10, 10);
+            customGroupBox_left.Margin = new Padding(0, 0, 10, 3);
             customGroupBox_left.Name = "customGroupBox_left";
             customGroupBox_left.Padding = new Padding(10);
-            customGroupBox_left.Size = new Size(583, 799);
+            customGroupBox_left.Size = new Size(583, 806);
             customGroupBox_left.TabIndex = 3;
             customGroupBox_left.TabStop = false;
             customGroupBox_left.Text = " ";
@@ -656,17 +674,86 @@
             tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
             tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
-            tableLayoutPanel_left.Controls.Add(tableLayoutPanel_keypad, 1, 1);
+            tableLayoutPanel_left.Controls.Add(tableLayoutPanel_button_pay, 1, 2);
+            tableLayoutPanel_left.Controls.Add(tableLayoutPanel_select_keypad, 1, 1);
             tableLayoutPanel_left.Dock = DockStyle.Fill;
             tableLayoutPanel_left.Location = new Point(10, 13);
             tableLayoutPanel_left.Margin = new Padding(0);
             tableLayoutPanel_left.Name = "tableLayoutPanel_left";
-            tableLayoutPanel_left.RowCount = 3;
-            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
+            tableLayoutPanel_left.RowCount = 4;
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 2F));
             tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 5F));
-            tableLayoutPanel_left.Size = new Size(563, 776);
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 8F));
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_left.Size = new Size(563, 783);
             tableLayoutPanel_left.TabIndex = 1;
+            // 
+            // tableLayoutPanel_button_pay
+            // 
+            tableLayoutPanel_button_pay.ColumnCount = 2;
+            tableLayoutPanel_button_pay.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_button_pay.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_button_pay.Controls.Add(button_numeric, 0, 0);
+            tableLayoutPanel_button_pay.Controls.Add(button_coin, 1, 0);
+            tableLayoutPanel_button_pay.Dock = DockStyle.Fill;
+            tableLayoutPanel_button_pay.Location = new Point(28, 701);
+            tableLayoutPanel_button_pay.Margin = new Padding(0);
+            tableLayoutPanel_button_pay.Name = "tableLayoutPanel_button_pay";
+            tableLayoutPanel_button_pay.RowCount = 1;
+            tableLayoutPanel_button_pay.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_button_pay.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_button_pay.Size = new Size(506, 61);
+            tableLayoutPanel_button_pay.TabIndex = 1;
+            // 
+            // button_numeric
+            // 
+            button_numeric.Dock = DockStyle.Fill;
+            button_numeric.Font = new Font("Segoe UI", 10.8F);
+            button_numeric.Location = new Point(3, 3);
+            button_numeric.Name = "button_numeric";
+            button_numeric.Size = new Size(247, 55);
+            button_numeric.TabIndex = 0;
+            button_numeric.Text = "ตัวเลข";
+            button_numeric.TextAlign = ContentAlignment.MiddleRight;
+            button_numeric.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_numeric.UseVisualStyleBackColor = true;
+            button_numeric.Click += button_numeric_Click;
+            button_numeric.MouseEnter += button_enter;
+            button_numeric.MouseLeave += button_leave;
+            // 
+            // button_coin
+            // 
+            button_coin.Dock = DockStyle.Fill;
+            button_coin.Font = new Font("Segoe UI", 10.8F);
+            button_coin.Location = new Point(256, 3);
+            button_coin.Name = "button_coin";
+            button_coin.Size = new Size(247, 55);
+            button_coin.TabIndex = 0;
+            button_coin.Text = "เหรียญ / ธนบัตร";
+            button_coin.TextAlign = ContentAlignment.MiddleRight;
+            button_coin.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_coin.UseVisualStyleBackColor = true;
+            button_coin.Click += button_coin_Click;
+            button_coin.MouseEnter += button_enter;
+            button_coin.MouseLeave += button_leave;
+            // 
+            // tableLayoutPanel_select_keypad
+            // 
+            tableLayoutPanel_select_keypad.BackColor = Color.White;
+            tableLayoutPanel_select_keypad.ColumnCount = 2;
+            tableLayoutPanel_select_keypad.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_select_keypad.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_select_keypad.Controls.Add(tableLayoutPanel_keypad, 0, 0);
+            tableLayoutPanel_select_keypad.Controls.Add(tableLayoutPanel_coin, 1, 0);
+            tableLayoutPanel_select_keypad.Dock = DockStyle.Fill;
+            tableLayoutPanel_select_keypad.Location = new Point(28, 15);
+            tableLayoutPanel_select_keypad.Margin = new Padding(0);
+            tableLayoutPanel_select_keypad.Name = "tableLayoutPanel_select_keypad";
+            tableLayoutPanel_select_keypad.RowCount = 1;
+            tableLayoutPanel_select_keypad.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_select_keypad.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_select_keypad.Size = new Size(506, 686);
+            tableLayoutPanel_select_keypad.TabIndex = 2;
             // 
             // tableLayoutPanel_keypad
             // 
@@ -688,7 +775,7 @@
             tableLayoutPanel_keypad.Controls.Add(button0, 1, 3);
             tableLayoutPanel_keypad.Controls.Add(button_delete, 2, 3);
             tableLayoutPanel_keypad.Dock = DockStyle.Fill;
-            tableLayoutPanel_keypad.Location = new Point(28, 38);
+            tableLayoutPanel_keypad.Location = new Point(0, 0);
             tableLayoutPanel_keypad.Margin = new Padding(0);
             tableLayoutPanel_keypad.Name = "tableLayoutPanel_keypad";
             tableLayoutPanel_keypad.RowCount = 4;
@@ -696,7 +783,7 @@
             tableLayoutPanel_keypad.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel_keypad.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
             tableLayoutPanel_keypad.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
-            tableLayoutPanel_keypad.Size = new Size(506, 698);
+            tableLayoutPanel_keypad.Size = new Size(253, 686);
             tableLayoutPanel_keypad.TabIndex = 0;
             // 
             // button1
@@ -706,7 +793,7 @@
             button1.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
             button1.Location = new Point(3, 3);
             button1.Name = "button1";
-            button1.Size = new Size(162, 168);
+            button1.Size = new Size(78, 165);
             button1.TabIndex = 0;
             button1.Text = "1";
             button1.UseVisualStyleBackColor = false;
@@ -719,9 +806,9 @@
             button2.BackColor = Color.White;
             button2.Dock = DockStyle.Fill;
             button2.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button2.Location = new Point(171, 3);
+            button2.Location = new Point(87, 3);
             button2.Name = "button2";
-            button2.Size = new Size(162, 168);
+            button2.Size = new Size(78, 165);
             button2.TabIndex = 0;
             button2.Text = "2";
             button2.UseVisualStyleBackColor = false;
@@ -734,9 +821,9 @@
             button3.BackColor = Color.White;
             button3.Dock = DockStyle.Fill;
             button3.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button3.Location = new Point(339, 3);
+            button3.Location = new Point(171, 3);
             button3.Name = "button3";
-            button3.Size = new Size(164, 168);
+            button3.Size = new Size(79, 165);
             button3.TabIndex = 0;
             button3.Text = "3";
             button3.UseVisualStyleBackColor = false;
@@ -749,9 +836,9 @@
             button4.BackColor = Color.White;
             button4.Dock = DockStyle.Fill;
             button4.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button4.Location = new Point(3, 177);
+            button4.Location = new Point(3, 174);
             button4.Name = "button4";
-            button4.Size = new Size(162, 168);
+            button4.Size = new Size(78, 165);
             button4.TabIndex = 0;
             button4.Text = "4";
             button4.UseVisualStyleBackColor = false;
@@ -764,9 +851,9 @@
             button5.BackColor = Color.White;
             button5.Dock = DockStyle.Fill;
             button5.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button5.Location = new Point(171, 177);
+            button5.Location = new Point(87, 174);
             button5.Name = "button5";
-            button5.Size = new Size(162, 168);
+            button5.Size = new Size(78, 165);
             button5.TabIndex = 0;
             button5.Text = "5";
             button5.UseVisualStyleBackColor = false;
@@ -779,9 +866,9 @@
             button6.BackColor = Color.White;
             button6.Dock = DockStyle.Fill;
             button6.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button6.Location = new Point(339, 177);
+            button6.Location = new Point(171, 174);
             button6.Name = "button6";
-            button6.Size = new Size(164, 168);
+            button6.Size = new Size(79, 165);
             button6.TabIndex = 0;
             button6.Text = "6";
             button6.UseVisualStyleBackColor = false;
@@ -794,9 +881,9 @@
             button7.BackColor = Color.White;
             button7.Dock = DockStyle.Fill;
             button7.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button7.Location = new Point(3, 351);
+            button7.Location = new Point(3, 345);
             button7.Name = "button7";
-            button7.Size = new Size(162, 168);
+            button7.Size = new Size(78, 165);
             button7.TabIndex = 0;
             button7.Text = "7";
             button7.UseVisualStyleBackColor = false;
@@ -809,9 +896,9 @@
             button8.BackColor = Color.White;
             button8.Dock = DockStyle.Fill;
             button8.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button8.Location = new Point(171, 351);
+            button8.Location = new Point(87, 345);
             button8.Name = "button8";
-            button8.Size = new Size(162, 168);
+            button8.Size = new Size(78, 165);
             button8.TabIndex = 0;
             button8.Text = "8";
             button8.UseVisualStyleBackColor = false;
@@ -824,9 +911,9 @@
             button9.BackColor = Color.White;
             button9.Dock = DockStyle.Fill;
             button9.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button9.Location = new Point(339, 351);
+            button9.Location = new Point(171, 345);
             button9.Name = "button9";
-            button9.Size = new Size(164, 168);
+            button9.Size = new Size(79, 165);
             button9.TabIndex = 0;
             button9.Text = "9";
             button9.UseVisualStyleBackColor = false;
@@ -839,9 +926,9 @@
             button00.BackColor = Color.White;
             button00.Dock = DockStyle.Fill;
             button00.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button00.Location = new Point(3, 525);
+            button00.Location = new Point(3, 516);
             button00.Name = "button00";
-            button00.Size = new Size(162, 170);
+            button00.Size = new Size(78, 167);
             button00.TabIndex = 0;
             button00.Text = "00";
             button00.UseVisualStyleBackColor = false;
@@ -854,9 +941,9 @@
             button0.BackColor = Color.White;
             button0.Dock = DockStyle.Fill;
             button0.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button0.Location = new Point(171, 525);
+            button0.Location = new Point(87, 516);
             button0.Name = "button0";
-            button0.Size = new Size(162, 170);
+            button0.Size = new Size(78, 167);
             button0.TabIndex = 0;
             button0.Text = "0";
             button0.UseVisualStyleBackColor = false;
@@ -869,15 +956,195 @@
             button_delete.BackColor = Color.White;
             button_delete.Dock = DockStyle.Fill;
             button_delete.Font = new Font("Segoe UI", 48F, FontStyle.Bold);
-            button_delete.Location = new Point(339, 525);
+            button_delete.ForeColor = Color.Red;
+            button_delete.Location = new Point(171, 516);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(164, 170);
+            button_delete.Size = new Size(79, 167);
             button_delete.TabIndex = 0;
             button_delete.Text = "ลบ";
             button_delete.UseVisualStyleBackColor = false;
             button_delete.Click += keypad_click;
             button_delete.MouseEnter += button_enter;
             button_delete.MouseLeave += button_leave;
+            // 
+            // tableLayoutPanel_coin
+            // 
+            tableLayoutPanel_coin.BackColor = Color.Transparent;
+            tableLayoutPanel_coin.ColumnCount = 3;
+            tableLayoutPanel_coin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel_coin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel_coin.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel_coin.Controls.Add(button_1, 0, 0);
+            tableLayoutPanel_coin.Controls.Add(button_clear_coin, 2, 2);
+            tableLayoutPanel_coin.Controls.Add(button_5, 1, 0);
+            tableLayoutPanel_coin.Controls.Add(button_10, 2, 0);
+            tableLayoutPanel_coin.Controls.Add(button_20, 0, 1);
+            tableLayoutPanel_coin.Controls.Add(button_50, 1, 1);
+            tableLayoutPanel_coin.Controls.Add(button_100, 2, 1);
+            tableLayoutPanel_coin.Controls.Add(button_500, 0, 2);
+            tableLayoutPanel_coin.Controls.Add(button_1000, 1, 2);
+            tableLayoutPanel_coin.Dock = DockStyle.Fill;
+            tableLayoutPanel_coin.Location = new Point(253, 0);
+            tableLayoutPanel_coin.Margin = new Padding(0);
+            tableLayoutPanel_coin.Name = "tableLayoutPanel_coin";
+            tableLayoutPanel_coin.RowCount = 3;
+            tableLayoutPanel_coin.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel_coin.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel_coin.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
+            tableLayoutPanel_coin.Size = new Size(253, 686);
+            tableLayoutPanel_coin.TabIndex = 1;
+            // 
+            // button_1
+            // 
+            button_1.BackgroundImageLayout = ImageLayout.Zoom;
+            button_1.Dock = DockStyle.Fill;
+            button_1.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_1.Location = new Point(3, 3);
+            button_1.Name = "button_1";
+            button_1.Size = new Size(78, 222);
+            button_1.TabIndex = 0;
+            button_1.Text = "1";
+            button_1.TextAlign = ContentAlignment.BottomCenter;
+            button_1.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_1.UseVisualStyleBackColor = true;
+            button_1.Click += coin_click;
+            button_1.MouseEnter += button_enter;
+            button_1.MouseLeave += button_leave;
+            // 
+            // button_clear_coin
+            // 
+            button_clear_coin.BackColor = Color.White;
+            button_clear_coin.Dock = DockStyle.Fill;
+            button_clear_coin.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_clear_coin.ForeColor = Color.Red;
+            button_clear_coin.Location = new Point(171, 459);
+            button_clear_coin.Name = "button_clear_coin";
+            button_clear_coin.Size = new Size(79, 224);
+            button_clear_coin.TabIndex = 0;
+            button_clear_coin.Text = "ลบ";
+            button_clear_coin.UseVisualStyleBackColor = false;
+            button_clear_coin.Click += coin_click;
+            button_clear_coin.MouseEnter += button_enter;
+            button_clear_coin.MouseLeave += button_leave;
+            // 
+            // button_5
+            // 
+            button_5.BackgroundImageLayout = ImageLayout.Zoom;
+            button_5.Dock = DockStyle.Fill;
+            button_5.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_5.Location = new Point(87, 3);
+            button_5.Name = "button_5";
+            button_5.Size = new Size(78, 222);
+            button_5.TabIndex = 0;
+            button_5.Text = "5";
+            button_5.TextAlign = ContentAlignment.BottomCenter;
+            button_5.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_5.UseVisualStyleBackColor = true;
+            button_5.Click += coin_click;
+            button_5.MouseEnter += button_enter;
+            button_5.MouseLeave += button_leave;
+            // 
+            // button_10
+            // 
+            button_10.BackgroundImageLayout = ImageLayout.Zoom;
+            button_10.Dock = DockStyle.Fill;
+            button_10.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_10.Location = new Point(171, 3);
+            button_10.Name = "button_10";
+            button_10.Size = new Size(79, 222);
+            button_10.TabIndex = 0;
+            button_10.Text = "10";
+            button_10.TextAlign = ContentAlignment.BottomCenter;
+            button_10.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_10.UseVisualStyleBackColor = true;
+            button_10.Click += coin_click;
+            button_10.MouseEnter += button_enter;
+            button_10.MouseLeave += button_leave;
+            // 
+            // button_20
+            // 
+            button_20.BackgroundImageLayout = ImageLayout.Zoom;
+            button_20.Dock = DockStyle.Fill;
+            button_20.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_20.Location = new Point(3, 231);
+            button_20.Name = "button_20";
+            button_20.Size = new Size(78, 222);
+            button_20.TabIndex = 0;
+            button_20.Text = "20";
+            button_20.TextAlign = ContentAlignment.BottomCenter;
+            button_20.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_20.UseVisualStyleBackColor = true;
+            button_20.Click += coin_click;
+            button_20.MouseEnter += button_enter;
+            button_20.MouseLeave += button_leave;
+            // 
+            // button_50
+            // 
+            button_50.BackgroundImageLayout = ImageLayout.Zoom;
+            button_50.Dock = DockStyle.Fill;
+            button_50.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_50.Location = new Point(87, 231);
+            button_50.Name = "button_50";
+            button_50.Size = new Size(78, 222);
+            button_50.TabIndex = 0;
+            button_50.Text = "50";
+            button_50.TextAlign = ContentAlignment.BottomCenter;
+            button_50.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_50.UseVisualStyleBackColor = true;
+            button_50.Click += coin_click;
+            button_50.MouseEnter += button_enter;
+            button_50.MouseLeave += button_leave;
+            // 
+            // button_100
+            // 
+            button_100.BackgroundImageLayout = ImageLayout.Zoom;
+            button_100.Dock = DockStyle.Fill;
+            button_100.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_100.Location = new Point(171, 231);
+            button_100.Name = "button_100";
+            button_100.Size = new Size(79, 222);
+            button_100.TabIndex = 0;
+            button_100.Text = "100";
+            button_100.TextAlign = ContentAlignment.BottomCenter;
+            button_100.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_100.UseVisualStyleBackColor = true;
+            button_100.Click += coin_click;
+            button_100.MouseEnter += button_enter;
+            button_100.MouseLeave += button_leave;
+            // 
+            // button_500
+            // 
+            button_500.BackgroundImageLayout = ImageLayout.Zoom;
+            button_500.Dock = DockStyle.Fill;
+            button_500.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_500.Location = new Point(3, 459);
+            button_500.Name = "button_500";
+            button_500.Size = new Size(78, 224);
+            button_500.TabIndex = 0;
+            button_500.Text = "500";
+            button_500.TextAlign = ContentAlignment.BottomCenter;
+            button_500.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_500.UseVisualStyleBackColor = true;
+            button_500.Click += coin_click;
+            button_500.MouseEnter += button_enter;
+            button_500.MouseLeave += button_leave;
+            // 
+            // button_1000
+            // 
+            button_1000.BackgroundImageLayout = ImageLayout.Zoom;
+            button_1000.Dock = DockStyle.Fill;
+            button_1000.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
+            button_1000.Location = new Point(87, 459);
+            button_1000.Name = "button_1000";
+            button_1000.Size = new Size(78, 224);
+            button_1000.TabIndex = 0;
+            button_1000.Text = "1000";
+            button_1000.TextAlign = ContentAlignment.BottomCenter;
+            button_1000.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_1000.UseVisualStyleBackColor = true;
+            button_1000.Click += coin_click;
+            button_1000.MouseEnter += button_enter;
+            button_1000.MouseLeave += button_leave;
             // 
             // timer_close
             // 
@@ -924,7 +1191,10 @@
             tableLayoutPanel_change.ResumeLayout(false);
             customGroupBox_left.ResumeLayout(false);
             tableLayoutPanel_left.ResumeLayout(false);
+            tableLayoutPanel_button_pay.ResumeLayout(false);
+            tableLayoutPanel_select_keypad.ResumeLayout(false);
             tableLayoutPanel_keypad.ResumeLayout(false);
+            tableLayoutPanel_coin.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -978,5 +1248,19 @@
         private Button button_cash;
         private System.Windows.Forms.Timer timer_close;
         private System.ComponentModel.BackgroundWorker backgroundWorker_confirm;
+        private TableLayoutPanel tableLayoutPanel_button_pay;
+        private Button button_numeric;
+        private Button button_coin;
+        private TableLayoutPanel tableLayoutPanel_select_keypad;
+        private TableLayoutPanel tableLayoutPanel_coin;
+        private Button button_1;
+        private Button button_clear_coin;
+        private Button button_5;
+        private Button button_10;
+        private Button button_20;
+        private Button button_50;
+        private Button button_100;
+        private Button button_500;
+        private Button button_1000;
     }
 }

@@ -35,7 +35,6 @@
             tableLayoutPanel_button = new TableLayoutPanel();
             button_check_item = new Button();
             button_check_promotion = new Button();
-            button_check_member = new Button();
             button_exit = new Button();
             button_check_invoice = new Button();
             tableLayoutPanel_back = new TableLayoutPanel();
@@ -93,17 +92,16 @@
             // tableLayoutPanel_button
             // 
             tableLayoutPanel_button.BackColor = Color.White;
-            tableLayoutPanel_button.ColumnCount = 5;
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.000494F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.0005016F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20.0005035F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.9985027F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 19.9999981F));
+            tableLayoutPanel_button.ColumnCount = 4;
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.0006142F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.0006275F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25.00063F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 24.998127F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_button.Controls.Add(button_check_item, 0, 0);
             tableLayoutPanel_button.Controls.Add(button_check_promotion, 1, 0);
-            tableLayoutPanel_button.Controls.Add(button_check_member, 2, 0);
-            tableLayoutPanel_button.Controls.Add(button_exit, 4, 0);
-            tableLayoutPanel_button.Controls.Add(button_check_invoice, 3, 0);
+            tableLayoutPanel_button.Controls.Add(button_check_invoice, 2, 0);
+            tableLayoutPanel_button.Controls.Add(button_exit, 3, 0);
             tableLayoutPanel_button.Dock = DockStyle.Fill;
             tableLayoutPanel_button.Location = new Point(10, 13);
             tableLayoutPanel_button.Name = "tableLayoutPanel_button";
@@ -123,7 +121,7 @@
             button_check_item.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             button_check_item.Location = new Point(3, 3);
             button_check_item.Name = "button_check_item";
-            button_check_item.Size = new Size(134, 81);
+            button_check_item.Size = new Size(169, 81);
             button_check_item.TabIndex = 0;
             button_check_item.Text = "สินค้า";
             button_check_item.TextAlign = ContentAlignment.MiddleRight;
@@ -142,9 +140,9 @@
             button_check_promotion.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_check_promotion.FlatStyle = FlatStyle.Flat;
             button_check_promotion.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button_check_promotion.Location = new Point(143, 3);
+            button_check_promotion.Location = new Point(178, 3);
             button_check_promotion.Name = "button_check_promotion";
-            button_check_promotion.Size = new Size(134, 81);
+            button_check_promotion.Size = new Size(169, 81);
             button_check_promotion.TabIndex = 0;
             button_check_promotion.Text = "โปรโมชั่น";
             button_check_promotion.TextAlign = ContentAlignment.MiddleRight;
@@ -154,27 +152,6 @@
             button_check_promotion.MouseEnter += button_check_item_MouseEnter;
             button_check_promotion.MouseLeave += button_check_item_MouseLeave;
             // 
-            // button_check_member
-            // 
-            button_check_member.BackColor = Color.White;
-            button_check_member.Dock = DockStyle.Fill;
-            button_check_member.FlatAppearance.BorderSize = 0;
-            button_check_member.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button_check_member.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button_check_member.FlatStyle = FlatStyle.Flat;
-            button_check_member.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button_check_member.Location = new Point(283, 3);
-            button_check_member.Name = "button_check_member";
-            button_check_member.Size = new Size(134, 81);
-            button_check_member.TabIndex = 0;
-            button_check_member.Text = "สมาชิก";
-            button_check_member.TextAlign = ContentAlignment.MiddleRight;
-            button_check_member.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_check_member.UseVisualStyleBackColor = false;
-            button_check_member.Click += Check_Click;
-            button_check_member.MouseEnter += button_check_item_MouseEnter;
-            button_check_member.MouseLeave += button_check_item_MouseLeave;
-            // 
             // button_exit
             // 
             button_exit.BackColor = Color.Transparent;
@@ -182,9 +159,9 @@
             button_exit.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_exit.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_exit.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button_exit.Location = new Point(562, 3);
+            button_exit.Location = new Point(528, 3);
             button_exit.Name = "button_exit";
-            button_exit.Size = new Size(135, 81);
+            button_exit.Size = new Size(169, 81);
             button_exit.TabIndex = 1;
             button_exit.Text = "ออก";
             button_exit.TextAlign = ContentAlignment.MiddleRight;
@@ -204,9 +181,9 @@
             button_check_invoice.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_check_invoice.FlatStyle = FlatStyle.Flat;
             button_check_invoice.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button_check_invoice.Location = new Point(423, 3);
+            button_check_invoice.Location = new Point(353, 3);
             button_check_invoice.Name = "button_check_invoice";
-            button_check_invoice.Size = new Size(133, 81);
+            button_check_invoice.Size = new Size(169, 81);
             button_check_invoice.TabIndex = 2;
             button_check_invoice.Text = "บิลขาย";
             button_check_invoice.TextAlign = ContentAlignment.MiddleRight;
@@ -260,7 +237,6 @@
         private TableLayoutPanel tableLayoutPanel_button;
         private Button button_check_item;
         private Button button_check_promotion;
-        private Button button_check_member;
         private Button button_exit;
         private Panel panel_check;
         private Button button_check_invoice;

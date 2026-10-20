@@ -87,6 +87,8 @@ namespace Ppos
 
                 dataGridView_item_pro.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
                 dataGridView_item_pro.EnableHeadersVisualStyles = false;
+
+                dataGridView_item_pro.MouseWheel += new MouseEventHandler(dataGridView_item_pro_MouseWheel!);
                 //////
                 /// /////
                 dataGridView_item_premium.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item_premium, true, null);
@@ -111,6 +113,8 @@ namespace Ppos
 
                 dataGridView_item_premium_pro.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
                 dataGridView_item_premium_pro.EnableHeadersVisualStyles = false;
+
+                dataGridView_item_premium_pro.MouseWheel += new MouseEventHandler(dataGridView_item_premium_pro_MouseWheel!);
                 /////
 
                 button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
@@ -265,7 +269,58 @@ namespace Ppos
                 this.Close();
             }
         }
+        private void dataGridView_item_pro_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_item_pro.RowCount == 0) return;
 
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_item_pro.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_item_pro.RowCount)
+            {
+                newIndex = dataGridView_item_pro.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_item_pro.FirstDisplayedScrollingRowIndex = newIndex;
+        }
+        private void dataGridView_item_premium_pro_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_item_premium_pro.RowCount == 0) return;
+
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_item_premium_pro.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_item_premium_pro.RowCount)
+            {
+                newIndex = dataGridView_item_premium_pro.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_item_premium_pro.FirstDisplayedScrollingRowIndex = newIndex;
+        }
         private void Form_Pro_Mix_Item_Load(object sender, EventArgs e)
         {
             try

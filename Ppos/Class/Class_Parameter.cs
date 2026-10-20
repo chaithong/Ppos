@@ -130,5 +130,7 @@ namespace Ppos.Class
         public static bool visible_dis_pro { get; set; } = true;
         public static bool visible_dis_member { get; set; } = true;
         public static bool visible_dis_round { get; set; } = true;
+
+        public static bool keypad_numeric { get; set; } = true;
     }
 }

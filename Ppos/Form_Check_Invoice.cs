@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Globalization;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
@@ -19,6 +20,8 @@ namespace Ppos
         int count_search, set_search = 5;
 
         public static string trx_no_detail = "", trx_no_status = "";
+
+        DateTime currentDate = DateTime.Now;
 
         public Form_Check_Invoice()
         {
@@ -38,6 +41,8 @@ namespace Ppos
                 dataGridView_invoice.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
                 dataGridView_invoice.EnableHeadersVisualStyles = false;
                 dataGridView_invoice.MouseWheel += new MouseEventHandler(dataGridView_invoice_MouseWheel!);
+
+                label_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
                 textBox_search.LostFocus += TextBox_search_LostFocus;
             }
@@ -97,7 +102,7 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
+
         private void dataGridView_invoice_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
@@ -161,9 +166,9 @@ namespace Ppos
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void open_detail()
@@ -229,12 +234,18 @@ namespace Ppos
         {
             try
             {
+
                 count_search = 0;
                 if (!timer_search.Enabled)
                 {
                     timer_search.Start();
                 }
 
+                if (textBox_search.Text != string.Empty)
+                {
+                    tableLayoutPanel_date.Visible = false;
+                }
+               
             }
             catch (Exception ex)
             {
@@ -252,7 +263,7 @@ namespace Ppos
                     count_search = 0;
                     timer_search.Stop();
                     dataGridView_invoice.Rows.Clear();
-                    dataGridView_invoice.ScrollBars = ScrollBars.None;
+                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
                     dataGridView_invoice.Enabled = false;
                     Class_Parameter.runbackground = true;
                     backgroundWorker_search.RunWorkerAsync();
@@ -281,7 +292,7 @@ namespace Ppos
                     {
                         dataGridView_invoice.Rows[e.RowIndex].Cells["void_bill"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30));
                     }
-                        dataGridView_invoice.Rows[e.RowIndex].Cells["detail"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30));
+                    dataGridView_invoice.Rows[e.RowIndex].Cells["detail"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30));
 
                     dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
                     dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -348,7 +359,7 @@ namespace Ppos
                             }
                             else
                             {
-                                cmd_sqlite.CommandText += "and date(ih.created_date) = date('now') ";
+                                cmd_sqlite.CommandText += "and date(ih.created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' ";
                             }
                             cmd_sqlite.CommandText += "order by ih.id desc";
                             SQLiteDataReader reader = cmd_sqlite.ExecuteReader();
@@ -380,7 +391,7 @@ namespace Ppos
                                     }
                                     dataGridView_invoice.Rows.Add("",
                                     (i + 1),
-                                    void_bill,
+                                    Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30)),                                  
                                     dt.Rows[i]["id"],
                                     dt.Rows[i]["created_by"],
                                     dt.Rows[i]["date"],
@@ -408,7 +419,7 @@ namespace Ppos
                                     dt.Rows[i]["void_date"],
                                     dt.Rows[i]["return_date"],
                                     dt.Rows[i]["trx_no_reference"],
-                                    Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30)),
+                                    void_bill,
                                     ""
                                     );
                                     dataGridView_invoice.Columns["seq"]!.HeaderText = (i + 1).ToString();
@@ -433,13 +444,128 @@ namespace Ppos
         {
             try
             {
-                dataGridView_invoice.ScrollBars = ScrollBars.Both;
+               // dataGridView_invoice.ScrollBars = ScrollBars.Both;
                 dataGridView_invoice.Enabled = true;
+                tableLayoutPanel_date.Enabled = true;
                 Class_Parameter.runbackground = false;
+                if(textBox_search.Text == string.Empty)
+                {
+                    tableLayoutPanel_date.Visible = true;
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_next_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                currentDate = currentDate.AddDays(1); // บวกเพิ่ม 1 วัน
+                label_date.Text = currentDate.ToString("dd/MM/yyyy");
+                if (textBox_search.Text == string.Empty)
+                {
+                    tableLayoutPanel_date.Enabled = false;
+                    dataGridView_invoice.Rows.Clear();
+                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
+                    dataGridView_invoice.Enabled = false;
+                    Class_Parameter.runbackground = true;
+                    backgroundWorker_search.RunWorkerAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_back_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                currentDate = currentDate.AddDays(-1); // บวกเพิ่ม 1 วัน
+                label_date.Text = currentDate.ToString("dd/MM/yyyy");
+                if (textBox_search.Text == string.Empty)
+                {
+                    tableLayoutPanel_date.Enabled = false;
+                    dataGridView_invoice.Rows.Clear();
+                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
+                    dataGridView_invoice.Enabled = false;
+                    Class_Parameter.runbackground = true;
+                    backgroundWorker_search.RunWorkerAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label_date_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                currentDate = DateTime.Now; // บวกเพิ่ม 1 วัน
+                label_date.Text = currentDate.ToString("dd/MM/yyyy");
+                if (textBox_search.Text == string.Empty)
+                {
+                    tableLayoutPanel_date.Enabled = false;
+                    dataGridView_invoice.Rows.Clear();
+                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
+                    dataGridView_invoice.Enabled = false;
+                    Class_Parameter.runbackground = true;
+                    backgroundWorker_search.RunWorkerAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            
+                    Class_Parameter.calendar_title = "วันที่ขาย";
+
+                    Class_Parameter.calendar_day = label_date.Text.Split("/")[0];
+                    Class_Parameter.calendar_month = label_date.Text.Split("/")[1];
+                    Class_Parameter.calendar_year = label_date.Text.Split("/")[2];
+               
+
+                Form_Calendar form_Calendar = new Form_Calendar();
+                form_Calendar.ShowDialog(this);
+
+                if (!form_Calendar.cancel)
+                {
+                    DateTime date;
+                    label_date.Text = form_Calendar.label_set_days.Text.Replace("-", "/");
+                    bool isValid = DateTime.TryParseExact(label_date.Text,
+                                          "dd/MM/yyyy",
+                                          CultureInfo.InvariantCulture,
+                                          DateTimeStyles.None,
+                                          out date);
+                    if(isValid)
+                    {
+                        currentDate = date;
+                    }
+                   
+                    tableLayoutPanel_date.Enabled = false;
+                    dataGridView_invoice.Rows.Clear();
+                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
+                    dataGridView_invoice.Enabled = false;
+                    Class_Parameter.runbackground = true;
+                    backgroundWorker_search.RunWorkerAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

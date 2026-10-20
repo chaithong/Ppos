@@ -93,7 +93,8 @@
             dataGridView_item.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridView_item.Dock = DockStyle.Fill;
             dataGridView_item.GridColor = Color.White;
-            dataGridView_item.Location = new Point(3, 103);
+            dataGridView_item.Location = new Point(0, 105);
+            dataGridView_item.Margin = new Padding(0);
             dataGridView_item.Name = "dataGridView_item";
             dataGridView_item.ReadOnly = true;
             dataGridView_item.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
@@ -102,7 +103,7 @@
             dataGridView_item.RowTemplate.Height = 50;
             dataGridView_item.ScrollBars = ScrollBars.None;
             dataGridView_item.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_item.Size = new Size(698, 495);
+            dataGridView_item.Size = new Size(704, 496);
             dataGridView_item.TabIndex = 1;
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
             dataGridView_item.CellMouseLeave += dataGridView_item_CellMouseLeave;
@@ -149,22 +150,24 @@
             // 
             // tableLayoutPanel_back
             // 
+            tableLayoutPanel_back.BackColor = Color.Cyan;
             tableLayoutPanel_back.ColumnCount = 1;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_back.Controls.Add(dataGridView_item, 0, 1);
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_top, 0, 0);
+            tableLayoutPanel_back.Controls.Add(dataGridView_item, 0, 2);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
             tableLayoutPanel_back.Location = new Point(0, 0);
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
-            tableLayoutPanel_back.RowCount = 2;
+            tableLayoutPanel_back.RowCount = 3;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 5F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back.Size = new Size(704, 601);
             tableLayoutPanel_back.TabIndex = 3;
             // 
             // tableLayoutPanel_top
             // 
+            tableLayoutPanel_top.BackColor = Color.White;
             tableLayoutPanel_top.ColumnCount = 3;
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 500F));

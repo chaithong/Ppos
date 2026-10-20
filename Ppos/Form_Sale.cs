@@ -64,9 +64,9 @@ namespace Ppos
                 button_hot_sale.Image = Class_Image.resizeImage(Ppos.Properties.Resources.additem, new Size(40, 40));
 
                 button_sale.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(30, 30));
-                button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(30, 30));
+                button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
 
-                button_check_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(40, 40));
+              //  button_check.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(40, 40));
                 button_hole_bill.Image = Class_Image.resizeImage(Ppos.Properties.Resources.bill, new Size(40, 40));
                 button_other.Image = Class_Image.resizeImage(Ppos.Properties.Resources.file, new Size(40, 40));
 
@@ -89,7 +89,7 @@ namespace Ppos
 
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
-                   
+
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace Ppos
                     button_sale_display.Text = ">";
 
                     tableLayoutPanel_back.Controls.Clear();
-                 
+
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 1, 0);
                 }
@@ -203,12 +203,12 @@ namespace Ppos
                 if (hole_bill)
                 {
                     button_hole_bill.Text = "เรียกบิล";
-                    // button_hole_bill.BackColor = Color.Lime;
+                     button_hole_bill.BackColor = Color.FromArgb(255, 192, 192);
                 }
                 else
                 {
                     button_hole_bill.Text = "พักบิล";
-                    //  button_hole_bill.BackColor = Color.Cyan;
+                      button_hole_bill.BackColor = Color.White;
                 }
 
                 if (Class_Parameter.hotkey_pag == 1) // 1
@@ -277,10 +277,12 @@ namespace Ppos
               panel_hotkey.Location.X + (panel_hotkey.Width / 2) - (pictureBox_load_hotkey.Width / 2),
               panel_hotkey.Location.Y + (panel_hotkey.Height / 2) - (pictureBox_load_hotkey.Height / 2));
 
+                Class_Parameter.runbackground = true;
                 backgroundWorker_hotkey.RunWorkerAsync();
             }
             catch (Exception ex)
             {
+                Class_Parameter.runbackground = false;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -339,7 +341,7 @@ namespace Ppos
                         if (dt.Rows.Count > 0)
                         {
                             C = R = 0;
-                           // tableLayoutPanel_hotkey.Width = panel_hotkey.Width;
+                            // tableLayoutPanel_hotkey.Width = panel_hotkey.Width;
                             // ทำการเรียงใหม่และอัพเดท row column
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
@@ -400,10 +402,11 @@ namespace Ppos
                 pictureBox_load_hotkey.Visible = false;
                 textBox_search.Focus();
                 tableLayoutPanel_hotkey_pag.Enabled = true;
-
+                Class_Parameter.runbackground = false;
             }
             catch (Exception ex)
             {
+                Class_Parameter.runbackground = false;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -411,7 +414,7 @@ namespace Ppos
         {
             try
             {
-             
+
                 seq_visible++;
                 if (seq_visible == 1)
                 {
@@ -444,7 +447,7 @@ namespace Ppos
                 }
                 else if (seq_visible == 8)
                 {
-                    button_check_item.Visible = true;
+                  //  button_check.Visible = true;
                 }
                 else if (seq_visible == 9)
                 {
@@ -486,12 +489,14 @@ namespace Ppos
                 {
                     timer_load.Stop();
                     sort_hotkey();
+                    Class_Parameter.runbackground = true;
                     backgroundWorker_load.RunWorkerAsync();
                     textBox_search.Focus();
                 }
             }
             catch
             {
+                Class_Parameter.runbackground = false;
                 timer_load.Stop();
             }
         }
@@ -610,9 +615,11 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                 sum_total();
 
                 dataGridView_item.Enabled = true;
+                Class_Parameter.runbackground = false;
             }
             catch (Exception ex)
             {
+                Class_Parameter.runbackground = false;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -801,7 +808,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 W_item_price = dt.Rows[0]["price"].ToString()!;
 
                                 Form_Item_Weight form_Item_Weight = new Form_Item_Weight();
-                                form_Item_Weight.Size = new Size(this.Width/3,this.Height/2);
+                                form_Item_Weight.Size = new Size(this.Width / 3, this.Height / 2);
                                 form_Item_Weight.ShowDialog(this);
                                 form_Item_Weight.StartPosition = FormStartPosition.CenterParent;
                                 if (form_Item_Weight.exit)
@@ -1126,6 +1133,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                             con_sqlite.Open();
                             using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                             {
+
                                 cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp " +
                                                          "SET void = true, " +
                                                          "updated_date = datetime('now', 'localtime'), " +
@@ -1300,14 +1308,15 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                 {
                     if (dataGridView_item.RowCount > 0)
                     {
-
+                        button_hole_bill.Enabled = false;
                         Class_Sale.update_hole_temp(true);
 
                         clear_bill();
                         // เปลี่ยนข้อความปุ่ม
                         button_hole_bill.Text = "เรียกบิล";
-                        //  button_hole_bill.BackColor = Color.Lime;
+                        button_hole_bill.BackColor = Color.FromArgb(255, 192, 192);
 
+                        button_hole_bill.Enabled = true;
                         hole_bill = true;
                     }
 
@@ -1321,7 +1330,9 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                         // ถ้าไม่มีการเลือกสมาชิกไว้
                         if (id_member == string.Empty)
                         {
+                            button_hole_bill.Enabled = false;
                             dataGridView_item.Enabled = false;
+                            Class_Parameter.runbackground = true;
                             backgroundWorker_bill_hole.RunWorkerAsync();
                         }
                         else
@@ -1338,6 +1349,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
             }
             catch (Exception ex)
             {
+                Class_Parameter.runbackground = false;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -1420,7 +1432,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                                 dt_temp.Rows[i]["sale_vat"].ToString()!
                                 );
 
-                                dataGridView_item.Rows[dataGridView_item.RowCount - 1].Selected = true;
+                                dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
 
                                 if (id_member == string.Empty && dt_temp.Rows[i]["id_member"].ToString()! != string.Empty)
                                 {
@@ -1445,10 +1457,15 @@ hole FROM Invoice_Body_Temp where void = false ";
         {
             try
             {
-                // เลือกบรรทัดสุดท้าย
-                dataGridView_item.FirstDisplayedScrollingRowIndex = dataGridView_item.RowCount - 1;
 
-                dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
+                // เลือกบรรทัดสุดท้าย
+                if (dataGridView_item.RowCount > 0)
+                {
+                    dataGridView_item.FirstDisplayedScrollingRowIndex = dataGridView_item.RowCount - 1;
+
+                    dataGridView_item.Rows[dataGridView_item.RowCount - 1].Selected = true;
+                }
+
 
                 // ดึงสมาชิก
                 if (id_member != "")
@@ -1462,11 +1479,15 @@ hole FROM Invoice_Body_Temp where void = false ";
                 dataGridView_item.Enabled = true;
                 // เปลี่ยนข้อความปุ่ม
                 button_hole_bill.Text = "พักบิล";
-                // button_hole_bill.BackColor = Color.Cyan;
+                button_hole_bill.BackColor = Color.White;
                 hole_bill = false;
+
+                button_hole_bill.Enabled = true;
+                Class_Parameter.runbackground = false;
             }
             catch (Exception ex)
             {
+                Class_Parameter.runbackground = false;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -1907,8 +1928,16 @@ hole FROM Invoice_Body_Temp where void = false ";
             try
             {
                 Form_Select_Member form_Select_Member = new Form_Select_Member();
-                form_Select_Member.Size = new Size(this.Width /2, this.Height * 2 / 3);
+                form_Select_Member.Size = new Size(this.Width / 2, this.Height * 2 / 3);
                 form_Select_Member.ShowDialog(this);
+                // ถ้าเพิ่มสมาชิก
+                if(form_Select_Member.add_member)
+                {
+                    // เปิดหน้าชื่อสมาชิก
+                    customGroupBox_member.Visible = true;
+                    tableLayoutPanel_bill.RowStyles[1].Height = 70;
+                }
+                // ถ้าเลือกสมาชิก
                 if (!form_Select_Member.exit)
                 {
                     using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
@@ -2005,35 +2034,7 @@ hole FROM Invoice_Body_Temp where void = false ";
         }
 
 
-        private void button_check_item_Click(object sender, EventArgs e)
-        {
-            try
-            {
-
-                Form_Check form_Check = new Form_Check();
-
-
-                form_Check.TopLevel = false;
-                parentPanel.Controls.Add(form_Check);
-                form_Check.BringToFront();
-                form_Check.Dock = DockStyle.Fill;
-                //form_Check.Size = new Size(this.Width, this.Height);
-                // ดักจับ Event เมื่อ Form2 ปิดลง
-                form_Check.FormClosed += (s, args) =>
-                {
-                    textBox_search.Focus();      // สั่ง Focus ไปที่ TextBox ที่ต้องการ
-
-                };
-                form_Check.Show();
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-
+   
 
         private void button_sale_display_Click(object sender, EventArgs e)
         {
@@ -2074,13 +2075,13 @@ hole FROM Invoice_Body_Temp where void = false ";
                         cmd_sqlite.CommandText = "UPDATE Sale_Display_Set SET " +
                                                  "updated_date = datetime('now', 'localtime'), " +
                                                  "updated_by = '" + Class_Parameter.User_Login + "', " +
-                                                 "value = '"+ Class_Parameter.sale_hotkey_left.ToString() + "' " +
+                                                 "value = '" + Class_Parameter.sale_hotkey_left.ToString() + "' " +
                                                  "where title = 'sale_hotkey_left'";
                         cmd_sqlite.ExecuteNonQuery();
                     }
                 }
 
-                      
+
             }
             catch (Exception ex)
             {
@@ -2116,27 +2117,27 @@ hole FROM Invoice_Body_Temp where void = false ";
         {
             try
             {
-                  // 1. กำหนดรูปแบบข้อความ (ลำดับบรรทัดเริ่มที่ 1)
-                  string rowNumber = (e.RowIndex + 1).ToString();
+                // 1. กำหนดรูปแบบข้อความ (ลำดับบรรทัดเริ่มที่ 1)
+                string rowNumber = (e.RowIndex + 1).ToString();
 
-                  // 2. ตั้งค่าฟอนต์และสีของตัวเลข (ใช้ฟอนต์เดียวกับ DataGridView)
-                  //System.Drawing.Font font = this.dataGridView_item.Font;
-                  System.Drawing.Font font = new System.Drawing.Font("Segoe UI", 12F,FontStyle.Regular);
-                    Brush brush = SystemBrushes.ControlText;
+                // 2. ตั้งค่าฟอนต์และสีของตัวเลข (ใช้ฟอนต์เดียวกับ DataGridView)
+                //System.Drawing.Font font = this.dataGridView_item.Font;
+                System.Drawing.Font font = new System.Drawing.Font("Segoe UI", 12F, FontStyle.Regular);
+                Brush brush = SystemBrushes.ControlText;
 
 
-                  // 3. คำนวณตำแหน่งสำหรับวาดตัวเลขให้อยู่กึ่งกลางของ RowHeader
-                  // คำนวณขนาดของข้อความตัวเลข
-                  SizeF textSize = e.Graphics.MeasureString(rowNumber, font);
+                // 3. คำนวณตำแหน่งสำหรับวาดตัวเลขให้อยู่กึ่งกลางของ RowHeader
+                // คำนวณขนาดของข้อความตัวเลข
+                SizeF textSize = e.Graphics.MeasureString(rowNumber, font);
 
-                  // หาพิกัด X (ขยับมาทางขวาของขอบ RowHeader เล็กน้อย)
-                  float x = e.RowBounds.Left + (this.dataGridView_item.RowHeadersWidth - textSize.Width) / 2;
+                // หาพิกัด X (ขยับมาทางขวาของขอบ RowHeader เล็กน้อย)
+                float x = e.RowBounds.Left + (this.dataGridView_item.RowHeadersWidth - textSize.Width) / 2;
 
-                  // หาพิกัด Y (กึ่งกลางความสูงของบรรทัดนั้นๆ)
-                  float y = e.RowBounds.Top + (e.RowBounds.Height - textSize.Height) / 2;
+                // หาพิกัด Y (กึ่งกลางความสูงของบรรทัดนั้นๆ)
+                float y = e.RowBounds.Top + (e.RowBounds.Height - textSize.Height) / 2;
 
-                  // 4. วาดตัวเลขลงบน RowHeader
-                  e.Graphics.DrawString(rowNumber, font, brush, x+5, y);
+                // 4. วาดตัวเลขลงบน RowHeader
+                e.Graphics.DrawString(rowNumber, font, brush, x + 5, y);
             }
             catch
             {
@@ -2172,6 +2173,9 @@ hole FROM Invoice_Body_Temp where void = false ";
                         // ถ้ากดตกลงจะทำการเครียเริ่มบิลใหม่
                         if (!form_Pay.exit)
                         {
+                            // เริ่ม id แสดงผลใน datagridview ใหม่
+                            Class_Parameter.id_body_temp = Class_Sale.id_invoid_body_temp();
+
                             clear_bill();
                             if (Class_Parameter.hotkey_pag == 4 || Class_Parameter.hotkey_pag == 5) // ถ้าเลือก pag ล่าสุดหรือขายดี
                             {
@@ -2203,6 +2207,8 @@ hole FROM Invoice_Body_Temp where void = false ";
         {
             try
             {
+               
+
                 dataGridView_item.Rows.Clear();
                 // แสดงจำนวนบรรทัดสินค้า
                 dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
@@ -2348,7 +2354,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
+
         private void label_price_title_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -2361,7 +2367,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                         if (tableLayoutPanel_sum_qty.Visible &&
                             tableLayoutPanel_sum_price.Visible &&
                             tableLayoutPanel_discount_pro.Visible &&
-                            tableLayoutPanel_discount_member.Visible &&
+                           // tableLayoutPanel_discount_member.Visible &&
                             tableLayoutPanel_discount_round.Visible)
                         {
                             // update
@@ -2413,6 +2419,34 @@ hole FROM Invoice_Body_Temp where void = false ";
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_other_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Form_Check form_Check = new Form_Check();
+
+
+                form_Check.TopLevel = false;
+                parentPanel.Controls.Add(form_Check);
+                form_Check.BringToFront();
+                form_Check.Dock = DockStyle.Fill;
+                //form_Check.Size = new Size(this.Width, this.Height);
+                // ดักจับ Event เมื่อ Form2 ปิดลง
+                form_Check.FormClosed += (s, args) =>
+                {
+                    textBox_search.Focus();      // สั่ง Focus ไปที่ TextBox ที่ต้องการ
+
+                };
+                form_Check.Show();
+
             }
             catch (Exception ex)
             {
