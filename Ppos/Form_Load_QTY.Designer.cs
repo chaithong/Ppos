@@ -30,6 +30,10 @@
         {
             tableLayoutPanel_back = new TableLayoutPanel();
             panel_back = new Panel();
+            customGroupBox_all_item = new CustomGroupBox();
+            tableLayoutPanel_all_item = new TableLayoutPanel();
+            label1 = new Label();
+            label_item_all = new Label();
             customGroupBox_add_item = new CustomGroupBox();
             tableLayoutPanel_load = new TableLayoutPanel();
             label2 = new Label();
@@ -46,9 +50,6 @@
             button_template = new Button();
             pictureBox_load = new PictureBox();
             button_upload = new Button();
-            customPanel_all_item = new CustomPanel();
-            label_item_all = new Label();
-            label1 = new Label();
             button_download_all_item = new Button();
             pictureBox_load_all_item = new PictureBox();
             panel_load = new Panel();
@@ -57,6 +58,8 @@
             backgroundWorker_error = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_back.SuspendLayout();
             panel_back.SuspendLayout();
+            customGroupBox_all_item.SuspendLayout();
+            tableLayoutPanel_all_item.SuspendLayout();
             customGroupBox_add_item.SuspendLayout();
             tableLayoutPanel_load.SuspendLayout();
             tableLayoutPanel_button.SuspendLayout();
@@ -64,7 +67,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_load_error).BeginInit();
             panel_download_templete.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_load).BeginInit();
-            customPanel_all_item.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_load_all_item).BeginInit();
             SuspendLayout();
             // 
@@ -88,8 +90,8 @@
             // 
             panel_back.AutoScroll = true;
             panel_back.BackColor = Color.White;
+            panel_back.Controls.Add(customGroupBox_all_item);
             panel_back.Controls.Add(customGroupBox_add_item);
-            panel_back.Controls.Add(customPanel_all_item);
             panel_back.Controls.Add(button_download_all_item);
             panel_back.Controls.Add(pictureBox_load_all_item);
             panel_back.Dock = DockStyle.Fill;
@@ -98,6 +100,62 @@
             panel_back.Name = "panel_back";
             panel_back.Size = new Size(1215, 722);
             panel_back.TabIndex = 3;
+            // 
+            // customGroupBox_all_item
+            // 
+            customGroupBox_all_item.Anchor = AnchorStyles.Top;
+            customGroupBox_all_item.BorderColor = Color.Lime;
+            customGroupBox_all_item.BorderRadius = 30;
+            customGroupBox_all_item.BorderThickness = 20;
+            customGroupBox_all_item.Controls.Add(tableLayoutPanel_all_item);
+            customGroupBox_all_item.Font = new Font("Segoe UI", 1F);
+            customGroupBox_all_item.Location = new Point(224, 207);
+            customGroupBox_all_item.Name = "customGroupBox_all_item";
+            customGroupBox_all_item.Padding = new Padding(10);
+            customGroupBox_all_item.Size = new Size(600, 100);
+            customGroupBox_all_item.TabIndex = 6;
+            customGroupBox_all_item.TabStop = false;
+            // 
+            // tableLayoutPanel_all_item
+            // 
+            tableLayoutPanel_all_item.BackColor = Color.Lime;
+            tableLayoutPanel_all_item.ColumnCount = 2;
+            tableLayoutPanel_all_item.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_all_item.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_all_item.Controls.Add(label1, 0, 0);
+            tableLayoutPanel_all_item.Controls.Add(label_item_all, 1, 0);
+            tableLayoutPanel_all_item.Dock = DockStyle.Fill;
+            tableLayoutPanel_all_item.Location = new Point(10, 13);
+            tableLayoutPanel_all_item.Name = "tableLayoutPanel_all_item";
+            tableLayoutPanel_all_item.RowCount = 1;
+            tableLayoutPanel_all_item.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_all_item.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_all_item.Size = new Size(580, 77);
+            tableLayoutPanel_all_item.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold);
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(284, 77);
+            label1.TabIndex = 0;
+            label1.Text = "สินค้าทั้งหมด :";
+            label1.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label_item_all
+            // 
+            label_item_all.AutoSize = true;
+            label_item_all.Dock = DockStyle.Fill;
+            label_item_all.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold);
+            label_item_all.Location = new Point(293, 0);
+            label_item_all.Name = "label_item_all";
+            label_item_all.Size = new Size(284, 77);
+            label_item_all.TabIndex = 1;
+            label_item_all.Text = "0";
+            label_item_all.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // customGroupBox_add_item
             // 
@@ -110,7 +168,7 @@
             customGroupBox_add_item.Controls.Add(button_upload);
             customGroupBox_add_item.Location = new Point(224, 304);
             customGroupBox_add_item.Name = "customGroupBox_add_item";
-            customGroupBox_add_item.Padding = new Padding(7);
+            customGroupBox_add_item.Padding = new Padding(10);
             customGroupBox_add_item.Size = new Size(600, 400);
             customGroupBox_add_item.TabIndex = 4;
             customGroupBox_add_item.TabStop = false;
@@ -129,14 +187,14 @@
             tableLayoutPanel_load.Controls.Add(label7, 0, 2);
             tableLayoutPanel_load.Controls.Add(label_item_load_error, 1, 2);
             tableLayoutPanel_load.Dock = DockStyle.Fill;
-            tableLayoutPanel_load.Location = new Point(7, 107);
+            tableLayoutPanel_load.Location = new Point(10, 110);
             tableLayoutPanel_load.Name = "tableLayoutPanel_load";
             tableLayoutPanel_load.RowCount = 3;
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33332F));
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33334F));
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333473F));
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_load.Size = new Size(586, 216);
+            tableLayoutPanel_load.Size = new Size(580, 210);
             tableLayoutPanel_load.TabIndex = 5;
             // 
             // label2
@@ -145,9 +203,9 @@
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Lime;
-            label2.Location = new Point(3, 71);
+            label2.Location = new Point(3, 69);
             label2.Name = "label2";
-            label2.Size = new Size(287, 72);
+            label2.Size = new Size(284, 70);
             label2.TabIndex = 0;
             label2.Text = "อัพโหลดเรียบร้อย :";
             label2.TextAlign = ContentAlignment.MiddleRight;
@@ -157,9 +215,9 @@
             label_item_load_complete.Dock = DockStyle.Fill;
             label_item_load_complete.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_item_load_complete.ForeColor = Color.Lime;
-            label_item_load_complete.Location = new Point(296, 71);
+            label_item_load_complete.Location = new Point(293, 69);
             label_item_load_complete.Name = "label_item_load_complete";
-            label_item_load_complete.Size = new Size(287, 72);
+            label_item_load_complete.Size = new Size(284, 70);
             label_item_load_complete.TabIndex = 1;
             label_item_load_complete.Text = "0";
             label_item_load_complete.TextAlign = ContentAlignment.MiddleLeft;
@@ -171,7 +229,7 @@
             label4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
-            label4.Size = new Size(287, 71);
+            label4.Size = new Size(284, 69);
             label4.TabIndex = 0;
             label4.Text = "อัพโหลดสินค้า :";
             label4.TextAlign = ContentAlignment.MiddleRight;
@@ -181,9 +239,9 @@
             label_item_load.Dock = DockStyle.Fill;
             label_item_load.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             label_item_load.ForeColor = Color.Black;
-            label_item_load.Location = new Point(296, 0);
+            label_item_load.Location = new Point(293, 0);
             label_item_load.Name = "label_item_load";
-            label_item_load.Size = new Size(287, 71);
+            label_item_load.Size = new Size(284, 69);
             label_item_load.TabIndex = 1;
             label_item_load.Text = "0";
             label_item_load.TextAlign = ContentAlignment.MiddleLeft;
@@ -194,9 +252,9 @@
             label7.Dock = DockStyle.Fill;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(3, 143);
+            label7.Location = new Point(3, 139);
             label7.Name = "label7";
-            label7.Size = new Size(287, 73);
+            label7.Size = new Size(284, 71);
             label7.TabIndex = 0;
             label7.Text = "ข้อมูลไม่ถูกต้อง :";
             label7.TextAlign = ContentAlignment.MiddleRight;
@@ -206,9 +264,9 @@
             label_item_load_error.Dock = DockStyle.Fill;
             label_item_load_error.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_item_load_error.ForeColor = Color.Red;
-            label_item_load_error.Location = new Point(296, 143);
+            label_item_load_error.Location = new Point(293, 139);
             label_item_load_error.Name = "label_item_load_error";
-            label_item_load_error.Size = new Size(287, 73);
+            label_item_load_error.Size = new Size(284, 71);
             label_item_load_error.TabIndex = 1;
             label_item_load_error.Text = "0";
             label_item_load_error.TextAlign = ContentAlignment.MiddleLeft;
@@ -222,12 +280,12 @@
             tableLayoutPanel_button.Controls.Add(panel_download_error, 1, 0);
             tableLayoutPanel_button.Controls.Add(panel_download_templete, 0, 0);
             tableLayoutPanel_button.Dock = DockStyle.Bottom;
-            tableLayoutPanel_button.Location = new Point(7, 323);
+            tableLayoutPanel_button.Location = new Point(10, 320);
             tableLayoutPanel_button.Name = "tableLayoutPanel_button";
             tableLayoutPanel_button.RowCount = 1;
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_button.Size = new Size(586, 70);
+            tableLayoutPanel_button.Size = new Size(580, 70);
             tableLayoutPanel_button.TabIndex = 6;
             // 
             // panel_download_error
@@ -235,9 +293,9 @@
             panel_download_error.Controls.Add(button_error);
             panel_download_error.Controls.Add(pictureBox_load_error);
             panel_download_error.Dock = DockStyle.Fill;
-            panel_download_error.Location = new Point(296, 3);
+            panel_download_error.Location = new Point(293, 3);
             panel_download_error.Name = "panel_download_error";
-            panel_download_error.Size = new Size(287, 64);
+            panel_download_error.Size = new Size(284, 64);
             panel_download_error.TabIndex = 0;
             // 
             // button_error
@@ -253,7 +311,7 @@
             button_error.ForeColor = Color.Red;
             button_error.Location = new Point(0, 0);
             button_error.Name = "button_error";
-            button_error.Size = new Size(287, 64);
+            button_error.Size = new Size(284, 64);
             button_error.TabIndex = 0;
             button_error.TabStop = false;
             button_error.Text = "ดาวน์โหลดข้อมูล";
@@ -270,7 +328,7 @@
             pictureBox_load_error.Image = Properties.Resources.load;
             pictureBox_load_error.Location = new Point(0, 0);
             pictureBox_load_error.Name = "pictureBox_load_error";
-            pictureBox_load_error.Size = new Size(287, 64);
+            pictureBox_load_error.Size = new Size(284, 64);
             pictureBox_load_error.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_load_error.TabIndex = 1;
             pictureBox_load_error.TabStop = false;
@@ -283,7 +341,7 @@
             panel_download_templete.Dock = DockStyle.Fill;
             panel_download_templete.Location = new Point(3, 3);
             panel_download_templete.Name = "panel_download_templete";
-            panel_download_templete.Size = new Size(287, 64);
+            panel_download_templete.Size = new Size(284, 64);
             panel_download_templete.TabIndex = 1;
             // 
             // button_template
@@ -298,7 +356,7 @@
             button_template.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_template.Location = new Point(0, 0);
             button_template.Name = "button_template";
-            button_template.Size = new Size(287, 64);
+            button_template.Size = new Size(284, 64);
             button_template.TabIndex = 0;
             button_template.TabStop = false;
             button_template.Text = "รูปแบบปรับจำนวน";
@@ -314,7 +372,7 @@
             pictureBox_load.Image = Properties.Resources.load;
             pictureBox_load.Location = new Point(0, 0);
             pictureBox_load.Name = "pictureBox_load";
-            pictureBox_load.Size = new Size(287, 64);
+            pictureBox_load.Size = new Size(284, 64);
             pictureBox_load.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_load.TabIndex = 1;
             pictureBox_load.TabStop = false;
@@ -329,9 +387,9 @@
             button_upload.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_upload.FlatStyle = FlatStyle.Flat;
             button_upload.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_upload.Location = new Point(7, 27);
+            button_upload.Location = new Point(10, 30);
             button_upload.Name = "button_upload";
-            button_upload.Size = new Size(586, 80);
+            button_upload.Size = new Size(580, 80);
             button_upload.TabIndex = 0;
             button_upload.TabStop = false;
             button_upload.Text = "อัพโหลดจำนวนสินค้า";
@@ -341,42 +399,6 @@
             button_upload.Click += button_upload_Click;
             button_upload.MouseEnter += button_MouseEnter;
             button_upload.MouseLeave += button_MouseLeave;
-            // 
-            // customPanel_all_item
-            // 
-            customPanel_all_item.Anchor = AnchorStyles.Top;
-            customPanel_all_item.BackColor = Color.Lime;
-            customPanel_all_item.BorderRadius = 30;
-            customPanel_all_item.Controls.Add(label_item_all);
-            customPanel_all_item.Controls.Add(label1);
-            customPanel_all_item.Location = new Point(224, 208);
-            customPanel_all_item.Name = "customPanel_all_item";
-            customPanel_all_item.Size = new Size(600, 90);
-            customPanel_all_item.TabIndex = 3;
-            // 
-            // label_item_all
-            // 
-            label_item_all.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label_item_all.AutoSize = true;
-            label_item_all.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_item_all.Location = new Point(311, 15);
-            label_item_all.Name = "label_item_all";
-            label_item_all.Size = new Size(50, 60);
-            label_item_all.TabIndex = 1;
-            label_item_all.Text = "0";
-            label_item_all.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(9, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(296, 60);
-            label1.TabIndex = 0;
-            label1.Text = "สินค้าทั้งหมด :";
-            label1.TextAlign = ContentAlignment.MiddleRight;
             // 
             // button_download_all_item
             // 
@@ -451,6 +473,9 @@
             Text = "Form_Load_QTY";
             tableLayoutPanel_back.ResumeLayout(false);
             panel_back.ResumeLayout(false);
+            customGroupBox_all_item.ResumeLayout(false);
+            tableLayoutPanel_all_item.ResumeLayout(false);
+            tableLayoutPanel_all_item.PerformLayout();
             customGroupBox_add_item.ResumeLayout(false);
             tableLayoutPanel_load.ResumeLayout(false);
             tableLayoutPanel_load.PerformLayout();
@@ -459,8 +484,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox_load_error).EndInit();
             panel_download_templete.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox_load).EndInit();
-            customPanel_all_item.ResumeLayout(false);
-            customPanel_all_item.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_load_all_item).EndInit();
             ResumeLayout(false);
         }
@@ -482,7 +505,6 @@
         private PictureBox pictureBox_load_error;
         private PictureBox pictureBox_load;
         private Button button_upload;
-        private CustomPanel customPanel_all_item;
         private Label label_item_all;
         private Label label1;
         private Button button_download_all_item;
@@ -494,5 +516,7 @@
         private TableLayoutPanel tableLayoutPanel_button;
         private Panel panel_download_error;
         private Panel panel_download_templete;
+        private CustomGroupBox customGroupBox_all_item;
+        private TableLayoutPanel tableLayoutPanel_all_item;
     }
 }

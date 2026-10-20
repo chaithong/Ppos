@@ -841,7 +841,7 @@ namespace Ppos
                 if (((Label)sender) != L_select_day && ((Label)sender).Text != "")
                 {
                     ((Label)sender).BackColor = Color.Transparent;
-                    ((Label)sender).Font = new System.Drawing.Font("Segoe UI", ((Label)sender).Font.Size + 2, ((Label)sender).Font.Style);
+                   // ((Label)sender).Font = new System.Drawing.Font("Segoe UI", ((Label)sender).Font.Size + 2, ((Label)sender).Font.Style);
                 }
 
             }
@@ -858,7 +858,7 @@ namespace Ppos
                 if (((Label)sender) != L_select_day && ((Label)sender).Text != "")
                 {
                     ((Label)sender).BackColor = Color.WhiteSmoke;
-                    ((Label)sender).Font = new System.Drawing.Font("Segoe UI", ((Label)sender).Font.Size - 2, ((Label)sender).Font.Style);
+                    //((Label)sender).Font = new System.Drawing.Font("Segoe UI", ((Label)sender).Font.Size - 2, ((Label)sender).Font.Style);
                 }
 
             }
@@ -886,9 +886,9 @@ namespace Ppos
 
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Pay));
             button_exit = new Button();
             tableLayoutPanel_back = new TableLayoutPanel();
@@ -90,7 +89,6 @@
             button_100 = new Button();
             button_500 = new Button();
             button_1000 = new Button();
-            timer_close = new System.Windows.Forms.Timer(components);
             backgroundWorker_confirm = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_back.SuspendLayout();
             customGroupBox_right.SuspendLayout();
@@ -395,7 +393,6 @@
             textBox_cash.TextChanged += textBox_cash_TextChanged;
             textBox_cash.KeyDown += textBox_cash_KeyDown;
             textBox_cash.KeyPress += textBox_cash_KeyPress;
-            textBox_cash.Leave += textBox_cash_Leave;
             textBox_cash.MouseEnter += textBox_cash_MouseEnter;
             textBox_cash.MouseLeave += textBox_cash_MouseLeave;
             // 
@@ -1146,11 +1143,6 @@
             button_1000.MouseEnter += button_enter;
             button_1000.MouseLeave += button_leave;
             // 
-            // timer_close
-            // 
-            timer_close.Interval = 20;
-            timer_close.Tick += timer_close_Tick;
-            // 
             // backgroundWorker_confirm
             // 
             backgroundWorker_confirm.DoWork += backgroundWorker_confirm_DoWork;
@@ -1246,7 +1238,6 @@
         private Button button_member;
         private Button button_transfer;
         private Button button_cash;
-        private System.Windows.Forms.Timer timer_close;
         private System.ComponentModel.BackgroundWorker backgroundWorker_confirm;
         private TableLayoutPanel tableLayoutPanel_button_pay;
         private Button button_numeric;

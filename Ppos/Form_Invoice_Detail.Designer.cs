@@ -40,29 +40,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Invoice_Detail));
             tableLayoutPanel_bill = new TableLayoutPanel();
             dataGridView_item = new DataGridView();
-            seq = new DataGridViewTextBoxColumn();
-            id_temp = new DataGridViewTextBoxColumn();
-            item_code = new DataGridViewTextBoxColumn();
-            small_barcode = new DataGridViewTextBoxColumn();
-            barcode = new DataGridViewTextBoxColumn();
-            item_name = new DataGridViewTextBoxColumn();
-            item_qty = new DataGridViewTextBoxColumn();
-            item_unit = new DataGridViewTextBoxColumn();
-            item_price = new DataGridViewTextBoxColumn();
-            item_price_total = new DataGridViewTextBoxColumn();
-            pro = new DataGridViewTextBoxColumn();
-            pro_id = new DataGridViewTextBoxColumn();
-            pro_type = new DataGridViewTextBoxColumn();
-            pro_desc = new DataGridViewTextBoxColumn();
-            criterion_type = new DataGridViewTextBoxColumn();
-            criterion_value = new DataGridViewTextBoxColumn();
-            offer_type = new DataGridViewTextBoxColumn();
-            offer_value = new DataGridViewTextBoxColumn();
-            discount_type = new DataGridViewTextBoxColumn();
-            repeat = new DataGridViewTextBoxColumn();
-            premium = new DataGridViewTextBoxColumn();
-            effective_member = new DataGridViewTextBoxColumn();
-            sale_vat = new DataGridViewTextBoxColumn();
             panel_bottom_bill = new Panel();
             tableLayoutPanel_bottom = new TableLayoutPanel();
             button_void = new Button();
@@ -84,6 +61,29 @@
             label1 = new Label();
             label_sum_qty = new Label();
             backgroundWorker_void = new System.ComponentModel.BackgroundWorker();
+            seq = new DataGridViewTextBoxColumn();
+            id_temp = new DataGridViewTextBoxColumn();
+            item_code = new DataGridViewTextBoxColumn();
+            small_barcode = new DataGridViewTextBoxColumn();
+            barcode = new DataGridViewTextBoxColumn();
+            item_name = new DataGridViewTextBoxColumn();
+            item_qty = new DataGridViewTextBoxColumn();
+            item_unit = new DataGridViewTextBoxColumn();
+            item_price = new DataGridViewTextBoxColumn();
+            item_price_total = new DataGridViewTextBoxColumn();
+            pro = new DataGridViewImageColumn();
+            pro_id = new DataGridViewTextBoxColumn();
+            pro_type = new DataGridViewTextBoxColumn();
+            pro_desc = new DataGridViewTextBoxColumn();
+            criterion_type = new DataGridViewTextBoxColumn();
+            criterion_value = new DataGridViewTextBoxColumn();
+            offer_type = new DataGridViewTextBoxColumn();
+            offer_value = new DataGridViewTextBoxColumn();
+            discount_type = new DataGridViewTextBoxColumn();
+            repeat = new DataGridViewTextBoxColumn();
+            premium = new DataGridViewTextBoxColumn();
+            effective_member = new DataGridViewTextBoxColumn();
+            sale_vat = new DataGridViewTextBoxColumn();
             tableLayoutPanel_bill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
             tableLayoutPanel_bottom.SuspendLayout();
@@ -168,235 +168,6 @@
             dataGridView_item.TabStop = false;
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
             dataGridView_item.CellMouseLeave += dataGridView_item_CellMouseLeave;
-            // 
-            // seq
-            // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            seq.DefaultCellStyle = dataGridViewCellStyle2;
-            seq.HeaderText = "0";
-            seq.MinimumWidth = 6;
-            seq.Name = "seq";
-            seq.ReadOnly = true;
-            seq.Width = 125;
-            // 
-            // id_temp
-            // 
-            id_temp.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            id_temp.HeaderText = "";
-            id_temp.MinimumWidth = 6;
-            id_temp.Name = "id_temp";
-            id_temp.ReadOnly = true;
-            id_temp.Visible = false;
-            id_temp.Width = 125;
-            // 
-            // item_code
-            // 
-            item_code.HeaderText = "item_code";
-            item_code.MinimumWidth = 6;
-            item_code.Name = "item_code";
-            item_code.ReadOnly = true;
-            item_code.Visible = false;
-            item_code.Width = 125;
-            // 
-            // small_barcode
-            // 
-            small_barcode.HeaderText = "small_barcode";
-            small_barcode.MinimumWidth = 6;
-            small_barcode.Name = "small_barcode";
-            small_barcode.ReadOnly = true;
-            small_barcode.Visible = false;
-            small_barcode.Width = 125;
-            // 
-            // barcode
-            // 
-            barcode.HeaderText = "barcode";
-            barcode.MinimumWidth = 6;
-            barcode.Name = "barcode";
-            barcode.ReadOnly = true;
-            barcode.Visible = false;
-            barcode.Width = 125;
-            // 
-            // item_name
-            // 
-            item_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            item_name.HeaderText = "สินค้า";
-            item_name.MinimumWidth = 6;
-            item_name.Name = "item_name";
-            item_name.ReadOnly = true;
-            // 
-            // item_qty
-            // 
-            item_qty.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N3";
-            dataGridViewCellStyle3.NullValue = null;
-            item_qty.DefaultCellStyle = dataGridViewCellStyle3;
-            item_qty.HeaderText = "จำนวน";
-            item_qty.MinimumWidth = 6;
-            item_qty.Name = "item_qty";
-            item_qty.ReadOnly = true;
-            item_qty.Width = 103;
-            // 
-            // item_unit
-            // 
-            item_unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            item_unit.DefaultCellStyle = dataGridViewCellStyle4;
-            item_unit.HeaderText = "";
-            item_unit.MinimumWidth = 6;
-            item_unit.Name = "item_unit";
-            item_unit.ReadOnly = true;
-            item_unit.Width = 23;
-            // 
-            // item_price
-            // 
-            item_price.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            item_price.DefaultCellStyle = dataGridViewCellStyle5;
-            item_price.HeaderText = "ราคา";
-            item_price.MinimumWidth = 6;
-            item_price.Name = "item_price";
-            item_price.ReadOnly = true;
-            item_price.Width = 86;
-            // 
-            // item_price_total
-            // 
-            item_price_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.NullValue = null;
-            item_price_total.DefaultCellStyle = dataGridViewCellStyle6;
-            item_price_total.HeaderText = "รวม";
-            item_price_total.MinimumWidth = 6;
-            item_price_total.Name = "item_price_total";
-            item_price_total.ReadOnly = true;
-            item_price_total.Width = 75;
-            // 
-            // pro
-            // 
-            pro.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle7.ForeColor = Color.Red;
-            dataGridViewCellStyle7.SelectionForeColor = Color.Red;
-            pro.DefaultCellStyle = dataGridViewCellStyle7;
-            pro.HeaderText = "";
-            pro.MinimumWidth = 6;
-            pro.Name = "pro";
-            pro.ReadOnly = true;
-            pro.Resizable = DataGridViewTriState.True;
-            pro.SortMode = DataGridViewColumnSortMode.NotSortable;
-            pro.Width = 50;
-            // 
-            // pro_id
-            // 
-            pro_id.HeaderText = "pro_id";
-            pro_id.MinimumWidth = 6;
-            pro_id.Name = "pro_id";
-            pro_id.ReadOnly = true;
-            pro_id.Visible = false;
-            pro_id.Width = 125;
-            // 
-            // pro_type
-            // 
-            pro_type.HeaderText = "pro_type";
-            pro_type.MinimumWidth = 6;
-            pro_type.Name = "pro_type";
-            pro_type.ReadOnly = true;
-            pro_type.Visible = false;
-            pro_type.Width = 125;
-            // 
-            // pro_desc
-            // 
-            pro_desc.HeaderText = "pro_desc";
-            pro_desc.MinimumWidth = 6;
-            pro_desc.Name = "pro_desc";
-            pro_desc.ReadOnly = true;
-            pro_desc.Visible = false;
-            pro_desc.Width = 125;
-            // 
-            // criterion_type
-            // 
-            criterion_type.HeaderText = "criterion_type";
-            criterion_type.MinimumWidth = 6;
-            criterion_type.Name = "criterion_type";
-            criterion_type.ReadOnly = true;
-            criterion_type.Visible = false;
-            criterion_type.Width = 125;
-            // 
-            // criterion_value
-            // 
-            criterion_value.HeaderText = "criterion_value";
-            criterion_value.MinimumWidth = 6;
-            criterion_value.Name = "criterion_value";
-            criterion_value.ReadOnly = true;
-            criterion_value.Visible = false;
-            criterion_value.Width = 125;
-            // 
-            // offer_type
-            // 
-            offer_type.HeaderText = "offer_type";
-            offer_type.MinimumWidth = 6;
-            offer_type.Name = "offer_type";
-            offer_type.ReadOnly = true;
-            offer_type.Visible = false;
-            offer_type.Width = 125;
-            // 
-            // offer_value
-            // 
-            offer_value.HeaderText = "offer_value";
-            offer_value.MinimumWidth = 6;
-            offer_value.Name = "offer_value";
-            offer_value.ReadOnly = true;
-            offer_value.Visible = false;
-            offer_value.Width = 125;
-            // 
-            // discount_type
-            // 
-            discount_type.HeaderText = "discount_type";
-            discount_type.MinimumWidth = 6;
-            discount_type.Name = "discount_type";
-            discount_type.ReadOnly = true;
-            discount_type.Visible = false;
-            discount_type.Width = 125;
-            // 
-            // repeat
-            // 
-            repeat.HeaderText = "repeat";
-            repeat.MinimumWidth = 6;
-            repeat.Name = "repeat";
-            repeat.ReadOnly = true;
-            repeat.Visible = false;
-            repeat.Width = 125;
-            // 
-            // premium
-            // 
-            premium.HeaderText = "premium";
-            premium.MinimumWidth = 6;
-            premium.Name = "premium";
-            premium.ReadOnly = true;
-            premium.Visible = false;
-            premium.Width = 125;
-            // 
-            // effective_member
-            // 
-            effective_member.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            effective_member.HeaderText = "effective_member";
-            effective_member.MinimumWidth = 6;
-            effective_member.Name = "effective_member";
-            effective_member.ReadOnly = true;
-            effective_member.Visible = false;
-            effective_member.Width = 125;
-            // 
-            // sale_vat
-            // 
-            sale_vat.HeaderText = "sale_vat";
-            sale_vat.MinimumWidth = 6;
-            sale_vat.Name = "sale_vat";
-            sale_vat.ReadOnly = true;
-            sale_vat.Visible = false;
-            sale_vat.Width = 125;
             // 
             // panel_bottom_bill
             // 
@@ -726,6 +497,236 @@
             backgroundWorker_void.DoWork += backgroundWorker_void_DoWork;
             backgroundWorker_void.RunWorkerCompleted += backgroundWorker_void_RunWorkerCompleted;
             // 
+            // seq
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            seq.DefaultCellStyle = dataGridViewCellStyle2;
+            seq.HeaderText = "0";
+            seq.MinimumWidth = 6;
+            seq.Name = "seq";
+            seq.ReadOnly = true;
+            seq.Width = 125;
+            // 
+            // id_temp
+            // 
+            id_temp.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            id_temp.HeaderText = "";
+            id_temp.MinimumWidth = 6;
+            id_temp.Name = "id_temp";
+            id_temp.ReadOnly = true;
+            id_temp.Visible = false;
+            id_temp.Width = 23;
+            // 
+            // item_code
+            // 
+            item_code.HeaderText = "item_code";
+            item_code.MinimumWidth = 6;
+            item_code.Name = "item_code";
+            item_code.ReadOnly = true;
+            item_code.Visible = false;
+            item_code.Width = 125;
+            // 
+            // small_barcode
+            // 
+            small_barcode.HeaderText = "small_barcode";
+            small_barcode.MinimumWidth = 6;
+            small_barcode.Name = "small_barcode";
+            small_barcode.ReadOnly = true;
+            small_barcode.Visible = false;
+            small_barcode.Width = 125;
+            // 
+            // barcode
+            // 
+            barcode.HeaderText = "barcode";
+            barcode.MinimumWidth = 6;
+            barcode.Name = "barcode";
+            barcode.ReadOnly = true;
+            barcode.Visible = false;
+            barcode.Width = 125;
+            // 
+            // item_name
+            // 
+            item_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            item_name.HeaderText = "สินค้า";
+            item_name.MinimumWidth = 6;
+            item_name.Name = "item_name";
+            item_name.ReadOnly = true;
+            // 
+            // item_qty
+            // 
+            item_qty.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N3";
+            dataGridViewCellStyle3.NullValue = null;
+            item_qty.DefaultCellStyle = dataGridViewCellStyle3;
+            item_qty.HeaderText = "จำนวน";
+            item_qty.MinimumWidth = 6;
+            item_qty.Name = "item_qty";
+            item_qty.ReadOnly = true;
+            item_qty.Width = 103;
+            // 
+            // item_unit
+            // 
+            item_unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            item_unit.DefaultCellStyle = dataGridViewCellStyle4;
+            item_unit.HeaderText = "";
+            item_unit.MinimumWidth = 6;
+            item_unit.Name = "item_unit";
+            item_unit.ReadOnly = true;
+            item_unit.Width = 23;
+            // 
+            // item_price
+            // 
+            item_price.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            item_price.DefaultCellStyle = dataGridViewCellStyle5;
+            item_price.HeaderText = "ราคา";
+            item_price.MinimumWidth = 6;
+            item_price.Name = "item_price";
+            item_price.ReadOnly = true;
+            item_price.Width = 86;
+            // 
+            // item_price_total
+            // 
+            item_price_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            item_price_total.DefaultCellStyle = dataGridViewCellStyle6;
+            item_price_total.HeaderText = "รวม";
+            item_price_total.MinimumWidth = 6;
+            item_price_total.Name = "item_price_total";
+            item_price_total.ReadOnly = true;
+            item_price_total.Width = 75;
+            // 
+            // pro
+            // 
+            pro.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.ForeColor = Color.Red;
+            dataGridViewCellStyle7.NullValue = resources.GetObject("dataGridViewCellStyle7.NullValue");
+            dataGridViewCellStyle7.SelectionForeColor = Color.Red;
+            pro.DefaultCellStyle = dataGridViewCellStyle7;
+            pro.HeaderText = "";
+            pro.MinimumWidth = 6;
+            pro.Name = "pro";
+            pro.ReadOnly = true;
+            pro.Resizable = DataGridViewTriState.True;
+            pro.Width = 50;
+            // 
+            // pro_id
+            // 
+            pro_id.HeaderText = "pro_id";
+            pro_id.MinimumWidth = 6;
+            pro_id.Name = "pro_id";
+            pro_id.ReadOnly = true;
+            pro_id.Visible = false;
+            pro_id.Width = 125;
+            // 
+            // pro_type
+            // 
+            pro_type.HeaderText = "pro_type";
+            pro_type.MinimumWidth = 6;
+            pro_type.Name = "pro_type";
+            pro_type.ReadOnly = true;
+            pro_type.Visible = false;
+            pro_type.Width = 125;
+            // 
+            // pro_desc
+            // 
+            pro_desc.HeaderText = "pro_desc";
+            pro_desc.MinimumWidth = 6;
+            pro_desc.Name = "pro_desc";
+            pro_desc.ReadOnly = true;
+            pro_desc.Visible = false;
+            pro_desc.Width = 125;
+            // 
+            // criterion_type
+            // 
+            criterion_type.HeaderText = "criterion_type";
+            criterion_type.MinimumWidth = 6;
+            criterion_type.Name = "criterion_type";
+            criterion_type.ReadOnly = true;
+            criterion_type.Visible = false;
+            criterion_type.Width = 125;
+            // 
+            // criterion_value
+            // 
+            criterion_value.HeaderText = "criterion_value";
+            criterion_value.MinimumWidth = 6;
+            criterion_value.Name = "criterion_value";
+            criterion_value.ReadOnly = true;
+            criterion_value.Visible = false;
+            criterion_value.Width = 125;
+            // 
+            // offer_type
+            // 
+            offer_type.HeaderText = "offer_type";
+            offer_type.MinimumWidth = 6;
+            offer_type.Name = "offer_type";
+            offer_type.ReadOnly = true;
+            offer_type.Visible = false;
+            offer_type.Width = 125;
+            // 
+            // offer_value
+            // 
+            offer_value.HeaderText = "offer_value";
+            offer_value.MinimumWidth = 6;
+            offer_value.Name = "offer_value";
+            offer_value.ReadOnly = true;
+            offer_value.Visible = false;
+            offer_value.Width = 125;
+            // 
+            // discount_type
+            // 
+            discount_type.HeaderText = "discount_type";
+            discount_type.MinimumWidth = 6;
+            discount_type.Name = "discount_type";
+            discount_type.ReadOnly = true;
+            discount_type.Visible = false;
+            discount_type.Width = 125;
+            // 
+            // repeat
+            // 
+            repeat.HeaderText = "repeat";
+            repeat.MinimumWidth = 6;
+            repeat.Name = "repeat";
+            repeat.ReadOnly = true;
+            repeat.Visible = false;
+            repeat.Width = 125;
+            // 
+            // premium
+            // 
+            premium.HeaderText = "premium";
+            premium.MinimumWidth = 6;
+            premium.Name = "premium";
+            premium.ReadOnly = true;
+            premium.Visible = false;
+            premium.Width = 125;
+            // 
+            // effective_member
+            // 
+            effective_member.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            effective_member.HeaderText = "effective_member";
+            effective_member.MinimumWidth = 6;
+            effective_member.Name = "effective_member";
+            effective_member.ReadOnly = true;
+            effective_member.Visible = false;
+            effective_member.Width = 211;
+            // 
+            // sale_vat
+            // 
+            sale_vat.HeaderText = "sale_vat";
+            sale_vat.MinimumWidth = 6;
+            sale_vat.Name = "sale_vat";
+            sale_vat.ReadOnly = true;
+            sale_vat.Visible = false;
+            sale_vat.Width = 125;
+            // 
             // Form_Invoice_Detail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -764,6 +765,12 @@
         private Label label6;
         private Label label7;
         private Label label_dis_point;
+        private TableLayoutPanel tableLayoutPanel_bottom;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_void;
+        private TableLayoutPanel tableLayoutPanel_detail_sum;
+        private Label label_member;
+        private Button button_void;
+        private Label label_member_title;
         private DataGridViewTextBoxColumn seq;
         private DataGridViewTextBoxColumn id_temp;
         private DataGridViewTextBoxColumn item_code;
@@ -774,7 +781,7 @@
         private DataGridViewTextBoxColumn item_unit;
         private DataGridViewTextBoxColumn item_price;
         private DataGridViewTextBoxColumn item_price_total;
-        private DataGridViewTextBoxColumn pro;
+        private DataGridViewImageColumn pro;
         private DataGridViewTextBoxColumn pro_id;
         private DataGridViewTextBoxColumn pro_type;
         private DataGridViewTextBoxColumn pro_desc;
@@ -787,11 +794,5 @@
         private DataGridViewTextBoxColumn premium;
         private DataGridViewTextBoxColumn effective_member;
         private DataGridViewTextBoxColumn sale_vat;
-        private TableLayoutPanel tableLayoutPanel_bottom;
-        private System.ComponentModel.BackgroundWorker backgroundWorker_void;
-        private TableLayoutPanel tableLayoutPanel_detail_sum;
-        private Label label_member;
-        private Button button_void;
-        private Label label_member_title;
     }
 }

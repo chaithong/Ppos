@@ -30,9 +30,9 @@ namespace Ppos
 
             pictureBox_load_all_item.Location = button_download_all_item.Location;
 
-            customPanel_all_item.Location = new System.Drawing.Point(pictureBox_load_all_item.Location.X, pictureBox_load_all_item.Location.Y + pictureBox_load_all_item.Height + 10);
+            customGroupBox_all_item.Location = new System.Drawing.Point(pictureBox_load_all_item.Location.X, pictureBox_load_all_item.Location.Y + pictureBox_load_all_item.Height + 10);
 
-            customGroupBox_add_item.Location = new System.Drawing.Point(pictureBox_load_all_item.Location.X, customPanel_all_item.Location.Y + customPanel_all_item.Height + 10);
+            customGroupBox_add_item.Location = new System.Drawing.Point(pictureBox_load_all_item.Location.X, customGroupBox_all_item.Location.Y + customGroupBox_all_item.Height + 10);
 
 
             button_download_all_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(60, 60));

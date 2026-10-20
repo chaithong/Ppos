@@ -153,15 +153,15 @@ namespace Ppos
                         dt.Load(reader);
                         if (dt.Rows.Count > 0)
                         {
-                            string pro;
+                            Image pro;
                             double sum_qty = 0, sum_price = 0, dis_pro = 0, dis_member = 0, dis_point = 0, dis_round = 0, price_net = 0;
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                pro = "";
+                                pro = new Bitmap(30, 30);
 
-                                if (dt.Rows[i]["pro_type"].ToString() != "")
+                                if (dt.Rows[i]["pro_type"].ToString() != string.Empty)
                                 {
-                                    pro = "โปร";
+                                    pro = Class_Image.resizeImage(Ppos.Properties.Resources.P, new Size(30, 30));
 
                                 }
                                 dataGridView_item.Rows.Add(

@@ -155,7 +155,7 @@ namespace Ppos
                                sex,
                                dt.Rows[i]["phone"].ToString()!,
                                dt.Rows[i]["first_name"].ToString()! + " " + dt.Rows[i]["last_name"].ToString()! + nick_name,
-                               dt.Rows[i]["point_balance"].ToString()!,
+                               Convert.ToDouble(dt.Rows[i]["point_balance"]).ToString("#,##0")!,
                                Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(40, 40))
                                );
 

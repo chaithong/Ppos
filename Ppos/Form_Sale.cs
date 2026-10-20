@@ -66,10 +66,11 @@ namespace Ppos
                 button_sale.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(30, 30));
                 button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
 
-              //  button_check.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(40, 40));
+                //  button_check.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(40, 40));
                 button_hole_bill.Image = Class_Image.resizeImage(Ppos.Properties.Resources.bill, new Size(40, 40));
                 button_other.Image = Class_Image.resizeImage(Ppos.Properties.Resources.file, new Size(40, 40));
 
+                button_delete_all.Image = Class_Image.resizeImage(Ppos.Properties.Resources.clear, new Size(30, 30));
                 button_pay.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(70, 70));
 
                 // ปรับขนาดหน้าจอ
@@ -203,12 +204,12 @@ namespace Ppos
                 if (hole_bill)
                 {
                     button_hole_bill.Text = "เรียกบิล";
-                     button_hole_bill.BackColor = Color.FromArgb(255, 192, 192);
+                    button_hole_bill.BackColor = Color.FromArgb(255, 192, 192);
                 }
                 else
                 {
                     button_hole_bill.Text = "พักบิล";
-                      button_hole_bill.BackColor = Color.White;
+                    button_hole_bill.BackColor = Color.White;
                 }
 
                 if (Class_Parameter.hotkey_pag == 1) // 1
@@ -447,7 +448,7 @@ namespace Ppos
                 }
                 else if (seq_visible == 8)
                 {
-                  //  button_check.Visible = true;
+                    //  button_check.Visible = true;
                 }
                 else if (seq_visible == 9)
                 {
@@ -537,15 +538,14 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                         dt_temp.Load(reader);
                         if (dt_temp.Rows.Count > 0)
                         {
-                            string pro;
-
+                            Image pro;
                             for (int i = 0; i < dt_temp.Rows.Count; i++)
                             {
-                                pro = "";
+                                pro = new Bitmap(30, 30);
 
-                                if (dt_temp.Rows[i]["pro_type"].ToString() != "")
+                                if (dt_temp.Rows[i]["pro_type"].ToString() != string.Empty)
                                 {
-                                    pro = "โปร";
+                                    pro = Class_Image.resizeImage(Ppos.Properties.Resources.P, new Size(30, 30));
 
                                 }
 
@@ -883,11 +883,11 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                             // เริ่ม select มาคำนวน แล้ว update 
                             // update discount pro
                             // หาสินค้าโปรเพื่อแสดงโปร
-                            string pro = "";
+                            Image pro = new Bitmap(30, 30);
 
-                            if (dt.Rows[0]["pro_type"].ToString() != "")
+                            if (dt.Rows[0]["pro_type"].ToString() != string.Empty)
                             {
-                                pro = "โปร";
+                                pro = Class_Image.resizeImage(Ppos.Properties.Resources.P, new Size(30, 30));
 
                                 Class_Sale.Pro(
                                    dt.Rows[0]["pro_id"].ToString()!,
@@ -971,7 +971,8 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 {
                                     nick_name = " (" + dt.Rows[0]["nick_name"].ToString()! + ")";
                                 }
-                                textBox_member.Text = "  " + dt.Rows[0]["first_name"].ToString() + " " + dt.Rows[0]["last_name"].ToString() + nick_name;
+                                textBox_member.Text = "  " + dt.Rows[0]["first_name"].ToString() + " " + dt.Rows[0]["last_name"].ToString() + nick_name +
+                                    " (" + Convert.ToDouble(dt.Rows[0]["point_balance"]).ToString("#,##0") + ")";
 
                                 Class_Sale.update_member(id_member, percent_discount_member);
 
@@ -1002,7 +1003,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                     con_sqlite.Open();
                     using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                     {
-                        cmd_sqlite.CommandText = @"SELECT nick_name,first_name,last_name
+                        cmd_sqlite.CommandText = @"SELECT nick_name,first_name,last_name,point_balance
                                                                FROM Member WHERE status = true and id = " + id_member;
                         SQLiteDataReader reader_member = cmd_sqlite.ExecuteReader();
                         System.Data.DataTable dt_member = new System.Data.DataTable();
@@ -1019,7 +1020,8 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 nick_name = " (" + dt_member.Rows[0]["nick_name"].ToString()! + ")";
                             }
 
-                            textBox_member.Text = "  " + dt_member.Rows[0]["first_name"].ToString() + " " + dt_member.Rows[0]["last_name"].ToString() + nick_name;
+                            textBox_member.Text = "  " + dt_member.Rows[0]["first_name"].ToString() + " " + dt_member.Rows[0]["last_name"].ToString() + nick_name +
+                                 " (" + Convert.ToDouble(dt_member.Rows[0]["point_balance"]).ToString("#,##0") + ")";
 
                         }
 
@@ -1293,6 +1295,15 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                             (Convert.ToDouble(form_Item_Weight.weight.Replace(",", "")) * Convert.ToDouble(W_item_price.Replace(",", ""))).ToString("#,##0.00");
                         }
                     }
+                    // กดดูโปร
+                    else if (e.ColumnIndex == dataGridView_item.Columns["pro"]!.Index &&
+                       dataGridView_item.Rows[e.RowIndex].Cells["pro_type"].Value!.ToString()! != string.Empty)
+                    {
+
+                        Form_Check_Promotion.pro_id = dataGridView_item.Rows[e.RowIndex].Cells["pro_id"].Value!.ToString()!;
+                        Form_Promotion_Detail form_Promotion_Detail = new Form_Promotion_Detail();
+                        form_Promotion_Detail.ShowDialog(this);
+                    }
                 }
             }
             catch (Exception ex)
@@ -1394,14 +1405,14 @@ hole FROM Invoice_Body_Temp where void = false ";
                         dt_temp.Load(reader);
                         if (dt_temp.Rows.Count > 0)
                         {
-                            string pro;
+                            Image pro;
                             for (int i = 0; i < dt_temp.Rows.Count; i++)
                             {
-                                pro = "";
+                                pro = new Bitmap(30, 30);
 
-                                if (dt_temp.Rows[i]["pro_type"].ToString() != "")
+                                if (dt_temp.Rows[i]["pro_type"].ToString() != string.Empty)
                                 {
-                                    pro = "โปร";
+                                    pro = Class_Image.resizeImage(Ppos.Properties.Resources.P, new Size(30, 30));
 
                                 }
 
@@ -1863,6 +1874,11 @@ hole FROM Invoice_Body_Temp where void = false ";
 
                     dataGridView_item.Rows[e.RowIndex].Cells["delete"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(35, 35));
                     dataGridView_item.Rows[e.RowIndex].Cells["edit"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(35, 35));
+                    if (dataGridView_item.Rows[e.RowIndex].Cells["pro_type"].Value!.ToString() != string.Empty)
+                    {
+                        dataGridView_item.Rows[e.RowIndex].Cells["pro"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.P, new Size(35, 35));
+                    }
+
 
                     //  dataGridView_item.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(192, 255, 255);
                 }
@@ -1882,11 +1898,15 @@ hole FROM Invoice_Body_Temp where void = false ";
                     dataGridView_item.Rows[e.RowIndex].Cells["item_name"].Style.Font = new System.Drawing.Font(
                         dataGridView_item.DefaultCellStyle.Font!.FontFamily,
                         dataGridView_item.DefaultCellStyle.Font!.Size,
-                        FontStyle.Regular); // 
-
+                        FontStyle.Regular); //  
 
                     dataGridView_item.Rows[e.RowIndex].Cells["delete"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30));
                     dataGridView_item.Rows[e.RowIndex].Cells["edit"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(30, 30));
+
+                    if (dataGridView_item.Rows[e.RowIndex].Cells["pro_type"].Value!.ToString() != string.Empty)
+                    {
+                        dataGridView_item.Rows[e.RowIndex].Cells["pro"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.P, new Size(30, 30));
+                    }
 
                     //  dataGridView_item.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
                 }
@@ -1931,7 +1951,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                 form_Select_Member.Size = new Size(this.Width / 2, this.Height * 2 / 3);
                 form_Select_Member.ShowDialog(this);
                 // ถ้าเพิ่มสมาชิก
-                if(form_Select_Member.add_member)
+                if (form_Select_Member.add_member)
                 {
                     // เปิดหน้าชื่อสมาชิก
                     customGroupBox_member.Visible = true;
@@ -1965,7 +1985,8 @@ hole FROM Invoice_Body_Temp where void = false ";
                                 percent_discount_member = dt.Rows[0]["discount_percent"].ToString()!;
 
                                 pictureBox_delete_member.Visible = true;
-                                textBox_member.Text = "  " + dt.Rows[0]["first_name"].ToString() + " " + dt.Rows[0]["last_name"].ToString() + nick_name;
+                                textBox_member.Text = "  " + dt.Rows[0]["first_name"].ToString() + " " + dt.Rows[0]["last_name"].ToString() + nick_name +
+                                      " (" + Convert.ToDouble(dt.Rows[0]["point_balance"]).ToString("#,##0") + ")";
 
                                 Class_Sale.update_member(id_member, percent_discount_member);
 
@@ -2034,7 +2055,7 @@ hole FROM Invoice_Body_Temp where void = false ";
         }
 
 
-   
+
 
         private void button_sale_display_Click(object sender, EventArgs e)
         {
@@ -2161,14 +2182,13 @@ hole FROM Invoice_Body_Temp where void = false ";
                     form_Pay.TopLevel = false;
                     parentPanel.Controls.Add(form_Pay);
                     form_Pay.BringToFront();
-                    form_Pay.Size = new Size(this.Width, this.Height);
+                  //  form_Pay.Size = new Size(this.Width, this.Height);
                     form_Pay.Dock = DockStyle.Fill;
 
 
                     // ดักจับ Event เมื่อ Form2 ปิดลง
                     form_Pay.FormClosed += (s, args) =>
                     {
-                        //this.Focus();          // ให้ Form1 กลับมาเป็นหน้าต่างหลัก
                         textBox_search.Focus();      // สั่ง Focus ไปที่ TextBox ที่ต้องการ
                         // ถ้ากดตกลงจะทำการเครียเริ่มบิลใหม่
                         if (!form_Pay.exit)
@@ -2182,12 +2202,10 @@ hole FROM Invoice_Body_Temp where void = false ";
                                 sort_hotkey();
                             }
                         }
-                        /* else // คืนค่าส่วนลด
-                         {
-                             update_return_dis();
-                             // คำนวนใหม่
-                             sum_total();
-                         }*/
+                     
+        
+                       
+
                     };
 
                     form_Pay.Show();
@@ -2207,7 +2225,7 @@ hole FROM Invoice_Body_Temp where void = false ";
         {
             try
             {
-               
+
 
                 dataGridView_item.Rows.Clear();
                 // แสดงจำนวนบรรทัดสินค้า
@@ -2242,18 +2260,7 @@ hole FROM Invoice_Body_Temp where void = false ";
             }
         }
 
-        private void panel_bottom_bill_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                label_price_title_DoubleClick(sender, e);
-
-            }
-            catch
-            {
-
-            }
-        }
+       
 
         private void panel_bottom_bill_MouseEnter(object sender, EventArgs e)
         {
@@ -2367,7 +2374,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                         if (tableLayoutPanel_sum_qty.Visible &&
                             tableLayoutPanel_sum_price.Visible &&
                             tableLayoutPanel_discount_pro.Visible &&
-                           // tableLayoutPanel_discount_member.Visible &&
+                            // tableLayoutPanel_discount_member.Visible &&
                             tableLayoutPanel_discount_round.Visible)
                         {
                             // update
@@ -2447,6 +2454,59 @@ hole FROM Invoice_Body_Temp where void = false ";
                 };
                 form_Check.Show();
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_delete_all_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(dataGridView_item.RowCount > 0 )
+                {
+                    if (MessageBox.Show("ต้องการลบสินค้าทั้งหมดใช่หรือไม่ ?", "แจ้งเตือน", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                    {
+
+                        using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                        {
+                            con_sqlite.Open();
+                            using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                            {
+                                
+                                cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp " +
+                                                         "SET void = true, " +
+                                                         "updated_date = datetime('now', 'localtime'), " +
+                                                         "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                                         "WHERE hole = false";
+                                cmd_sqlite.ExecuteNonQuery();
+                            }
+                        }
+
+                        dataGridView_item.Rows.Clear();
+                        // แสดงจำนวนบรรทัดสินค้า
+                        dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
+
+                        //sum_qty = 0;
+                        label_sum_qty.Text = "0.000";
+
+                        // sum_price = 0;
+                        label_sum_price.Text = "0.00";
+
+                        label_dis_pro.Text = "0.00";
+                        // tableLayoutPanel_discount_pro.Visible = false;
+
+                        label_dis_member.Text = "0.00";
+                        // tableLayoutPanel_discount_member.Visible = false;
+
+                        label_price_net.Text = "0.00";
+
+                        label_dis_round.Text = "0.00";
+                    }
+
+                }
             }
             catch (Exception ex)
             {

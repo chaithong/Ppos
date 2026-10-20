@@ -117,13 +117,32 @@ namespace Ppos
                     tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 0;
                     tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 100;
                 }
-
+                textBox_cash.LostFocus += TextBox_cash_LostFocus;
             }
             catch
             {
                 this.Close();
             }
 
+        }
+        bool focus = true;
+        private void TextBox_cash_LostFocus(object? sender, EventArgs e)
+        {
+            try
+            {
+                if(focus)
+                {
+                    textBox_cash.Focus();
+                }
+                   
+                
+                   
+            }
+            catch
+            {
+
+            }
+           
         }
 
         private void button_enter(object sender, EventArgs e)
@@ -157,36 +176,15 @@ namespace Ppos
         {
             try
             {
-                //this.Dock = DockStyle.None;
-                // timer_close.Start();
+                focus = false;
+
                 this.Close();
             }
-            catch
+            catch (Exception ex)
             {
-                this.Close();
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void timer_close_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                // customGroupBox_back.Visible = false;
-
-                this.BackColor = Color.White;
-                this.Size = new System.Drawing.Size(this.Width, this.Height - 100);
-                if (this.Height <= 200)
-                {
-                    timer_close.Stop();
-                    this.Close();
-
-
-                }
-            }
-            catch
-            {
-                this.Close();
-            }
-        }
+        }     
         private void Form_Pay_Load(object sender, EventArgs e)
         {
             try
@@ -261,7 +259,7 @@ namespace Ppos
         {
             try
             {
-                textBox_cash.Focus();
+              //  textBox_cash.Focus();
             }
             catch (Exception ex)
             {
