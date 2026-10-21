@@ -79,7 +79,7 @@ namespace Ppos
                 dataGridView_item.MouseWheel += new MouseEventHandler(dataGridView_item_MouseWheel!);
 
                 button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Refresh, new Size(40, 40));
-                button_delete.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(40, 40));
+                button_delete.Image = Class_Image.resizeImage(Ppos.Properties.Resources.clear, new Size(40, 40));
 
                 // ใส่ข้อความ hotkey
                 button_hotkey_1.Text = Class_Parameter.hotkey_title_1;

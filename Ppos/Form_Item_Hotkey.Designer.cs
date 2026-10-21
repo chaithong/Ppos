@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             timer_search = new System.Windows.Forms.Timer(components);
             panel_detail = new Panel();
             panel_search = new Panel();
@@ -165,25 +165,25 @@
             dataGridView_item.BorderStyle = BorderStyle.None;
             dataGridView_item.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = Color.Gray;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle9.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = Color.Lime;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
-            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Gray;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView_item.ColumnHeadersHeight = 10;
             dataGridView_item.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item.Columns.AddRange(new DataGridViewColumn[] { small_barcode, barcode, code, group_main, group_sub, name, unit, price });
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = Color.White;
-            dataGridViewCellStyle12.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle12.ForeColor = Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = Color.White;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 13.8F);
+            dataGridViewCellStyle4.ForeColor = Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle4.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridView_item.Dock = DockStyle.Fill;
             dataGridView_item.GridColor = Color.Lime;
             dataGridView_item.Location = new Point(0, 120);
@@ -254,9 +254,9 @@
             // name
             // 
             name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
-            name.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            name.DefaultCellStyle = dataGridViewCellStyle2;
             name.HeaderText = "";
             name.MinimumWidth = 6;
             name.Name = "name";
@@ -265,8 +265,8 @@
             // unit
             // 
             unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            unit.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            unit.DefaultCellStyle = dataGridViewCellStyle3;
             unit.HeaderText = "";
             unit.MinimumWidth = 6;
             unit.Name = "unit";
@@ -946,7 +946,7 @@
             button_delete.Name = "button_delete";
             button_delete.Size = new Size(78, 120);
             button_delete.TabIndex = 3;
-            button_delete.Text = "ลบ";
+            button_delete.Text = "ลบทั้งหมด";
             button_delete.TextAlign = ContentAlignment.BottomCenter;
             button_delete.TextImageRelation = TextImageRelation.ImageAboveText;
             button_delete.UseVisualStyleBackColor = false;

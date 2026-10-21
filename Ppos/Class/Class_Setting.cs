@@ -55,10 +55,6 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.login_program = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
                                     }
-                                   /* else if (dt.Rows[i]["title"].ToString() == "hide_menu")
-                                    {
-                                        Class_Parameter.hide_menu = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
-                                    }*/
                                     else if (dt.Rows[i]["title"].ToString() == "use_item_medium_large")
                                     {
                                         Class_Parameter.use_item_medium_large = Convert.ToBoolean(dt.Rows[i]["status"].ToString());

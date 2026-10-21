@@ -480,10 +480,7 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'), '', '', 'login_program', 1 
                                                    WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'login_program') ";
                         cmd_sqlite.ExecuteNonQuery();
-                       /* cmd_sqlite.CommandText = @"INSERT INTO Setting_Configure(created_by, created_date, updated_by, updated_date, title, status) 
-                                                   SELECT '',datetime('now', 'localtime'), '', '', 'hide_menu', 1 
-                                                   WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'hide_menu') ";
-                        cmd_sqlite.ExecuteNonQuery();*/
+
                         cmd_sqlite.CommandText = @"INSERT INTO Setting_Configure(created_by, created_date, updated_by, updated_date, title, status) 
                                                    SELECT '',datetime('now', 'localtime'), '', '', 'use_item_medium_large', 1  
                                                    WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'use_item_medium_large') ";
