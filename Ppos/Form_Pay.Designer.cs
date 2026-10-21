@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Pay));
             button_exit = new Button();
-            tableLayoutPanel_back = new TableLayoutPanel();
+            tableLayoutPanel_back_pay = new TableLayoutPanel();
             customGroupBox_right = new CustomGroupBox();
             tableLayoutPanel_right = new TableLayoutPanel();
             customGroupBox_price_net_back = new CustomGroupBox();
@@ -90,7 +90,7 @@
             button_500 = new Button();
             button_1000 = new Button();
             backgroundWorker_confirm = new System.ComponentModel.BackgroundWorker();
-            tableLayoutPanel_back.SuspendLayout();
+            tableLayoutPanel_back_pay.SuspendLayout();
             customGroupBox_right.SuspendLayout();
             tableLayoutPanel_right.SuspendLayout();
             customGroupBox_price_net_back.SuspendLayout();
@@ -134,22 +134,22 @@
             button_exit.MouseEnter += button_enter;
             button_exit.MouseLeave += button_leave;
             // 
-            // tableLayoutPanel_back
+            // tableLayoutPanel_back_pay
             // 
-            tableLayoutPanel_back.BackColor = Color.Transparent;
-            tableLayoutPanel_back.ColumnCount = 2;
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_back.Controls.Add(customGroupBox_right, 1, 0);
-            tableLayoutPanel_back.Controls.Add(customGroupBox_left, 0, 0);
-            tableLayoutPanel_back.Dock = DockStyle.Fill;
-            tableLayoutPanel_back.Location = new Point(0, 0);
-            tableLayoutPanel_back.Margin = new Padding(0);
-            tableLayoutPanel_back.Name = "tableLayoutPanel_back";
-            tableLayoutPanel_back.RowCount = 1;
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Size = new Size(1186, 809);
-            tableLayoutPanel_back.TabIndex = 0;
+            tableLayoutPanel_back_pay.BackColor = Color.Transparent;
+            tableLayoutPanel_back_pay.ColumnCount = 2;
+            tableLayoutPanel_back_pay.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_back_pay.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 1, 0);
+            tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 0, 0);
+            tableLayoutPanel_back_pay.Dock = DockStyle.Fill;
+            tableLayoutPanel_back_pay.Location = new Point(0, 0);
+            tableLayoutPanel_back_pay.Margin = new Padding(0);
+            tableLayoutPanel_back_pay.Name = "tableLayoutPanel_back_pay";
+            tableLayoutPanel_back_pay.RowCount = 1;
+            tableLayoutPanel_back_pay.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back_pay.Size = new Size(1186, 809);
+            tableLayoutPanel_back_pay.TabIndex = 0;
             // 
             // customGroupBox_right
             // 
@@ -1155,7 +1155,7 @@
             BackColor = Color.Cyan;
             ClientSize = new Size(1186, 809);
             ControlBox = false;
-            Controls.Add(tableLayoutPanel_back);
+            Controls.Add(tableLayoutPanel_back_pay);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -1164,7 +1164,7 @@
             Name = "Form_Pay";
             StartPosition = FormStartPosition.CenterParent;
             Load += Form_Pay_Load;
-            tableLayoutPanel_back.ResumeLayout(false);
+            tableLayoutPanel_back_pay.ResumeLayout(false);
             customGroupBox_right.ResumeLayout(false);
             tableLayoutPanel_right.ResumeLayout(false);
             customGroupBox_price_net_back.ResumeLayout(false);
@@ -1193,7 +1193,7 @@
         #endregion
 
         private Button button_exit;
-        private TableLayoutPanel tableLayoutPanel_back;
+        private TableLayoutPanel tableLayoutPanel_back_pay;
         private TableLayoutPanel tableLayoutPanel_right;
         private TableLayoutPanel tableLayoutPanel_button_confirm_exit;
         private Button button_confirm;

@@ -192,6 +192,11 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.keypad_numeric = Convert.ToBoolean(dt.Rows[i]["value"].ToString()!);
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "pay_left_width")
+                                    {
+                                        Class_Parameter.pay_left_width = float.Parse(dt.Rows[i]["value"].ToString()!);
+                                    }
+
                                 }
                             }
 
@@ -200,11 +205,10 @@ namespace Ppos.Class
                 }
                
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
       
     }

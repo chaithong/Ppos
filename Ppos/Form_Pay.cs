@@ -81,31 +81,32 @@ namespace Ppos
                     customGroupBox_point_back.Visible = false;
                 }
 
-                // ปรับให้เหมือนหน้าขาย
-                tableLayoutPanel_back.ColumnStyles[0].SizeType = SizeType.Percent;
-                tableLayoutPanel_back.ColumnStyles[0].Width = Class_Parameter.sale_left_width;
-                tableLayoutPanel_back.ColumnStyles[1].SizeType = SizeType.Percent;
-                tableLayoutPanel_back.ColumnStyles[1].Width = 100 - Class_Parameter.sale_left_width;
+
+                // ปรับขนาดหน้าจอ
+                tableLayoutPanel_back_pay.ColumnStyles[0].SizeType = SizeType.Percent;
+                tableLayoutPanel_back_pay.ColumnStyles[0].Width = Class_Parameter.pay_left_width;
+                tableLayoutPanel_back_pay.ColumnStyles[1].SizeType = SizeType.Percent;
+                tableLayoutPanel_back_pay.ColumnStyles[1].Width = 100 - Class_Parameter.pay_left_width;
 
                 if (Class_Parameter.sale_hotkey_left)
                 {
                     // hotkey อยู่ทางซ้าย
-                    tableLayoutPanel_back.Controls.Clear();
+                    tableLayoutPanel_back_pay.Controls.Clear();
 
-                    tableLayoutPanel_back.Controls.Add(customGroupBox_left, 0, 0);
-                    tableLayoutPanel_back.Controls.Add(customGroupBox_right, 1, 0);
+                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 0, 0);
+                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 1, 0);
 
                 }
                 else
                 {
                     // hotkey อยู่ทางขวา
 
-                    tableLayoutPanel_back.Controls.Clear();
+                    tableLayoutPanel_back_pay.Controls.Clear();
 
-                    tableLayoutPanel_back.Controls.Add(customGroupBox_right, 0, 0);
-                    tableLayoutPanel_back.Controls.Add(customGroupBox_left, 1, 0);
+                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 0, 0);
+                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
                 }
-
+                new TableLayoutResizer(tableLayoutPanel_back_pay);
                 // ตัวเลข
                 if (Class_Parameter.keypad_numeric)
                 {

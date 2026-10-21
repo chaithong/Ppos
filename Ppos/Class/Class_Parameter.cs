@@ -125,6 +125,7 @@ namespace Ppos.Class
         public static bool sale_hotkey_left { get; set; } = true;
 
         public static float sale_left_width { get; set; } = 50;
+        public static float pay_left_width { get; set; } = 50;
         public static bool visible_sum_qty { get; set; } = true;
         public static bool visible_sum_price { get; set; } = true;
         public static bool visible_dis_pro { get; set; } = true;

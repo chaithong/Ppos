@@ -157,7 +157,7 @@ public class TableLayoutResizer
         {
             _isResizingColumn = false;
             _tableLayoutPanel.Cursor = Cursors.Default;
-            Class_Parameter.sale_left_width = _tableLayoutPanel.ColumnStyles[0].Width;
+          
             update_sale_left_width();
         }
     }
@@ -170,12 +170,29 @@ public class TableLayoutResizer
                 con_sqlite.Open();
                 using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                 {
-                    // update 
-                    cmd_sqlite.CommandText = "UPDATE Sale_Display_Set SET " +
-                                             "updated_date = datetime('now', 'localtime'), " +
-                                             "updated_by = '" + Class_Parameter.User_Login + "', " +
-                                             "value = '" + Class_Parameter.sale_left_width + "' " +
-                                             "where title = 'sale_left_width'";
+                   // MessageBox.Show(_tableLayoutPanel.Name+" "+ _tableLayoutPanel.ColumnStyles[0].Width);
+                    if(_tableLayoutPanel.Name == "tableLayoutPanel_back")
+                    {
+                        Class_Parameter.sale_left_width = _tableLayoutPanel.ColumnStyles[0].Width;
+                        // update 
+                        cmd_sqlite.CommandText = "UPDATE Sale_Display_Set SET " +
+                                                 "updated_date = datetime('now', 'localtime'), " +
+                                                 "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                 "value = '" + Class_Parameter.sale_left_width + "' " +
+                                                 "where title = 'sale_left_width'";
+                       
+                    }
+                    else
+                    {
+                        Class_Parameter.pay_left_width = _tableLayoutPanel.ColumnStyles[0].Width;
+                        // update 
+                        cmd_sqlite.CommandText = "UPDATE Sale_Display_Set SET " +
+                                                 "updated_date = datetime('now', 'localtime'), " +
+                                                 "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                 "value = '" + Class_Parameter.pay_left_width + "' " +
+                                                 "where title = 'pay_left_width'";
+                       
+                    }                   
                     cmd_sqlite.ExecuteNonQuery();
                 }
             }

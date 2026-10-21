@@ -241,6 +241,11 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'), '', '', 'keypad_numeric', 'True' 
                                                    WHERE NOT EXISTS(SELECT 1 from Sale_Display_Set WHERE title = 'keypad_numeric') ";
                         cmd_sqlite.ExecuteNonQuery();
+                        // pay_left_width
+                        cmd_sqlite.CommandText = @"INSERT INTO Sale_Display_Set(created_by, created_date, updated_by, updated_date, title, value) 
+                                                   SELECT '',datetime('now', 'localtime'), '', '', 'pay_left_width', '50' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Sale_Display_Set WHERE title = 'pay_left_width') ";
+                        cmd_sqlite.ExecuteNonQuery();
 
                         // สร้าง item_temp_excel
                         cmd_sqlite.CommandText = @"CREATE TABLE IF NOT EXISTS Item_Temp_Excel (    

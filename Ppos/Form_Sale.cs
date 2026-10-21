@@ -108,7 +108,7 @@ namespace Ppos
                 button_hotkey_1.Text = Class_Parameter.hotkey_title_1;
                 button_hotkey_2.Text = Class_Parameter.hotkey_title_2;
                 button_hotkey_3.Text = Class_Parameter.hotkey_title_3;
-
+                // ปรับขนาดซ้ายขวา
                 new TableLayoutResizer(tableLayoutPanel_back);
                 // ตรวจสอบสมาชิก
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
