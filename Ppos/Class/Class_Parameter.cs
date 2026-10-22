@@ -133,5 +133,8 @@ namespace Ppos.Class
         public static bool visible_dis_round { get; set; } = true;
 
         public static bool keypad_numeric { get; set; } = true;
+
+        public static bool sale_show_hotkey { get; set; } = false;
+        public static bool pay_show_keypad { get; set; } = false;
     }
 }

@@ -73,43 +73,105 @@ namespace Ppos
                 button_delete_all.Image = Class_Image.resizeImage(Ppos.Properties.Resources.clear, new Size(30, 30));
                 button_pay.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(70, 70));
 
+                tableLayoutPanel_back.Controls.Clear();
                 // ปรับขนาดหน้าจอ
                 tableLayoutPanel_back.ColumnStyles[0].SizeType = SizeType.Percent;
                 tableLayoutPanel_back.ColumnStyles[0].Width = Class_Parameter.sale_left_width;
                 tableLayoutPanel_back.ColumnStyles[1].SizeType = SizeType.Percent;
                 tableLayoutPanel_back.ColumnStyles[1].Width = 100 - Class_Parameter.sale_left_width;
+                // แสดง hotkey
+                if (Class_Parameter.sale_show_hotkey)
+                {
+                   
+                 
+                    // ใส่ข้อความ hotkey
+                    button_hotkey_1.Text = Class_Parameter.hotkey_title_1;
+                    button_hotkey_2.Text = Class_Parameter.hotkey_title_2;
+                    button_hotkey_3.Text = Class_Parameter.hotkey_title_3;
 
+                   
+                }
+                else // ไม่แสดง hotkey
+                {
+                  
+
+                    // เครียปุ่ม hotkey
+                    tableLayoutPanel_hotkey_pag.Controls.Clear();
+
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[0].SizeType = SizeType.Absolute;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[0].Width = 200;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[1].SizeType = SizeType.Percent;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[1].Width = 100;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[2].SizeType = SizeType.Percent;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[2].Width = 0;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[3].SizeType = SizeType.Percent;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[3].Width = 0;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[4].SizeType = SizeType.Percent;
+                    tableLayoutPanel_hotkey_pag.ColumnStyles[4].Width = 0;
+
+                    button_delete_all.TextAlign = ContentAlignment.BottomCenter;
+                    button_delete_all.TextImageRelation = TextImageRelation.ImageAboveText;
+                    button_delete_all.Image = Class_Image.resizeImage(Ppos.Properties.Resources.clear, new Size(40, 40));
+                    button_delete_all.FlatStyle = FlatStyle.Standard;
+
+                    tableLayoutPanel_hotkey_pag.Controls.Add(button_delete_all, 0, 0);
+                    tableLayoutPanel_hotkey_pag.Controls.Add(tableLayoutPanel_search,1,0);
+
+                    panel_hotkey.Controls.Add(dataGridView_item);
+
+                    tableLayoutPanel_menu.ColumnStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel_menu.ColumnStyles[0].Width = 0;
+
+                    panel_bottom_bill.Visible = false;
+
+                    // ปรับขนาดผลรวม
+                    label_sum_qty_title.Font = new System.Drawing.Font(label_sum_qty_title.Font.FontFamily,label_sum_qty_title.Font.Size+2,label_sum_qty_title.Font.Style);
+                    label_sum_qty.Font = new System.Drawing.Font(label_sum_qty.Font.FontFamily, label_sum_qty.Font.Size + 2, label_sum_qty.Font.Style);
+
+                    label_sum_price_title.Font = new System.Drawing.Font(label_sum_price_title.Font.FontFamily, label_sum_price_title.Font.Size + 2, label_sum_price_title.Font.Style);
+                    label_sum_price.Font = new System.Drawing.Font(label_sum_price.Font.FontFamily, label_sum_price.Font.Size + 2, label_sum_price.Font.Style);
+
+                    label_dis_pro_title.Font = new System.Drawing.Font(label_dis_pro_title.Font.FontFamily, label_dis_pro_title.Font.Size + 2, label_dis_pro_title.Font.Style);
+                    label_dis_pro.Font = new System.Drawing.Font(label_dis_pro.Font.FontFamily, label_dis_pro.Font.Size + 2, label_dis_pro.Font.Style);
+
+                    label_dis_member_title.Font = new System.Drawing.Font(label_dis_member_title.Font.FontFamily, label_dis_member_title.Font.Size + 2, label_dis_member_title.Font.Style);
+                    label_dis_member.Font = new System.Drawing.Font(label_dis_member.Font.FontFamily, label_dis_member.Font.Size + 2, label_dis_member.Font.Style);
+
+                    label_dis_round_title.Font = new System.Drawing.Font(label_dis_round_title.Font.FontFamily, label_dis_round_title.Font.Size + 2, label_dis_round_title.Font.Style);
+                    label_dis_round.Font = new System.Drawing.Font(label_dis_round.Font.FontFamily, label_dis_round.Font.Size + 2, label_dis_round.Font.Style);
+
+                    label_price_title.Font = new System.Drawing.Font(label_price_title.Font.FontFamily, label_price_title.Font.Size + 2, label_price_title.Font.Style);
+                    label_price_net.Font = new System.Drawing.Font(label_price_net.Font.FontFamily, label_price_net.Font.Size + 2, label_price_net.Font.Style);
+
+                    // ปรับความสูง
+                    tableLayoutPanel_sum_qty.RowStyles[0].Height = 60;
+                    tableLayoutPanel_sum_price.RowStyles[0].Height = 60;
+                    tableLayoutPanel_discount_pro.RowStyles[0].Height = 60;
+                    tableLayoutPanel_discount_member.RowStyles[0].Height = 60;
+                    tableLayoutPanel_discount_round.RowStyles[0].Height = 60;
+                    tableLayoutPanel_sum_net.RowStyles[0].Height = 80;
+
+                }
                 // ปรับตำแหน่งซ้ายขวก
                 if (Class_Parameter.sale_hotkey_left)
                 {
                     // hotkey อยู่ทางซ้าย
-
                     button_sale_display.Text = "<";
-
-                    tableLayoutPanel_back.Controls.Clear();
 
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
-
                 }
                 else
                 {
                     // hotkey อยู่ทางขวา
-
                     button_sale_display.Text = ">";
-
-                    tableLayoutPanel_back.Controls.Clear();
 
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 1, 0);
                 }
-
-                // ใส่ข้อความ hotkey
-                button_hotkey_1.Text = Class_Parameter.hotkey_title_1;
-                button_hotkey_2.Text = Class_Parameter.hotkey_title_2;
-                button_hotkey_3.Text = Class_Parameter.hotkey_title_3;
-                // ปรับขนาดซ้ายขวา
                 new TableLayoutResizer(tableLayoutPanel_back);
+
+
                 // ตรวจสอบสมาชิก
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
@@ -143,8 +205,9 @@ namespace Ppos
                 }
                 textBox_search.LostFocus += TextBox_search_LostFocus;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
 
@@ -417,23 +480,23 @@ namespace Ppos
             {
 
                 seq_visible++;
-                if (seq_visible == 1)
+                if (seq_visible == 1 && Class_Parameter.sale_show_hotkey)
                 {
                     button_hotkey_1.Visible = true;
                 }
-                else if (seq_visible == 2)
+                else if (seq_visible == 2 && Class_Parameter.sale_show_hotkey)
                 {
                     button_hotkey_2.Visible = true;
                 }
-                else if (seq_visible == 3)
+                else if (seq_visible == 3 && Class_Parameter.sale_show_hotkey)
                 {
                     button_hotkey_3.Visible = true;
                 }
-                else if (seq_visible == 4)
+                else if (seq_visible == 4 && Class_Parameter.sale_show_hotkey)
                 {
                     button_last_sale.Visible = true;
                 }
-                else if (seq_visible == 5)
+                else if (seq_visible == 5 && Class_Parameter.sale_show_hotkey)
                 {
 
                     button_hot_sale.Visible = true;
@@ -465,34 +528,82 @@ namespace Ppos
                 else if (seq_visible == 12 && Class_Parameter.visible_sum_qty)
                 {
                     tableLayoutPanel_sum_qty.Visible = true;
+
+                    if(!Class_Parameter.sale_show_hotkey)
+                    {
+                        tableLayoutPanel_sum_qty.Dock = DockStyle.Top;
+                        tableLayoutPanel_sum_qty.BringToFront();
+                    }
+                   
                 }
                 else if (seq_visible == 13 && Class_Parameter.visible_sum_price)
                 {
                     tableLayoutPanel_sum_price.Visible = true;
+
+                    if (!Class_Parameter.sale_show_hotkey)
+                    {
+                        tableLayoutPanel_sum_price.Dock = DockStyle.Top;
+                        tableLayoutPanel_sum_price.BringToFront();
+                    }
+                       
                 }
                 else if (seq_visible == 14 && Class_Parameter.visible_dis_pro)
                 {
                     tableLayoutPanel_discount_pro.Visible = true;
+
+                    if (!Class_Parameter.sale_show_hotkey)
+                    {
+                        tableLayoutPanel_discount_pro.Dock = DockStyle.Top;
+                        tableLayoutPanel_discount_pro.BringToFront();
+                    }
+                      
                 }
                 else if (seq_visible == 15 && discount_member && Class_Parameter.visible_dis_member)
                 {
                     tableLayoutPanel_discount_member.Visible = true;
+
+                    if (!Class_Parameter.sale_show_hotkey)
+                    {
+                        tableLayoutPanel_discount_member.Dock = DockStyle.Top;
+                        tableLayoutPanel_discount_member.BringToFront();
+                    }
+                        
                 }
                 else if (seq_visible == 16 && Class_Parameter.visible_dis_round)
                 {
                     tableLayoutPanel_discount_round.Visible = true;
+
+                    if (!Class_Parameter.sale_show_hotkey)
+                    {
+                        tableLayoutPanel_discount_round.Dock = DockStyle.Top;
+                        tableLayoutPanel_discount_round.BringToFront();
+                    }
+                        
                 }
                 else if (seq_visible == 17)
                 {
                     tableLayoutPanel_sum_net.Visible = true;
+
+                    if (!Class_Parameter.sale_show_hotkey)
+                    {
+                        tableLayoutPanel_sum_net.Dock = DockStyle.Top;
+                        tableLayoutPanel_sum_net.BringToFront();
+                    }
+                        
                 }
                 else if (seq_visible >= 18)
                 {
                     timer_load.Stop();
-                    sort_hotkey();
-                    Class_Parameter.runbackground = true;
+                    // ถ้าแสดง hotkey ถึงจะทำการสร้าง hotkey
+                    if(Class_Parameter.sale_show_hotkey)
+                    {
+                        sort_hotkey();
+                    }
+                   
+                    
                     backgroundWorker_load.RunWorkerAsync();
                     textBox_search.Focus();
+                    Class_Parameter.runbackground = true;
                 }
             }
             catch
@@ -2061,6 +2172,7 @@ hole FROM Invoice_Body_Temp where void = false ";
         {
             try
             {
+               
                 Class_Parameter.sale_hotkey_left = !Class_Parameter.sale_hotkey_left;
                 // ปรับตำแหน่งซ้ายขวก
                 if (Class_Parameter.sale_hotkey_left)
@@ -2073,7 +2185,6 @@ hole FROM Invoice_Body_Temp where void = false ";
 
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
-
                 }
                 else
                 {
@@ -2086,7 +2197,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 1, 0);
                 }
-
+                
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -2102,7 +2213,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                     }
                 }
 
-
+                textBox_search.Focus();
             }
             catch (Exception ex)
             {

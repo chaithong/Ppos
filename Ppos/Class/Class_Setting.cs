@@ -63,6 +63,14 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.custom_cost_adjust = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "sale_show_hotkey")
+                                    {
+                                        Class_Parameter.sale_show_hotkey = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "pay_show_keypad")
+                                    {
+                                        Class_Parameter.pay_show_keypad = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
+                                    }
                                 }
                             }
 

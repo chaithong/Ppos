@@ -315,40 +315,8 @@ namespace Ppos
                         timer_tab_menu.Stop();
 
                         button_menu.Text = ">";
-                        // button_menu.BackColor = Color.Cyan;
                         panel_menu_back.Width = 0;
-                        
-                        // button_menu.FlatAppearance.MouseOverBackColor = Color.Cyan;
-                        // button_menu.FlatAppearance.CheckedBackColor = Color.Cyan;
-
-                        //////////
-                       /* if (panel_main.Controls.Find(form_click.Name, true).FirstOrDefault() == null)
-                        {
-
-                            form_click.TopLevel = false;
-                            panel_main.Controls.Add(form_click);
-                            form_click.BringToFront();
-                            form_click.Dock = DockStyle.Fill;
-                            form_click.Show();
-
-                            if (b.Name != "button_sale")
-                            {
-                                b.BackColor = Color.White;
-
-                            }
-                            else
-                            {
-                                b.BackColor = Color.FromArgb(128, 255, 255);
-
-                            }
-
-                            b = button_click;
-                            b.BackColor = Color.Cyan;
-
-
-                        }*/
-
-                        
+                       
                     }
 
                 }
@@ -361,11 +329,8 @@ namespace Ppos
                         timer_tab_menu.Stop();
 
                         button_menu.Text = "<";
-                        // button_menu.BackColor = Color.Lime;
+
                         panel_menu_back.Width = pictureBox_logo.Width;
-                        
-                        //  button_menu.FlatAppearance.MouseOverBackColor = Color.Lime;
-                        // button_menu.FlatAppearance.CheckedBackColor = Color.Lime;
 
                         timer_check_tab.Start();
                     }

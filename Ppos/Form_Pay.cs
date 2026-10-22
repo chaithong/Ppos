@@ -43,10 +43,10 @@ namespace Ppos
                 button_5.Image = Class_Image.resizeImage(Ppos.Properties.Resources.coin_5, new System.Drawing.Size(100, 100));
                 button_10.Image = Class_Image.resizeImage(Ppos.Properties.Resources.coin_10, new System.Drawing.Size(100, 100));
                 button_20.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_20, new System.Drawing.Size(200, 100));
-                button_50.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_50, new System.Drawing.Size(200, 100));
-                button_100.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_100, new System.Drawing.Size(200, 100));
-                button_500.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_500, new System.Drawing.Size(200, 100));
-                button_1000.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_1000, new System.Drawing.Size(200, 100));
+                button_50.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_50, new System.Drawing.Size(210, 100));
+                button_100.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_100, new System.Drawing.Size(220, 100));
+                button_500.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_500, new System.Drawing.Size(225, 100));
+                button_1000.Image = Class_Image.resizeImage(Ppos.Properties.Resources._17th_1000, new System.Drawing.Size(235, 100));
 
                 button_numeric.Image = Class_Image.resizeImage(Ppos.Properties.Resources.key_number, new System.Drawing.Size(50, 50));
 
@@ -80,44 +80,60 @@ namespace Ppos
                     // ไม่มีสมาชิกแล้วจะไม่แสดง point
                     customGroupBox_point_back.Visible = false;
                 }
-
-
-                // ปรับขนาดหน้าจอ
-                tableLayoutPanel_back_pay.ColumnStyles[0].SizeType = SizeType.Percent;
-                tableLayoutPanel_back_pay.ColumnStyles[0].Width = Class_Parameter.pay_left_width;
-                tableLayoutPanel_back_pay.ColumnStyles[1].SizeType = SizeType.Percent;
-                tableLayoutPanel_back_pay.ColumnStyles[1].Width = 100 - Class_Parameter.pay_left_width;
-
-                if (Class_Parameter.sale_hotkey_left)
+                tableLayoutPanel_back_pay.Controls.Clear();
+                // แสดง keypad
+                if (Class_Parameter.pay_show_keypad)
                 {
-                    // hotkey อยู่ทางซ้าย
-                    tableLayoutPanel_back_pay.Controls.Clear();
+                    // ปรับขนาดหน้าจอ
+                    tableLayoutPanel_back_pay.ColumnStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel_back_pay.ColumnStyles[0].Width = Class_Parameter.pay_left_width;
+                    tableLayoutPanel_back_pay.ColumnStyles[1].SizeType = SizeType.Percent;
+                    tableLayoutPanel_back_pay.ColumnStyles[1].Width = 100 - Class_Parameter.pay_left_width;
 
-                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 0, 0);
-                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 1, 0);
+                    if (Class_Parameter.sale_hotkey_left)
+                    {
+                        // hotkey อยู่ทางซ้าย
 
+                        tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 0, 0);
+                        tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 1, 0);
+
+                    }
+                    else
+                    {
+                        // hotkey อยู่ทางขวา                      
+
+                        tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 0, 0);
+                        tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
+                    }
+                   
+                    // ตัวเลข
+                    if (Class_Parameter.keypad_numeric)
+                    {
+                        tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 100;
+                        tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 0;
+                    }
+                    else
+                    {
+                        tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 0;
+                        tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 100;
+                    }
                 }
-                else
+                else // ไม่แสดง keypad
                 {
-                    // hotkey อยู่ทางขวา
+                    // ปรับขนาดหน้าจอ
+                    tableLayoutPanel_back_pay.ColumnStyles[0].SizeType = SizeType.Percent;
+                    tableLayoutPanel_back_pay.ColumnStyles[0].Width = 50;
+                    tableLayoutPanel_back_pay.ColumnStyles[1].SizeType = SizeType.Absolute;
+                    tableLayoutPanel_back_pay.ColumnStyles[1].Width = 900;
+                    tableLayoutPanel_back_pay.ColumnCount += 1;
+                    tableLayoutPanel_back_pay.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+                    // tableLayoutPanel_back_pay.Dispose();
+                    // this.Controls.Add(customGroupBox_right);
+                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 1, 0);
+                   // tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
 
-                    tableLayoutPanel_back_pay.Controls.Clear();
-
-                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 0, 0);
-                    tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
                 }
                 new TableLayoutResizer(tableLayoutPanel_back_pay);
-                // ตัวเลข
-                if (Class_Parameter.keypad_numeric)
-                {
-                    tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 100;
-                    tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 0;
-                }
-                else
-                {
-                    tableLayoutPanel_select_keypad.ColumnStyles[0].Width = 0;
-                    tableLayoutPanel_select_keypad.ColumnStyles[1].Width = 100;
-                }
                 textBox_cash.LostFocus += TextBox_cash_LostFocus;
             }
             catch
@@ -131,19 +147,19 @@ namespace Ppos
         {
             try
             {
-                if(focus)
+                if (focus)
                 {
                     textBox_cash.Focus();
                 }
-                   
-                
-                   
+
+
+
             }
             catch
             {
 
             }
-           
+
         }
 
         private void button_enter(object sender, EventArgs e)
@@ -185,24 +201,27 @@ namespace Ppos
             {
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }     
+        }
         private void Form_Pay_Load(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void Form_Pay_Shown(object sender, EventArgs e)
         {
             try
             {
                 label_price_net.Text = Form_Sale.price_net;
                 textBox_cash.Focus();
 
-                button_cash_Click(sender, e);
-
+               // button_cash_Click(sender, e);
+         
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         private void keypad_click(object sender, EventArgs e)
         {
@@ -260,7 +279,7 @@ namespace Ppos
         {
             try
             {
-              //  textBox_cash.Focus();
+                //  textBox_cash.Focus();
             }
             catch (Exception ex)
             {
@@ -669,7 +688,7 @@ namespace Ppos
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
 
-                if(button.Text != "ลบ")
+                if (button.Text != "ลบ")
                 {
                     double cash = 0;
                     if (textBox_cash.Text == string.Empty)
@@ -688,12 +707,14 @@ namespace Ppos
                 {
                     textBox_cash.Text = "";
                 }
-               
+
             }
             catch
             {
 
             }
         }
+
+       
     }
 }

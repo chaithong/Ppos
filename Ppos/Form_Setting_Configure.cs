@@ -37,6 +37,14 @@ namespace Ppos
             {
                 custom_cost_adjust.Image = Ppos.Properties.Resources.uncheck;
             }
+            if (!Class_Parameter.sale_show_hotkey)
+            {
+                sale_show_hotkey.Image = Ppos.Properties.Resources.uncheck;
+            }
+            if (!Class_Parameter.pay_show_keypad)
+            {
+                pay_show_keypad.Image = Ppos.Properties.Resources.uncheck;
+            }
         }
 
         private void Click_Status(object sender, EventArgs e)
@@ -173,6 +181,66 @@ namespace Ppos
                                 Class_Parameter.custom_cost_adjust = true;
 
                                 custom_cost_adjust.Image = Ppos.Properties.Resources.check;
+                            }
+
+                        }
+                        else if (pictureBox.Name == "sale_show_hotkey")
+                        {
+                            if (Class_Parameter.sale_show_hotkey)
+                            {
+                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
+                                  "status = 0, " +
+                                  "updated_date = datetime('now', 'localtime'), " +
+                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                  "WHERE title = 'sale_show_hotkey'";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                Class_Parameter.sale_show_hotkey = false;
+
+                                sale_show_hotkey.Image = Ppos.Properties.Resources.uncheck;
+                            }
+                            else
+                            {
+                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
+                                  "status = 1, " +
+                                  "updated_date = datetime('now', 'localtime'), " +
+                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                  "WHERE title = 'sale_show_hotkey'";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                Class_Parameter.sale_show_hotkey = true;
+
+                                sale_show_hotkey.Image = Ppos.Properties.Resources.check;
+                            }
+
+                        }
+                        else if (pictureBox.Name == "pay_show_keypad")
+                        {
+                            if (Class_Parameter.pay_show_keypad)
+                            {
+                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
+                                  "status = 0, " +
+                                  "updated_date = datetime('now', 'localtime'), " +
+                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                  "WHERE title = 'pay_show_keypad'";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                Class_Parameter.pay_show_keypad = false;
+
+                                pay_show_keypad.Image = Ppos.Properties.Resources.uncheck;
+                            }
+                            else
+                            {
+                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
+                                  "status = 1, " +
+                                  "updated_date = datetime('now', 'localtime'), " +
+                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                  "WHERE title = 'pay_show_keypad'";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                Class_Parameter.pay_show_keypad = true;
+
+                                pay_show_keypad.Image = Ppos.Properties.Resources.check;
                             }
 
                         }

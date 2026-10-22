@@ -21,7 +21,6 @@ namespace Ppos
             this.DoubleBuffered = true;
 
 
-
             dataGridView_promotion.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_promotion, true, null);
             foreach (DataGridViewColumn column in dataGridView_promotion.Columns)
             {
@@ -33,6 +32,8 @@ namespace Ppos
             dataGridView_promotion.MouseWheel += new MouseEventHandler(dataGridView_invoice_MouseWheel!);
 
             textBox_search.LostFocus += TextBox_search_LostFocus;
+
+           
         }
         private void TextBox_search_LostFocus(object? sender, EventArgs e)
         {

@@ -50,23 +50,22 @@ namespace Ppos
             {
                 if (textBox_amount.Text != string.Empty)
                 {
-
                     if (double.TryParse(textBox_amount.Text, out double am))
                     {
                         if (am > 0)
-                        {
-                            label_amount.Text = Convert.ToDouble(textBox_amount.Text).ToString("#,##0.##");
+                        {                        
                             Image qr = Class_PromptPay.Generate(Convert.ToDouble(textBox_amount.Text).ToString());
                             if (qr is not null)
                             {
-
+                                label_amount.Text = Convert.ToDouble(textBox_amount.Text).ToString("#,##0.##");
                                 pictureBox_QRCode.Image = qr;
+                                textBox_amount.Text = "";
                             }
                             else
                             {
                                 MessageBox.Show("ไม่สามารถสร้าง QR Code ได้ !!", "ผิดพลาด", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                            textBox_amount.Text = "";
+                           
                         }
 
                     }

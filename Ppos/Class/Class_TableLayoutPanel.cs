@@ -15,12 +15,19 @@ public class TableLayoutResizer
 
     public TableLayoutResizer(TableLayoutPanel tableLayoutPanel)
     {
-        _tableLayoutPanel = tableLayoutPanel ?? throw new ArgumentNullException(nameof(tableLayoutPanel));
+        try
+        {
+            _tableLayoutPanel = tableLayoutPanel ?? throw new ArgumentNullException(nameof(tableLayoutPanel));
 
-        // เปิด DoubleBuffered ลดอาการกระพริบ
-        EnableDoubleBuffering(_tableLayoutPanel);
+            // เปิด DoubleBuffered ลดอาการกระพริบ
+            EnableDoubleBuffering(_tableLayoutPanel);
 
-        InitializeEvents();
+            InitializeEvents();                  
+        }
+        catch
+        {
+
+        }     
     }
 
     private void EnableDoubleBuffering(Control control)
@@ -31,9 +38,14 @@ public class TableLayoutResizer
 
     private void InitializeEvents()
     {
-        _tableLayoutPanel.MouseDown += TableLayoutPanel_MouseDown!;
-        _tableLayoutPanel.MouseMove += TableLayoutPanel_MouseMove!;
-        _tableLayoutPanel.MouseUp += TableLayoutPanel_MouseUp!;
+        if((_tableLayoutPanel.Name == "tableLayoutPanel_back" ) ||
+            _tableLayoutPanel.Name == "tableLayoutPanel_back_pay" && Class_Parameter.pay_show_keypad)
+        {
+            _tableLayoutPanel.MouseDown += TableLayoutPanel_MouseDown!;
+            _tableLayoutPanel.MouseMove += TableLayoutPanel_MouseMove!;
+            _tableLayoutPanel.MouseUp += TableLayoutPanel_MouseUp!;
+        }
+       
         BindMouseEventsToAllControls(_tableLayoutPanel);
     }
 
@@ -43,9 +55,14 @@ public class TableLayoutResizer
         {
             if (ctrl != _tableLayoutPanel)
             {
-                ctrl.MouseMove += InnerControl_MouseMove!;
-                ctrl.MouseDown += InnerControl_MouseDown!;
-                ctrl.MouseUp += InnerControl_MouseUp!;
+                if ((_tableLayoutPanel.Name == "tableLayoutPanel_back" ) ||
+                 _tableLayoutPanel.Name == "tableLayoutPanel_back_pay" && Class_Parameter.pay_show_keypad)
+                {
+                    ctrl.MouseMove += InnerControl_MouseMove!;
+                    ctrl.MouseDown += InnerControl_MouseDown!;
+                    ctrl.MouseUp += InnerControl_MouseUp!;
+                }
+               
                 EnableDoubleBuffering(ctrl);
             }
 

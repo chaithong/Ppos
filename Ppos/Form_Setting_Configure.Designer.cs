@@ -36,11 +36,17 @@
             label2 = new Label();
             custom_cost_adjust = new PictureBox();
             label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            sale_show_hotkey = new PictureBox();
+            pay_show_keypad = new PictureBox();
             panel_back.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)login_program).BeginInit();
             ((System.ComponentModel.ISupportInitialize)use_item_medium_large).BeginInit();
             ((System.ComponentModel.ISupportInitialize)custom_cost_adjust).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)sale_show_hotkey).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pay_show_keypad).BeginInit();
             SuspendLayout();
             // 
             // panel_back
@@ -67,16 +73,21 @@
             tableLayoutPanel1.Controls.Add(label2, 2, 2);
             tableLayoutPanel1.Controls.Add(custom_cost_adjust, 1, 3);
             tableLayoutPanel1.Controls.Add(label3, 2, 3);
+            tableLayoutPanel1.Controls.Add(label4, 2, 4);
+            tableLayoutPanel1.Controls.Add(label5, 2, 5);
+            tableLayoutPanel1.Controls.Add(sale_show_hotkey, 1, 4);
+            tableLayoutPanel1.Controls.Add(pay_show_keypad, 1, 5);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
+            tableLayoutPanel1.RowCount = 6;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel1.Size = new Size(1033, 250);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.Size = new Size(1033, 300);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // login_program
@@ -106,6 +117,7 @@
             // 
             // use_item_medium_large
             // 
+            use_item_medium_large.Dock = DockStyle.Fill;
             use_item_medium_large.Image = Properties.Resources.check;
             use_item_medium_large.Location = new Point(344, 103);
             use_item_medium_large.Name = "use_item_medium_large";
@@ -117,6 +129,7 @@
             // 
             // label2
             // 
+            label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 12F);
             label2.Location = new Point(394, 100);
             label2.Name = "label2";
@@ -129,6 +142,7 @@
             // 
             // custom_cost_adjust
             // 
+            custom_cost_adjust.Dock = DockStyle.Fill;
             custom_cost_adjust.Image = Properties.Resources.check;
             custom_cost_adjust.Location = new Point(344, 153);
             custom_cost_adjust.Name = "custom_cost_adjust";
@@ -140,6 +154,7 @@
             // 
             // label3
             // 
+            label3.Dock = DockStyle.Fill;
             label3.Font = new Font("Segoe UI", 12F);
             label3.Location = new Point(394, 150);
             label3.Name = "label3";
@@ -149,6 +164,56 @@
             label3.TextAlign = ContentAlignment.MiddleLeft;
             label3.MouseEnter += Mouse_Enter;
             label3.MouseLeave += Mouse_Leave;
+            // 
+            // label4
+            // 
+            label4.Dock = DockStyle.Fill;
+            label4.Font = new Font("Segoe UI", 12F);
+            label4.Location = new Point(394, 200);
+            label4.Name = "label4";
+            label4.Size = new Size(294, 50);
+            label4.TabIndex = 1;
+            label4.Text = "แสดงคีย์ลัดหน้าขายสินค้า";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            label4.MouseEnter += Mouse_Enter;
+            label4.MouseLeave += Mouse_Leave;
+            // 
+            // label5
+            // 
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(394, 250);
+            label5.Name = "label5";
+            label5.Size = new Size(294, 50);
+            label5.TabIndex = 1;
+            label5.Text = "แสดงปุ่มกดหน้าชำระเงิน";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            label5.MouseEnter += Mouse_Enter;
+            label5.MouseLeave += Mouse_Leave;
+            // 
+            // sale_show_hotkey
+            // 
+            sale_show_hotkey.Dock = DockStyle.Fill;
+            sale_show_hotkey.Image = Properties.Resources.check;
+            sale_show_hotkey.Location = new Point(344, 203);
+            sale_show_hotkey.Name = "sale_show_hotkey";
+            sale_show_hotkey.Size = new Size(44, 44);
+            sale_show_hotkey.SizeMode = PictureBoxSizeMode.Zoom;
+            sale_show_hotkey.TabIndex = 0;
+            sale_show_hotkey.TabStop = false;
+            sale_show_hotkey.Click += Click_Status;
+            // 
+            // pay_show_keypad
+            // 
+            pay_show_keypad.Dock = DockStyle.Fill;
+            pay_show_keypad.Image = Properties.Resources.check;
+            pay_show_keypad.Location = new Point(344, 253);
+            pay_show_keypad.Name = "pay_show_keypad";
+            pay_show_keypad.Size = new Size(44, 44);
+            pay_show_keypad.SizeMode = PictureBoxSizeMode.Zoom;
+            pay_show_keypad.TabIndex = 0;
+            pay_show_keypad.TabStop = false;
+            pay_show_keypad.Click += Click_Status;
             // 
             // Form_Setting_Configure
             // 
@@ -168,6 +233,8 @@
             ((System.ComponentModel.ISupportInitialize)login_program).EndInit();
             ((System.ComponentModel.ISupportInitialize)use_item_medium_large).EndInit();
             ((System.ComponentModel.ISupportInitialize)custom_cost_adjust).EndInit();
+            ((System.ComponentModel.ISupportInitialize)sale_show_hotkey).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pay_show_keypad).EndInit();
             ResumeLayout(false);
         }
 
@@ -181,5 +248,9 @@
         private Label label2;
         private PictureBox custom_cost_adjust;
         private Label label3;
+        private Label label4;
+        private Label label5;
+        private PictureBox sale_show_hotkey;
+        private PictureBox pay_show_keypad;
     }
 }

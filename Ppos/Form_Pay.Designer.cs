@@ -124,7 +124,7 @@
             button_exit.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_exit.Location = new Point(10, 13);
             button_exit.Name = "button_exit";
-            button_exit.Size = new Size(239, 91);
+            button_exit.Size = new Size(249, 91);
             button_exit.TabIndex = 0;
             button_exit.Text = "ยกเลิก";
             button_exit.TextAlign = ContentAlignment.MiddleRight;
@@ -163,7 +163,7 @@
             customGroupBox_right.Location = new Point(593, 0);
             customGroupBox_right.Margin = new Padding(0, 0, 3, 3);
             customGroupBox_right.Name = "customGroupBox_right";
-            customGroupBox_right.Padding = new Padding(30);
+            customGroupBox_right.Padding = new Padding(20);
             customGroupBox_right.Size = new Size(590, 806);
             customGroupBox_right.TabIndex = 2;
             customGroupBox_right.TabStop = false;
@@ -181,17 +181,17 @@
             tableLayoutPanel_right.Controls.Add(customGroupBox_point_back, 0, 3);
             tableLayoutPanel_right.Controls.Add(customGroupBox_change_back, 0, 5);
             tableLayoutPanel_right.Dock = DockStyle.Fill;
-            tableLayoutPanel_right.Location = new Point(30, 33);
+            tableLayoutPanel_right.Location = new Point(20, 23);
             tableLayoutPanel_right.Name = "tableLayoutPanel_right";
             tableLayoutPanel_right.RowCount = 7;
-            tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 130F));
+            tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
-            tableLayoutPanel_right.Size = new Size(530, 743);
+            tableLayoutPanel_right.Size = new Size(550, 763);
             tableLayoutPanel_right.TabIndex = 0;
             // 
             // customGroupBox_price_net_back
@@ -206,7 +206,7 @@
             customGroupBox_price_net_back.Location = new Point(3, 3);
             customGroupBox_price_net_back.Name = "customGroupBox_price_net_back";
             customGroupBox_price_net_back.Padding = new Padding(10);
-            customGroupBox_price_net_back.Size = new Size(524, 124);
+            customGroupBox_price_net_back.Size = new Size(544, 94);
             customGroupBox_price_net_back.TabIndex = 1;
             customGroupBox_price_net_back.TabStop = false;
             customGroupBox_price_net_back.Text = " ";
@@ -225,7 +225,7 @@
             tableLayoutPanel_price_net.Name = "tableLayoutPanel_price_net";
             tableLayoutPanel_price_net.RowCount = 1;
             tableLayoutPanel_price_net.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_price_net.Size = new Size(504, 101);
+            tableLayoutPanel_price_net.Size = new Size(524, 71);
             tableLayoutPanel_price_net.TabIndex = 0;
             // 
             // label_price_net_title
@@ -237,7 +237,7 @@
             label_price_net_title.Location = new Point(0, 0);
             label_price_net_title.Margin = new Padding(0);
             label_price_net_title.Name = "label_price_net_title";
-            label_price_net_title.Size = new Size(177, 101);
+            label_price_net_title.Size = new Size(187, 71);
             label_price_net_title.TabIndex = 0;
             label_price_net_title.Text = "ราคาสุทธิ :";
             label_price_net_title.TextAlign = ContentAlignment.MiddleRight;
@@ -249,10 +249,10 @@
             label_price_net.BackColor = Color.Transparent;
             label_price_net.Dock = DockStyle.Fill;
             label_price_net.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_price_net.Location = new Point(177, 0);
+            label_price_net.Location = new Point(187, 0);
             label_price_net.Margin = new Padding(0);
             label_price_net.Name = "label_price_net";
-            label_price_net.Size = new Size(177, 101);
+            label_price_net.Size = new Size(187, 71);
             label_price_net.TabIndex = 0;
             label_price_net.Text = "0";
             label_price_net.TextAlign = ContentAlignment.MiddleCenter;
@@ -267,12 +267,12 @@
             tableLayoutPanel_button_confirm_exit.Controls.Add(customGroupBox_confirm, 0, 0);
             tableLayoutPanel_button_confirm_exit.Controls.Add(customGroupBox_exit, 1, 0);
             tableLayoutPanel_button_confirm_exit.Dock = DockStyle.Fill;
-            tableLayoutPanel_button_confirm_exit.Location = new Point(0, 623);
+            tableLayoutPanel_button_confirm_exit.Location = new Point(0, 643);
             tableLayoutPanel_button_confirm_exit.Margin = new Padding(0);
             tableLayoutPanel_button_confirm_exit.Name = "tableLayoutPanel_button_confirm_exit";
             tableLayoutPanel_button_confirm_exit.RowCount = 1;
             tableLayoutPanel_button_confirm_exit.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_button_confirm_exit.Size = new Size(530, 120);
+            tableLayoutPanel_button_confirm_exit.Size = new Size(550, 120);
             tableLayoutPanel_button_confirm_exit.TabIndex = 1;
             // 
             // customGroupBox_confirm
@@ -286,7 +286,7 @@
             customGroupBox_confirm.Location = new Point(3, 3);
             customGroupBox_confirm.Name = "customGroupBox_confirm";
             customGroupBox_confirm.Padding = new Padding(10);
-            customGroupBox_confirm.Size = new Size(259, 114);
+            customGroupBox_confirm.Size = new Size(269, 114);
             customGroupBox_confirm.TabIndex = 1;
             customGroupBox_confirm.TabStop = false;
             customGroupBox_confirm.Text = " ";
@@ -301,7 +301,7 @@
             button_confirm.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_confirm.Location = new Point(10, 13);
             button_confirm.Name = "button_confirm";
-            button_confirm.Size = new Size(239, 91);
+            button_confirm.Size = new Size(249, 91);
             button_confirm.TabIndex = 1;
             button_confirm.Text = "ตกลง";
             button_confirm.TextAlign = ContentAlignment.MiddleRight;
@@ -319,10 +319,10 @@
             customGroupBox_exit.Controls.Add(button_exit);
             customGroupBox_exit.Dock = DockStyle.Fill;
             customGroupBox_exit.Font = new Font("Segoe UI", 1F);
-            customGroupBox_exit.Location = new Point(268, 3);
+            customGroupBox_exit.Location = new Point(278, 3);
             customGroupBox_exit.Name = "customGroupBox_exit";
             customGroupBox_exit.Padding = new Padding(10);
-            customGroupBox_exit.Size = new Size(259, 114);
+            customGroupBox_exit.Size = new Size(269, 114);
             customGroupBox_exit.TabIndex = 2;
             customGroupBox_exit.TabStop = false;
             customGroupBox_exit.Text = " ";
@@ -336,10 +336,10 @@
             customGroupBox_cash_back.Controls.Add(tableLayoutPanel_cash);
             customGroupBox_cash_back.Dock = DockStyle.Fill;
             customGroupBox_cash_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_cash_back.Location = new Point(3, 133);
+            customGroupBox_cash_back.Location = new Point(3, 103);
             customGroupBox_cash_back.Name = "customGroupBox_cash_back";
             customGroupBox_cash_back.Padding = new Padding(10);
-            customGroupBox_cash_back.Size = new Size(524, 104);
+            customGroupBox_cash_back.Size = new Size(544, 104);
             customGroupBox_cash_back.TabIndex = 1;
             customGroupBox_cash_back.TabStop = false;
             customGroupBox_cash_back.Text = " ";
@@ -359,7 +359,7 @@
             tableLayoutPanel_cash.Name = "tableLayoutPanel_cash";
             tableLayoutPanel_cash.RowCount = 1;
             tableLayoutPanel_cash.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_cash.Size = new Size(504, 81);
+            tableLayoutPanel_cash.Size = new Size(524, 81);
             tableLayoutPanel_cash.TabIndex = 0;
             // 
             // label_cash_title
@@ -372,7 +372,7 @@
             label_cash_title.Location = new Point(0, 0);
             label_cash_title.Margin = new Padding(0);
             label_cash_title.Name = "label_cash_title";
-            label_cash_title.Size = new Size(177, 81);
+            label_cash_title.Size = new Size(187, 81);
             label_cash_title.TabIndex = 0;
             label_cash_title.Text = "เงินสด :";
             label_cash_title.TextAlign = ContentAlignment.MiddleRight;
@@ -385,9 +385,9 @@
             textBox_cash.BackColor = Color.White;
             textBox_cash.BorderStyle = BorderStyle.None;
             textBox_cash.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_cash.Location = new Point(180, 9);
+            textBox_cash.Location = new Point(190, 9);
             textBox_cash.Name = "textBox_cash";
-            textBox_cash.Size = new Size(171, 63);
+            textBox_cash.Size = new Size(181, 63);
             textBox_cash.TabIndex = 0;
             textBox_cash.TextAlign = HorizontalAlignment.Center;
             textBox_cash.TextChanged += textBox_cash_TextChanged;
@@ -400,7 +400,7 @@
             // 
             button_cash.Dock = DockStyle.Fill;
             button_cash.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            button_cash.Location = new Point(354, 0);
+            button_cash.Location = new Point(374, 0);
             button_cash.Margin = new Padding(0);
             button_cash.Name = "button_cash";
             button_cash.Size = new Size(150, 81);
@@ -422,10 +422,10 @@
             customGroupBox_transfer_back.Controls.Add(tableLayoutPanel_transfer);
             customGroupBox_transfer_back.Dock = DockStyle.Fill;
             customGroupBox_transfer_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_transfer_back.Location = new Point(3, 243);
+            customGroupBox_transfer_back.Location = new Point(3, 213);
             customGroupBox_transfer_back.Name = "customGroupBox_transfer_back";
             customGroupBox_transfer_back.Padding = new Padding(10);
-            customGroupBox_transfer_back.Size = new Size(524, 104);
+            customGroupBox_transfer_back.Size = new Size(544, 104);
             customGroupBox_transfer_back.TabIndex = 1;
             customGroupBox_transfer_back.TabStop = false;
             customGroupBox_transfer_back.Text = " ";
@@ -445,7 +445,7 @@
             tableLayoutPanel_transfer.Name = "tableLayoutPanel_transfer";
             tableLayoutPanel_transfer.RowCount = 1;
             tableLayoutPanel_transfer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_transfer.Size = new Size(504, 81);
+            tableLayoutPanel_transfer.Size = new Size(524, 81);
             tableLayoutPanel_transfer.TabIndex = 0;
             // 
             // label_transfer_title
@@ -458,7 +458,7 @@
             label_transfer_title.Location = new Point(0, 0);
             label_transfer_title.Margin = new Padding(0);
             label_transfer_title.Name = "label_transfer_title";
-            label_transfer_title.Size = new Size(177, 81);
+            label_transfer_title.Size = new Size(187, 81);
             label_transfer_title.TabIndex = 0;
             label_transfer_title.Text = "เงินโอน :";
             label_transfer_title.TextAlign = ContentAlignment.MiddleRight;
@@ -470,10 +470,10 @@
             label_transfer.BackColor = Color.White;
             label_transfer.Dock = DockStyle.Fill;
             label_transfer.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_transfer.Location = new Point(177, 0);
+            label_transfer.Location = new Point(187, 0);
             label_transfer.Margin = new Padding(0);
             label_transfer.Name = "label_transfer";
-            label_transfer.Size = new Size(177, 81);
+            label_transfer.Size = new Size(187, 81);
             label_transfer.TabIndex = 0;
             label_transfer.Text = "0";
             label_transfer.TextAlign = ContentAlignment.MiddleCenter;
@@ -485,7 +485,7 @@
             button_transfer.BackgroundImageLayout = ImageLayout.Zoom;
             button_transfer.Dock = DockStyle.Fill;
             button_transfer.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            button_transfer.Location = new Point(354, 0);
+            button_transfer.Location = new Point(374, 0);
             button_transfer.Margin = new Padding(0);
             button_transfer.Name = "button_transfer";
             button_transfer.Size = new Size(150, 81);
@@ -507,10 +507,10 @@
             customGroupBox_point_back.Controls.Add(tableLayoutPanel_point);
             customGroupBox_point_back.Dock = DockStyle.Fill;
             customGroupBox_point_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_point_back.Location = new Point(3, 353);
+            customGroupBox_point_back.Location = new Point(3, 323);
             customGroupBox_point_back.Name = "customGroupBox_point_back";
             customGroupBox_point_back.Padding = new Padding(10);
-            customGroupBox_point_back.Size = new Size(524, 104);
+            customGroupBox_point_back.Size = new Size(544, 104);
             customGroupBox_point_back.TabIndex = 1;
             customGroupBox_point_back.TabStop = false;
             customGroupBox_point_back.Text = " ";
@@ -530,7 +530,7 @@
             tableLayoutPanel_point.Name = "tableLayoutPanel_point";
             tableLayoutPanel_point.RowCount = 1;
             tableLayoutPanel_point.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_point.Size = new Size(504, 81);
+            tableLayoutPanel_point.Size = new Size(524, 81);
             tableLayoutPanel_point.TabIndex = 0;
             // 
             // label_point_title
@@ -543,7 +543,7 @@
             label_point_title.Location = new Point(0, 0);
             label_point_title.Margin = new Padding(0);
             label_point_title.Name = "label_point_title";
-            label_point_title.Size = new Size(177, 81);
+            label_point_title.Size = new Size(187, 81);
             label_point_title.TabIndex = 0;
             label_point_title.Text = "แต้มสะสม :";
             label_point_title.TextAlign = ContentAlignment.MiddleRight;
@@ -555,10 +555,10 @@
             label_point.BackColor = Color.White;
             label_point.Dock = DockStyle.Fill;
             label_point.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_point.Location = new Point(177, 0);
+            label_point.Location = new Point(187, 0);
             label_point.Margin = new Padding(0);
             label_point.Name = "label_point";
-            label_point.Size = new Size(177, 81);
+            label_point.Size = new Size(187, 81);
             label_point.TabIndex = 0;
             label_point.Text = "0";
             label_point.TextAlign = ContentAlignment.MiddleCenter;
@@ -569,7 +569,7 @@
             // 
             button_member.Dock = DockStyle.Fill;
             button_member.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            button_member.Location = new Point(354, 0);
+            button_member.Location = new Point(374, 0);
             button_member.Margin = new Padding(0);
             button_member.Name = "button_member";
             button_member.Size = new Size(150, 81);
@@ -590,10 +590,10 @@
             customGroupBox_change_back.Controls.Add(tableLayoutPanel_change);
             customGroupBox_change_back.Dock = DockStyle.Fill;
             customGroupBox_change_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_change_back.Location = new Point(3, 516);
+            customGroupBox_change_back.Location = new Point(3, 536);
             customGroupBox_change_back.Name = "customGroupBox_change_back";
             customGroupBox_change_back.Padding = new Padding(10);
-            customGroupBox_change_back.Size = new Size(524, 104);
+            customGroupBox_change_back.Size = new Size(544, 104);
             customGroupBox_change_back.TabIndex = 1;
             customGroupBox_change_back.TabStop = false;
             customGroupBox_change_back.Text = " ";
@@ -612,7 +612,7 @@
             tableLayoutPanel_change.Name = "tableLayoutPanel_change";
             tableLayoutPanel_change.RowCount = 1;
             tableLayoutPanel_change.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_change.Size = new Size(504, 81);
+            tableLayoutPanel_change.Size = new Size(524, 81);
             tableLayoutPanel_change.TabIndex = 0;
             // 
             // label_change_title
@@ -625,7 +625,7 @@
             label_change_title.Location = new Point(0, 0);
             label_change_title.Margin = new Padding(0);
             label_change_title.Name = "label_change_title";
-            label_change_title.Size = new Size(177, 81);
+            label_change_title.Size = new Size(187, 81);
             label_change_title.TabIndex = 0;
             label_change_title.Text = "เงินทอน :";
             label_change_title.TextAlign = ContentAlignment.MiddleRight;
@@ -637,10 +637,10 @@
             label_change.BackColor = Color.Transparent;
             label_change.Dock = DockStyle.Fill;
             label_change.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_change.Location = new Point(177, 0);
+            label_change.Location = new Point(187, 0);
             label_change.Margin = new Padding(0);
             label_change.Name = "label_change";
-            label_change.Size = new Size(177, 81);
+            label_change.Size = new Size(187, 81);
             label_change.TabIndex = 0;
             label_change.Text = "0";
             label_change.TextAlign = ContentAlignment.MiddleCenter;
@@ -1164,6 +1164,7 @@
             Name = "Form_Pay";
             StartPosition = FormStartPosition.CenterParent;
             Load += Form_Pay_Load;
+            Shown += Form_Pay_Shown;
             tableLayoutPanel_back_pay.ResumeLayout(false);
             customGroupBox_right.ResumeLayout(false);
             tableLayoutPanel_right.ResumeLayout(false);

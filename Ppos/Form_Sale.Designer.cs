@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Sale));
             backgroundWorker_hotkey = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_hotkey_pag = new TableLayoutPanel();
@@ -76,10 +76,10 @@
             button_sale = new Button();
             panel_search = new Panel();
             textBox_search = new TextBox();
-            button_member = new Button();
             button_sale_display = new Button();
             button_hole_bill = new Button();
             button_other = new Button();
+            button_member = new Button();
             customGroupBox_menu = new CustomGroupBox();
             customGroupBox_bill = new CustomGroupBox();
             tableLayoutPanel_bill = new TableLayoutPanel();
@@ -89,7 +89,6 @@
             tableLayoutPanel_sum_qty = new TableLayoutPanel();
             label_sum_qty_title = new Label();
             label_sum_qty = new Label();
-            button_delete_all = new Button();
             tableLayoutPanel_sum_price = new TableLayoutPanel();
             label_sum_price_title = new Label();
             label_sum_price = new Label();
@@ -105,6 +104,7 @@
             tableLayoutPanel_sum_net = new TableLayoutPanel();
             label_price_net = new Label();
             label_price_title = new Label();
+            button_delete_all = new Button();
             customGroupBox_member = new CustomGroupBox();
             tableLayoutPanel_member = new TableLayoutPanel();
             textBox_member = new TextBox();
@@ -307,25 +307,25 @@
             dataGridView_item.BorderStyle = BorderStyle.None;
             dataGridView_item.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView_item.ColumnHeadersHeight = 40;
             dataGridView_item.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item.Columns.AddRange(new DataGridViewColumn[] { id_temp, item_code, small_barcode, barcode, delete, item_name, edit, item_qty, item_unit, item_price, item_price_total, pro, pro_id, pro_type, pro_desc, criterion_type, criterion_value, offer_type, offer_value, discount_type, repeat, premium, effective_member, sale_vat });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = Color.White;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle15.ForeColor = Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle15.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle15;
             dataGridView_item.Dock = DockStyle.Fill;
             dataGridView_item.Enabled = false;
             dataGridView_item.GridColor = Color.Cyan;
@@ -335,14 +335,14 @@
             dataGridView_item.Name = "dataGridView_item";
             dataGridView_item.ReadOnly = true;
             dataGridView_item.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = Color.White;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle16.ForeColor = Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             dataGridView_item.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView_item.RowTemplate.Height = 50;
             dataGridView_item.RowTemplate.Resizable = DataGridViewTriState.False;
@@ -427,10 +427,10 @@
             // item_qty
             // 
             item_qty.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N3";
-            dataGridViewCellStyle2.NullValue = null;
-            item_qty.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N3";
+            dataGridViewCellStyle10.NullValue = null;
+            item_qty.DefaultCellStyle = dataGridViewCellStyle10;
             item_qty.HeaderText = "จำนวน";
             item_qty.MinimumWidth = 6;
             item_qty.Name = "item_qty";
@@ -440,8 +440,8 @@
             // item_unit
             // 
             item_unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            item_unit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            item_unit.DefaultCellStyle = dataGridViewCellStyle11;
             item_unit.HeaderText = "";
             item_unit.MinimumWidth = 6;
             item_unit.Name = "item_unit";
@@ -451,10 +451,10 @@
             // item_price
             // 
             item_price.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            item_price.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            item_price.DefaultCellStyle = dataGridViewCellStyle12;
             item_price.HeaderText = "ราคา";
             item_price.MinimumWidth = 6;
             item_price.Name = "item_price";
@@ -464,10 +464,10 @@
             // item_price_total
             // 
             item_price_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            item_price_total.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = null;
+            item_price_total.DefaultCellStyle = dataGridViewCellStyle13;
             item_price_total.HeaderText = "รวม";
             item_price_total.MinimumWidth = 6;
             item_price_total.Name = "item_price_total";
@@ -477,11 +477,11 @@
             // pro
             // 
             pro.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.ForeColor = Color.Red;
-            dataGridViewCellStyle6.NullValue = resources.GetObject("dataGridViewCellStyle6.NullValue");
-            dataGridViewCellStyle6.SelectionForeColor = Color.Red;
-            pro.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.ForeColor = Color.Red;
+            dataGridViewCellStyle14.NullValue = resources.GetObject("dataGridViewCellStyle14.NullValue");
+            dataGridViewCellStyle14.SelectionForeColor = Color.Red;
+            pro.DefaultCellStyle = dataGridViewCellStyle14;
             pro.HeaderText = "";
             pro.MinimumWidth = 6;
             pro.Name = "pro";
@@ -630,10 +630,10 @@
             tableLayoutPanel_menu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 20F));
             tableLayoutPanel_menu.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_menu.Controls.Add(tableLayoutPanel_search, 0, 0);
-            tableLayoutPanel_menu.Controls.Add(button_member, 1, 0);
             tableLayoutPanel_menu.Controls.Add(button_sale_display, 4, 0);
-            tableLayoutPanel_menu.Controls.Add(button_hole_bill, 2, 0);
+            tableLayoutPanel_menu.Controls.Add(button_hole_bill, 1, 0);
             tableLayoutPanel_menu.Controls.Add(button_other, 3, 0);
+            tableLayoutPanel_menu.Controls.Add(button_member, 2, 0);
             tableLayoutPanel_menu.Dock = DockStyle.Fill;
             tableLayoutPanel_menu.Location = new Point(10, 13);
             tableLayoutPanel_menu.Name = "tableLayoutPanel_menu";
@@ -666,6 +666,7 @@
             button_sale.FlatAppearance.BorderSize = 0;
             button_sale.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_sale.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_sale.FlatStyle = FlatStyle.Flat;
             button_sale.Font = new Font("Segoe UI", 12F);
             button_sale.Location = new Point(0, 0);
             button_sale.Margin = new Padding(0);
@@ -707,29 +708,6 @@
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.KeyDown += textBox_search_KeyDown;
             // 
-            // button_member
-            // 
-            button_member.BackColor = Color.White;
-            button_member.Dock = DockStyle.Fill;
-            button_member.FlatAppearance.BorderSize = 0;
-            button_member.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button_member.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button_member.Font = new Font("Segoe UI", 12F);
-            button_member.Location = new Point(239, 0);
-            button_member.Margin = new Padding(3, 0, 0, 0);
-            button_member.Name = "button_member";
-            button_member.Size = new Size(115, 87);
-            button_member.TabIndex = 1;
-            button_member.TabStop = false;
-            button_member.Text = "สมาชิก";
-            button_member.TextAlign = ContentAlignment.BottomCenter;
-            button_member.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_member.UseVisualStyleBackColor = false;
-            button_member.Visible = false;
-            button_member.Click += button_member_Click;
-            button_member.MouseEnter += hotkey_enter;
-            button_member.MouseLeave += hotkey_leave;
-            // 
             // button_sale_display
             // 
             button_sale_display.BackColor = Color.White;
@@ -757,7 +735,7 @@
             button_hole_bill.Dock = DockStyle.Fill;
             button_hole_bill.FlatAppearance.BorderSize = 0;
             button_hole_bill.Font = new Font("Segoe UI", 12F);
-            button_hole_bill.Location = new Point(357, 0);
+            button_hole_bill.Location = new Point(239, 0);
             button_hole_bill.Margin = new Padding(3, 0, 0, 0);
             button_hole_bill.Name = "button_hole_bill";
             button_hole_bill.Size = new Size(115, 87);
@@ -792,6 +770,29 @@
             button_other.Click += button_other_Click;
             button_other.MouseEnter += hotkey_enter;
             button_other.MouseLeave += hotkey_leave;
+            // 
+            // button_member
+            // 
+            button_member.BackColor = Color.White;
+            button_member.Dock = DockStyle.Fill;
+            button_member.FlatAppearance.BorderSize = 0;
+            button_member.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_member.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_member.Font = new Font("Segoe UI", 12F);
+            button_member.Location = new Point(357, 0);
+            button_member.Margin = new Padding(3, 0, 0, 0);
+            button_member.Name = "button_member";
+            button_member.Size = new Size(115, 87);
+            button_member.TabIndex = 1;
+            button_member.TabStop = false;
+            button_member.Text = "สมาชิก";
+            button_member.TextAlign = ContentAlignment.BottomCenter;
+            button_member.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_member.UseVisualStyleBackColor = false;
+            button_member.Visible = false;
+            button_member.Click += button_member_Click;
+            button_member.MouseEnter += hotkey_enter;
+            button_member.MouseLeave += hotkey_leave;
             // 
             // customGroupBox_menu
             // 
@@ -900,14 +901,13 @@
             // tableLayoutPanel_sum_qty
             // 
             tableLayoutPanel_sum_qty.AutoSize = true;
-            tableLayoutPanel_sum_qty.ColumnCount = 4;
+            tableLayoutPanel_sum_qty.ColumnCount = 3;
+            tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_sum_qty.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_sum_qty.Controls.Add(label_sum_qty_title, 0, 0);
             tableLayoutPanel_sum_qty.Controls.Add(label_sum_qty, 1, 0);
-            tableLayoutPanel_sum_qty.Controls.Add(button_delete_all, 3, 0);
             tableLayoutPanel_sum_qty.Dock = DockStyle.Bottom;
             tableLayoutPanel_sum_qty.Location = new Point(0, 244);
             tableLayoutPanel_sum_qty.Margin = new Padding(0);
@@ -926,7 +926,7 @@
             label_sum_qty_title.Margin = new Padding(0);
             label_sum_qty_title.Name = "label_sum_qty_title";
             label_sum_qty_title.Padding = new Padding(0, 0, 6, 0);
-            label_sum_qty_title.Size = new Size(200, 35);
+            label_sum_qty_title.Size = new Size(205, 35);
             label_sum_qty_title.TabIndex = 0;
             label_sum_qty_title.Text = "จำนวนรวม :";
             label_sum_qty_title.TextAlign = ContentAlignment.MiddleRight;
@@ -938,7 +938,7 @@
             // 
             label_sum_qty.Dock = DockStyle.Fill;
             label_sum_qty.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label_sum_qty.Location = new Point(200, 0);
+            label_sum_qty.Location = new Point(205, 0);
             label_sum_qty.Margin = new Padding(0);
             label_sum_qty.Name = "label_sum_qty";
             label_sum_qty.Padding = new Padding(0, 0, 6, 0);
@@ -949,37 +949,13 @@
             label_sum_qty.MouseEnter += sum_bill_enter;
             label_sum_qty.MouseLeave += sum_bill_leave;
             // 
-            // button_delete_all
-            // 
-            button_delete_all.BackColor = Color.Transparent;
-            button_delete_all.BackgroundImageLayout = ImageLayout.Zoom;
-            button_delete_all.Dock = DockStyle.Fill;
-            button_delete_all.FlatAppearance.BorderSize = 0;
-            button_delete_all.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button_delete_all.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            button_delete_all.FlatStyle = FlatStyle.Flat;
-            button_delete_all.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_delete_all.ForeColor = Color.Red;
-            button_delete_all.Location = new Point(411, 0);
-            button_delete_all.Margin = new Padding(0);
-            button_delete_all.Name = "button_delete_all";
-            button_delete_all.Size = new Size(200, 35);
-            button_delete_all.TabIndex = 3;
-            button_delete_all.Text = "ลบทั้งหมด";
-            button_delete_all.TextAlign = ContentAlignment.MiddleRight;
-            button_delete_all.TextImageRelation = TextImageRelation.ImageBeforeText;
-            button_delete_all.UseVisualStyleBackColor = false;
-            button_delete_all.Click += button_delete_all_Click;
-            button_delete_all.MouseEnter += hotkey_enter;
-            button_delete_all.MouseLeave += hotkey_leave;
-            // 
             // tableLayoutPanel_sum_price
             // 
             tableLayoutPanel_sum_price.AutoSize = true;
             tableLayoutPanel_sum_price.ColumnCount = 3;
+            tableLayoutPanel_sum_price.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_sum_price.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_sum_price.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_sum_price.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_sum_price.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_sum_price.Controls.Add(label_sum_price_title, 0, 0);
             tableLayoutPanel_sum_price.Controls.Add(label_sum_price, 1, 0);
             tableLayoutPanel_sum_price.Dock = DockStyle.Bottom;
@@ -987,7 +963,6 @@
             tableLayoutPanel_sum_price.Name = "tableLayoutPanel_sum_price";
             tableLayoutPanel_sum_price.RowCount = 1;
             tableLayoutPanel_sum_price.RowStyles.Add(new RowStyle(SizeType.Absolute, 35F));
-            tableLayoutPanel_sum_price.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_sum_price.Size = new Size(611, 35);
             tableLayoutPanel_sum_price.TabIndex = 16;
             tableLayoutPanel_sum_price.Visible = false;
@@ -1000,7 +975,7 @@
             label_sum_price_title.Margin = new Padding(0);
             label_sum_price_title.Name = "label_sum_price_title";
             label_sum_price_title.Padding = new Padding(0, 0, 6, 0);
-            label_sum_price_title.Size = new Size(200, 35);
+            label_sum_price_title.Size = new Size(205, 35);
             label_sum_price_title.TabIndex = 1;
             label_sum_price_title.Text = "ราคารวม :";
             label_sum_price_title.TextAlign = ContentAlignment.MiddleRight;
@@ -1012,7 +987,7 @@
             // 
             label_sum_price.Dock = DockStyle.Fill;
             label_sum_price.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label_sum_price.Location = new Point(200, 0);
+            label_sum_price.Location = new Point(205, 0);
             label_sum_price.Margin = new Padding(0);
             label_sum_price.Name = "label_sum_price";
             label_sum_price.Padding = new Padding(0, 0, 6, 0);
@@ -1027,9 +1002,9 @@
             // 
             tableLayoutPanel_discount_pro.AutoSize = true;
             tableLayoutPanel_discount_pro.ColumnCount = 3;
+            tableLayoutPanel_discount_pro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_discount_pro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_discount_pro.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_discount_pro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_discount_pro.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_discount_pro.Controls.Add(label_dis_pro_title, 0, 0);
             tableLayoutPanel_discount_pro.Controls.Add(label_dis_pro, 1, 0);
             tableLayoutPanel_discount_pro.Dock = DockStyle.Bottom;
@@ -1050,7 +1025,7 @@
             label_dis_pro_title.Margin = new Padding(0);
             label_dis_pro_title.Name = "label_dis_pro_title";
             label_dis_pro_title.Padding = new Padding(0, 0, 6, 0);
-            label_dis_pro_title.Size = new Size(200, 35);
+            label_dis_pro_title.Size = new Size(205, 35);
             label_dis_pro_title.TabIndex = 0;
             label_dis_pro_title.Text = "ส่วนลดโปรโมชั่น :";
             label_dis_pro_title.TextAlign = ContentAlignment.MiddleRight;
@@ -1062,7 +1037,7 @@
             // 
             label_dis_pro.Dock = DockStyle.Fill;
             label_dis_pro.Font = new Font("Segoe UI", 12F);
-            label_dis_pro.Location = new Point(200, 0);
+            label_dis_pro.Location = new Point(205, 0);
             label_dis_pro.Margin = new Padding(0);
             label_dis_pro.Name = "label_dis_pro";
             label_dis_pro.Padding = new Padding(0, 0, 6, 0);
@@ -1077,9 +1052,9 @@
             // 
             tableLayoutPanel_discount_member.AutoSize = true;
             tableLayoutPanel_discount_member.ColumnCount = 3;
+            tableLayoutPanel_discount_member.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_discount_member.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_discount_member.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_discount_member.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_discount_member.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_discount_member.Controls.Add(label_dis_member_title, 0, 0);
             tableLayoutPanel_discount_member.Controls.Add(label_dis_member, 1, 0);
             tableLayoutPanel_discount_member.Dock = DockStyle.Bottom;
@@ -1100,7 +1075,7 @@
             label_dis_member_title.Margin = new Padding(0);
             label_dis_member_title.Name = "label_dis_member_title";
             label_dis_member_title.Padding = new Padding(0, 0, 6, 0);
-            label_dis_member_title.Size = new Size(200, 35);
+            label_dis_member_title.Size = new Size(205, 35);
             label_dis_member_title.TabIndex = 0;
             label_dis_member_title.Text = "ส่วนลดสมาชิก :";
             label_dis_member_title.TextAlign = ContentAlignment.MiddleRight;
@@ -1112,7 +1087,7 @@
             // 
             label_dis_member.Dock = DockStyle.Fill;
             label_dis_member.Font = new Font("Segoe UI", 12F);
-            label_dis_member.Location = new Point(200, 0);
+            label_dis_member.Location = new Point(205, 0);
             label_dis_member.Margin = new Padding(0);
             label_dis_member.Name = "label_dis_member";
             label_dis_member.Padding = new Padding(0, 0, 6, 0);
@@ -1127,9 +1102,9 @@
             // 
             tableLayoutPanel_discount_round.AutoSize = true;
             tableLayoutPanel_discount_round.ColumnCount = 3;
+            tableLayoutPanel_discount_round.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_discount_round.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_discount_round.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_discount_round.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_discount_round.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_discount_round.Controls.Add(label_dis_round, 1, 0);
             tableLayoutPanel_discount_round.Controls.Add(label_dis_round_title, 0, 0);
             tableLayoutPanel_discount_round.Dock = DockStyle.Bottom;
@@ -1145,7 +1120,7 @@
             // 
             label_dis_round.Dock = DockStyle.Fill;
             label_dis_round.Font = new Font("Segoe UI", 12F);
-            label_dis_round.Location = new Point(200, 0);
+            label_dis_round.Location = new Point(205, 0);
             label_dis_round.Margin = new Padding(0);
             label_dis_round.Name = "label_dis_round";
             label_dis_round.Padding = new Padding(0, 0, 6, 0);
@@ -1164,7 +1139,7 @@
             label_dis_round_title.Margin = new Padding(0);
             label_dis_round_title.Name = "label_dis_round_title";
             label_dis_round_title.Padding = new Padding(0, 0, 6, 0);
-            label_dis_round_title.Size = new Size(200, 35);
+            label_dis_round_title.Size = new Size(205, 35);
             label_dis_round_title.TabIndex = 0;
             label_dis_round_title.Text = "ส่วนลดปัดเศษ :";
             label_dis_round_title.TextAlign = ContentAlignment.MiddleRight;
@@ -1176,18 +1151,19 @@
             // 
             tableLayoutPanel_sum_net.AutoSize = true;
             tableLayoutPanel_sum_net.ColumnCount = 3;
+            tableLayoutPanel_sum_net.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_sum_net.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_sum_net.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_sum_net.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_sum_net.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_sum_net.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_sum_net.Controls.Add(label_price_net, 1, 0);
             tableLayoutPanel_sum_net.Controls.Add(label_price_title, 0, 0);
+            tableLayoutPanel_sum_net.Controls.Add(button_delete_all, 2, 0);
             tableLayoutPanel_sum_net.Dock = DockStyle.Bottom;
             tableLayoutPanel_sum_net.Location = new Point(0, 419);
             tableLayoutPanel_sum_net.Margin = new Padding(0);
             tableLayoutPanel_sum_net.Name = "tableLayoutPanel_sum_net";
             tableLayoutPanel_sum_net.RowCount = 1;
             tableLayoutPanel_sum_net.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
-            tableLayoutPanel_sum_net.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_sum_net.Size = new Size(611, 50);
             tableLayoutPanel_sum_net.TabIndex = 5;
             tableLayoutPanel_sum_net.Visible = false;
@@ -1196,7 +1172,7 @@
             // 
             label_price_net.Dock = DockStyle.Fill;
             label_price_net.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_price_net.Location = new Point(200, 0);
+            label_price_net.Location = new Point(205, 0);
             label_price_net.Margin = new Padding(0);
             label_price_net.Name = "label_price_net";
             label_price_net.Size = new Size(200, 50);
@@ -1213,13 +1189,37 @@
             label_price_title.Location = new Point(0, 0);
             label_price_title.Margin = new Padding(0);
             label_price_title.Name = "label_price_title";
-            label_price_title.Size = new Size(200, 50);
+            label_price_title.Size = new Size(205, 50);
             label_price_title.TabIndex = 1;
             label_price_title.Text = "ราคาสุทธิ :";
             label_price_title.TextAlign = ContentAlignment.MiddleRight;
             label_price_title.DoubleClick += label_price_title_DoubleClick;
             label_price_title.MouseEnter += sum_bill_enter;
             label_price_title.MouseLeave += sum_bill_leave;
+            // 
+            // button_delete_all
+            // 
+            button_delete_all.BackColor = Color.Transparent;
+            button_delete_all.BackgroundImageLayout = ImageLayout.Zoom;
+            button_delete_all.Dock = DockStyle.Fill;
+            button_delete_all.FlatAppearance.BorderSize = 0;
+            button_delete_all.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_delete_all.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_delete_all.FlatStyle = FlatStyle.Flat;
+            button_delete_all.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button_delete_all.ForeColor = Color.Red;
+            button_delete_all.Location = new Point(405, 0);
+            button_delete_all.Margin = new Padding(0);
+            button_delete_all.Name = "button_delete_all";
+            button_delete_all.Size = new Size(206, 50);
+            button_delete_all.TabIndex = 3;
+            button_delete_all.Text = "ลบทั้งหมด";
+            button_delete_all.TextAlign = ContentAlignment.MiddleRight;
+            button_delete_all.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_delete_all.UseVisualStyleBackColor = false;
+            button_delete_all.Click += button_delete_all_Click;
+            button_delete_all.MouseEnter += hotkey_enter;
+            button_delete_all.MouseLeave += hotkey_leave;
             // 
             // customGroupBox_member
             // 
@@ -1460,10 +1460,7 @@
         private Panel panel_discount_member;
         private Panel panel_discount_pro;
         private Panel panel_bottom_bill;
-        private TableLayoutPanel tableLayoutPanel_sum_net;
-        private TableLayoutPanel tableLayoutPanel_discount_member;
-        private TableLayoutPanel tableLayoutPanel_discount_pro;
-        private TableLayoutPanel tableLayoutPanel_sum_qty;
+      
         private Label label_dis_round_title;
         private Label label_dis_round;
         private Label label_price_title;
@@ -1493,8 +1490,15 @@
         private TableLayoutPanel tableLayoutPanel_left;
         private TableLayoutPanel tableLayoutPanel_right;
         private TableLayoutPanel tableLayoutPanel_back;
-        private TableLayoutPanel tableLayoutPanel_discount_round;
+        private TableLayoutPanel tableLayoutPanel_sum_qty;
         private TableLayoutPanel tableLayoutPanel_sum_price;
+        private TableLayoutPanel tableLayoutPanel_discount_pro;
+        private TableLayoutPanel tableLayoutPanel_discount_member;
+        private TableLayoutPanel tableLayoutPanel_discount_round;
+        private TableLayoutPanel tableLayoutPanel_sum_net;
+        
+        
+       
         private DataGridViewTextBoxColumn id_temp;
         private DataGridViewTextBoxColumn item_code;
         private DataGridViewTextBoxColumn small_barcode;

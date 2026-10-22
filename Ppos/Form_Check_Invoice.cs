@@ -45,6 +45,7 @@ namespace Ppos
                 label_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
                 textBox_search.LostFocus += TextBox_search_LostFocus;
+
             }
             catch
             {

@@ -964,6 +964,7 @@
             // 
             // tableLayoutPanel_affective
             // 
+            tableLayoutPanel_affective.BackColor = Color.Transparent;
             tableLayoutPanel_affective.ColumnCount = 2;
             tableLayoutPanel_affective.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_affective.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));

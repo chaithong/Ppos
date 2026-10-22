@@ -489,6 +489,16 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'), '', '', 'custom_cost_adjust', 1 
                                                    WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'custom_cost_adjust') ";
                         cmd_sqlite.ExecuteNonQuery();
+                        // show hotkey
+                        cmd_sqlite.CommandText = @"INSERT INTO Setting_Configure(created_by, created_date, updated_by, updated_date, title, status) 
+                                                   SELECT '',datetime('now', 'localtime'), '', '', 'sale_show_hotkey', 1 
+                                                   WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'sale_show_hotkey') ";
+                        cmd_sqlite.ExecuteNonQuery();
+                        // show keypad
+                        cmd_sqlite.CommandText = @"INSERT INTO Setting_Configure(created_by, created_date, updated_by, updated_date, title, status) 
+                                                   SELECT '',datetime('now', 'localtime'), '', '', 'pay_show_keypad', 1 
+                                                   WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'pay_show_keypad') ";
+                        cmd_sqlite.ExecuteNonQuery();
 
                         // สร้าง store
 
@@ -512,7 +522,7 @@ namespace Ppos.Class
                         cmd_sqlite.CommandText = @"INSERT INTO Store(created_by, created_date, updated_by, updated_date, 
                                                    store_no,store_name,tax_id,address,sub_district,
                                                    district,province,postal_code,phone,email) 
-                                                   SELECT '',datetime('now', 'localtime'), '', '', '' ,'','','','','','','','',''
+                                                   SELECT '',datetime('now', 'localtime'), '', '', '1234' ,'Ppos','','','','','','','',''
                                                    WHERE NOT EXISTS(SELECT 1 from Store) ";
                         cmd_sqlite.ExecuteNonQuery();
 

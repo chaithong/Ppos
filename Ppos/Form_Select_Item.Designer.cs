@@ -218,7 +218,7 @@
             // 
             tableLayoutPanel_top.ColumnCount = 3;
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_top.Controls.Add(customGroupBox_search, 1, 1);
             tableLayoutPanel_top.Dock = DockStyle.Fill;
@@ -239,11 +239,11 @@
             customGroupBox_search.Controls.Add(textBox_search);
             customGroupBox_search.Dock = DockStyle.Fill;
             customGroupBox_search.Font = new Font("Segoe UI", 1F);
-            customGroupBox_search.Location = new Point(290, 12);
+            customGroupBox_search.Location = new Point(240, 12);
             customGroupBox_search.Margin = new Padding(0);
             customGroupBox_search.Name = "customGroupBox_search";
             customGroupBox_search.Padding = new Padding(10);
-            customGroupBox_search.Size = new Size(300, 70);
+            customGroupBox_search.Size = new Size(400, 70);
             customGroupBox_search.TabIndex = 1;
             customGroupBox_search.TabStop = false;
             // 
@@ -255,7 +255,7 @@
             textBox_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_search.Location = new Point(10, 13);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(280, 44);
+            textBox_search.Size = new Size(380, 44);
             textBox_search.TabIndex = 1;
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.TextChanged += textBox_search_TextChanged;
