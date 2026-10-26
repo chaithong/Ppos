@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using Hardware.Info;
+using Microsoft.Office.Interop.Excel;
 using Ppos.Class;
 using System;
 using System.Collections.Generic;
@@ -126,27 +127,44 @@ namespace Ppos
                 }
                 else
                 {
-                    // ถ้ามีภาพ master
-                    if (System.IO.File.Exists(Form_Login.logo_path + @"\master.Png"))
+                    if(store_no.Text.Trim() != string.Empty)
                     {
-                        // ถ้ามีภาพเดิม ชื่อเดิมจะทำการลบก่อน
-                        if (System.IO.File.Exists(Form_Login.logo_path + @"\Logo.Png"))
+                        if(store_name.Text.Trim() != string.Empty)
                         {
+                            // ถ้ามีภาพ master
+                            if (System.IO.File.Exists(Form_Login.logo_path + @"\master.Png"))
+                            {
+                                // ถ้ามีภาพเดิม ชื่อเดิมจะทำการลบก่อน
+                                if (System.IO.File.Exists(Form_Login.logo_path + @"\Logo.Png"))
+                                {
 
-                            System.IO.File.Delete(Form_Login.logo_path + @"\Logo.Png");
+                                    System.IO.File.Delete(Form_Login.logo_path + @"\Logo.Png");
+                                }
+                                // เปลี่ยนชื่อ master เป็น barcode
+                                System.IO.File.Move(Form_Login.logo_path + @"\master.Png", Form_Login.logo_path + @"\Logo.Png");
+                            }
+                            insertStore();
+                            Enabled(false);
+                            // ปุ่มแก้ไข
+                            edit_save = true;
+                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
+                            button_edit_save.Text = "แก้ไข";
+
+                            // ปิดปุ่มยกเลิก
+                            button_cancel.Enabled = false;
                         }
-                        // เปลี่ยนชื่อ master เป็น barcode
-                        System.IO.File.Move(Form_Login.logo_path + @"\master.Png", Form_Login.logo_path + @"\Logo.Png");
+                        else
+                        {
+                            MessageBox.Show("กรุณากรองชื่อร้านก่อนบันทึก !!!", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            store_name.Focus();
+                        }
                     }
-                    insertStore();
-                    Enabled(false);
-                    // ปุ่มแก้ไข
-                    edit_save = true;
-                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
-                    button_edit_save.Text = "แก้ไข";
+                    else
+                    {
+                        MessageBox.Show("กรุณากรองรหัสร้านก่อนบันทึก !!!", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        store_no.Focus();
+                    }
 
-                    // เปิดปุ่มยกเลิก
-                    button_cancel.Enabled = false;
                 }
             }
             catch

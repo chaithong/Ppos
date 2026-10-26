@@ -202,10 +202,6 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void Form_Pay_Load(object sender, EventArgs e)
-        {
-           
-        }
 
         private void Form_Pay_Shown(object sender, EventArgs e)
         {
@@ -214,7 +210,7 @@ namespace Ppos
                 label_price_net.Text = Form_Sale.price_net;
                 textBox_cash.Focus();
 
-               // button_cash_Click(sender, e);
+                button_cash_Click(sender, e);
          
             }
             catch (Exception ex)

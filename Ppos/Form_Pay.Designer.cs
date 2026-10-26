@@ -1163,7 +1163,6 @@
             MinimizeBox = false;
             Name = "Form_Pay";
             StartPosition = FormStartPosition.CenterParent;
-            Load += Form_Pay_Load;
             Shown += Form_Pay_Shown;
             tableLayoutPanel_back_pay.ResumeLayout(false);
             customGroupBox_right.ResumeLayout(false);

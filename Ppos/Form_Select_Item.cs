@@ -293,11 +293,15 @@ namespace Ppos
         {
             try
             {
-                count_search = 0;
-                if (!timer_search.Enabled)
+                if(!backgroundWorker_search.IsBusy)
                 {
-                    timer_search.Start();
+                    count_search = 0;
+                    if (!timer_search.Enabled)
+                    {
+                        timer_search.Start();
+                    }
                 }
+               
             }
             catch (Exception ex)
             {

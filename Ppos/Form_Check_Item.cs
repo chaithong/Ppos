@@ -80,14 +80,16 @@ namespace Ppos
         {
             try
             {
-
                 count_search = 0;
                 if (textBox_search.Text != string.Empty)
                 {
+
                     if (!timer_search.Enabled)
                     {
                         timer_search.Start();
                     }
+
+
                 }
                 else
                 {
@@ -97,7 +99,6 @@ namespace Ppos
                         timer_search.Stop();
                     }
                 }
-
             }
             catch (Exception ex)
             {

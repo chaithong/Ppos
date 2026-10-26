@@ -99,7 +99,7 @@ namespace Ppos
         {
             try
             {
-                if(!Class_Parameter.runbackground)
+               // if(!Class_Parameter.runbackground)
                 {
                     Button b = (Button)sender;
                     if (b.Name == "button_check_item" && Class_Parameter.menu_check != 1)
@@ -107,7 +107,7 @@ namespace Ppos
                         Class_Parameter.menu_check = 1;
                         foreach (Control ctrl in panel_check.Controls)
                         {
-                            if (ctrl is Form f && ctrl.Name != "Form_Check_Item")
+                            if (ctrl is Form f )
                             {
                                 f.Close();
                                 ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
@@ -133,7 +133,7 @@ namespace Ppos
                         Class_Parameter.menu_check = 2;
                         foreach (Control ctrl in panel_check.Controls)
                         {
-                            if (ctrl is Form f && ctrl.Name != "Form_Check_Promotion")
+                            if (ctrl is Form f )
                             {
                                 f.Close();
                                 ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
@@ -160,7 +160,7 @@ namespace Ppos
                         Class_Parameter.menu_check = 3;
                         foreach (Control ctrl in panel_check.Controls)
                         {
-                            if (ctrl is Form f && ctrl.Name != "Form_Check_Invoice")
+                            if (ctrl is Form f )
                             {
                                 f.Close();
                                 ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
@@ -218,7 +218,23 @@ namespace Ppos
 
         private void Form_Check_FormClosing(object sender, FormClosingEventArgs e)
         {
-           
+            try
+            {
+                foreach (Control ctrl in panel_check.Controls)
+                {
+
+                    if (ctrl is Form f)
+                    {
+
+                        f.Close();
+                        ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
+                    }
+                }
+            }
+            catch
+            {
+
+            }
         }
     }
 }

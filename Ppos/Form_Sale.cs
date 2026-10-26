@@ -151,6 +151,19 @@ namespace Ppos
                     tableLayoutPanel_discount_round.RowStyles[0].Height = 60;
                     tableLayoutPanel_sum_net.RowStyles[0].Height = 80;
 
+                    tableLayoutPanel_sum_qty.Dock = DockStyle.Top;
+                    tableLayoutPanel_sum_qty.BringToFront();
+                    tableLayoutPanel_sum_price.Dock = DockStyle.Top;
+                    tableLayoutPanel_sum_price.BringToFront();
+                    tableLayoutPanel_discount_pro.Dock = DockStyle.Top;
+                    tableLayoutPanel_discount_pro.BringToFront();
+                    tableLayoutPanel_discount_member.Dock = DockStyle.Top;
+                    tableLayoutPanel_discount_member.BringToFront();
+                    tableLayoutPanel_discount_round.Dock = DockStyle.Top;
+                    tableLayoutPanel_discount_round.BringToFront();
+                    tableLayoutPanel_sum_net.Dock = DockStyle.Top;
+                    tableLayoutPanel_sum_net.BringToFront();
+
                 }
                 // ปรับตำแหน่งซ้ายขวก
                 if (Class_Parameter.sale_hotkey_left)
@@ -228,9 +241,6 @@ namespace Ppos
 
             }
         }
-
-
-
         private void dataGridView_item_MouseWheel(object sender, MouseEventArgs e)
         {
             // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
@@ -316,7 +326,6 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void sort_hotkey()
         {
             try
@@ -2121,7 +2130,7 @@ hole FROM Invoice_Body_Temp where void = false ";
             try
             {
                 System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-                // label.ForeColor = Color.Lime;
+
                 label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size + 2, label.Font.Style);
             }
             catch
@@ -2135,7 +2144,7 @@ hole FROM Invoice_Body_Temp where void = false ";
             try
             {
                 System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-                // label.ForeColor = Color.Black;
+
                 label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
             }
             catch
@@ -2281,8 +2290,8 @@ hole FROM Invoice_Body_Temp where void = false ";
             try
             {
                 if (dataGridView_item.RowCount > 0 &&
-                    label_price_net.Text != "0.00" &&
-                    parentPanel.Controls.OfType<Form>().Count() == 1)
+                    label_price_net.Text != "0.00" //&& parentPanel.Controls.OfType<Form>().Count() == 1
+                    )
                 {
                     // ส่งค่าให้ หน้า ชำระเงิน
                     price_net = label_price_net.Text.Split(".")[0];
@@ -2526,14 +2535,44 @@ hole FROM Invoice_Body_Temp where void = false ";
                             Class_Parameter.visible_dis_member = true;
                             Class_Parameter.visible_dis_round = true;
 
-                            tableLayoutPanel_sum_qty.Visible = true;
-                            tableLayoutPanel_sum_price.Visible = true;
-                            tableLayoutPanel_discount_pro.Visible = true;
-                            if (discount_member)
+                            // ถ้าโชว์ hotkey
+                            if(Class_Parameter.sale_show_hotkey)
                             {
-                                tableLayoutPanel_discount_member.Visible = true;
+                              
+
+                                tableLayoutPanel_sum_net.BringToFront();
+                                tableLayoutPanel_discount_round.Visible = true;
+                                tableLayoutPanel_discount_round.BringToFront();
+                                if (discount_member)
+                                {
+                                    tableLayoutPanel_discount_member.Visible = true;
+                                    tableLayoutPanel_discount_member.BringToFront();
+                                }
+                                tableLayoutPanel_discount_pro.Visible = true;
+                                tableLayoutPanel_discount_pro.BringToFront();
+                                tableLayoutPanel_sum_price.Visible = true;
+                                tableLayoutPanel_sum_price.BringToFront();
+                                tableLayoutPanel_sum_qty.Visible = true;
+                                tableLayoutPanel_sum_qty.BringToFront();
                             }
-                            tableLayoutPanel_discount_round.Visible = true;
+                            else
+                            {
+                                tableLayoutPanel_sum_qty.Visible = true;
+                                tableLayoutPanel_sum_qty.BringToFront();
+                                tableLayoutPanel_sum_price.Visible = true;
+                                tableLayoutPanel_sum_price.BringToFront();
+                                tableLayoutPanel_discount_pro.Visible = true;
+                                tableLayoutPanel_discount_pro.BringToFront();
+                                if (discount_member)
+                                {
+                                    tableLayoutPanel_discount_member.Visible = true;
+                                    tableLayoutPanel_discount_member.BringToFront();
+                                }
+                                tableLayoutPanel_discount_round.Visible = true;
+                                tableLayoutPanel_discount_round.BringToFront();
+
+                                tableLayoutPanel_sum_net.BringToFront();
+                            }
                         }
                     }
                 }

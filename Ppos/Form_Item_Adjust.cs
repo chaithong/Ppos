@@ -17,7 +17,7 @@ namespace Ppos
     {
         public static string item_barcode, item_name, item_unit, item_cost_last, item_cost_avg;
         DataTable dt;
-        int Limit = 50;
+        int Limit = 20;
         int set_search = 5, count_set_search = 0;
         string set_item_total, set_qty_small, set_cost_avg, set_cost_last, set_size;
         int shows = 0;

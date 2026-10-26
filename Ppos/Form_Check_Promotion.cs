@@ -1,4 +1,5 @@
-﻿using Ppos.Class;
+﻿using Microsoft.Office.Interop.Excel;
+using Ppos.Class;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,7 @@ namespace Ppos
     {
         int count_search, set_search = 5;
         public static string pro_id;
+        BackgroundWorker worker;
         public Form_Check_Promotion()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace Ppos
 
             textBox_search.LostFocus += TextBox_search_LostFocus;
 
-           
+            backgroundWorker_search.WorkerSupportsCancellation = true;
         }
         private void TextBox_search_LostFocus(object? sender, EventArgs e)
         {
@@ -90,6 +92,7 @@ namespace Ppos
         {
             try
             {
+                worker = sender as BackgroundWorker;
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -139,6 +142,12 @@ namespace Ppos
 
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
+                                // ตรวจสอบว่าผู้ใช้กดปุ่ม Cancel หรือยังในทุกๆ รอบของลูป
+                                if (worker.CancellationPending)
+                                {
+                                    e.Cancel = true; // บอกระบบว่างานนี้จบลงเพราะถูกยกเลิก
+                                    break;           // ออกจาก For Loop ทันที
+                                }
                                 if (dt.Rows[0]["end_time"].ToString()! != "00:00")
                                 {
                                     time_start_end = dt.Rows[i]["start_time"] + " ถึง " + dt.Rows[i]["end_time"];
@@ -292,12 +301,18 @@ namespace Ppos
         {
             try
             {
+                if (backgroundWorker_search.IsBusy)
+                {
+                    backgroundWorker_search.CancelAsync();
+                }
 
                 count_search = 0;
                 if (!timer_search.Enabled)
                 {
                     timer_search.Start();
                 }
+
+
 
             }
             catch (Exception ex)
@@ -346,14 +361,39 @@ namespace Ppos
         {
             try
             {
-               
+
                 Form_Promotion_Detail form_Promotion_Detail = new Form_Promotion_Detail();
-                form_Promotion_Detail.Size = new Size(this.Width / 2, this.Height * 9 / 10);
+                form_Promotion_Detail.Size = new Size(this.Width / 2, this.Height);
                 form_Promotion_Detail.ShowDialog(this);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Form_Check_Promotion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                // 1. ตรวจสอบว่า BackgroundWorker กำลังทำงานอยู่หรือไม่
+                if (backgroundWorker_search.IsBusy)
+                {
+                    // 2. ส่งสัญญาณสั่งยกเลิกลูป (ทำงานร่วมกับ CancellationPending ใน DoWork)
+                    backgroundWorker_search.CancelAsync();
+
+                    // 3. เพื่อความปลอดภัยสูงสุด: วนลูปสั้นๆ รอให้ Thread ปิดตัวเองลงจริงๆ
+                    // (ป้องกันไม่ให้ฟอร์มปิดตัวไปก่อนที่ Thread จะจัดการล้างข้อมูลเสร็จ)
+                    while (backgroundWorker_search.IsBusy)
+                    {
+                        // ป้องกัน UI ค้างระหว่างรอ Thread ปิดตัว
+                        System.Windows.Forms.Application.DoEvents();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

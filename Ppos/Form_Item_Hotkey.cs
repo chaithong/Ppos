@@ -22,7 +22,7 @@ namespace Ppos
         string set_item_total;
         int set_search = 5, count_set_search = 0;
         System.Data.DataTable dt;
-        int Limit = 50; // จำนวนแสดงผล
+        int Limit = 20; // จำนวนแสดงผล
         int C = 0, R = 0;
         TableLayoutPanel tableLayoutPanel_detail = new TableLayoutPanel();
         System.Windows.Forms.Button button = new System.Windows.Forms.Button();
@@ -177,7 +177,7 @@ namespace Ppos
                 dataGridView_item.Enabled = e;
                 textBox_search.Enabled = e;
                 tableLayoutPanel_set.Enabled = e;
-                tableLayoutPanel_sethotkey.Enabled = e;
+                tableLayoutPanel_set_hotkey.Enabled = e;
 
                 pictureBox_load_hotkey.Visible = !e;
             }
@@ -333,7 +333,7 @@ namespace Ppos
         {
             try
             {
-
+                tableLayoutPanel_set_hotkey.Visible = true;
                 panel_detail.Controls.Add(tableLayoutPanel_detail);
                 Class_Scroll_Panel.EnableDragScroll(panel_detail);
                 Enable(true);

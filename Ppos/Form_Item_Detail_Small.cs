@@ -28,7 +28,7 @@ namespace Ppos
             set_effective_hotkey;
         string set_item_total;
         int Corners = 30; // มุม
-        int Limit = 50; // จำนวนแสดงผล
+        int Limit = 20; // จำนวนแสดงผล
         int set_search = 5, count_set_search = 0;
         int shows = 0;
 

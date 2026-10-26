@@ -14,7 +14,7 @@ namespace Ppos
     public partial class Form_Calendar : Form
     {
         int set_month, set_year;
-        public bool cancel = false;
+        public bool cancel = true;
         Label L_select_day = new Label();
         public Form_Calendar()
         {
@@ -26,7 +26,7 @@ namespace Ppos
 
             button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(40, 40));
 
-            button_cancel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(40, 40));
+           
 
             label_title.Text = Class_Parameter.calendar_title;
             set_month = Convert.ToInt16(Class_Parameter.calendar_month);
@@ -51,11 +51,7 @@ namespace Ppos
             }
         }
 
-        private void button_exit_Click(object sender, EventArgs e)
-        {
-            cancel = true;
-            this.Close();
-        }
+     
         public void getDate(int month, int year)
         {
             try
@@ -782,6 +778,7 @@ namespace Ppos
             {
                 if (label_set_days.Text != "--")
                 {
+                    cancel = false;
                     this.Close();
                 }
             }
@@ -827,6 +824,7 @@ namespace Ppos
 
                 if (L.Text != "")
                 {
+                    cancel = false;
                     label_set_days.Text = Convert.ToInt16(L.Text).ToString("00") + "-" + set_month.ToString("00") + "-" + set_year;
                     this.Close();
                 }

@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
             tableLayoutPanel_back = new TableLayoutPanel();
             tableLayoutPanel_top = new TableLayoutPanel();
             customGroupBox_search = new CustomGroupBox();
             textBox_search = new TextBox();
             dataGridView_promotion = new DataGridView();
-            backgroundWorker_search = new System.ComponentModel.BackgroundWorker();
-            timer_search = new System.Windows.Forms.Timer(components);
             Column1 = new DataGridViewTextBoxColumn();
             seq = new DataGridViewTextBoxColumn();
             detail = new DataGridViewImageColumn();
@@ -54,6 +52,8 @@
             time = new DataGridViewTextBoxColumn();
             day = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
+            backgroundWorker_search = new System.ComponentModel.BackgroundWorker();
+            timer_search = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
             tableLayoutPanel_top.SuspendLayout();
             customGroupBox_search.SuspendLayout();
@@ -136,25 +136,25 @@
             dataGridView_promotion.BorderStyle = BorderStyle.None;
             dataGridView_promotion.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_promotion.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView_promotion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.True;
+            dataGridView_promotion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView_promotion.ColumnHeadersHeight = 50;
             dataGridView_promotion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_promotion.Columns.AddRange(new DataGridViewColumn[] { Column1, seq, detail, id, pro_type, pro_desc, date, time, day, Column2 });
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dataGridView_promotion.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle16.BackColor = Color.White;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle16.ForeColor = Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
+            dataGridView_promotion.DefaultCellStyle = dataGridViewCellStyle16;
             dataGridView_promotion.Dock = DockStyle.Fill;
             dataGridView_promotion.Enabled = false;
             dataGridView_promotion.GridColor = Color.Cyan;
@@ -177,15 +177,6 @@
             dataGridView_promotion.CellMouseLeave += dataGridView_promotion_CellMouseLeave;
             dataGridView_promotion.CellMouseUp += dataGridView_promotion_CellMouseUp;
             // 
-            // backgroundWorker_search
-            // 
-            backgroundWorker_search.DoWork += backgroundWorker_search_DoWork;
-            backgroundWorker_search.RunWorkerCompleted += backgroundWorker_search_RunWorkerCompleted;
-            // 
-            // timer_search
-            // 
-            timer_search.Tick += timer_search_Tick;
-            // 
             // Column1
             // 
             Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -197,10 +188,10 @@
             // seq
             // 
             seq.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            seq.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.False;
+            seq.DefaultCellStyle = dataGridViewCellStyle10;
             seq.HeaderText = "";
             seq.MinimumWidth = 6;
             seq.Name = "seq";
@@ -227,8 +218,8 @@
             // pro_type
             // 
             pro_type.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            pro_type.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            pro_type.DefaultCellStyle = dataGridViewCellStyle11;
             pro_type.HeaderText = "ประเภท";
             pro_type.MinimumWidth = 6;
             pro_type.Name = "pro_type";
@@ -238,8 +229,8 @@
             // pro_desc
             // 
             pro_desc.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            pro_desc.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            pro_desc.DefaultCellStyle = dataGridViewCellStyle12;
             pro_desc.HeaderText = "ชื่อโปรโมชั่น";
             pro_desc.MinimumWidth = 6;
             pro_desc.Name = "pro_desc";
@@ -249,8 +240,8 @@
             // date
             // 
             date.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            date.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            date.DefaultCellStyle = dataGridViewCellStyle13;
             date.HeaderText = "วันที่ใช้งาน";
             date.MinimumWidth = 6;
             date.Name = "date";
@@ -260,8 +251,8 @@
             // time
             // 
             time.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            time.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            time.DefaultCellStyle = dataGridViewCellStyle14;
             time.HeaderText = "เวลาใช้งาน";
             time.MinimumWidth = 6;
             time.Name = "time";
@@ -271,8 +262,8 @@
             // day
             // 
             day.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            day.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            day.DefaultCellStyle = dataGridViewCellStyle15;
             day.HeaderText = "วันใช้งาน";
             day.MinimumWidth = 6;
             day.Name = "day";
@@ -287,6 +278,15 @@
             Column2.Name = "Column2";
             Column2.ReadOnly = true;
             // 
+            // backgroundWorker_search
+            // 
+            backgroundWorker_search.DoWork += backgroundWorker_search_DoWork;
+            backgroundWorker_search.RunWorkerCompleted += backgroundWorker_search_RunWorkerCompleted;
+            // 
+            // timer_search
+            // 
+            timer_search.Tick += timer_search_Tick;
+            // 
             // Form_Check_Promotion
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -297,6 +297,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form_Check_Promotion";
             Text = "Form_Check_Promotion";
+            FormClosed += Form_Check_Promotion_FormClosed;
             Load += Form_Check_Promotion_Load;
             Shown += Form_Check_Promotion_Shown;
             tableLayoutPanel_back.ResumeLayout(false);

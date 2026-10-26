@@ -23,7 +23,7 @@ namespace Ppos
         bool set_sale_vat, set_sale_negative, set_item_weight, set_effective_promotion, set_effective_member, set_effective_hotkey;
         string set_item_total;
         int Corners = 30; // มุม
-        int Limit = 50; // จำนวนแสดงผล
+        int Limit = 20; // จำนวนแสดงผล
         int set_search = 5, count_set_search = 0;
         int shows = 0;
 

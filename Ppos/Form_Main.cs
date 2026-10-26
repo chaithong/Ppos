@@ -39,6 +39,7 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
+
                 // 2. สั่งสร้าง Object ตอนเปิดโปรแกรมขึ้นมา
                 _monitor = new SystemMonitor();
 
@@ -61,22 +62,22 @@ namespace Ppos
                 new Size((pictureBox_logo.Height - 10) * Ppos.Properties.Resources.logo_Ppos.Width / Ppos.Properties.Resources.logo_Ppos.Height, pictureBox_logo.Height - 10));
 
 
-                button_sale.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(50, 50));
-                button_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(40, 40));
-                button_load_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(40, 40));
-                button_promotion.Image = Class_Image.resizeImage(Ppos.Properties.Resources.promotions, new Size(40, 40));
-                button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.member, new Size(40, 40));
-                button_report.Image = Class_Image.resizeImage(Ppos.Properties.Resources.reports, new Size(40, 40));
-                button_setting.Image = Class_Image.resizeImage(Ppos.Properties.Resources.setting, new Size(40, 40));
+                button_sale.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new Size(45, 45));
+                button_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(35, 35));
+                button_load_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(35, 35));
+                button_promotion.Image = Class_Image.resizeImage(Ppos.Properties.Resources.promotions, new Size(35, 35));
+                button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.member, new Size(35, 35));
+                button_report.Image = Class_Image.resizeImage(Ppos.Properties.Resources.reports, new Size(35, 35));
+                button_setting.Image = Class_Image.resizeImage(Ppos.Properties.Resources.setting, new Size(35, 35));
 
-                button_exit.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(40, 40));
+                button_exit.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(35, 35));
 
                 // button_menu.Image = Class_Image.resizeImage(Ppos.Properties.Resources.next, new Size(23, 23));
 
-                this.Text = Class_Parameter.Version;
+                this.Text = Class_Parameter.Version + " (" + Class_Parameter.User_Login + ")";
 
                 Class_Setting.Get();
-                label_title.Text = Class_Parameter.store_name;
+                button_title.Text = Class_Parameter.store_name;
 
 
                 // ต้องใช้เฉพาะ ใช้ร่วมกดไม่ได้
@@ -180,24 +181,24 @@ namespace Ppos
             {
                 label_date.Text = DateTime.Now.ToString("dd/MM/yyyy", cultures);
                 label_time.Text = DateTime.Now.ToString("HH:mm:ss", cultures);
-                 /* drive = new DriveInfo(mainDriveLetter);
+                /* drive = new DriveInfo(mainDriveLetter);
 
-                  if (drive.IsReady)
-                  {
-                      // แปลงหน่วยจาก Bytes เป็น Gigabytes (GB)
-                      totalSizeGb = drive.TotalSize / (1024.0 * 1024.0 * 1024.0);
-                      freeSpaceGb = drive.AvailableFreeSpace / (1024.0 * 1024.0 * 1024.0);
-                      usedSpaceGb = totalSizeGb - freeSpaceGb;
-                      usedPercentage = (usedSpaceGb / totalSizeGb) * 100;
-                      // เรียกดึงค่าเป็น % มาแสดงผลได้ทันที
-                      this.Text = Class_Parameter.Version +
-                  " ( CPU : " + _monitor.GetCpuUsage().ToString("00.00") + "% , " +
-                  " RAM : " + _monitor.GetRamUsagePercentage().ToString("00.00") + "% , " +
-                  " DISK : " + _monitor.GetDiskUsagePercentage().ToString("00.00") + "% , " +
-                  " DRIVE : " + usedPercentage.ToString("00.00") + "% )";
+                 if (drive.IsReady)
+                 {
+                     // แปลงหน่วยจาก Bytes เป็น Gigabytes (GB)
+                     totalSizeGb = drive.TotalSize / (1024.0 * 1024.0 * 1024.0);
+                     freeSpaceGb = drive.AvailableFreeSpace / (1024.0 * 1024.0 * 1024.0);
+                     usedSpaceGb = totalSizeGb - freeSpaceGb;
+                     usedPercentage = (usedSpaceGb / totalSizeGb) * 100;
+                     // เรียกดึงค่าเป็น % มาแสดงผลได้ทันที
+                     this.Text = Class_Parameter.Version +
+                 " ( CPU : " + _monitor.GetCpuUsage().ToString("00.00") + "% , " +
+                 " RAM : " + _monitor.GetRamUsagePercentage().ToString("00.00") + "% , " +
+                 " DISK : " + _monitor.GetDiskUsagePercentage().ToString("00.00") + "% , " +
+                 " DRIVE : " + usedPercentage.ToString("00.00") + "% )";
 
-                  }*/
-  
+                 }*/
+
             }
             catch
             {
@@ -262,35 +263,12 @@ namespace Ppos
 
             }
         }
-       
-        private void label_title_DoubleClick(object sender, EventArgs e)
-        {
-            try
-            {
-                if (this.WindowState != FormWindowState.Maximized)
-                {
-                    this.WindowState = FormWindowState.Maximized;
-                }
-                else
-                {
-                    this.WindowState = FormWindowState.Normal;
-                    // ย้ายหน้าต่างมาไว้กลางหน้าจอ
-                    this.StartPosition = FormStartPosition.CenterScreen;
-                    this.CenterToScreen();
-                }
-
-            }
-            catch
-            {
-
-            }
-        }
         private void button_menu_Click(object sender, EventArgs e)
         {
             try
             {
                 timer_tab_menu.Start();
-               
+
             }
             catch
             {
@@ -304,8 +282,8 @@ namespace Ppos
                 this.SuspendLayout();
                 if (show_menu)
                 {
-                    
-                    
+
+
 
                     timer_check_tab.Stop();
                     panel_menu_back.Width -= 25;
@@ -316,7 +294,7 @@ namespace Ppos
 
                         button_menu.Text = ">";
                         panel_menu_back.Width = 0;
-                       
+
                     }
 
                 }
@@ -479,46 +457,44 @@ namespace Ppos
         {
             try
             {
-           
 
-                foreach (Control ctrl in panel_main.Controls)
-                 {
+                // ค้นหา Form ที่ถูก Add เข้ามาอยู่ใน Panel1
+                var embeddedForm = panel_main.Controls.OfType<Form>().FirstOrDefault();
 
-                     if (ctrl is Form f && ctrl.Name != form.Name)
-                     {
-                       
-                         f.Close();
-                         ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
-                     }
-                 }
-                if (panel_main.Controls.Find(form.Name, true).FirstOrDefault() == null)
+                if (embeddedForm != null)
                 {
-                    // ใส่ชื่อเมนู
-                    if (button.Name == "button_sale")
+                    if (embeddedForm.Name != form.Name)
                     {
-                        label_title.Text = Class_Parameter.store_name;
-                    }
-                    else
-                    {
-                        label_title.Text = button.Text.Replace("-", "");
-                    }
-                    // ปิดกล้อง
-                    if (videoSource != null && videoSource.IsRunning)
-                    {
-                        videoSource.SignalToStop();
-                        videoSource.WaitForStop();
-                    }
+                        foreach (Control ctrl in panel_main.Controls)
+                        {
 
-                    //ปิดเมนูทันทีหลังเปิดเมนูใหม่
-                   /* if (Class_Parameter.hide_menu)
-                    {
-                        form_click = form;
-                        button_click = button;
-                        button_menu_Click(this, EventArgs.Empty);
+                            if (ctrl is Form f)
+                            {
 
-                    }
-                    else
-                    {*/
+                                f.Close();
+                                ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
+                            }
+                        }
+
+
+                        // ใส่ชื่อเมนู
+                        if (button.Name == "button_sale")
+                        {
+
+                            button_title.Text = Class_Parameter.store_name;
+                        }
+                        else
+                        {
+                            button_title.Text = button.Text.Replace("-", "");
+                        }
+                        // ปิดกล้อง
+                        if (videoSource != null && videoSource.IsRunning)
+                        {
+                            videoSource.SignalToStop();
+                            videoSource.WaitForStop();
+                        }
+
+
                         form.TopLevel = false;
                         panel_main.Controls.Add(form);
                         form.BringToFront();
@@ -530,17 +506,65 @@ namespace Ppos
                             b.BackColor = Color.White;
 
                         }
-                        else
-                        {
-                            b.BackColor = Color.FromArgb(128, 255, 255);
-
-                        }
 
                         b = button;
                         b.BackColor = Color.Cyan;
-                   // }
 
+                    }
+                    else
+                    {
+                        // MessageBox.Show("ไม่เปิด");
+                    }
                 }
+
+                ////////////////////////////////
+                /* foreach (Control ctrl in panel_main.Controls)
+                 {
+
+                     if (ctrl is Form f && ctrl.Name != form.Name)
+                     {
+
+                         f.Close();
+                         ctrl.Dispose(); // สำคัญมาก: ต้อง Dispose เพื่อคืน RAM
+                     }
+                 }
+
+                 if (panel_main.Controls.Find(form.Name, true).FirstOrDefault() == null)
+                 {
+
+                     // ใส่ชื่อเมนู
+                     if (button.Name == "button_sale")
+                     {
+
+                         button_title.Text = Class_Parameter.store_name;
+                     }
+                     else
+                     {
+                         button_title.Text = button.Text.Replace("-", "");
+                     }
+                     // ปิดกล้อง
+                     if (videoSource != null && videoSource.IsRunning)
+                     {
+                         videoSource.SignalToStop();
+                         videoSource.WaitForStop();
+                     }
+
+
+                     form.TopLevel = false;
+                     panel_main.Controls.Add(form);
+                     form.BringToFront();
+                     form.Dock = DockStyle.Fill;
+                     form.Show();
+
+                     if (b.Name != "button_sale")
+                     {
+                         b.BackColor = Color.White;
+
+                     }              
+
+                     b = button;
+                     b.BackColor = Color.Cyan;
+                 }*/
             }
             catch (Exception ex)
             {
@@ -565,7 +589,7 @@ namespace Ppos
                         }
                     }*/
 
-                   // button_menu_Click(sender, e);
+                    // button_menu_Click(sender, e);
 
                     Form_Sale form_Sale = new Form_Sale();
                     submenu_click(form_Sale, (Button)sender);
@@ -1063,10 +1087,10 @@ new Size(pictureBox_logo.Height * Ppos.Properties.Resources.logo_Ppos.Width / Pp
             {
                 button_menu.ForeColor = Color.Black;
                 //  button_menu.Font = new Font(button_menu.Font.FontFamily, button_menu.Font.Size + 6, button_menu.Font.Style);
-              /*  if(!show_menu)
-                {
-                    button_menu_Click(sender, EventArgs.Empty);
-                }*/
+                /*  if(!show_menu)
+                  {
+                      button_menu_Click(sender, EventArgs.Empty);
+                  }*/
 
             }
             catch
@@ -1136,7 +1160,97 @@ new Size(pictureBox_logo.Height * Ppos.Properties.Resources.logo_Ppos.Width / Pp
                         button_menu_Click(sender, new EventArgs());
                     }
                 }
-               
+
+            }
+            catch
+            {
+
+            }
+        }
+
+
+        private void label_title_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                /* if (this.WindowState != FormWindowState.Maximized)
+                 {
+                     this.WindowState = FormWindowState.Maximized;
+                 }
+                 else
+                 {
+                     this.WindowState = FormWindowState.Normal;
+                     // ย้ายหน้าต่างมาไว้กลางหน้าจอ
+                     this.StartPosition = FormStartPosition.CenterScreen;
+                     this.CenterToScreen();
+                 }*/
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button_title_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (button_title.Text == Class_Parameter.store_name)
+                {
+                    var embeddedForm = panel_main.Controls.OfType<Form>().FirstOrDefault();
+
+                    if (embeddedForm != null)
+                    {
+                        if (embeddedForm.Name != "Form_Dashboard" && embeddedForm.Name != "Form_Pay" && embeddedForm.Name != "Form_Check")
+                        {
+                            pictureBox_logo.Focus();
+                            Form_Dashboard form_Dashboard = new Form_Dashboard();
+                            form_Dashboard.TopLevel = false;
+                            panel_main.Controls.Add(form_Dashboard);
+                            form_Dashboard.BringToFront();
+                            form_Dashboard.Dock = DockStyle.Fill;
+                            form_Dashboard.Show();
+                        }
+                        else if (embeddedForm.Name == "Form_Dashboard")
+                        {
+                            embeddedForm.Close();
+                            // ค้นหา Form2 ที่เปิดอยู่ในระบบ
+                            Form_Sale form_sale = (Form_Sale)Application.OpenForms["Form_Sale"]!;
+
+                            if (form_sale != null)
+                            {
+                                form_sale.BringToFront();     // ดึงฟอร์มมาไว้ข้างหน้าสุด (เผื่อโดนบัง)
+                                form_sale.textBox_search.Focus();   // สั่งโฟกัส TextBox (อย่าลืมเปลี่ยน Modifiers ของ textBox1 เป็น Public)
+                            }
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void button_title_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                Button button = (Button)sender;
+                button.Font = new Font(button.Font.FontFamily,button.Font.Size+4,button.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button_title_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                Button button = (Button)sender;
+                button.Font = new Font(button.Font.FontFamily, button.Font.Size-4, button.Font.Style);
             }
             catch
             {

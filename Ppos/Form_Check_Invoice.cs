@@ -22,7 +22,7 @@ namespace Ppos
         public static string trx_no_detail = "", trx_no_status = "";
 
         DateTime currentDate = DateTime.Now;
-
+        BackgroundWorker worker;
         public Form_Check_Invoice()
         {
             InitializeComponent();
@@ -45,6 +45,8 @@ namespace Ppos
                 label_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
 
                 textBox_search.LostFocus += TextBox_search_LostFocus;
+
+                backgroundWorker_search.WorkerSupportsCancellation = true;
 
             }
             catch
@@ -177,7 +179,7 @@ namespace Ppos
             try
             {
                 Form_Invoice_Detail form_Invoice_Detail = new Form_Invoice_Detail();
-                form_Invoice_Detail.Size = new Size(this.Width / 2, this.Height * 9 / 10);
+                form_Invoice_Detail.Size = new Size(this.Width / 2, this.Height);
                 form_Invoice_Detail.ShowDialog(this);
                 if (form_Invoice_Detail.void_bill)
                 {
@@ -235,7 +237,10 @@ namespace Ppos
         {
             try
             {
-
+                if (backgroundWorker_search.IsBusy)
+                {
+                    backgroundWorker_search.CancelAsync();
+                }
                 count_search = 0;
                 if (!timer_search.Enabled)
                 {
@@ -246,7 +251,8 @@ namespace Ppos
                 {
                     tableLayoutPanel_date.Visible = false;
                 }
-               
+
+
             }
             catch (Exception ex)
             {
@@ -264,7 +270,7 @@ namespace Ppos
                     count_search = 0;
                     timer_search.Stop();
                     dataGridView_invoice.Rows.Clear();
-                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
+                    // dataGridView_invoice.ScrollBars = ScrollBars.None;
                     dataGridView_invoice.Enabled = false;
                     Class_Parameter.runbackground = true;
                     backgroundWorker_search.RunWorkerAsync();
@@ -338,106 +344,106 @@ namespace Ppos
         {
             try
             {
-                try
+                worker = sender as BackgroundWorker;
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
-                    using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                     {
-                        con_sqlite.Open();
-                        using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
-                        {
-                            // 
-                            cmd_sqlite.CommandText = @"SELECT ih.id,ih.created_by,strftime('%d/%m/%Y',ih.created_date) as date,time(ih.created_date) as time, ih.status, ih.trx_no, ih.item_qty, ih.price_sum, ih.id_member, 
+                        // 
+                        cmd_sqlite.CommandText = @"SELECT ih.id,ih.created_by,strftime('%d/%m/%Y',ih.created_date) as date,time(ih.created_date) as time, ih.status, ih.trx_no, ih.item_qty, ih.price_sum, ih.id_member, 
                                                    ih.percent_discount_member, ih.point_increase, ih.discount_promotion,
                                                    ih.discount_member, ih.discount_custom, ih.discount_point, ih.discount_round, ih.price_net, ih.pay_cash, ih.pay_transfer, ih.change, 
                                                    ih.price_non_vat, ih.price_vat, ih.vat, ih.void_date, ih.return_date, ih.trx_no_reference,coalesce(m.phone,'') as phone
                                                    FROM Invoice_Head ih
                                                    left join Member m on m.id = ih.id_member 
                                                    where 1=1 ";
-                            if (textBox_search.Text.Trim() != string.Empty)
-                            {
-                                cmd_sqlite.CommandText += "and (ih.trx_no = '" + textBox_search.Text.Trim() + "' or " +
-                                                          "m.phone = '" + textBox_search.Text.Trim() + "') ";
-                            }
-                            else
-                            {
-                                cmd_sqlite.CommandText += "and date(ih.created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' ";
-                            }
-                            cmd_sqlite.CommandText += "order by ih.id desc";
-                            SQLiteDataReader reader = cmd_sqlite.ExecuteReader();
-                            System.Data.DataTable dt = new System.Data.DataTable();
-                            dt.Load(reader);
+                        if (textBox_search.Text.Trim() != string.Empty)
+                        {
+                            cmd_sqlite.CommandText += "and (ih.trx_no = '" + textBox_search.Text.Trim() + "' or " +
+                                                      "m.phone = '" + textBox_search.Text.Trim() + "') ";
+                        }
+                        else
+                        {
+                            cmd_sqlite.CommandText += "and date(ih.created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' ";
+                        }
+                        cmd_sqlite.CommandText += "order by ih.id desc";
+                        SQLiteDataReader reader = cmd_sqlite.ExecuteReader();
+                        System.Data.DataTable dt = new System.Data.DataTable();
+                        dt.Load(reader);
 
-                            dataGridView_invoice.Columns["seq"]!.HeaderText = "0";
-                            if (dt.Rows.Count > 0)
+                        dataGridView_invoice.Columns["seq"]!.HeaderText = "0";
+                        if (dt.Rows.Count > 0)
+                        {
+                            Image void_bill;
+                            string status = "";
+                            for (int i = 0; i < dt.Rows.Count; i++)
                             {
-                                Image void_bill;
-                                string status = "";
-                                for (int i = 0; i < dt.Rows.Count; i++)
+                                // ตรวจสอบว่าผู้ใช้กดปุ่ม Cancel หรือยังในทุกๆ รอบของลูป
+                                if (worker.CancellationPending)
                                 {
-                                    if (dt.Rows[i]["status"].ToString() == "C")
-                                    {
-                                        void_bill = Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30));
-                                    }
-                                    else
-                                    {
-                                        void_bill = new Bitmap(40, 40);
-                                    }
-                                    if (dt.Rows[i]["status"].ToString() == "C")
-                                    {
-                                        status = "ขาย";
-                                    }
-                                    else if (dt.Rows[i]["status"].ToString() == "V")
-                                    {
-                                        status = "ยกเลิก";
-                                    }
-                                    dataGridView_invoice.Rows.Add("",
-                                    (i + 1),
-                                    Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30)),                                  
-                                    dt.Rows[i]["id"],
-                                    dt.Rows[i]["created_by"],
-                                    dt.Rows[i]["date"],
-                                    dt.Rows[i]["time"],
-                                    status,
-                                    dt.Rows[i]["trx_no"],
-                                    dt.Rows[i]["id_member"],
-                                    dt.Rows[i]["phone"],
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["item_qty"]), 3).ToString("#,##0.000"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["price_sum"]), 2).ToString("#,##0.00"),
-                                    dt.Rows[i]["percent_discount_member"],
-                                    dt.Rows[i]["point_increase"],
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["discount_promotion"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["discount_member"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["discount_custom"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["discount_point"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["discount_round"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["price_net"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["pay_cash"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["pay_transfer"]), 2).ToString("#,##0.00"),
-                                    Math.Round(Convert.ToDouble(dt.Rows[i]["change"]), 2).ToString("#,##0.00"),
-                                    dt.Rows[i]["price_non_vat"],
-                                    dt.Rows[i]["price_vat"],
-                                    dt.Rows[i]["vat"],
-                                    dt.Rows[i]["void_date"],
-                                    dt.Rows[i]["return_date"],
-                                    dt.Rows[i]["trx_no_reference"],
-                                    void_bill,
-                                    ""
-                                    );
-                                    dataGridView_invoice.Columns["seq"]!.HeaderText = (i + 1).ToString();
+                                    e.Cancel = true; // บอกระบบว่างานนี้จบลงเพราะถูกยกเลิก
+                                    break;           // ออกจาก For Loop ทันที
                                 }
-
+                                if (dt.Rows[i]["status"].ToString() == "C")
+                                {
+                                    void_bill = Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30));
+                                }
+                                else
+                                {
+                                    void_bill = new Bitmap(40, 40);
+                                }
+                                if (dt.Rows[i]["status"].ToString() == "C")
+                                {
+                                    status = "ขาย";
+                                }
+                                else if (dt.Rows[i]["status"].ToString() == "V")
+                                {
+                                    status = "ยกเลิก";
+                                }
+                                dataGridView_invoice.Rows.Add("",
+                                (i + 1),
+                                Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30)),
+                                dt.Rows[i]["id"],
+                                dt.Rows[i]["created_by"],
+                                dt.Rows[i]["date"],
+                                dt.Rows[i]["time"],
+                                status,
+                                dt.Rows[i]["trx_no"],
+                                dt.Rows[i]["id_member"],
+                                dt.Rows[i]["phone"],
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["item_qty"]), 3).ToString("#,##0.000"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["price_sum"]), 2).ToString("#,##0.00"),
+                                dt.Rows[i]["percent_discount_member"],
+                                dt.Rows[i]["point_increase"],
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["discount_promotion"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["discount_member"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["discount_custom"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["discount_point"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["discount_round"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["price_net"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["pay_cash"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["pay_transfer"]), 2).ToString("#,##0.00"),
+                                Math.Round(Convert.ToDouble(dt.Rows[i]["change"]), 2).ToString("#,##0.00"),
+                                dt.Rows[i]["price_non_vat"],
+                                dt.Rows[i]["price_vat"],
+                                dt.Rows[i]["vat"],
+                                dt.Rows[i]["void_date"],
+                                dt.Rows[i]["return_date"],
+                                dt.Rows[i]["trx_no_reference"],
+                                void_bill,
+                                ""
+                                );
+                                dataGridView_invoice.Columns["seq"]!.HeaderText = (i + 1).ToString();
                             }
+
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -445,11 +451,11 @@ namespace Ppos
         {
             try
             {
-               // dataGridView_invoice.ScrollBars = ScrollBars.Both;
+                // dataGridView_invoice.ScrollBars = ScrollBars.Both;
                 dataGridView_invoice.Enabled = true;
-                tableLayoutPanel_date.Enabled = true;
+                // tableLayoutPanel_date.Enabled = true;
                 Class_Parameter.runbackground = false;
-                if(textBox_search.Text == string.Empty)
+                if (textBox_search.Text == string.Empty)
                 {
                     tableLayoutPanel_date.Visible = true;
                 }
@@ -468,12 +474,17 @@ namespace Ppos
                 label_date.Text = currentDate.ToString("dd/MM/yyyy");
                 if (textBox_search.Text == string.Empty)
                 {
-                    tableLayoutPanel_date.Enabled = false;
-                    dataGridView_invoice.Rows.Clear();
-                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
-                    dataGridView_invoice.Enabled = false;
+                    if (backgroundWorker_search.IsBusy)
+                    {
+                        backgroundWorker_search.CancelAsync();
+                    }
+
                     Class_Parameter.runbackground = true;
-                    backgroundWorker_search.RunWorkerAsync();
+                    count_search = 0;
+                    if (!timer_search.Enabled)
+                    {
+                        timer_search.Start();
+                    }
                 }
             }
             catch (Exception ex)
@@ -490,12 +501,18 @@ namespace Ppos
                 label_date.Text = currentDate.ToString("dd/MM/yyyy");
                 if (textBox_search.Text == string.Empty)
                 {
-                    tableLayoutPanel_date.Enabled = false;
-                    dataGridView_invoice.Rows.Clear();
-                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
-                    dataGridView_invoice.Enabled = false;
+                    if (backgroundWorker_search.IsBusy)
+                    {
+                        backgroundWorker_search.CancelAsync();
+                    }
+
                     Class_Parameter.runbackground = true;
-                    backgroundWorker_search.RunWorkerAsync();
+
+                    count_search = 0;
+                    if (!timer_search.Enabled)
+                    {
+                        timer_search.Start();
+                    }
                 }
             }
             catch (Exception ex)
@@ -506,24 +523,7 @@ namespace Ppos
 
         private void label_date_DoubleClick(object sender, EventArgs e)
         {
-            try
-            {
-                currentDate = DateTime.Now; // บวกเพิ่ม 1 วัน
-                label_date.Text = currentDate.ToString("dd/MM/yyyy");
-                if (textBox_search.Text == string.Empty)
-                {
-                    tableLayoutPanel_date.Enabled = false;
-                    dataGridView_invoice.Rows.Clear();
-                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
-                    dataGridView_invoice.Enabled = false;
-                    Class_Parameter.runbackground = true;
-                    backgroundWorker_search.RunWorkerAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
         }
 
         private void label_date_Click(object sender, EventArgs e)
@@ -531,13 +531,13 @@ namespace Ppos
             try
             {
 
-            
-                    Class_Parameter.calendar_title = "วันที่ขาย";
 
-                    Class_Parameter.calendar_day = label_date.Text.Split("/")[0];
-                    Class_Parameter.calendar_month = label_date.Text.Split("/")[1];
-                    Class_Parameter.calendar_year = label_date.Text.Split("/")[2];
-               
+                Class_Parameter.calendar_title = "วันที่ขาย";
+
+                Class_Parameter.calendar_day = label_date.Text.Split("/")[0];
+                Class_Parameter.calendar_month = label_date.Text.Split("/")[1];
+                Class_Parameter.calendar_year = label_date.Text.Split("/")[2];
+
 
                 Form_Calendar form_Calendar = new Form_Calendar();
                 form_Calendar.ShowDialog(this);
@@ -551,22 +551,80 @@ namespace Ppos
                                           CultureInfo.InvariantCulture,
                                           DateTimeStyles.None,
                                           out date);
-                    if(isValid)
+                    if (isValid)
                     {
                         currentDate = date;
                     }
-                   
-                    tableLayoutPanel_date.Enabled = false;
-                    dataGridView_invoice.Rows.Clear();
-                   // dataGridView_invoice.ScrollBars = ScrollBars.None;
-                    dataGridView_invoice.Enabled = false;
+                    if (backgroundWorker_search.IsBusy)
+                    {
+                        backgroundWorker_search.CancelAsync();
+                    }
+
                     Class_Parameter.runbackground = true;
-                    backgroundWorker_search.RunWorkerAsync();
+
+                    count_search = 0;
+                    if (!timer_search.Enabled)
+                    {
+                        timer_search.Start();
+                    }
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Form_Check_Invoice_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                // 1. ตรวจสอบว่า BackgroundWorker กำลังทำงานอยู่หรือไม่
+                if (backgroundWorker_search.IsBusy)
+                {
+                    // 2. ส่งสัญญาณสั่งยกเลิกลูป (ทำงานร่วมกับ CancellationPending ใน DoWork)
+                    backgroundWorker_search.CancelAsync();
+
+                    // 3. เพื่อความปลอดภัยสูงสุด: วนลูปสั้นๆ รอให้ Thread ปิดตัวเองลงจริงๆ
+                    // (ป้องกันไม่ให้ฟอร์มปิดตัวไปก่อนที่ Thread จะจัดการล้างข้อมูลเสร็จ)
+                    while (backgroundWorker_search.IsBusy)
+                    {
+                        // ป้องกัน UI ค้างระหว่างรอ Thread ปิดตัว
+                        System.Windows.Forms.Application.DoEvents();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label_date_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size + 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void label_date_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
+            }
+            catch
+            {
+
             }
         }
     }

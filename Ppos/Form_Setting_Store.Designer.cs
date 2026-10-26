@@ -30,7 +30,6 @@
         {
             panel_detail = new Panel();
             customGroupBox = new CustomGroupBox();
-            pictureBox = new PictureBox();
             tableLayoutPanel_detail = new TableLayoutPanel();
             label_store_no = new Label();
             label_store_name = new Label();
@@ -52,13 +51,14 @@
             postal_code = new TextBox();
             phone = new TextBox();
             email = new TextBox();
+            pictureBox = new PictureBox();
             tableLayoutPanel_top = new TableLayoutPanel();
             button_edit_save = new Button();
             button_cancel = new Button();
             panel_detail.SuspendLayout();
             customGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             tableLayoutPanel_detail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             tableLayoutPanel_top.SuspendLayout();
             SuspendLayout();
             // 
@@ -86,21 +86,10 @@
             customGroupBox.Location = new Point(358, 6);
             customGroupBox.Name = "customGroupBox";
             customGroupBox.Padding = new Padding(15);
-            customGroupBox.Size = new Size(604, 772);
+            customGroupBox.Size = new Size(604, 790);
             customGroupBox.TabIndex = 0;
             customGroupBox.TabStop = false;
             customGroupBox.Text = " ";
-            // 
-            // pictureBox
-            // 
-            pictureBox.Dock = DockStyle.Top;
-            pictureBox.Location = new Point(15, 35);
-            pictureBox.Name = "pictureBox";
-            pictureBox.Size = new Size(574, 200);
-            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox.TabIndex = 2;
-            pictureBox.TabStop = false;
-            pictureBox.Click += pictureBox_Click;
             // 
             // tableLayoutPanel_detail
             // 
@@ -143,7 +132,7 @@
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel_detail.Size = new Size(574, 522);
+            tableLayoutPanel_detail.Size = new Size(574, 540);
             tableLayoutPanel_detail.TabIndex = 0;
             // 
             // label_store_no
@@ -153,9 +142,9 @@
             label_store_no.ForeColor = Color.Black;
             label_store_no.Location = new Point(3, 0);
             label_store_no.Name = "label_store_no";
-            label_store_no.Size = new Size(144, 52);
+            label_store_no.Size = new Size(144, 54);
             label_store_no.TabIndex = 0;
-            label_store_no.Text = "รหัสร้าน :";
+            label_store_no.Text = "*รหัสร้าน :";
             label_store_no.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label_store_name
@@ -163,11 +152,11 @@
             label_store_name.Dock = DockStyle.Fill;
             label_store_name.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_store_name.ForeColor = Color.Black;
-            label_store_name.Location = new Point(3, 52);
+            label_store_name.Location = new Point(3, 54);
             label_store_name.Name = "label_store_name";
-            label_store_name.Size = new Size(144, 52);
+            label_store_name.Size = new Size(144, 54);
             label_store_name.TabIndex = 0;
-            label_store_name.Text = "ชื่อร้าน :";
+            label_store_name.Text = "*ชื่อร้าน :";
             label_store_name.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label_tax_id
@@ -175,9 +164,9 @@
             label_tax_id.Dock = DockStyle.Fill;
             label_tax_id.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_tax_id.ForeColor = Color.Black;
-            label_tax_id.Location = new Point(3, 104);
+            label_tax_id.Location = new Point(3, 108);
             label_tax_id.Name = "label_tax_id";
-            label_tax_id.Size = new Size(144, 52);
+            label_tax_id.Size = new Size(144, 54);
             label_tax_id.TabIndex = 0;
             label_tax_id.Text = "เลขภาษี :";
             label_tax_id.TextAlign = ContentAlignment.MiddleRight;
@@ -187,9 +176,9 @@
             label_address.Dock = DockStyle.Fill;
             label_address.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_address.ForeColor = Color.Black;
-            label_address.Location = new Point(3, 156);
+            label_address.Location = new Point(3, 162);
             label_address.Name = "label_address";
-            label_address.Size = new Size(144, 52);
+            label_address.Size = new Size(144, 54);
             label_address.TabIndex = 0;
             label_address.Text = "ที่อยู่ :";
             label_address.TextAlign = ContentAlignment.MiddleRight;
@@ -199,9 +188,9 @@
             label_sub_district.Dock = DockStyle.Fill;
             label_sub_district.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_sub_district.ForeColor = Color.Black;
-            label_sub_district.Location = new Point(3, 208);
+            label_sub_district.Location = new Point(3, 216);
             label_sub_district.Name = "label_sub_district";
-            label_sub_district.Size = new Size(144, 52);
+            label_sub_district.Size = new Size(144, 54);
             label_sub_district.TabIndex = 0;
             label_sub_district.Text = "ตำบล :";
             label_sub_district.TextAlign = ContentAlignment.MiddleRight;
@@ -211,9 +200,9 @@
             label_district.Dock = DockStyle.Fill;
             label_district.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_district.ForeColor = Color.Black;
-            label_district.Location = new Point(3, 260);
+            label_district.Location = new Point(3, 270);
             label_district.Name = "label_district";
-            label_district.Size = new Size(144, 52);
+            label_district.Size = new Size(144, 54);
             label_district.TabIndex = 0;
             label_district.Text = "อำเภอ :";
             label_district.TextAlign = ContentAlignment.MiddleRight;
@@ -223,9 +212,9 @@
             label_province.Dock = DockStyle.Fill;
             label_province.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_province.ForeColor = Color.Black;
-            label_province.Location = new Point(3, 312);
+            label_province.Location = new Point(3, 324);
             label_province.Name = "label_province";
-            label_province.Size = new Size(144, 52);
+            label_province.Size = new Size(144, 54);
             label_province.TabIndex = 0;
             label_province.Text = "จังหวัด :";
             label_province.TextAlign = ContentAlignment.MiddleRight;
@@ -235,9 +224,9 @@
             label_postal_code.Dock = DockStyle.Fill;
             label_postal_code.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_postal_code.ForeColor = Color.Black;
-            label_postal_code.Location = new Point(3, 364);
+            label_postal_code.Location = new Point(3, 378);
             label_postal_code.Name = "label_postal_code";
-            label_postal_code.Size = new Size(144, 52);
+            label_postal_code.Size = new Size(144, 54);
             label_postal_code.TabIndex = 0;
             label_postal_code.Text = "ไปรษณีย์ :";
             label_postal_code.TextAlign = ContentAlignment.MiddleRight;
@@ -247,9 +236,9 @@
             label_phone.Dock = DockStyle.Fill;
             label_phone.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_phone.ForeColor = Color.Black;
-            label_phone.Location = new Point(3, 416);
+            label_phone.Location = new Point(3, 432);
             label_phone.Name = "label_phone";
-            label_phone.Size = new Size(144, 52);
+            label_phone.Size = new Size(144, 54);
             label_phone.TabIndex = 0;
             label_phone.Text = "โทรศัพท์ :";
             label_phone.TextAlign = ContentAlignment.MiddleRight;
@@ -259,7 +248,7 @@
             label_email.Dock = DockStyle.Fill;
             label_email.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_email.ForeColor = Color.Black;
-            label_email.Location = new Point(3, 468);
+            label_email.Location = new Point(3, 486);
             label_email.Name = "label_email";
             label_email.Size = new Size(144, 54);
             label_email.TabIndex = 0;
@@ -270,7 +259,7 @@
             // 
             store_no.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             store_no.Font = new Font("Segoe UI", 13.8F);
-            store_no.Location = new Point(153, 7);
+            store_no.Location = new Point(153, 8);
             store_no.Name = "store_no";
             store_no.Size = new Size(418, 38);
             store_no.TabIndex = 1;
@@ -281,7 +270,7 @@
             // 
             store_name.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             store_name.Font = new Font("Segoe UI", 13.8F);
-            store_name.Location = new Point(153, 59);
+            store_name.Location = new Point(153, 62);
             store_name.Name = "store_name";
             store_name.Size = new Size(418, 38);
             store_name.TabIndex = 1;
@@ -292,7 +281,7 @@
             // 
             tax_id.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tax_id.Font = new Font("Segoe UI", 13.8F);
-            tax_id.Location = new Point(153, 111);
+            tax_id.Location = new Point(153, 116);
             tax_id.Name = "tax_id";
             tax_id.Size = new Size(418, 38);
             tax_id.TabIndex = 1;
@@ -303,7 +292,7 @@
             // 
             address.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             address.Font = new Font("Segoe UI", 13.8F);
-            address.Location = new Point(153, 163);
+            address.Location = new Point(153, 170);
             address.Name = "address";
             address.Size = new Size(418, 38);
             address.TabIndex = 1;
@@ -314,7 +303,7 @@
             // 
             sub_district.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             sub_district.Font = new Font("Segoe UI", 13.8F);
-            sub_district.Location = new Point(153, 215);
+            sub_district.Location = new Point(153, 224);
             sub_district.Name = "sub_district";
             sub_district.Size = new Size(418, 38);
             sub_district.TabIndex = 1;
@@ -325,7 +314,7 @@
             // 
             district.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             district.Font = new Font("Segoe UI", 13.8F);
-            district.Location = new Point(153, 267);
+            district.Location = new Point(153, 278);
             district.Name = "district";
             district.Size = new Size(418, 38);
             district.TabIndex = 1;
@@ -336,7 +325,7 @@
             // 
             province.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             province.Font = new Font("Segoe UI", 13.8F);
-            province.Location = new Point(153, 319);
+            province.Location = new Point(153, 332);
             province.Name = "province";
             province.Size = new Size(418, 38);
             province.TabIndex = 1;
@@ -347,7 +336,7 @@
             // 
             postal_code.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             postal_code.Font = new Font("Segoe UI", 13.8F);
-            postal_code.Location = new Point(153, 371);
+            postal_code.Location = new Point(153, 386);
             postal_code.Name = "postal_code";
             postal_code.Size = new Size(418, 38);
             postal_code.TabIndex = 1;
@@ -358,7 +347,7 @@
             // 
             phone.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             phone.Font = new Font("Segoe UI", 13.8F);
-            phone.Location = new Point(153, 423);
+            phone.Location = new Point(153, 440);
             phone.Name = "phone";
             phone.Size = new Size(418, 38);
             phone.TabIndex = 1;
@@ -369,12 +358,23 @@
             // 
             email.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             email.Font = new Font("Segoe UI", 13.8F);
-            email.Location = new Point(153, 476);
+            email.Location = new Point(153, 494);
             email.Name = "email";
             email.Size = new Size(418, 38);
             email.TabIndex = 1;
             email.TabStop = false;
             email.KeyDown += data_KeyDown;
+            // 
+            // pictureBox
+            // 
+            pictureBox.Dock = DockStyle.Top;
+            pictureBox.Location = new Point(15, 35);
+            pictureBox.Name = "pictureBox";
+            pictureBox.Size = new Size(574, 200);
+            pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox.TabIndex = 2;
+            pictureBox.TabStop = false;
+            pictureBox.Click += pictureBox_Click;
             // 
             // tableLayoutPanel_top
             // 
@@ -456,9 +456,9 @@
             panel_detail.PerformLayout();
             customGroupBox.ResumeLayout(false);
             customGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             tableLayoutPanel_detail.ResumeLayout(false);
             tableLayoutPanel_detail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             tableLayoutPanel_top.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

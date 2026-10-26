@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -23,7 +24,9 @@ namespace Ppos
         int set_search = 5, count_set_search = 0;
         DataTable dt_trans, dt;
         string sort = "desc";
-        int Limit = 100; // จำนวนแสดงผล
+        int Limit = 20, Limit_trans = 0; // จำนวนแสดงผล
+        DateTime currentDate = DateTime.Now;
+        BackgroundWorker worker;
         public Form_Report_Trans()
         {
             InitializeComponent();
@@ -96,9 +99,11 @@ namespace Ppos
                 dataGridView_trans.MouseWheel += new MouseEventHandler(dataGridView_trans_MouseWheel!);
 
                 pictureBox_item.Image = Ppos.Properties.Resources.picture_dark;
-                button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(50, 50));
+                button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(40, 40));
 
-                button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(40, 40));
+                button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(30, 40));
+
+                label_date.Text = DateTime.Now.ToString("dd/MM/yyyy");
             }
             catch
             {
@@ -299,7 +304,7 @@ namespace Ppos
             }
         }
 
- 
+
         private void dataGridView_item_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -308,7 +313,7 @@ namespace Ppos
                 {
                     if (dataGridView_item.Rows[e.RowIndex].Cells["small_barcode"].Value!.ToString() != set_small_barcode)
                     {
-                        button_sort.Enabled = false;
+
                         dataGridView_item.Enabled = false;
                         dataGridView_trans.Rows.Clear();
                         set_small_barcode = dataGridView_item.Rows[e.RowIndex].Cells["small_barcode"].Value!.ToString()!;
@@ -325,13 +330,12 @@ namespace Ppos
                         {
                             pictureBox_item.Image = Ppos.Properties.Resources.picture_dark;
                         }
-                        textBox_item_group_main.Text = dataGridView_item.Rows[e.RowIndex].Cells["group_main"].Value!.ToString();
-                        textBox_item_group_sub.Text = dataGridView_item.Rows[e.RowIndex].Cells["group_sub"].Value!.ToString();
-                        textBox_item_name.Text = dataGridView_item.Rows[e.RowIndex].Cells["name"].Value!.ToString();
+
+                        label_item_name.Text = dataGridView_item.Rows[e.RowIndex].Cells["name"].Value!.ToString();
 
 
                         search_trans();
-                       
+
                     }
 
                 }
@@ -344,30 +348,30 @@ namespace Ppos
         }
         private void dataGridView_item_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
-          
+
         }
-       
+
         private void button_sort_Click(object sender, EventArgs e)
         {
             try
             {
                 if (set_small_barcode != string.Empty && dataGridView_trans.RowCount > 0)
                 {
-                    button_sort.Enabled = false;
+                    tableLayoutPanel_top.Enabled = false;
                     dataGridView_item.Enabled = false;
                     dataGridView_trans.Rows.Clear();
                     if (sort == "desc")
                     {
                         sort = "asc";
-                        button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(40, 40));
+                        button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(35, 45));
                     }
                     else
                     {
                         sort = "desc";
-                        button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(40, 40));
+                        button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(35, 45));
                     }
                     search_trans();
-                   
+
 
                 }
 
@@ -377,12 +381,56 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void button_sort_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sort == "desc")
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(35, 45));
+                }
+                else
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(35, 45));
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button_sort_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sort == "desc")
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(30, 40));
+                }
+                else
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(30, 40));
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void backgroundWorker_report_DoWork(object sender, DoWorkEventArgs e)
         {
             try
             {
+                worker = sender as BackgroundWorker;
                 for (int i = 0; i < dt_trans.Rows.Count; i++)
                 {
+                    // ตรวจสอบว่าผู้ใช้กดปุ่ม Cancel หรือยังในทุกๆ รอบของลูป
+                    if (worker.CancellationPending)
+                    {
+                        e.Cancel = true; // บอกระบบว่างานนี้จบลงเพราะถูกยกเลิก
+                        break;           // ออกจาก For Loop ทันที
+                    }
                     dataGridView_trans.Rows.Add(
                        dt_trans.Rows[i]["date"].ToString()!,
                        dt_trans.Rows[i]["time"].ToString()!,
@@ -403,35 +451,34 @@ namespace Ppos
                         );
                     dataGridView_trans.ClearSelection();
                 }
-                
+
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void backgroundWorker_report_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             try
             {
-                
+                Class_Parameter.runbackground = false;
                 dataGridView_trans.ScrollBars = ScrollBars.Both;
                 dataGridView_item.Enabled = true;
-                button_sort.Enabled = true;
-               
-            }
-            catch
-            {
 
+                tableLayoutPanel_top.Enabled = true;
             }
-           
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void search_trans()
         {
             try
             {
+                Class_Parameter.runbackground = true;
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -446,11 +493,11 @@ namespace Ppos
                                                    SELECT i.medium_barcode ,i.medium_unit from item i where i.medium_barcode <> '' union all
                                                    SELECT i.large_barcode ,i.large_unit from item i where i.large_barcode <> '') item_bar on item_bar.barcode = t.item_barcode 
                                                    join item i on i.small_barcode = t.small_barcode 
-                                                   where t.small_barcode = '" + set_small_barcode + "' " +
+                                                   where t.small_barcode = '" + set_small_barcode + "' and date(t.created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' " +
                                                    "order by t.id " + sort + " ";
-                        if (Limit > 0)
+                        if (Limit_trans > 0)
                         {
-                            cmd_sqlite.CommandText += "limit " + Limit;
+                            cmd_sqlite.CommandText += "limit " + Limit_trans;
                         }
                         var er = cmd_sqlite.ExecuteReader();
                         dt_trans = new DataTable();
@@ -598,9 +645,7 @@ namespace Ppos
                             path_load = saveFileDialoge.FileName;
                             dataGridView_trans.Focus();
 
-                            button_excel.Enabled = false;
-
-                            textBox_search.Enabled = false;
+                            tableLayoutPanel_top.Enabled = false;
 
                             dataGridView_item.Enabled = false;
 
@@ -624,7 +669,7 @@ namespace Ppos
             try
             {
 
-
+                worker = sender as BackgroundWorker;
                 // 2. ประกาศตัวแปร COM Objects
                 Excel.Application App = new Excel.Application();
                 Excel.Workbooks workbooks = App.Workbooks;
@@ -732,8 +777,8 @@ namespace Ppos
                                                    SELECT i.medium_barcode ,i.medium_unit from item i where i.medium_barcode <> '' union all
                                                    SELECT i.large_barcode ,i.large_unit from item i where i.large_barcode <> '') item_bar on item_bar.barcode = t.item_barcode 
                                                    join item i on i.small_barcode = t.small_barcode 
-                                                   where t.small_barcode = '" + dataGridView_item.Rows[dataGridView_item.CurrentRow!.Index].Cells["small_barcode"].Value!.ToString() + "' " +
-                                                   "order by t.id asc ";
+                                                   where t.small_barcode = '" + dataGridView_item.Rows[dataGridView_item.CurrentRow!.Index].Cells["small_barcode"].Value!.ToString() + "' and date(t.created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' " +
+                                                   "order by t.id " + sort;
 
                             var er = cmd_sqlite.ExecuteReader();
                             dt = new DataTable();
@@ -744,6 +789,12 @@ namespace Ppos
 
                                 for (int i = 0; i < dt.Rows.Count; i++)
                                 {
+                                    // ตรวจสอบว่าผู้ใช้กดปุ่ม Cancel หรือยังในทุกๆ รอบของลูป
+                                    if (worker.CancellationPending)
+                                    {
+                                        e.Cancel = true; // บอกระบบว่างานนี้จบลงเพราะถูกยกเลิก
+                                        break;           // ออกจาก For Loop ทันที
+                                    }
                                     worksheet.Cells[i + 2, 1] = dt.Rows[i]["date"].ToString();
                                     worksheet.Cells[i + 2, 2] = dt.Rows[i]["time"].ToString();
                                     worksheet.Cells[i + 2, 3] = dt.Rows[i]["trans_type"].ToString();
@@ -811,7 +862,7 @@ namespace Ppos
 
                 button_excel.Text = "โหลด";
 
-                button_excel.Enabled = true;
+                tableLayoutPanel_top.Enabled = true;
 
                 textBox_search.Enabled = true;
 
@@ -829,7 +880,7 @@ namespace Ppos
         {
             try
             {
-                button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(40, 40));
+                button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(50, 50));
             }
             catch (Exception ex)
             {
@@ -841,7 +892,7 @@ namespace Ppos
         {
             try
             {
-                button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(50, 50));
+                button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(40, 40));
             }
             catch (Exception ex)
             {
@@ -849,6 +900,158 @@ namespace Ppos
             }
         }
 
-       
+        private void button_back_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                currentDate = currentDate.AddDays(-1); // บวกเพิ่ม 1 วัน
+                label_date.Text = currentDate.ToString("dd/MM/yyyy");
+                if (label_item_name.Text != string.Empty)
+                {
+                    tableLayoutPanel_top.Enabled = false;
+                    dataGridView_trans.Rows.Clear();
+                    search_trans();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_next_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                currentDate = currentDate.AddDays(1); // บวกเพิ่ม 1 วัน
+                label_date.Text = currentDate.ToString("dd/MM/yyyy");
+                if (label_item_name.Text != string.Empty)
+                {
+                    tableLayoutPanel_top.Enabled = false;
+                    dataGridView_trans.Rows.Clear();
+                    search_trans();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                Class_Parameter.calendar_title = "วันที่";
+
+                Class_Parameter.calendar_day = label_date.Text.Split("/")[0];
+                Class_Parameter.calendar_month = label_date.Text.Split("/")[1];
+                Class_Parameter.calendar_year = label_date.Text.Split("/")[2];
+
+
+                Form_Calendar form_Calendar = new Form_Calendar();
+                form_Calendar.ShowDialog(this);
+
+                if (!form_Calendar.cancel)
+                {
+                    DateTime date;
+                    label_date.Text = form_Calendar.label_set_days.Text.Replace("-", "/");
+                    bool isValid = DateTime.TryParseExact(label_date.Text,
+                                          "dd/MM/yyyy",
+                                          CultureInfo.InvariantCulture,
+                                          DateTimeStyles.None,
+                                          out date);
+                    if (isValid)
+                    {
+                        currentDate = date;
+                    }
+
+                    if (label_item_name.Text != string.Empty)
+                    {
+                        tableLayoutPanel_top.Enabled = false;
+                        dataGridView_trans.Rows.Clear();
+                        search_trans();
+                    }
+
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void label_date_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size + 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void label_date_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Form_Report_Trans_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                // 1. ตรวจสอบว่า BackgroundWorker กำลังทำงานอยู่หรือไม่
+                if (backgroundWorker_report.IsBusy)
+                {
+                    // 2. ส่งสัญญาณสั่งยกเลิกลูป (ทำงานร่วมกับ CancellationPending ใน DoWork)
+                    backgroundWorker_report.CancelAsync();
+
+                    // 3. เพื่อความปลอดภัยสูงสุด: วนลูปสั้นๆ รอให้ Thread ปิดตัวเองลงจริงๆ
+                    // (ป้องกันไม่ให้ฟอร์มปิดตัวไปก่อนที่ Thread จะจัดการล้างข้อมูลเสร็จ)
+                    while (backgroundWorker_report.IsBusy)
+                    {
+                        // ป้องกัน UI ค้างระหว่างรอ Thread ปิดตัว
+                        System.Windows.Forms.Application.DoEvents();
+                    }
+                }
+                // 1. ตรวจสอบว่า BackgroundWorker กำลังทำงานอยู่หรือไม่
+                if (backgroundWorker_excel.IsBusy)
+                {
+                    // 2. ส่งสัญญาณสั่งยกเลิกลูป (ทำงานร่วมกับ CancellationPending ใน DoWork)
+                    backgroundWorker_excel.CancelAsync();
+
+                    // 3. เพื่อความปลอดภัยสูงสุด: วนลูปสั้นๆ รอให้ Thread ปิดตัวเองลงจริงๆ
+                    // (ป้องกันไม่ให้ฟอร์มปิดตัวไปก่อนที่ Thread จะจัดการล้างข้อมูลเสร็จ)
+                    while (backgroundWorker_excel.IsBusy)
+                    {
+                        // ป้องกัน UI ค้างระหว่างรอ Thread ปิดตัว
+                        System.Windows.Forms.Application.DoEvents();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Ppos
 
         // int set_timer_count = 10, timer_count = 0;
         bool add_save = true, edit_save = true;
-        int Limit = 50;
+        int Limit = 20;
 
         string set_pro_total;
 

@@ -256,12 +256,16 @@ namespace Ppos
         {
             try
             {
-                count_search = 0;
-                button_add_member.Visible = false;
-                if (!timer_search.Enabled)
+                if(!backgroundWorker_search.IsBusy)
                 {
-                    timer_search.Start();
+                    count_search = 0;
+                    button_add_member.Visible = false;
+                    if (!timer_search.Enabled)
+                    {
+                        timer_search.Start();
+                    }
                 }
+               
 
             }
             catch (Exception ex)

@@ -86,6 +86,8 @@
             button_confirm = new Button();
             pictureBox_item = new PictureBox();
             dataGridView_item = new DataGridView();
+            timer_search = new System.Windows.Forms.Timer(components);
+            timer_show = new System.Windows.Forms.Timer(components);
             small_barcode = new DataGridViewTextBoxColumn();
             code = new DataGridViewTextBoxColumn();
             group_main = new DataGridViewTextBoxColumn();
@@ -99,8 +101,6 @@
             cost_avg = new DataGridViewTextBoxColumn();
             qty_small = new DataGridViewTextBoxColumn();
             size = new DataGridViewTextBoxColumn();
-            timer_search = new System.Windows.Forms.Timer(components);
-            timer_show = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
             tableLayoutPanel_search.SuspendLayout();
             panel_search.SuspendLayout();
@@ -991,6 +991,14 @@
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
             dataGridView_item.CellMouseLeave += dataGridView_item_CellMouseLeave;
             // 
+            // timer_search
+            // 
+            timer_search.Tick += timer_search_Tick;
+            // 
+            // timer_show
+            // 
+            timer_show.Tick += timer_show_Tick;
+            // 
             // small_barcode
             // 
             small_barcode.HeaderText = "small_barcode";
@@ -1056,6 +1064,7 @@
             qty.MinimumWidth = 6;
             qty.Name = "qty";
             qty.ReadOnly = true;
+            qty.Visible = false;
             qty.Width = 6;
             // 
             // unit
@@ -1068,6 +1077,7 @@
             unit.MinimumWidth = 6;
             unit.Name = "unit";
             unit.ReadOnly = true;
+            unit.Visible = false;
             unit.Width = 6;
             // 
             // price
@@ -1114,14 +1124,6 @@
             size.ReadOnly = true;
             size.Visible = false;
             size.Width = 125;
-            // 
-            // timer_search
-            // 
-            timer_search.Tick += timer_search_Tick;
-            // 
-            // timer_show
-            // 
-            timer_show.Tick += timer_show_Tick;
             // 
             // Form_Item_Adjust
             // 
@@ -1201,19 +1203,6 @@
         private Button button_confirm;
         private Label label1;
         private TextBox textBox_qty_last;
-        private DataGridViewTextBoxColumn small_barcode;
-        private DataGridViewTextBoxColumn code;
-        private DataGridViewTextBoxColumn group_main;
-        private DataGridViewTextBoxColumn group_sub;
-        private DataGridViewTextBoxColumn name;
-        private DataGridViewTextBoxColumn barcode;
-        private DataGridViewTextBoxColumn qty;
-        private DataGridViewTextBoxColumn unit;
-        private DataGridViewTextBoxColumn price;
-        private DataGridViewTextBoxColumn cost_last;
-        private DataGridViewTextBoxColumn cost_avg;
-        private DataGridViewTextBoxColumn qty_small;
-        private DataGridViewTextBoxColumn size;
         private TableLayoutPanel tableLayoutPanel_per_unit;
         private Button button_cost_per_unit;
         private Button button_cost_all;
@@ -1234,5 +1223,18 @@
         private TableLayoutPanel tableLayoutPanel_group;
         private TableLayoutPanel tableLayoutPanel_back_cost;
         private System.Windows.Forms.Timer timer_show;
+        private DataGridViewTextBoxColumn small_barcode;
+        private DataGridViewTextBoxColumn code;
+        private DataGridViewTextBoxColumn group_main;
+        private DataGridViewTextBoxColumn group_sub;
+        private DataGridViewTextBoxColumn name;
+        private DataGridViewTextBoxColumn barcode;
+        private DataGridViewTextBoxColumn qty;
+        private DataGridViewTextBoxColumn unit;
+        private DataGridViewTextBoxColumn price;
+        private DataGridViewTextBoxColumn cost_last;
+        private DataGridViewTextBoxColumn cost_avg;
+        private DataGridViewTextBoxColumn qty_small;
+        private DataGridViewTextBoxColumn size;
     }
 }
