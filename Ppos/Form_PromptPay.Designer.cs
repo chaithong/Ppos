@@ -78,7 +78,7 @@
             // 
             // button_ok
             // 
-            button_ok.BackColor = Color.Cyan;
+            button_ok.BackColor = Color.White;
             button_ok.Dock = DockStyle.Fill;
             button_ok.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_ok.Location = new Point(455, 457);
@@ -96,7 +96,7 @@
             // 
             // button_confirm
             // 
-            button_confirm.BackColor = Color.Lime;
+            button_confirm.BackColor = Color.White;
             button_confirm.Dock = DockStyle.Fill;
             button_confirm.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_confirm.Location = new Point(3, 457);
@@ -376,7 +376,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Cyan;
+            BackColor = Color.White;
             ClientSize = new Size(782, 582);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;

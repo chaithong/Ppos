@@ -55,7 +55,7 @@
             pictureBox_video.Dock = DockStyle.Top;
             pictureBox_video.Location = new Point(15, 59);
             pictureBox_video.Name = "pictureBox_video";
-            pictureBox_video.Size = new Size(564, 400);
+            pictureBox_video.Size = new Size(520, 400);
             pictureBox_video.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_video.TabIndex = 0;
             pictureBox_video.TabStop = false;
@@ -68,6 +68,7 @@
             dataGridView_device.AllowUserToResizeRows = false;
             dataGridView_device.BackgroundColor = Color.White;
             dataGridView_device.BorderStyle = BorderStyle.None;
+            dataGridView_device.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_device.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = Color.Cyan;
@@ -100,7 +101,7 @@
             dataGridView_device.RowsDefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_device.RowTemplate.Height = 50;
             dataGridView_device.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_device.Size = new Size(564, 103);
+            dataGridView_device.Size = new Size(520, 76);
             dataGridView_device.TabIndex = 1;
             dataGridView_device.CellMouseDown += dataGridView_device_CellMouseDown;
             // 
@@ -122,10 +123,10 @@
             button_refresh.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_refresh.FlatStyle = FlatStyle.Flat;
             button_refresh.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button_refresh.Location = new Point(15, 617);
+            button_refresh.Location = new Point(15, 590);
             button_refresh.Margin = new Padding(0);
             button_refresh.Name = "button_refresh";
-            button_refresh.Size = new Size(564, 60);
+            button_refresh.Size = new Size(520, 60);
             button_refresh.TabIndex = 4;
             button_refresh.Text = "ค้นหากล้องอีกครั้ง";
             button_refresh.TextAlign = ContentAlignment.MiddleRight;
@@ -149,7 +150,7 @@
             tableLayoutPanel_button.RowCount = 1;
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_button.Size = new Size(564, 55);
+            tableLayoutPanel_button.Size = new Size(520, 55);
             tableLayoutPanel_button.TabIndex = 3;
             // 
             // button_test
@@ -158,14 +159,14 @@
             button_test.Dock = DockStyle.Fill;
             button_test.Enabled = false;
             button_test.FlatAppearance.BorderSize = 0;
-            button_test.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 255);
-            button_test.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 255);
+            button_test.FlatAppearance.MouseDownBackColor = Color.Cyan;
+            button_test.FlatAppearance.MouseOverBackColor = Color.Cyan;
             button_test.FlatStyle = FlatStyle.Flat;
             button_test.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold | FontStyle.Underline);
-            button_test.Location = new Point(0, 3);
-            button_test.Margin = new Padding(0, 3, 3, 0);
+            button_test.Location = new Point(0, 0);
+            button_test.Margin = new Padding(0);
             button_test.Name = "button_test";
-            button_test.Size = new Size(279, 52);
+            button_test.Size = new Size(260, 55);
             button_test.TabIndex = 0;
             button_test.Text = "ทดสอบ";
             button_test.TextAlign = ContentAlignment.MiddleRight;
@@ -181,14 +182,14 @@
             button_save.Dock = DockStyle.Fill;
             button_save.Enabled = false;
             button_save.FlatAppearance.BorderSize = 0;
-            button_save.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_save.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_save.FlatAppearance.MouseDownBackColor = Color.White;
+            button_save.FlatAppearance.MouseOverBackColor = Color.White;
             button_save.FlatStyle = FlatStyle.Flat;
             button_save.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold | FontStyle.Underline);
-            button_save.Location = new Point(285, 0);
-            button_save.Margin = new Padding(3, 0, 0, 3);
+            button_save.Location = new Point(260, 0);
+            button_save.Margin = new Padding(0);
             button_save.Name = "button_save";
-            button_save.Size = new Size(279, 52);
+            button_save.Size = new Size(260, 55);
             button_save.TabIndex = 0;
             button_save.Text = "บันทึก";
             button_save.TextAlign = ContentAlignment.MiddleRight;
@@ -207,7 +208,7 @@
             textBox_device.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             textBox_device.Location = new Point(15, 15);
             textBox_device.Name = "textBox_device";
-            textBox_device.Size = new Size(564, 44);
+            textBox_device.Size = new Size(520, 44);
             textBox_device.TabIndex = 2;
             textBox_device.TextAlign = HorizontalAlignment.Center;
             // 
@@ -220,11 +221,11 @@
             panel_video.Controls.Add(textBox_device);
             panel_video.Controls.Add(button_refresh);
             panel_video.Dock = DockStyle.Fill;
-            panel_video.Location = new Point(3, 23);
+            panel_video.Location = new Point(25, 28);
             panel_video.Margin = new Padding(9);
             panel_video.Name = "panel_video";
             panel_video.Padding = new Padding(15);
-            panel_video.Size = new Size(594, 692);
+            panel_video.Size = new Size(550, 665);
             panel_video.TabIndex = 2;
             // 
             // customGroupBox_back
@@ -232,11 +233,13 @@
             customGroupBox_back.Anchor = AnchorStyles.Top;
             customGroupBox_back.BorderColor = Color.Cyan;
             customGroupBox_back.BorderRadius = 30;
-            customGroupBox_back.BorderThickness = 10;
+            customGroupBox_back.BorderThickness = 20;
             customGroupBox_back.Controls.Add(panel_video);
+            customGroupBox_back.Font = new Font("Segoe UI", 1F);
             customGroupBox_back.Location = new Point(315, 19);
             customGroupBox_back.Margin = new Padding(9);
             customGroupBox_back.Name = "customGroupBox_back";
+            customGroupBox_back.Padding = new Padding(25);
             customGroupBox_back.Size = new Size(600, 718);
             customGroupBox_back.TabIndex = 3;
             customGroupBox_back.TabStop = false;

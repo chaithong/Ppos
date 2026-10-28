@@ -20,6 +20,8 @@ namespace Ppos
         int count_search, set_search = 5;
 
         public static string trx_no_detail = "", trx_no_status = "";
+        int Limit = 20;
+        bool show_all = false;
 
         DateTime currentDate = DateTime.Now;
         BackgroundWorker worker;
@@ -183,8 +185,7 @@ namespace Ppos
                 form_Invoice_Detail.ShowDialog(this);
                 if (form_Invoice_Detail.void_bill)
                 {
-                    dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].Cells["status"].Value = "ยกเลิก";
-                    dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].Cells["void_bill"].Value = new Bitmap(40, 40);
+                    backgroundWorker_void.RunWorkerAsync();
                 }
             }
             catch
@@ -211,6 +212,8 @@ namespace Ppos
             {
                 dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].Cells["status"].Value = "ยกเลิก";
                 dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].Cells["void_bill"].Value = new Bitmap(40, 40);
+                dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].DefaultCellStyle.ForeColor = Color.Red;
+                dataGridView_invoice.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -301,8 +304,8 @@ namespace Ppos
                     }
                     dataGridView_invoice.Rows[e.RowIndex].Cells["detail"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(30, 30));
 
-                    dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
-                    dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+                   // dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                   // dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
                 }
             }
             catch
@@ -330,8 +333,8 @@ namespace Ppos
                     }
                     dataGridView_invoice.Rows[e.RowIndex].Cells["detail"].Value = Class_Image.resizeImage(Ppos.Properties.Resources.SDeatil, new Size(40, 40));
 
-                    dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Blue;
-                    dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Blue;
+                   // dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Blue;
+                   // dataGridView_invoice.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Blue;
                 }
             }
             catch
@@ -344,7 +347,7 @@ namespace Ppos
         {
             try
             {
-                worker = sender as BackgroundWorker;
+                worker = (BackgroundWorker)sender;
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -367,7 +370,11 @@ namespace Ppos
                         {
                             cmd_sqlite.CommandText += "and date(ih.created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' ";
                         }
-                        cmd_sqlite.CommandText += "order by ih.id desc";
+                        cmd_sqlite.CommandText += "order by ih.id desc ";
+                        if (Limit > 0 && !show_all)
+                        {
+                            cmd_sqlite.CommandText += "limit " + Limit;
+                        }
                         SQLiteDataReader reader = cmd_sqlite.ExecuteReader();
                         System.Data.DataTable dt = new System.Data.DataTable();
                         dt.Load(reader);
@@ -434,7 +441,14 @@ namespace Ppos
                                 void_bill,
                                 ""
                                 );
+
+                                // เปลี่ยนสี
+                                if (status == "ยกเลิก")
+                                {
+                                    dataGridView_invoice.Rows[dataGridView_invoice.RowCount-1].DefaultCellStyle.ForeColor = Color.Red;
+                                }
                                 dataGridView_invoice.Columns["seq"]!.HeaderText = (i + 1).ToString();
+                                dataGridView_invoice.ClearSelection();
                             }
 
                         }
@@ -521,11 +535,7 @@ namespace Ppos
             }
         }
 
-        private void label_date_DoubleClick(object sender, EventArgs e)
-        {
-
-        }
-
+     
         private void label_date_Click(object sender, EventArgs e)
         {
             try
@@ -621,6 +631,39 @@ namespace Ppos
                 System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
 
                 label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button_show_all_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if(show_all)
+                {
+                    show_all = false;
+                    button_show_all.ForeColor = System.Drawing.Color.DarkGray;
+                }
+                else
+                {
+                    show_all= true;
+                    button_show_all.ForeColor = System.Drawing.Color.Black;
+                }
+                if (backgroundWorker_search.IsBusy)
+                {
+                    backgroundWorker_search.CancelAsync();
+                }
+
+                Class_Parameter.runbackground = true;
+
+                count_search = 0;
+                if (!timer_search.Enabled)
+                {
+                    timer_search.Start();
+                }
             }
             catch
             {

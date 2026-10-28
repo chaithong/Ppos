@@ -122,25 +122,25 @@ namespace Ppos
                 if (dayNumber == 1)
                 {
                     label_1.Text = days.ToString();
-                    label_1.BackColor = Color.WhiteSmoke;
+                    label_1.BackColor = Color.White;
                     days += 1;
                     label_2.Text = days.ToString();
-                    label_2.BackColor = Color.WhiteSmoke;
+                    label_2.BackColor = Color.White;
                     days += 1;
                     label_3.Text = days.ToString();
-                    label_3.BackColor = Color.WhiteSmoke;
+                    label_3.BackColor = Color.White;
                     days += 1;
                     label_4.Text = days.ToString();
-                    label_4.BackColor = Color.WhiteSmoke;
+                    label_4.BackColor = Color.White;
                     days += 1;
                     label_5.Text = days.ToString();
-                    label_5.BackColor = Color.WhiteSmoke;
+                    label_5.BackColor = Color.White;
                     days += 1;
                     label_6.Text = days.ToString();
-                    label_6.BackColor = Color.WhiteSmoke;
+                    label_6.BackColor = Color.White;
                     days += 1;
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 else if (dayNumber == 2)
@@ -149,22 +149,22 @@ namespace Ppos
                     label_1.BackColor = Color.Transparent;
 
                     label_2.Text = days.ToString();
-                    label_2.BackColor = Color.WhiteSmoke;
+                    label_2.BackColor = Color.White;
                     days += 1;
                     label_3.Text = days.ToString();
-                    label_3.BackColor = Color.WhiteSmoke;
+                    label_3.BackColor = Color.White;
                     days += 1;
                     label_4.Text = days.ToString();
-                    label_4.BackColor = Color.WhiteSmoke;
+                    label_4.BackColor = Color.White;
                     days += 1;
                     label_5.Text = days.ToString();
-                    label_5.BackColor = Color.WhiteSmoke;
+                    label_5.BackColor = Color.White;
                     days += 1;
                     label_6.Text = days.ToString();
-                    label_6.BackColor = Color.WhiteSmoke;
+                    label_6.BackColor = Color.White;
                     days += 1;
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 else if (dayNumber == 3)
@@ -176,19 +176,19 @@ namespace Ppos
                     label_2.BackColor = Color.Transparent;
 
                     label_3.Text = days.ToString();
-                    label_3.BackColor = Color.WhiteSmoke;
+                    label_3.BackColor = Color.White;
                     days += 1;
                     label_4.Text = days.ToString();
-                    label_4.BackColor = Color.WhiteSmoke;
+                    label_4.BackColor = Color.White;
                     days += 1;
                     label_5.Text = days.ToString();
-                    label_5.BackColor = Color.WhiteSmoke;
+                    label_5.BackColor = Color.White;
                     days += 1;
                     label_6.Text = days.ToString();
-                    label_6.BackColor = Color.WhiteSmoke;
+                    label_6.BackColor = Color.White;
                     days += 1;
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 else if (dayNumber == 4)
@@ -203,16 +203,16 @@ namespace Ppos
                     label_3.BackColor = Color.Transparent;
 
                     label_4.Text = days.ToString();
-                    label_4.BackColor = Color.WhiteSmoke;
+                    label_4.BackColor = Color.White;
                     days += 1;
                     label_5.Text = days.ToString();
-                    label_5.BackColor = Color.WhiteSmoke;
+                    label_5.BackColor = Color.White;
                     days += 1;
                     label_6.Text = days.ToString();
-                    label_6.BackColor = Color.WhiteSmoke;
+                    label_6.BackColor = Color.White;
                     days += 1;
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 else if (dayNumber == 5)
@@ -230,13 +230,13 @@ namespace Ppos
                     label_4.BackColor = Color.Transparent;
 
                     label_5.Text = days.ToString();
-                    label_5.BackColor = Color.WhiteSmoke;
+                    label_5.BackColor = Color.White;
                     days += 1;
                     label_6.Text = days.ToString();
-                    label_6.BackColor = Color.WhiteSmoke;
+                    label_6.BackColor = Color.White;
                     days += 1;
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 else if (dayNumber == 6)
@@ -257,10 +257,10 @@ namespace Ppos
                     label_5.BackColor = Color.Transparent;
 
                     label_6.Text = days.ToString();
-                    label_6.BackColor = Color.WhiteSmoke;
+                    label_6.BackColor = Color.White;
                     days += 1;
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 else // 7
@@ -284,146 +284,146 @@ namespace Ppos
                     label_6.BackColor = Color.Transparent;
 
                     label_7.Text = days.ToString();
-                    label_7.BackColor = Color.WhiteSmoke;
+                    label_7.BackColor = Color.White;
                     days += 1;
                 }
                 label_8.Text = days.ToString();
-                label_8.BackColor = Color.WhiteSmoke;
+                label_8.BackColor = Color.White;
                 days += 1;
                 label_9.Text = days.ToString();
-                label_9.BackColor = Color.WhiteSmoke;
+                label_9.BackColor = Color.White;
                 days += 1;
                 label_10.Text = days.ToString();
-                label_10.BackColor = Color.WhiteSmoke;
+                label_10.BackColor = Color.White;
                 days += 1;
                 label_11.Text = days.ToString();
-                label_11.BackColor = Color.WhiteSmoke;
+                label_11.BackColor = Color.White;
                 days += 1;
                 label_12.Text = days.ToString();
-                label_12.BackColor = Color.WhiteSmoke;
+                label_12.BackColor = Color.White;
                 days += 1;
                 label_13.Text = days.ToString();
-                label_13.BackColor = Color.WhiteSmoke;
+                label_13.BackColor = Color.White;
                 days += 1;
                 label_14.Text = days.ToString();
-                label_14.BackColor = Color.WhiteSmoke;
+                label_14.BackColor = Color.White;
                 days += 1;
 
                 label_15.Text = days.ToString();
-                label_15.BackColor = Color.WhiteSmoke;
+                label_15.BackColor = Color.White;
                 days += 1;
                 label_16.Text = days.ToString();
-                label_16.BackColor = Color.WhiteSmoke;
+                label_16.BackColor = Color.White;
                 days += 1;
                 label_17.Text = days.ToString();
-                label_17.BackColor = Color.WhiteSmoke;
+                label_17.BackColor = Color.White;
                 days += 1;
                 label_18.Text = days.ToString();
-                label_18.BackColor = Color.WhiteSmoke;
+                label_18.BackColor = Color.White;
                 days += 1;
                 label_19.Text = days.ToString();
-                label_19.BackColor = Color.WhiteSmoke;
+                label_19.BackColor = Color.White;
                 days += 1;
                 label_20.Text = days.ToString();
-                label_20.BackColor = Color.WhiteSmoke;
+                label_20.BackColor = Color.White;
                 days += 1;
                 label_21.Text = days.ToString();
-                label_21.BackColor = Color.WhiteSmoke;
+                label_21.BackColor = Color.White;
                 days += 1;
 
                 label_22.Text = days.ToString();
-                label_22.BackColor = Color.WhiteSmoke;
+                label_22.BackColor = Color.White;
                 days += 1;
                 label_23.Text = days.ToString();
-                label_23.BackColor = Color.WhiteSmoke;
+                label_23.BackColor = Color.White;
                 days += 1;
                 label_24.Text = days.ToString();
-                label_24.BackColor = Color.WhiteSmoke;
+                label_24.BackColor = Color.White;
                 days += 1;
                 label_25.Text = days.ToString();
-                label_25.BackColor = Color.WhiteSmoke;
+                label_25.BackColor = Color.White;
                 days += 1;
                 label_26.Text = days.ToString();
-                label_26.BackColor = Color.WhiteSmoke;
+                label_26.BackColor = Color.White;
                 days += 1;
                 label_27.Text = days.ToString();
-                label_27.BackColor = Color.WhiteSmoke;
+                label_27.BackColor = Color.White;
                 days += 1;
                 label_28.Text = days.ToString();
-                label_28.BackColor = Color.WhiteSmoke;
+                label_28.BackColor = Color.White;
                 days += 1;
 
                 if (days <= daysInMonth)
                 {
                     label_29.Text = days.ToString();
-                    label_29.BackColor = Color.WhiteSmoke;
+                    label_29.BackColor = Color.White;
                     days += 1;
 
                     if (days <= daysInMonth)
                     {
                         label_30.Text = days.ToString();
-                        label_30.BackColor = Color.WhiteSmoke;
+                        label_30.BackColor = Color.White;
                         days += 1;
                         if (days <= daysInMonth)
                         {
                             label_31.Text = days.ToString();
-                            label_31.BackColor = Color.WhiteSmoke;
+                            label_31.BackColor = Color.White;
                             days += 1;
                             if (days <= daysInMonth)
                             {
                                 label_32.Text = days.ToString();
-                                label_32.BackColor = Color.WhiteSmoke;
+                                label_32.BackColor = Color.White;
                                 days += 1;
                                 if (days <= daysInMonth)
                                 {
                                     label_33.Text = days.ToString();
-                                    label_33.BackColor = Color.WhiteSmoke;
+                                    label_33.BackColor = Color.White;
                                     days += 1;
                                     if (days <= daysInMonth)
                                     {
                                         label_34.Text = days.ToString();
-                                        label_34.BackColor = Color.WhiteSmoke;
+                                        label_34.BackColor = Color.White;
                                         days += 1;
                                         if (days <= daysInMonth)
                                         {
                                             label_35.Text = days.ToString();
-                                            label_35.BackColor = Color.WhiteSmoke;
+                                            label_35.BackColor = Color.White;
                                             days += 1;
                                             if (days <= daysInMonth)
                                             {
                                                 label_36.Text = days.ToString();
-                                                label_36.BackColor = Color.WhiteSmoke;
+                                                label_36.BackColor = Color.White;
                                                 days += 1;
 
                                                 if (days <= daysInMonth)
                                                 {
                                                     label_37.Text = days.ToString();
-                                                    label_37.BackColor = Color.WhiteSmoke;
+                                                    label_37.BackColor = Color.White;
                                                     days += 1;
                                                     if (days <= daysInMonth)
                                                     {
                                                         label_38.Text = days.ToString();
-                                                        label_38.BackColor = Color.WhiteSmoke;
+                                                        label_38.BackColor = Color.White;
                                                         days += 1;
                                                         if (days <= daysInMonth)
                                                         {
                                                             label_39.Text = days.ToString();
-                                                            label_39.BackColor = Color.WhiteSmoke;
+                                                            label_39.BackColor = Color.White;
                                                             days += 1;
                                                             if (days <= daysInMonth)
                                                             {
                                                                 label_40.Text = days.ToString();
-                                                                label_40.BackColor = Color.WhiteSmoke;
+                                                                label_40.BackColor = Color.White;
                                                                 days += 1;
                                                                 if (days <= daysInMonth)
                                                                 {
                                                                     label_41.Text = days.ToString();
-                                                                    label_41.BackColor = Color.WhiteSmoke;
+                                                                    label_41.BackColor = Color.White;
                                                                     days += 1;
                                                                     if (days <= daysInMonth)
                                                                     {
                                                                         label_42.Text = days.ToString();
-                                                                        label_42.BackColor = Color.WhiteSmoke;
+                                                                        label_42.BackColor = Color.White;
                                                                     }
                                                                     else
                                                                     {
@@ -799,16 +799,13 @@ namespace Ppos
                     {
                         if (L_select_day.BackColor == Color.Lime)
                         {
-                            L_select_day.BackColor = Color.WhiteSmoke;
+                            L_select_day.BackColor = Color.White;
                         }
-
                     }
                     L_select_day = L;
                     L_select_day.BackColor = Color.Lime;
 
                     label_set_days.Text = Convert.ToInt16(L_select_day.Text).ToString("00") + "-" + set_month.ToString("00") + "-" + set_year;
-
-
                 }
             }
             catch
@@ -836,12 +833,11 @@ namespace Ppos
         {
             try
             {
-                if (((Label)sender) != L_select_day && ((Label)sender).Text != "")
+                if (((Label)sender).Text != "")
                 {
-                    ((Label)sender).BackColor = Color.Transparent;
-                   // ((Label)sender).Font = new System.Drawing.Font("Segoe UI", ((Label)sender).Font.Size + 2, ((Label)sender).Font.Style);
+                  //  ((Label)sender).BackColor = Color.Transparent;
+                    ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size + 4, ((Label)sender).Font.Style);
                 }
-
             }
             catch
             {
@@ -853,12 +849,11 @@ namespace Ppos
         {
             try
             {
-                if (((Label)sender) != L_select_day && ((Label)sender).Text != "")
+                if (((Label)sender).Text != "")
                 {
-                    ((Label)sender).BackColor = Color.WhiteSmoke;
-                    //((Label)sender).Font = new System.Drawing.Font("Segoe UI", ((Label)sender).Font.Size - 2, ((Label)sender).Font.Style);
+                   // ((Label)sender).BackColor = Color.White;
+                    ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size - 4, ((Label)sender).Font.Style);
                 }
-
             }
             catch
             {
@@ -881,7 +876,6 @@ namespace Ppos
                     {
                         L_select_day.BackColor = Color.Lime;
                     }
-
                 }
             }
             catch (Exception ex)
@@ -895,7 +889,7 @@ namespace Ppos
             try
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
-                button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size + 1, button.Font.Style);
+                button.Font = new System.Drawing.Font(button.Font.FontFamily, button.Font.Size + 4, button.Font.Style);
                
                 if(button.Name == "button_back")
                 {
@@ -918,7 +912,7 @@ namespace Ppos
             try
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
-                button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size - 1, button.Font.Style);
+                button.Font = new System.Drawing.Font(button.Font.FontFamily, button.Font.Size - 4, button.Font.Style);
 
                 if (button.Name == "button_back")
                 {

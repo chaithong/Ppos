@@ -131,7 +131,7 @@
             // 
             // customGroupBox_item
             // 
-            customGroupBox_item.BorderColor = Color.Lime;
+            customGroupBox_item.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_item.BorderRadius = 30;
             customGroupBox_item.BorderThickness = 10;
             customGroupBox_item.Controls.Add(tableLayoutPanel_group);
@@ -748,7 +748,7 @@
             // 
             customGroupBox_picture.AutoSize = true;
             customGroupBox_picture.BackColor = Color.White;
-            customGroupBox_picture.BorderColor = Color.Lime;
+            customGroupBox_picture.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_picture.BorderRadius = 30;
             customGroupBox_picture.BorderThickness = 10;
             customGroupBox_picture.Controls.Add(pictureBox_item);
@@ -995,7 +995,7 @@
             dataGridViewCellStyle2.BackColor = Color.Gray;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(128, 255, 128);
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
@@ -1126,6 +1126,7 @@
             // 
             // tableLayoutPanel_bottom
             // 
+            tableLayoutPanel_bottom.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_bottom.ColumnCount = 2;
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -1159,7 +1160,7 @@
             // 
             // tableLayoutPanel_top
             // 
-            tableLayoutPanel_top.BackColor = Color.Lime;
+            tableLayoutPanel_top.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_top.ColumnCount = 6;
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.142857F));
@@ -1220,7 +1221,7 @@
             // 
             // button_cancel
             // 
-            button_cancel.BackColor = Color.Lime;
+            button_cancel.BackColor = Color.FromArgb(128, 255, 128);
             button_cancel.BackgroundImageLayout = ImageLayout.Zoom;
             button_cancel.Dock = DockStyle.Fill;
             button_cancel.Enabled = false;
@@ -1245,7 +1246,7 @@
             // 
             // button_edit_save
             // 
-            button_edit_save.BackColor = Color.Lime;
+            button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
             button_edit_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_edit_save.Dock = DockStyle.Fill;
             button_edit_save.Enabled = false;
@@ -1270,7 +1271,7 @@
             // 
             // button_add_save
             // 
-            button_add_save.BackColor = Color.Lime;
+            button_add_save.BackColor = Color.FromArgb(128, 255, 128);
             button_add_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_add_save.Dock = DockStyle.Fill;
             button_add_save.FlatAppearance.BorderSize = 0;

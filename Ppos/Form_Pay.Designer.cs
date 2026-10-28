@@ -124,7 +124,7 @@
             button_exit.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_exit.Location = new Point(10, 13);
             button_exit.Name = "button_exit";
-            button_exit.Size = new Size(249, 91);
+            button_exit.Size = new Size(239, 91);
             button_exit.TabIndex = 0;
             button_exit.Text = "ยกเลิก";
             button_exit.TextAlign = ContentAlignment.MiddleRight;
@@ -163,7 +163,7 @@
             customGroupBox_right.Location = new Point(593, 0);
             customGroupBox_right.Margin = new Padding(0, 0, 3, 3);
             customGroupBox_right.Name = "customGroupBox_right";
-            customGroupBox_right.Padding = new Padding(20);
+            customGroupBox_right.Padding = new Padding(30, 20, 30, 20);
             customGroupBox_right.Size = new Size(590, 806);
             customGroupBox_right.TabIndex = 2;
             customGroupBox_right.TabStop = false;
@@ -181,7 +181,7 @@
             tableLayoutPanel_right.Controls.Add(customGroupBox_point_back, 0, 3);
             tableLayoutPanel_right.Controls.Add(customGroupBox_change_back, 0, 5);
             tableLayoutPanel_right.Dock = DockStyle.Fill;
-            tableLayoutPanel_right.Location = new Point(20, 23);
+            tableLayoutPanel_right.Location = new Point(30, 23);
             tableLayoutPanel_right.Name = "tableLayoutPanel_right";
             tableLayoutPanel_right.RowCount = 7;
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
@@ -191,7 +191,7 @@
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 110F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
-            tableLayoutPanel_right.Size = new Size(550, 763);
+            tableLayoutPanel_right.Size = new Size(530, 763);
             tableLayoutPanel_right.TabIndex = 0;
             // 
             // customGroupBox_price_net_back
@@ -206,7 +206,7 @@
             customGroupBox_price_net_back.Location = new Point(3, 3);
             customGroupBox_price_net_back.Name = "customGroupBox_price_net_back";
             customGroupBox_price_net_back.Padding = new Padding(10);
-            customGroupBox_price_net_back.Size = new Size(544, 94);
+            customGroupBox_price_net_back.Size = new Size(524, 94);
             customGroupBox_price_net_back.TabIndex = 1;
             customGroupBox_price_net_back.TabStop = false;
             customGroupBox_price_net_back.Text = " ";
@@ -225,7 +225,7 @@
             tableLayoutPanel_price_net.Name = "tableLayoutPanel_price_net";
             tableLayoutPanel_price_net.RowCount = 1;
             tableLayoutPanel_price_net.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_price_net.Size = new Size(524, 71);
+            tableLayoutPanel_price_net.Size = new Size(504, 71);
             tableLayoutPanel_price_net.TabIndex = 0;
             // 
             // label_price_net_title
@@ -237,7 +237,7 @@
             label_price_net_title.Location = new Point(0, 0);
             label_price_net_title.Margin = new Padding(0);
             label_price_net_title.Name = "label_price_net_title";
-            label_price_net_title.Size = new Size(187, 71);
+            label_price_net_title.Size = new Size(177, 71);
             label_price_net_title.TabIndex = 0;
             label_price_net_title.Text = "ราคาสุทธิ :";
             label_price_net_title.TextAlign = ContentAlignment.MiddleRight;
@@ -248,11 +248,11 @@
             // 
             label_price_net.BackColor = Color.Transparent;
             label_price_net.Dock = DockStyle.Fill;
-            label_price_net.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_price_net.Location = new Point(187, 0);
+            label_price_net.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_price_net.Location = new Point(177, 0);
             label_price_net.Margin = new Padding(0);
             label_price_net.Name = "label_price_net";
-            label_price_net.Size = new Size(187, 71);
+            label_price_net.Size = new Size(177, 71);
             label_price_net.TabIndex = 0;
             label_price_net.Text = "0";
             label_price_net.TextAlign = ContentAlignment.MiddleCenter;
@@ -272,7 +272,7 @@
             tableLayoutPanel_button_confirm_exit.Name = "tableLayoutPanel_button_confirm_exit";
             tableLayoutPanel_button_confirm_exit.RowCount = 1;
             tableLayoutPanel_button_confirm_exit.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_button_confirm_exit.Size = new Size(550, 120);
+            tableLayoutPanel_button_confirm_exit.Size = new Size(530, 120);
             tableLayoutPanel_button_confirm_exit.TabIndex = 1;
             // 
             // customGroupBox_confirm
@@ -286,7 +286,7 @@
             customGroupBox_confirm.Location = new Point(3, 3);
             customGroupBox_confirm.Name = "customGroupBox_confirm";
             customGroupBox_confirm.Padding = new Padding(10);
-            customGroupBox_confirm.Size = new Size(269, 114);
+            customGroupBox_confirm.Size = new Size(259, 114);
             customGroupBox_confirm.TabIndex = 1;
             customGroupBox_confirm.TabStop = false;
             customGroupBox_confirm.Text = " ";
@@ -301,7 +301,7 @@
             button_confirm.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_confirm.Location = new Point(10, 13);
             button_confirm.Name = "button_confirm";
-            button_confirm.Size = new Size(249, 91);
+            button_confirm.Size = new Size(239, 91);
             button_confirm.TabIndex = 1;
             button_confirm.Text = "ตกลง";
             button_confirm.TextAlign = ContentAlignment.MiddleRight;
@@ -319,10 +319,10 @@
             customGroupBox_exit.Controls.Add(button_exit);
             customGroupBox_exit.Dock = DockStyle.Fill;
             customGroupBox_exit.Font = new Font("Segoe UI", 1F);
-            customGroupBox_exit.Location = new Point(278, 3);
+            customGroupBox_exit.Location = new Point(268, 3);
             customGroupBox_exit.Name = "customGroupBox_exit";
             customGroupBox_exit.Padding = new Padding(10);
-            customGroupBox_exit.Size = new Size(269, 114);
+            customGroupBox_exit.Size = new Size(259, 114);
             customGroupBox_exit.TabIndex = 2;
             customGroupBox_exit.TabStop = false;
             customGroupBox_exit.Text = " ";
@@ -339,7 +339,7 @@
             customGroupBox_cash_back.Location = new Point(3, 103);
             customGroupBox_cash_back.Name = "customGroupBox_cash_back";
             customGroupBox_cash_back.Padding = new Padding(10);
-            customGroupBox_cash_back.Size = new Size(544, 104);
+            customGroupBox_cash_back.Size = new Size(524, 104);
             customGroupBox_cash_back.TabIndex = 1;
             customGroupBox_cash_back.TabStop = false;
             customGroupBox_cash_back.Text = " ";
@@ -359,7 +359,7 @@
             tableLayoutPanel_cash.Name = "tableLayoutPanel_cash";
             tableLayoutPanel_cash.RowCount = 1;
             tableLayoutPanel_cash.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_cash.Size = new Size(524, 81);
+            tableLayoutPanel_cash.Size = new Size(504, 81);
             tableLayoutPanel_cash.TabIndex = 0;
             // 
             // label_cash_title
@@ -372,7 +372,7 @@
             label_cash_title.Location = new Point(0, 0);
             label_cash_title.Margin = new Padding(0);
             label_cash_title.Name = "label_cash_title";
-            label_cash_title.Size = new Size(187, 81);
+            label_cash_title.Size = new Size(177, 81);
             label_cash_title.TabIndex = 0;
             label_cash_title.Text = "เงินสด :";
             label_cash_title.TextAlign = ContentAlignment.MiddleRight;
@@ -385,9 +385,9 @@
             textBox_cash.BackColor = Color.White;
             textBox_cash.BorderStyle = BorderStyle.None;
             textBox_cash.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_cash.Location = new Point(190, 9);
+            textBox_cash.Location = new Point(180, 9);
             textBox_cash.Name = "textBox_cash";
-            textBox_cash.Size = new Size(181, 63);
+            textBox_cash.Size = new Size(171, 63);
             textBox_cash.TabIndex = 0;
             textBox_cash.TextAlign = HorizontalAlignment.Center;
             textBox_cash.TextChanged += textBox_cash_TextChanged;
@@ -400,7 +400,7 @@
             // 
             button_cash.Dock = DockStyle.Fill;
             button_cash.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            button_cash.Location = new Point(374, 0);
+            button_cash.Location = new Point(354, 0);
             button_cash.Margin = new Padding(0);
             button_cash.Name = "button_cash";
             button_cash.Size = new Size(150, 81);
@@ -425,7 +425,7 @@
             customGroupBox_transfer_back.Location = new Point(3, 213);
             customGroupBox_transfer_back.Name = "customGroupBox_transfer_back";
             customGroupBox_transfer_back.Padding = new Padding(10);
-            customGroupBox_transfer_back.Size = new Size(544, 104);
+            customGroupBox_transfer_back.Size = new Size(524, 104);
             customGroupBox_transfer_back.TabIndex = 1;
             customGroupBox_transfer_back.TabStop = false;
             customGroupBox_transfer_back.Text = " ";
@@ -445,7 +445,7 @@
             tableLayoutPanel_transfer.Name = "tableLayoutPanel_transfer";
             tableLayoutPanel_transfer.RowCount = 1;
             tableLayoutPanel_transfer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_transfer.Size = new Size(524, 81);
+            tableLayoutPanel_transfer.Size = new Size(504, 81);
             tableLayoutPanel_transfer.TabIndex = 0;
             // 
             // label_transfer_title
@@ -458,7 +458,7 @@
             label_transfer_title.Location = new Point(0, 0);
             label_transfer_title.Margin = new Padding(0);
             label_transfer_title.Name = "label_transfer_title";
-            label_transfer_title.Size = new Size(187, 81);
+            label_transfer_title.Size = new Size(177, 81);
             label_transfer_title.TabIndex = 0;
             label_transfer_title.Text = "เงินโอน :";
             label_transfer_title.TextAlign = ContentAlignment.MiddleRight;
@@ -470,10 +470,10 @@
             label_transfer.BackColor = Color.White;
             label_transfer.Dock = DockStyle.Fill;
             label_transfer.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_transfer.Location = new Point(187, 0);
+            label_transfer.Location = new Point(177, 0);
             label_transfer.Margin = new Padding(0);
             label_transfer.Name = "label_transfer";
-            label_transfer.Size = new Size(187, 81);
+            label_transfer.Size = new Size(177, 81);
             label_transfer.TabIndex = 0;
             label_transfer.Text = "0";
             label_transfer.TextAlign = ContentAlignment.MiddleCenter;
@@ -485,7 +485,7 @@
             button_transfer.BackgroundImageLayout = ImageLayout.Zoom;
             button_transfer.Dock = DockStyle.Fill;
             button_transfer.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            button_transfer.Location = new Point(374, 0);
+            button_transfer.Location = new Point(354, 0);
             button_transfer.Margin = new Padding(0);
             button_transfer.Name = "button_transfer";
             button_transfer.Size = new Size(150, 81);
@@ -510,7 +510,7 @@
             customGroupBox_point_back.Location = new Point(3, 323);
             customGroupBox_point_back.Name = "customGroupBox_point_back";
             customGroupBox_point_back.Padding = new Padding(10);
-            customGroupBox_point_back.Size = new Size(544, 104);
+            customGroupBox_point_back.Size = new Size(524, 104);
             customGroupBox_point_back.TabIndex = 1;
             customGroupBox_point_back.TabStop = false;
             customGroupBox_point_back.Text = " ";
@@ -530,7 +530,7 @@
             tableLayoutPanel_point.Name = "tableLayoutPanel_point";
             tableLayoutPanel_point.RowCount = 1;
             tableLayoutPanel_point.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_point.Size = new Size(524, 81);
+            tableLayoutPanel_point.Size = new Size(504, 81);
             tableLayoutPanel_point.TabIndex = 0;
             // 
             // label_point_title
@@ -543,7 +543,7 @@
             label_point_title.Location = new Point(0, 0);
             label_point_title.Margin = new Padding(0);
             label_point_title.Name = "label_point_title";
-            label_point_title.Size = new Size(187, 81);
+            label_point_title.Size = new Size(177, 81);
             label_point_title.TabIndex = 0;
             label_point_title.Text = "แต้มสะสม :";
             label_point_title.TextAlign = ContentAlignment.MiddleRight;
@@ -555,10 +555,10 @@
             label_point.BackColor = Color.White;
             label_point.Dock = DockStyle.Fill;
             label_point.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_point.Location = new Point(187, 0);
+            label_point.Location = new Point(177, 0);
             label_point.Margin = new Padding(0);
             label_point.Name = "label_point";
-            label_point.Size = new Size(187, 81);
+            label_point.Size = new Size(177, 81);
             label_point.TabIndex = 0;
             label_point.Text = "0";
             label_point.TextAlign = ContentAlignment.MiddleCenter;
@@ -569,7 +569,7 @@
             // 
             button_member.Dock = DockStyle.Fill;
             button_member.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold);
-            button_member.Location = new Point(374, 0);
+            button_member.Location = new Point(354, 0);
             button_member.Margin = new Padding(0);
             button_member.Name = "button_member";
             button_member.Size = new Size(150, 81);
@@ -593,7 +593,7 @@
             customGroupBox_change_back.Location = new Point(3, 536);
             customGroupBox_change_back.Name = "customGroupBox_change_back";
             customGroupBox_change_back.Padding = new Padding(10);
-            customGroupBox_change_back.Size = new Size(544, 104);
+            customGroupBox_change_back.Size = new Size(524, 104);
             customGroupBox_change_back.TabIndex = 1;
             customGroupBox_change_back.TabStop = false;
             customGroupBox_change_back.Text = " ";
@@ -612,7 +612,7 @@
             tableLayoutPanel_change.Name = "tableLayoutPanel_change";
             tableLayoutPanel_change.RowCount = 1;
             tableLayoutPanel_change.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_change.Size = new Size(524, 81);
+            tableLayoutPanel_change.Size = new Size(504, 81);
             tableLayoutPanel_change.TabIndex = 0;
             // 
             // label_change_title
@@ -625,7 +625,7 @@
             label_change_title.Location = new Point(0, 0);
             label_change_title.Margin = new Padding(0);
             label_change_title.Name = "label_change_title";
-            label_change_title.Size = new Size(187, 81);
+            label_change_title.Size = new Size(177, 81);
             label_change_title.TabIndex = 0;
             label_change_title.Text = "เงินทอน :";
             label_change_title.TextAlign = ContentAlignment.MiddleRight;
@@ -637,10 +637,10 @@
             label_change.BackColor = Color.Transparent;
             label_change.Dock = DockStyle.Fill;
             label_change.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_change.Location = new Point(187, 0);
+            label_change.Location = new Point(177, 0);
             label_change.Margin = new Padding(0);
             label_change.Name = "label_change";
-            label_change.Size = new Size(187, 81);
+            label_change.Size = new Size(177, 81);
             label_change.TabIndex = 0;
             label_change.Text = "0";
             label_change.TextAlign = ContentAlignment.MiddleCenter;
@@ -993,6 +993,7 @@
             // 
             // button_1
             // 
+            button_1.BackColor = Color.White;
             button_1.BackgroundImageLayout = ImageLayout.Zoom;
             button_1.Dock = DockStyle.Fill;
             button_1.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1003,7 +1004,7 @@
             button_1.Text = "1";
             button_1.TextAlign = ContentAlignment.BottomCenter;
             button_1.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_1.UseVisualStyleBackColor = true;
+            button_1.UseVisualStyleBackColor = false;
             button_1.Click += coin_click;
             button_1.MouseEnter += button_enter;
             button_1.MouseLeave += button_leave;
@@ -1026,6 +1027,7 @@
             // 
             // button_5
             // 
+            button_5.BackColor = Color.White;
             button_5.BackgroundImageLayout = ImageLayout.Zoom;
             button_5.Dock = DockStyle.Fill;
             button_5.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1036,13 +1038,14 @@
             button_5.Text = "5";
             button_5.TextAlign = ContentAlignment.BottomCenter;
             button_5.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_5.UseVisualStyleBackColor = true;
+            button_5.UseVisualStyleBackColor = false;
             button_5.Click += coin_click;
             button_5.MouseEnter += button_enter;
             button_5.MouseLeave += button_leave;
             // 
             // button_10
             // 
+            button_10.BackColor = Color.White;
             button_10.BackgroundImageLayout = ImageLayout.Zoom;
             button_10.Dock = DockStyle.Fill;
             button_10.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1053,13 +1056,14 @@
             button_10.Text = "10";
             button_10.TextAlign = ContentAlignment.BottomCenter;
             button_10.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_10.UseVisualStyleBackColor = true;
+            button_10.UseVisualStyleBackColor = false;
             button_10.Click += coin_click;
             button_10.MouseEnter += button_enter;
             button_10.MouseLeave += button_leave;
             // 
             // button_20
             // 
+            button_20.BackColor = Color.White;
             button_20.BackgroundImageLayout = ImageLayout.Zoom;
             button_20.Dock = DockStyle.Fill;
             button_20.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1070,13 +1074,14 @@
             button_20.Text = "20";
             button_20.TextAlign = ContentAlignment.BottomCenter;
             button_20.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_20.UseVisualStyleBackColor = true;
+            button_20.UseVisualStyleBackColor = false;
             button_20.Click += coin_click;
             button_20.MouseEnter += button_enter;
             button_20.MouseLeave += button_leave;
             // 
             // button_50
             // 
+            button_50.BackColor = Color.White;
             button_50.BackgroundImageLayout = ImageLayout.Zoom;
             button_50.Dock = DockStyle.Fill;
             button_50.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1087,13 +1092,14 @@
             button_50.Text = "50";
             button_50.TextAlign = ContentAlignment.BottomCenter;
             button_50.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_50.UseVisualStyleBackColor = true;
+            button_50.UseVisualStyleBackColor = false;
             button_50.Click += coin_click;
             button_50.MouseEnter += button_enter;
             button_50.MouseLeave += button_leave;
             // 
             // button_100
             // 
+            button_100.BackColor = Color.White;
             button_100.BackgroundImageLayout = ImageLayout.Zoom;
             button_100.Dock = DockStyle.Fill;
             button_100.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1104,13 +1110,14 @@
             button_100.Text = "100";
             button_100.TextAlign = ContentAlignment.BottomCenter;
             button_100.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_100.UseVisualStyleBackColor = true;
+            button_100.UseVisualStyleBackColor = false;
             button_100.Click += coin_click;
             button_100.MouseEnter += button_enter;
             button_100.MouseLeave += button_leave;
             // 
             // button_500
             // 
+            button_500.BackColor = Color.White;
             button_500.BackgroundImageLayout = ImageLayout.Zoom;
             button_500.Dock = DockStyle.Fill;
             button_500.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1121,13 +1128,14 @@
             button_500.Text = "500";
             button_500.TextAlign = ContentAlignment.BottomCenter;
             button_500.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_500.UseVisualStyleBackColor = true;
+            button_500.UseVisualStyleBackColor = false;
             button_500.Click += coin_click;
             button_500.MouseEnter += button_enter;
             button_500.MouseLeave += button_leave;
             // 
             // button_1000
             // 
+            button_1000.BackColor = Color.White;
             button_1000.BackgroundImageLayout = ImageLayout.Zoom;
             button_1000.Dock = DockStyle.Fill;
             button_1000.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold);
@@ -1138,7 +1146,7 @@
             button_1000.Text = "1000";
             button_1000.TextAlign = ContentAlignment.BottomCenter;
             button_1000.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_1000.UseVisualStyleBackColor = true;
+            button_1000.UseVisualStyleBackColor = false;
             button_1000.Click += coin_click;
             button_1000.MouseEnter += button_enter;
             button_1000.MouseLeave += button_leave;

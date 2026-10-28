@@ -68,12 +68,10 @@
             tableLayoutPanel_detail = new TableLayoutPanel();
             label_sale_effective_member = new Label();
             label_sale_ineffective_member = new Label();
-            textBox_sale_per_point = new TextBox();
             textBox_discount_percent = new TextBox();
             label_sale_total = new Label();
             textBox_decrease_point = new TextBox();
             textBox_increase_point = new TextBox();
-            label11 = new Label();
             label14 = new Label();
             label13 = new Label();
             label12 = new Label();
@@ -102,8 +100,10 @@
             panel_sex = new Panel();
             button_sex_female = new Button();
             button_sex_male = new Button();
-            label17 = new Label();
             label_point_balance = new Label();
+            label17 = new Label();
+            textBox_sale_per_point = new TextBox();
+            label11 = new Label();
             timer_search_member = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
             tableLayoutPanel_button.SuspendLayout();
@@ -117,7 +117,7 @@
             // 
             // tableLayoutPanel_back
             // 
-            tableLayoutPanel_back.BackColor = Color.Lime;
+            tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back.ColumnCount = 2;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -137,7 +137,7 @@
             // 
             // tableLayoutPanel_button
             // 
-            tableLayoutPanel_button.BackColor = Color.Lime;
+            tableLayoutPanel_button.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_button.ColumnCount = 5;
             tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
@@ -158,7 +158,7 @@
             // 
             // button_cancel
             // 
-            button_cancel.BackColor = Color.Lime;
+            button_cancel.BackColor = Color.FromArgb(128, 255, 128);
             button_cancel.BackgroundImageLayout = ImageLayout.Zoom;
             button_cancel.Dock = DockStyle.Fill;
             button_cancel.Enabled = false;
@@ -183,7 +183,7 @@
             // 
             // button_add_save
             // 
-            button_add_save.BackColor = Color.Lime;
+            button_add_save.BackColor = Color.FromArgb(128, 255, 128);
             button_add_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_add_save.Dock = DockStyle.Fill;
             button_add_save.FlatAppearance.BorderSize = 0;
@@ -206,7 +206,7 @@
             // 
             // button_edit_save
             // 
-            button_edit_save.BackColor = Color.Lime;
+            button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
             button_edit_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_edit_save.Dock = DockStyle.Fill;
             button_edit_save.Enabled = false;
@@ -279,7 +279,7 @@
             dataGridViewCellStyle1.BackColor = Color.Gray;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 128);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView_member.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -517,17 +517,18 @@
             // customGroupBox_detail
             // 
             customGroupBox_detail.Anchor = AnchorStyles.Top;
-            customGroupBox_detail.BorderColor = Color.Lime;
+            customGroupBox_detail.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_detail.BorderRadius = 30;
-            customGroupBox_detail.BorderThickness = 10;
+            customGroupBox_detail.BorderThickness = 20;
             customGroupBox_detail.Controls.Add(tableLayoutPanel_detail);
-            customGroupBox_detail.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            customGroupBox_detail.Location = new Point(130, 86);
+            customGroupBox_detail.Font = new Font("Segoe UI", 1F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            customGroupBox_detail.Location = new Point(56, 66);
             customGroupBox_detail.Name = "customGroupBox_detail";
-            customGroupBox_detail.Padding = new Padding(8);
-            customGroupBox_detail.Size = new Size(900, 513);
+            customGroupBox_detail.Padding = new Padding(20, 20, 10, 20);
+            customGroupBox_detail.Size = new Size(1000, 600);
             customGroupBox_detail.TabIndex = 0;
             customGroupBox_detail.TabStop = false;
+            customGroupBox_detail.Text = " ";
             // 
             // tableLayoutPanel_detail
             // 
@@ -537,15 +538,13 @@
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 250F));
-            tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_detail.Controls.Add(label_sale_effective_member, 3, 3);
             tableLayoutPanel_detail.Controls.Add(label_sale_ineffective_member, 3, 2);
-            tableLayoutPanel_detail.Controls.Add(textBox_sale_per_point, 3, 4);
             tableLayoutPanel_detail.Controls.Add(textBox_discount_percent, 3, 0);
             tableLayoutPanel_detail.Controls.Add(label_sale_total, 3, 1);
             tableLayoutPanel_detail.Controls.Add(textBox_decrease_point, 3, 9);
             tableLayoutPanel_detail.Controls.Add(textBox_increase_point, 3, 8);
-            tableLayoutPanel_detail.Controls.Add(label11, 2, 4);
             tableLayoutPanel_detail.Controls.Add(label14, 2, 3);
             tableLayoutPanel_detail.Controls.Add(label13, 2, 2);
             tableLayoutPanel_detail.Controls.Add(label12, 2, 1);
@@ -572,11 +571,13 @@
             tableLayoutPanel_detail.Controls.Add(textBox_first_name, 1, 3);
             tableLayoutPanel_detail.Controls.Add(label9, 0, 1);
             tableLayoutPanel_detail.Controls.Add(panel_sex, 1, 1);
-            tableLayoutPanel_detail.Controls.Add(label17, 2, 6);
-            tableLayoutPanel_detail.Controls.Add(label_point_balance, 3, 6);
+            tableLayoutPanel_detail.Controls.Add(label_point_balance, 3, 7);
+            tableLayoutPanel_detail.Controls.Add(label17, 2, 7);
+            tableLayoutPanel_detail.Controls.Add(textBox_sale_per_point, 3, 6);
+            tableLayoutPanel_detail.Controls.Add(label11, 2, 6);
             tableLayoutPanel_detail.Dock = DockStyle.Fill;
-            tableLayoutPanel_detail.Location = new Point(8, 39);
-            tableLayoutPanel_detail.Margin = new Padding(10, 10, 3, 10);
+            tableLayoutPanel_detail.Location = new Point(20, 23);
+            tableLayoutPanel_detail.Margin = new Padding(10);
             tableLayoutPanel_detail.Name = "tableLayoutPanel_detail";
             tableLayoutPanel_detail.RowCount = 10;
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
@@ -589,48 +590,34 @@
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            tableLayoutPanel_detail.Size = new Size(884, 466);
+            tableLayoutPanel_detail.Size = new Size(970, 557);
             tableLayoutPanel_detail.TabIndex = 1;
             // 
             // label_sale_effective_member
             // 
+            label_sale_effective_member.Dock = DockStyle.Fill;
             label_sale_effective_member.Font = new Font("Segoe UI", 13.8F);
             label_sale_effective_member.ForeColor = Color.Gray;
-            label_sale_effective_member.Location = new Point(740, 138);
+            label_sale_effective_member.Location = new Point(776, 165);
             label_sale_effective_member.Margin = new Padding(6, 0, 3, 0);
             label_sale_effective_member.Name = "label_sale_effective_member";
-            label_sale_effective_member.Size = new Size(141, 45);
+            label_sale_effective_member.Size = new Size(191, 55);
             label_sale_effective_member.TabIndex = 1;
             label_sale_effective_member.Text = "0";
             label_sale_effective_member.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label_sale_ineffective_member
             // 
+            label_sale_ineffective_member.Dock = DockStyle.Fill;
             label_sale_ineffective_member.Font = new Font("Segoe UI", 13.8F);
             label_sale_ineffective_member.ForeColor = Color.Gray;
-            label_sale_ineffective_member.Location = new Point(740, 92);
+            label_sale_ineffective_member.Location = new Point(776, 110);
             label_sale_ineffective_member.Margin = new Padding(6, 0, 3, 0);
             label_sale_ineffective_member.Name = "label_sale_ineffective_member";
-            label_sale_ineffective_member.Size = new Size(141, 45);
+            label_sale_ineffective_member.Size = new Size(191, 55);
             label_sale_ineffective_member.TabIndex = 1;
             label_sale_ineffective_member.Text = "0";
             label_sale_ineffective_member.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // textBox_sale_per_point
-            // 
-            textBox_sale_per_point.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_sale_per_point.BackColor = Color.FromArgb(192, 255, 192);
-            textBox_sale_per_point.Enabled = false;
-            textBox_sale_per_point.Font = new Font("Segoe UI", 13.8F);
-            textBox_sale_per_point.Location = new Point(742, 188);
-            textBox_sale_per_point.Margin = new Padding(8, 3, 6, 3);
-            textBox_sale_per_point.Name = "textBox_sale_per_point";
-            textBox_sale_per_point.Size = new Size(136, 38);
-            textBox_sale_per_point.TabIndex = 2;
-            textBox_sale_per_point.TabStop = false;
-            textBox_sale_per_point.Text = "1";
-            textBox_sale_per_point.KeyDown += textBox_phone_KeyDown;
-            textBox_sale_per_point.KeyPress += textBox_sale_per_point_KeyPress;
             // 
             // textBox_discount_percent
             // 
@@ -638,10 +625,10 @@
             textBox_discount_percent.BackColor = Color.FromArgb(192, 255, 192);
             textBox_discount_percent.Enabled = false;
             textBox_discount_percent.Font = new Font("Segoe UI", 13.8F);
-            textBox_discount_percent.Location = new Point(742, 4);
-            textBox_discount_percent.Margin = new Padding(8, 3, 6, 3);
+            textBox_discount_percent.Location = new Point(778, 8);
+            textBox_discount_percent.Margin = new Padding(8, 3, 20, 3);
             textBox_discount_percent.Name = "textBox_discount_percent";
-            textBox_discount_percent.Size = new Size(136, 38);
+            textBox_discount_percent.Size = new Size(172, 38);
             textBox_discount_percent.TabIndex = 2;
             textBox_discount_percent.TabStop = false;
             textBox_discount_percent.Text = "0";
@@ -650,13 +637,14 @@
             // 
             // label_sale_total
             // 
-            label_sale_total.BackColor = Color.Lime;
+            label_sale_total.BackColor = Color.FromArgb(128, 255, 128);
+            label_sale_total.Dock = DockStyle.Fill;
             label_sale_total.Font = new Font("Segoe UI", 13.8F);
             label_sale_total.ForeColor = Color.Gray;
-            label_sale_total.Location = new Point(740, 46);
+            label_sale_total.Location = new Point(776, 55);
             label_sale_total.Margin = new Padding(6, 0, 0, 3);
             label_sale_total.Name = "label_sale_total";
-            label_sale_total.Size = new Size(144, 42);
+            label_sale_total.Size = new Size(194, 52);
             label_sale_total.TabIndex = 1;
             label_sale_total.Text = "0";
             label_sale_total.TextAlign = ContentAlignment.MiddleLeft;
@@ -667,10 +655,10 @@
             textBox_decrease_point.BackColor = Color.FromArgb(192, 255, 192);
             textBox_decrease_point.Enabled = false;
             textBox_decrease_point.Font = new Font("Segoe UI", 13.8F);
-            textBox_decrease_point.Location = new Point(742, 421);
-            textBox_decrease_point.Margin = new Padding(8, 3, 6, 3);
+            textBox_decrease_point.Location = new Point(778, 507);
+            textBox_decrease_point.Margin = new Padding(8, 3, 20, 3);
             textBox_decrease_point.Name = "textBox_decrease_point";
-            textBox_decrease_point.Size = new Size(136, 38);
+            textBox_decrease_point.Size = new Size(172, 38);
             textBox_decrease_point.TabIndex = 2;
             textBox_decrease_point.TabStop = false;
             textBox_decrease_point.Text = "0";
@@ -683,36 +671,24 @@
             textBox_increase_point.BackColor = Color.FromArgb(192, 255, 192);
             textBox_increase_point.Enabled = false;
             textBox_increase_point.Font = new Font("Segoe UI", 13.8F);
-            textBox_increase_point.Location = new Point(742, 372);
-            textBox_increase_point.Margin = new Padding(8, 3, 6, 3);
+            textBox_increase_point.Location = new Point(778, 448);
+            textBox_increase_point.Margin = new Padding(8, 3, 20, 3);
             textBox_increase_point.Name = "textBox_increase_point";
-            textBox_increase_point.Size = new Size(136, 38);
+            textBox_increase_point.Size = new Size(172, 38);
             textBox_increase_point.TabIndex = 2;
             textBox_increase_point.TabStop = false;
             textBox_increase_point.Text = "0";
             textBox_increase_point.KeyDown += textBox_phone_KeyDown;
             textBox_increase_point.KeyPress += textBox_sale_per_point_KeyPress;
             // 
-            // label11
-            // 
-            label11.Dock = DockStyle.Fill;
-            label11.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            label11.ForeColor = Color.Gray;
-            label11.Location = new Point(487, 184);
-            label11.Name = "label11";
-            label11.Size = new Size(244, 46);
-            label11.TabIndex = 1;
-            label11.Text = "ราคาขายต่อ 1 แต้ม :";
-            label11.TextAlign = ContentAlignment.MiddleRight;
-            // 
             // label14
             // 
             label14.Dock = DockStyle.Fill;
             label14.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label14.ForeColor = Color.Gray;
-            label14.Location = new Point(487, 138);
+            label14.Location = new Point(523, 165);
             label14.Name = "label14";
-            label14.Size = new Size(244, 46);
+            label14.Size = new Size(244, 55);
             label14.TabIndex = 1;
             label14.Text = "สินค้าได้แต้ม :";
             label14.TextAlign = ContentAlignment.MiddleRight;
@@ -722,9 +698,9 @@
             label13.Dock = DockStyle.Fill;
             label13.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label13.ForeColor = Color.Gray;
-            label13.Location = new Point(487, 92);
+            label13.Location = new Point(523, 110);
             label13.Name = "label13";
-            label13.Size = new Size(244, 46);
+            label13.Size = new Size(244, 55);
             label13.TabIndex = 1;
             label13.Text = "สินค้าไม่ได้แต้ม :";
             label13.TextAlign = ContentAlignment.MiddleRight;
@@ -734,9 +710,9 @@
             label12.Dock = DockStyle.Fill;
             label12.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label12.ForeColor = Color.Gray;
-            label12.Location = new Point(487, 46);
+            label12.Location = new Point(523, 55);
             label12.Name = "label12";
-            label12.Size = new Size(244, 46);
+            label12.Size = new Size(244, 55);
             label12.TabIndex = 1;
             label12.Text = "รวมมูลค่าขาย :";
             label12.TextAlign = ContentAlignment.MiddleRight;
@@ -746,9 +722,9 @@
             label10.Dock = DockStyle.Fill;
             label10.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label10.ForeColor = Color.Gray;
-            label10.Location = new Point(487, 0);
+            label10.Location = new Point(523, 0);
             label10.Name = "label10";
-            label10.Size = new Size(244, 46);
+            label10.Size = new Size(244, 55);
             label10.TabIndex = 1;
             label10.Text = "ส่วนลดต่อหน่วย(%) :";
             label10.TextAlign = ContentAlignment.MiddleRight;
@@ -758,9 +734,9 @@
             label19.Dock = DockStyle.Fill;
             label19.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label19.ForeColor = Color.Gray;
-            label19.Location = new Point(487, 414);
+            label19.Location = new Point(523, 495);
             label19.Name = "label19";
-            label19.Size = new Size(244, 52);
+            label19.Size = new Size(244, 62);
             label19.TabIndex = 1;
             label19.Text = "ลดแต้ม :";
             label19.TextAlign = ContentAlignment.MiddleRight;
@@ -770,9 +746,9 @@
             label18.Dock = DockStyle.Fill;
             label18.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label18.ForeColor = Color.Gray;
-            label18.Location = new Point(487, 368);
+            label18.Location = new Point(523, 440);
             label18.Name = "label18";
-            label18.Size = new Size(244, 46);
+            label18.Size = new Size(244, 55);
             label18.TabIndex = 1;
             label18.Text = "เพิ่มแต้ม :";
             label18.TextAlign = ContentAlignment.MiddleRight;
@@ -783,9 +759,9 @@
             textBox_phone.BackColor = Color.FromArgb(192, 255, 192);
             textBox_phone.Enabled = false;
             textBox_phone.Font = new Font("Segoe UI", 13.8F);
-            textBox_phone.Location = new Point(153, 4);
+            textBox_phone.Location = new Point(153, 8);
             textBox_phone.Name = "textBox_phone";
-            textBox_phone.Size = new Size(328, 38);
+            textBox_phone.Size = new Size(364, 38);
             textBox_phone.TabIndex = 0;
             textBox_phone.TabStop = false;
             textBox_phone.KeyDown += textBox_phone_KeyDown;
@@ -806,7 +782,7 @@
             // 
             label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label8.ForeColor = Color.Gray;
-            label8.Location = new Point(3, 414);
+            label8.Location = new Point(3, 495);
             label8.Name = "label8";
             label8.Size = new Size(144, 45);
             label8.TabIndex = 1;
@@ -819,9 +795,9 @@
             textBox_postal_code.BackColor = Color.FromArgb(192, 255, 192);
             textBox_postal_code.Enabled = false;
             textBox_postal_code.Font = new Font("Segoe UI", 13.8F);
-            textBox_postal_code.Location = new Point(153, 421);
+            textBox_postal_code.Location = new Point(153, 507);
             textBox_postal_code.Name = "textBox_postal_code";
-            textBox_postal_code.Size = new Size(328, 38);
+            textBox_postal_code.Size = new Size(364, 38);
             textBox_postal_code.TabIndex = 0;
             textBox_postal_code.TabStop = false;
             textBox_postal_code.KeyDown += textBox_phone_KeyDown;
@@ -830,7 +806,7 @@
             // 
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label7.ForeColor = Color.Gray;
-            label7.Location = new Point(3, 368);
+            label7.Location = new Point(3, 440);
             label7.Name = "label7";
             label7.Size = new Size(144, 45);
             label7.TabIndex = 1;
@@ -843,9 +819,9 @@
             textBox_province.BackColor = Color.FromArgb(192, 255, 192);
             textBox_province.Enabled = false;
             textBox_province.Font = new Font("Segoe UI", 13.8F);
-            textBox_province.Location = new Point(153, 372);
+            textBox_province.Location = new Point(153, 448);
             textBox_province.Name = "textBox_province";
-            textBox_province.Size = new Size(328, 38);
+            textBox_province.Size = new Size(364, 38);
             textBox_province.TabIndex = 0;
             textBox_province.TabStop = false;
             textBox_province.KeyDown += textBox_phone_KeyDown;
@@ -854,7 +830,7 @@
             // 
             label6.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label6.ForeColor = Color.Gray;
-            label6.Location = new Point(3, 322);
+            label6.Location = new Point(3, 385);
             label6.Name = "label6";
             label6.Size = new Size(144, 45);
             label6.TabIndex = 1;
@@ -867,9 +843,9 @@
             textBox_district.BackColor = Color.FromArgb(192, 255, 192);
             textBox_district.Enabled = false;
             textBox_district.Font = new Font("Segoe UI", 13.8F);
-            textBox_district.Location = new Point(153, 326);
+            textBox_district.Location = new Point(153, 393);
             textBox_district.Name = "textBox_district";
-            textBox_district.Size = new Size(328, 38);
+            textBox_district.Size = new Size(364, 38);
             textBox_district.TabIndex = 0;
             textBox_district.TabStop = false;
             textBox_district.KeyDown += textBox_phone_KeyDown;
@@ -878,7 +854,7 @@
             // 
             label5.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label5.ForeColor = Color.Gray;
-            label5.Location = new Point(3, 276);
+            label5.Location = new Point(3, 330);
             label5.Name = "label5";
             label5.Size = new Size(144, 45);
             label5.TabIndex = 1;
@@ -891,9 +867,9 @@
             textBox_sub_district.BackColor = Color.FromArgb(192, 255, 192);
             textBox_sub_district.Enabled = false;
             textBox_sub_district.Font = new Font("Segoe UI", 13.8F);
-            textBox_sub_district.Location = new Point(153, 280);
+            textBox_sub_district.Location = new Point(153, 338);
             textBox_sub_district.Name = "textBox_sub_district";
-            textBox_sub_district.Size = new Size(328, 38);
+            textBox_sub_district.Size = new Size(364, 38);
             textBox_sub_district.TabIndex = 0;
             textBox_sub_district.TabStop = false;
             textBox_sub_district.KeyDown += textBox_phone_KeyDown;
@@ -902,7 +878,7 @@
             // 
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label4.ForeColor = Color.Gray;
-            label4.Location = new Point(3, 230);
+            label4.Location = new Point(3, 275);
             label4.Name = "label4";
             label4.Size = new Size(144, 45);
             label4.TabIndex = 1;
@@ -915,9 +891,9 @@
             textBox_address.BackColor = Color.FromArgb(192, 255, 192);
             textBox_address.Enabled = false;
             textBox_address.Font = new Font("Segoe UI", 13.8F);
-            textBox_address.Location = new Point(153, 234);
+            textBox_address.Location = new Point(153, 283);
             textBox_address.Name = "textBox_address";
-            textBox_address.Size = new Size(328, 38);
+            textBox_address.Size = new Size(364, 38);
             textBox_address.TabIndex = 0;
             textBox_address.TabStop = false;
             textBox_address.KeyDown += textBox_phone_KeyDown;
@@ -926,7 +902,7 @@
             // 
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label2.ForeColor = Color.Gray;
-            label2.Location = new Point(3, 184);
+            label2.Location = new Point(3, 220);
             label2.Name = "label2";
             label2.Size = new Size(144, 45);
             label2.TabIndex = 1;
@@ -939,9 +915,9 @@
             textBox_last_name.BackColor = Color.FromArgb(192, 255, 192);
             textBox_last_name.Enabled = false;
             textBox_last_name.Font = new Font("Segoe UI", 13.8F);
-            textBox_last_name.Location = new Point(153, 188);
+            textBox_last_name.Location = new Point(153, 228);
             textBox_last_name.Name = "textBox_last_name";
-            textBox_last_name.Size = new Size(328, 38);
+            textBox_last_name.Size = new Size(364, 38);
             textBox_last_name.TabIndex = 0;
             textBox_last_name.TabStop = false;
             textBox_last_name.KeyDown += textBox_phone_KeyDown;
@@ -950,7 +926,7 @@
             // 
             label3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label3.ForeColor = Color.Gray;
-            label3.Location = new Point(3, 92);
+            label3.Location = new Point(3, 110);
             label3.Name = "label3";
             label3.Size = new Size(144, 45);
             label3.TabIndex = 1;
@@ -963,9 +939,9 @@
             textBox_nick_name.BackColor = Color.FromArgb(192, 255, 192);
             textBox_nick_name.Enabled = false;
             textBox_nick_name.Font = new Font("Segoe UI", 13.8F);
-            textBox_nick_name.Location = new Point(153, 96);
+            textBox_nick_name.Location = new Point(153, 118);
             textBox_nick_name.Name = "textBox_nick_name";
-            textBox_nick_name.Size = new Size(328, 38);
+            textBox_nick_name.Size = new Size(364, 38);
             textBox_nick_name.TabIndex = 0;
             textBox_nick_name.TabStop = false;
             textBox_nick_name.KeyDown += textBox_phone_KeyDown;
@@ -974,7 +950,7 @@
             // 
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label1.ForeColor = Color.Gray;
-            label1.Location = new Point(3, 138);
+            label1.Location = new Point(3, 165);
             label1.Name = "label1";
             label1.Size = new Size(144, 45);
             label1.TabIndex = 1;
@@ -987,9 +963,9 @@
             textBox_first_name.BackColor = Color.FromArgb(192, 255, 192);
             textBox_first_name.Enabled = false;
             textBox_first_name.Font = new Font("Segoe UI", 13.8F);
-            textBox_first_name.Location = new Point(153, 142);
+            textBox_first_name.Location = new Point(153, 173);
             textBox_first_name.Name = "textBox_first_name";
-            textBox_first_name.Size = new Size(328, 38);
+            textBox_first_name.Size = new Size(364, 38);
             textBox_first_name.TabIndex = 0;
             textBox_first_name.TabStop = false;
             textBox_first_name.KeyDown += textBox_phone_KeyDown;
@@ -998,7 +974,7 @@
             // 
             label9.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label9.ForeColor = Color.Gray;
-            label9.Location = new Point(3, 46);
+            label9.Location = new Point(3, 55);
             label9.Name = "label9";
             label9.Size = new Size(144, 45);
             label9.TabIndex = 1;
@@ -1010,9 +986,9 @@
             panel_sex.Controls.Add(button_sex_female);
             panel_sex.Controls.Add(button_sex_male);
             panel_sex.Dock = DockStyle.Fill;
-            panel_sex.Location = new Point(153, 49);
+            panel_sex.Location = new Point(153, 58);
             panel_sex.Name = "panel_sex";
-            panel_sex.Size = new Size(328, 40);
+            panel_sex.Size = new Size(364, 49);
             panel_sex.TabIndex = 2;
             // 
             // button_sex_female
@@ -1027,7 +1003,7 @@
             button_sex_female.Location = new Point(99, 0);
             button_sex_female.Margin = new Padding(3, 0, 3, 0);
             button_sex_female.Name = "button_sex_female";
-            button_sex_female.Size = new Size(99, 40);
+            button_sex_female.Size = new Size(99, 49);
             button_sex_female.TabIndex = 0;
             button_sex_female.TabStop = false;
             button_sex_female.Text = "หญิง";
@@ -1052,7 +1028,7 @@
             button_sex_male.Location = new Point(0, 0);
             button_sex_male.Margin = new Padding(3, 0, 3, 0);
             button_sex_male.Name = "button_sex_male";
-            button_sex_male.Size = new Size(99, 40);
+            button_sex_male.Size = new Size(99, 49);
             button_sex_male.TabIndex = 0;
             button_sex_male.TabStop = false;
             button_sex_male.Text = "ชาย";
@@ -1063,29 +1039,59 @@
             button_sex_male.MouseEnter += button_MouseEnter;
             button_sex_male.MouseLeave += button_MouseLeave;
             // 
+            // label_point_balance
+            // 
+            label_point_balance.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label_point_balance.BackColor = Color.FromArgb(128, 255, 128);
+            label_point_balance.Font = new Font("Segoe UI", 13.8F);
+            label_point_balance.ForeColor = Color.Gray;
+            label_point_balance.Location = new Point(776, 390);
+            label_point_balance.Margin = new Padding(6, 0, 0, 3);
+            label_point_balance.Name = "label_point_balance";
+            label_point_balance.Size = new Size(194, 42);
+            label_point_balance.TabIndex = 1;
+            label_point_balance.Text = "0";
+            label_point_balance.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // label17
             // 
+            label17.Dock = DockStyle.Fill;
             label17.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label17.ForeColor = Color.Gray;
-            label17.Location = new Point(487, 276);
+            label17.Location = new Point(523, 385);
             label17.Name = "label17";
-            label17.Size = new Size(244, 45);
+            label17.Size = new Size(244, 55);
             label17.TabIndex = 1;
             label17.Text = "แต้มคงเหลือ :";
             label17.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label_point_balance
+            // textBox_sale_per_point
             // 
-            label_point_balance.BackColor = Color.Lime;
-            label_point_balance.Font = new Font("Segoe UI", 13.8F);
-            label_point_balance.ForeColor = Color.Gray;
-            label_point_balance.Location = new Point(740, 276);
-            label_point_balance.Margin = new Padding(6, 0, 0, 3);
-            label_point_balance.Name = "label_point_balance";
-            label_point_balance.Size = new Size(144, 42);
-            label_point_balance.TabIndex = 1;
-            label_point_balance.Text = "0";
-            label_point_balance.TextAlign = ContentAlignment.MiddleLeft;
+            textBox_sale_per_point.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_sale_per_point.BackColor = Color.FromArgb(192, 255, 192);
+            textBox_sale_per_point.Enabled = false;
+            textBox_sale_per_point.Font = new Font("Segoe UI", 13.8F);
+            textBox_sale_per_point.Location = new Point(778, 338);
+            textBox_sale_per_point.Margin = new Padding(8, 3, 20, 3);
+            textBox_sale_per_point.Name = "textBox_sale_per_point";
+            textBox_sale_per_point.Size = new Size(172, 38);
+            textBox_sale_per_point.TabIndex = 2;
+            textBox_sale_per_point.TabStop = false;
+            textBox_sale_per_point.Text = "1";
+            textBox_sale_per_point.KeyDown += textBox_phone_KeyDown;
+            textBox_sale_per_point.KeyPress += textBox_sale_per_point_KeyPress;
+            // 
+            // label11
+            // 
+            label11.Dock = DockStyle.Fill;
+            label11.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            label11.ForeColor = Color.Gray;
+            label11.Location = new Point(523, 330);
+            label11.Name = "label11";
+            label11.Size = new Size(244, 55);
+            label11.TabIndex = 1;
+            label11.Text = "ราคาขายต่อ 1 แต้ม :";
+            label11.TextAlign = ContentAlignment.MiddleRight;
             // 
             // timer_search_member
             // 

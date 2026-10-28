@@ -47,10 +47,10 @@ namespace Ppos
                 }
                 set_image = pictureBox_item.Image;
 
-                textBox_barcode.Text = Form_Sale.W_item_bar;
-                textBox_item_name.Text = Form_Sale.W_item_name;
-                textBox_item_unit.Text = Form_Sale.W_item_unit;
-                textBox_item_price.Text = Form_Sale.W_item_price;
+                label_barcode.Text = Form_Sale.W_item_bar;
+                label_item_name.Text = Form_Sale.W_item_name;
+                label_item_unit.Text = Form_Sale.W_item_unit;
+                label_item_price.Text = Form_Sale.W_item_price;
 
                 button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(50, 50));
              
@@ -123,9 +123,8 @@ namespace Ppos
         {
             try
             {
-
-                timer.Start();
-
+              
+                textBox_weight.Focus();
 
             }
             catch
@@ -134,53 +133,7 @@ namespace Ppos
             }
         }
 
-        private void timer_Tick(object sender, EventArgs e)
-        {
-            try
-            {
-                c++;
-                if (c == 1)
-                {
-                    pictureBox_item.Visible = true;
-                }
-                else if (c == 2)
-                {
-                    customPanel_item_bar.Visible = true;
-                }
-                else if (c == 3)
-                {
-                    customPanel_item_name.Visible = true;
-                }
-                else if (c == 4)
-                {
-                    customPanel_item_unit.Visible = true;
-                }
-                else if (c == 5)
-                {
-                    customPanel_item_price.Visible = true;
-                }
-                else if (c == 6)
-                {
-                    customPanel_weight.Visible = true;
-                    textBox_weight.Focus();
-                    timer.Stop();
-                }
-                /* else if (c==7)
-                 {
-                     button_confirm.Visible = true;
-                 }
-                 else if (c>=8)
-                 {
-                     button_exit.Visible = true;
-                     textBox_weight.Focus();
-                     timer.Stop();
-                 }*/
-            }
-            catch
-            {
-                timer.Stop();
-            }
-        }
+       
 
         private void textBox_weight_KeyPress(object sender, KeyPressEventArgs e)
         {

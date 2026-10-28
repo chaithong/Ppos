@@ -78,7 +78,7 @@
             dataGridViewCellStyle1.BackColor = Color.Cyan;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Cyan;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 255);
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
             dataGridView_user.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;

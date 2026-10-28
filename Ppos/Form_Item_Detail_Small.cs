@@ -58,7 +58,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_item);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event
@@ -264,9 +264,14 @@ namespace Ppos
             try
             {
 
-                timer_show.Start();
-               
-
+                //   timer_show.Start();
+                pictureBox_item.Visible = true;
+                tableLayoutPanel_button_picture.Visible = true;
+                tableLayoutPanel_group.Visible = true;
+                tableLayoutPanel_item.Visible = true;
+                tableLayoutPanel_cost.Visible = true;
+                tableLayoutPanel_affective.Visible = true;
+                textBox_search.Focus();
             }
             catch
             {
@@ -415,7 +420,7 @@ namespace Ppos
                     button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Standard;
-                    button_edit_save.BackColor = Color.Lime;
+                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                     // กดลบ
                     if (e.ColumnIndex == dataGridView_item.Columns["delete"]!.Index)
@@ -434,7 +439,7 @@ namespace Ppos
                                         button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                                         button_edit_save.Text = "แก้ไข";
                                         button_edit_save.FlatStyle = FlatStyle.Flat;
-                                        button_edit_save.BackColor = Color.Lime;
+                                        button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                                         // ลบภาพที่เพิ่มไว้
                                         if (System.IO.File.Exists(Form_Login.item_path + @"\" + textBox_small_barcode.Text + ".Png"))
@@ -683,7 +688,7 @@ namespace Ppos
                                 button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(50, 50));
                                 button_add_save.Text = "เพิ่ม";
                                 button_add_save.FlatStyle = FlatStyle.Flat;
-                                button_add_save.BackColor = Color.Lime;
+                                button_add_save.BackColor = Color.FromArgb(128,255,128);
 
                                 // เปิดปุ่มยกเลิก
                                 button_cancel.Enabled = true;
@@ -742,7 +747,7 @@ namespace Ppos
                                     button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                                     button_edit_save.Text = "แก้ไข";
                                     button_edit_save.FlatStyle = FlatStyle.Standard;
-                                    button_edit_save.BackColor = Color.Lime;
+                                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                                     // ปุ่มเพิ่ม
                                     add_save = true;
@@ -750,12 +755,12 @@ namespace Ppos
                                     button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(50, 50));
                                     button_add_save.Text = "เพิ่ม";
                                     button_add_save.FlatStyle = FlatStyle.Standard;
-                                    button_add_save.BackColor = Color.Lime;
+                                    button_add_save.BackColor = Color.FromArgb(128,255,128);
 
                                     // ปุ่มยกเลิก
                                     button_cancel.Enabled = false;
                                     button_cancel.FlatStyle = FlatStyle.Flat;
-                                    button_cancel.BackColor = Color.Lime;
+                                    button_cancel.BackColor = Color.FromArgb(128,255,128);
 
 
                                     // เริ่ม update                                                              
@@ -869,7 +874,7 @@ namespace Ppos
                     button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Flat;
-                    button_edit_save.BackColor = Color.Lime;
+                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                     // ปุ่มเพิ่ม
                     add_save = false;
@@ -956,7 +961,7 @@ namespace Ppos
                                 button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                                 button_edit_save.Text = "แก้ไข";
                                 button_edit_save.FlatStyle = FlatStyle.Standard;
-                                button_edit_save.BackColor = Color.Lime;
+                                button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                                 // ปุ่มเพิ่ม
                                 add_save = true;
@@ -964,12 +969,12 @@ namespace Ppos
                                 button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(50, 50));
                                 button_add_save.Text = "เพิ่ม";
                                 button_add_save.FlatStyle = FlatStyle.Standard;
-                                button_add_save.BackColor = Color.Lime;
+                                button_add_save.BackColor = Color.FromArgb(128,255,128);
 
                                 // ปิดปุ่มยกเลิก
                                 button_cancel.Enabled = false;
                                 button_cancel.FlatStyle = FlatStyle.Flat;
-                                button_cancel.BackColor = Color.Lime;
+                                button_cancel.BackColor = Color.FromArgb(128,255,128);
 
 
 
@@ -1056,7 +1061,7 @@ namespace Ppos
                 // ปุ่มยกเลิก
                 button_cancel.Enabled = false;
                 button_cancel.FlatStyle = FlatStyle.Flat;
-                button_cancel.BackColor = Color.Lime;
+                button_cancel.BackColor = Color.FromArgb(128,255,128);
 
                 Enabled(false);
 
@@ -1081,7 +1086,7 @@ namespace Ppos
                     button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Standard;
-                    button_edit_save.BackColor = Color.Lime;
+                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                     // ปุ่มเพิ่ม
                     add_save = true;
@@ -1089,7 +1094,7 @@ namespace Ppos
                     button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(50, 50));
                     button_add_save.Text = "เพิ่ม";
                     button_add_save.FlatStyle = FlatStyle.Standard;
-                    button_add_save.BackColor = Color.Lime;
+                    button_add_save.BackColor = Color.FromArgb(128,255,128);
 
                     // กดเลือกสินค้าเพื่อคืนค่า
                     dataGridView_item_CellMouseDown(dataGridView_item,
@@ -1105,7 +1110,7 @@ namespace Ppos
                     button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Flat;
-                    button_edit_save.BackColor = Color.Lime;
+                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
 
                     // ปุ่มเพิ่ม
                     add_save = true;
@@ -1113,7 +1118,7 @@ namespace Ppos
                     button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.add_item, new Size(50, 50));
                     button_add_save.Text = "เพิ่ม";
                     button_add_save.FlatStyle = FlatStyle.Standard;
-                    button_add_save.BackColor = Color.Lime;
+                    button_add_save.BackColor = Color.FromArgb(128,255,128);
 
                     // เปลี่ยนภาพให้เป็นตั้งต้น
                     pictureBox_item.Image = Ppos.Properties.Resources.picture_dark;

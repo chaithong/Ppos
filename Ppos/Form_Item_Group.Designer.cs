@@ -68,7 +68,7 @@
             // 
             // tableLayoutPanel_back_top
             // 
-            tableLayoutPanel_back_top.BackColor = Color.Lime;
+            tableLayoutPanel_back_top.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back_top.ColumnCount = 5;
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));

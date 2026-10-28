@@ -55,7 +55,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_item);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event
@@ -486,11 +486,11 @@ namespace Ppos
 
 
                 button_decrease.FlatStyle = FlatStyle.Flat;
-                button_decrease.BackColor = Color.Lime;
+                button_decrease.BackColor = Color.FromArgb(128,255,128);
                 button_decrease.ForeColor = Color.Gray;
 
                 button_custom.FlatStyle = FlatStyle.Flat;
-                button_custom.BackColor = Color.Lime;
+                button_custom.BackColor = Color.FromArgb(128,255,128);
                 button_custom.ForeColor = Color.Gray;
 
 
@@ -509,7 +509,7 @@ namespace Ppos
             {
                 // ปรับสีปุ่ม
                 button_increase.FlatStyle = FlatStyle.Flat;
-                button_increase.BackColor = Color.Lime;
+                button_increase.BackColor = Color.FromArgb(128,255,128);
                 button_increase.ForeColor = Color.Gray;
 
                 button_decrease.FlatStyle = FlatStyle.Standard;
@@ -517,7 +517,7 @@ namespace Ppos
                 button_decrease.ForeColor = Color.Black;
 
                 button_custom.FlatStyle = FlatStyle.Flat;
-                button_custom.BackColor = Color.Lime;
+                button_custom.BackColor = Color.FromArgb(128,255,128);
                 button_custom.ForeColor = Color.Gray;
 
 
@@ -536,11 +536,11 @@ namespace Ppos
             {
                 // ปรับสีปุ่ม
                 button_increase.FlatStyle = FlatStyle.Flat;
-                button_increase.BackColor = Color.Lime;
+                button_increase.BackColor = Color.FromArgb(128,255,128);
                 button_increase.ForeColor = Color.Gray;
 
                 button_decrease.FlatStyle = FlatStyle.Flat;
-                button_decrease.BackColor = Color.Lime;
+                button_decrease.BackColor = Color.FromArgb(128,255,128);
                 button_decrease.ForeColor = Color.Gray;
 
                 button_custom.FlatStyle = FlatStyle.Standard;
@@ -567,7 +567,7 @@ namespace Ppos
                 {
                     // dataGridView_item.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(230, 255, 230); // สีที่ต้องการตอนชี้
                     dataGridView_item.Rows[e.RowIndex].Cells["name"].Style.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold); // สีที่ต้องการตอนชี้
-                    // dataGridView_item.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Lime; // สีที่ต้องการตอนชี้
+                    // dataGridView_item.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.FromArgb(128,255,128); // สีที่ต้องการตอนชี้
 
                 }
             }
@@ -809,7 +809,7 @@ namespace Ppos
             try
             {
                 // button_cost_last.FlatStyle = FlatStyle.Standard;
-                button_cost_last.BackColor = Color.Lime;
+                button_cost_last.BackColor = Color.FromArgb(128,255,128);
                 button_cost_last.ForeColor = Color.Black;
 
                 // button_cost_avg.FlatStyle = FlatStyle.Flat;
@@ -845,7 +845,7 @@ namespace Ppos
                 button_cost_last.ForeColor = Color.Gray;
 
                 // button_cost_avg.FlatStyle = FlatStyle.Standard;
-                button_cost_avg.BackColor = Color.Lime;
+                button_cost_avg.BackColor = Color.FromArgb(128,255,128);
                 button_cost_avg.ForeColor = Color.Black;
 
                 //  button_cost_custom.FlatStyle = FlatStyle.Flat;
@@ -881,7 +881,7 @@ namespace Ppos
                 button_cost_avg.ForeColor = Color.Gray;
 
                 //button_cost_custom.FlatStyle = FlatStyle.Standard;
-                button_cost_custom.BackColor = Color.Lime;
+                button_cost_custom.BackColor = Color.FromArgb(128,255,128);
                 button_cost_custom.ForeColor = Color.Black;
 
                 textBox_cost.Enabled = true;
@@ -899,7 +899,7 @@ namespace Ppos
         {
             try
             {
-                button_cost_per_unit.BackColor = Color.Lime;
+                button_cost_per_unit.BackColor = Color.FromArgb(128,255,128);
                 button_cost_per_unit.ForeColor = Color.Black;
 
                 button_cost_all.BackColor = Color.Transparent;
@@ -917,7 +917,7 @@ namespace Ppos
                 button_cost_per_unit.BackColor = Color.Transparent;
                 button_cost_per_unit.ForeColor = Color.Gray;
 
-                button_cost_all.BackColor = Color.Lime;
+                button_cost_all.BackColor = Color.FromArgb(128,255,128);
                 button_cost_all.ForeColor = Color.Black;
 
                 label_per_unit.Text = button_cost_all.Text;

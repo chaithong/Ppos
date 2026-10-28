@@ -390,7 +390,7 @@ namespace Ppos
             try
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
-                button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size + 2, button.Font.Style);
+                button.Font = new System.Drawing.Font(button.Font.FontFamily, button.Font.Size + 2, button.Font.Style);
             }
             catch
             {
@@ -403,7 +403,34 @@ namespace Ppos
             try
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
-                button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size - 2, button.Font.Style);
+                button.Font = new System.Drawing.Font(button.Font.FontFamily, button.Font.Size - 2, button.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+        private void label_enter(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size + 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void label_leave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
             }
             catch
             {

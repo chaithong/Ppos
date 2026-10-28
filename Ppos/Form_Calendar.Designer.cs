@@ -112,36 +112,38 @@
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            tableLayoutPanel_back.Size = new Size(482, 482);
+            tableLayoutPanel_back.Size = new Size(532, 503);
             tableLayoutPanel_back.TabIndex = 0;
             // 
             // label_set_days
             // 
-            label_set_days.BackColor = Color.FromArgb(192, 255, 192);
+            label_set_days.BackColor = Color.Transparent;
             label_set_days.Dock = DockStyle.Fill;
             label_set_days.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label_set_days.Location = new Point(0, 362);
+            label_set_days.Location = new Point(0, 383);
             label_set_days.Margin = new Padding(0);
             label_set_days.Name = "label_set_days";
-            label_set_days.Size = new Size(482, 60);
+            label_set_days.Size = new Size(532, 60);
             label_set_days.TabIndex = 4;
             label_set_days.Text = "--";
             label_set_days.TextAlign = ContentAlignment.MiddleCenter;
+            label_set_days.MouseEnter += label_MouseEnter;
+            label_set_days.MouseLeave += label_MouseLeave;
             // 
             // button_confirm
             // 
-            button_confirm.BackColor = Color.FromArgb(128, 255, 128);
+            button_confirm.BackColor = Color.Transparent;
             button_confirm.BackgroundImageLayout = ImageLayout.Zoom;
             button_confirm.Dock = DockStyle.Fill;
             button_confirm.FlatAppearance.BorderSize = 0;
-            button_confirm.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_confirm.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_confirm.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_confirm.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_confirm.FlatStyle = FlatStyle.Flat;
-            button_confirm.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_confirm.Location = new Point(0, 422);
+            button_confirm.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_confirm.Location = new Point(0, 443);
             button_confirm.Margin = new Padding(0);
             button_confirm.Name = "button_confirm";
-            button_confirm.Size = new Size(482, 60);
+            button_confirm.Size = new Size(532, 60);
             button_confirm.TabIndex = 0;
             button_confirm.Text = "ตกลง";
             button_confirm.TextAlign = ContentAlignment.MiddleRight;
@@ -153,17 +155,19 @@
             // 
             // label_title
             // 
-            label_title.BackColor = Color.FromArgb(128, 255, 128);
+            label_title.BackColor = Color.Transparent;
             label_title.Dock = DockStyle.Fill;
             label_title.Font = new Font("Segoe UI", 18F, FontStyle.Bold | FontStyle.Underline);
             label_title.ForeColor = Color.Black;
             label_title.Location = new Point(0, 0);
             label_title.Margin = new Padding(0);
             label_title.Name = "label_title";
-            label_title.Size = new Size(482, 50);
+            label_title.Size = new Size(532, 50);
             label_title.TabIndex = 1;
             label_title.Text = "หัวข้อ";
             label_title.TextAlign = ContentAlignment.MiddleCenter;
+            label_title.MouseEnter += label_MouseEnter;
+            label_title.MouseLeave += label_MouseLeave;
             // 
             // panel_top
             // 
@@ -174,7 +178,7 @@
             panel_top.Location = new Point(0, 50);
             panel_top.Margin = new Padding(0);
             panel_top.Name = "panel_top";
-            panel_top.Size = new Size(482, 60);
+            panel_top.Size = new Size(532, 60);
             panel_top.TabIndex = 2;
             // 
             // label_month_year
@@ -185,11 +189,13 @@
             label_month_year.Location = new Point(70, 0);
             label_month_year.Margin = new Padding(0, 0, 0, 3);
             label_month_year.Name = "label_month_year";
-            label_month_year.Size = new Size(342, 60);
+            label_month_year.Size = new Size(392, 60);
             label_month_year.TabIndex = 2;
             label_month_year.Text = "--";
             label_month_year.TextAlign = ContentAlignment.MiddleCenter;
             label_month_year.DoubleClick += label_month_year_DoubleClick;
+            label_month_year.MouseEnter += label_MouseEnter;
+            label_month_year.MouseLeave += label_MouseLeave;
             // 
             // button_next
             // 
@@ -200,7 +206,7 @@
             button_next.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_next.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_next.FlatStyle = FlatStyle.Flat;
-            button_next.Location = new Point(412, 0);
+            button_next.Location = new Point(462, 0);
             button_next.Name = "button_next";
             button_next.Size = new Size(70, 60);
             button_next.TabIndex = 1;
@@ -299,7 +305,7 @@
             tableLayoutPanel_calendar.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel_calendar.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
             tableLayoutPanel_calendar.RowStyles.Add(new RowStyle(SizeType.Percent, 14.2857141F));
-            tableLayoutPanel_calendar.Size = new Size(482, 252);
+            tableLayoutPanel_calendar.Size = new Size(532, 273);
             tableLayoutPanel_calendar.TabIndex = 3;
             // 
             // label_sun
@@ -307,100 +313,114 @@
             label_sun.BackColor = Color.FromArgb(255, 192, 192);
             label_sun.Dock = DockStyle.Fill;
             label_sun.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_sun.Location = new Point(3, 3);
-            label_sun.Margin = new Padding(3);
+            label_sun.Location = new Point(0, 0);
+            label_sun.Margin = new Padding(0);
             label_sun.Name = "label_sun";
-            label_sun.Size = new Size(62, 30);
+            label_sun.Size = new Size(75, 39);
             label_sun.TabIndex = 0;
             label_sun.Text = "อาทิตย์";
             label_sun.TextAlign = ContentAlignment.MiddleCenter;
+            label_sun.MouseEnter += label_MouseEnter;
+            label_sun.MouseLeave += label_MouseLeave;
             // 
             // label_mon
             // 
             label_mon.BackColor = Color.FromArgb(192, 255, 192);
             label_mon.Dock = DockStyle.Fill;
             label_mon.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_mon.Location = new Point(71, 3);
-            label_mon.Margin = new Padding(3);
+            label_mon.Location = new Point(75, 0);
+            label_mon.Margin = new Padding(0);
             label_mon.Name = "label_mon";
-            label_mon.Size = new Size(62, 30);
+            label_mon.Size = new Size(76, 39);
             label_mon.TabIndex = 0;
             label_mon.Text = "จันทร์";
             label_mon.TextAlign = ContentAlignment.MiddleCenter;
+            label_mon.MouseEnter += label_MouseEnter;
+            label_mon.MouseLeave += label_MouseLeave;
             // 
             // label_tue
             // 
             label_tue.BackColor = Color.FromArgb(192, 255, 192);
             label_tue.Dock = DockStyle.Fill;
             label_tue.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_tue.Location = new Point(139, 3);
-            label_tue.Margin = new Padding(3);
+            label_tue.Location = new Point(151, 0);
+            label_tue.Margin = new Padding(0);
             label_tue.Name = "label_tue";
-            label_tue.Size = new Size(62, 30);
+            label_tue.Size = new Size(76, 39);
             label_tue.TabIndex = 0;
             label_tue.Text = "อังคาร";
             label_tue.TextAlign = ContentAlignment.MiddleCenter;
+            label_tue.MouseEnter += label_MouseEnter;
+            label_tue.MouseLeave += label_MouseLeave;
             // 
             // label_wed
             // 
             label_wed.BackColor = Color.FromArgb(192, 255, 192);
             label_wed.Dock = DockStyle.Fill;
             label_wed.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_wed.Location = new Point(207, 3);
-            label_wed.Margin = new Padding(3);
+            label_wed.Location = new Point(227, 0);
+            label_wed.Margin = new Padding(0);
             label_wed.Name = "label_wed";
-            label_wed.Size = new Size(62, 30);
+            label_wed.Size = new Size(76, 39);
             label_wed.TabIndex = 0;
             label_wed.Text = "พุธ";
             label_wed.TextAlign = ContentAlignment.MiddleCenter;
+            label_wed.MouseEnter += label_MouseEnter;
+            label_wed.MouseLeave += label_MouseLeave;
             // 
             // label_thu
             // 
             label_thu.BackColor = Color.FromArgb(192, 255, 192);
             label_thu.Dock = DockStyle.Fill;
             label_thu.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_thu.Location = new Point(275, 3);
-            label_thu.Margin = new Padding(3);
+            label_thu.Location = new Point(303, 0);
+            label_thu.Margin = new Padding(0);
             label_thu.Name = "label_thu";
-            label_thu.Size = new Size(62, 30);
+            label_thu.Size = new Size(76, 39);
             label_thu.TabIndex = 0;
             label_thu.Text = "พฤหัส";
             label_thu.TextAlign = ContentAlignment.MiddleCenter;
+            label_thu.MouseEnter += label_MouseEnter;
+            label_thu.MouseLeave += label_MouseLeave;
             // 
             // label_fri
             // 
             label_fri.BackColor = Color.FromArgb(192, 255, 192);
             label_fri.Dock = DockStyle.Fill;
             label_fri.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_fri.Location = new Point(343, 3);
-            label_fri.Margin = new Padding(3);
+            label_fri.Location = new Point(379, 0);
+            label_fri.Margin = new Padding(0);
             label_fri.Name = "label_fri";
-            label_fri.Size = new Size(62, 30);
+            label_fri.Size = new Size(76, 39);
             label_fri.TabIndex = 0;
             label_fri.Text = "ศุกร์";
             label_fri.TextAlign = ContentAlignment.MiddleCenter;
+            label_fri.MouseEnter += label_MouseEnter;
+            label_fri.MouseLeave += label_MouseLeave;
             // 
             // label_sat
             // 
             label_sat.BackColor = Color.FromArgb(255, 192, 192);
             label_sat.Dock = DockStyle.Fill;
             label_sat.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_sat.Location = new Point(411, 3);
-            label_sat.Margin = new Padding(3);
+            label_sat.Location = new Point(455, 0);
+            label_sat.Margin = new Padding(0);
             label_sat.Name = "label_sat";
-            label_sat.Size = new Size(68, 30);
+            label_sat.Size = new Size(77, 39);
             label_sat.TabIndex = 0;
             label_sat.Text = "เสาร์";
             label_sat.TextAlign = ContentAlignment.MiddleCenter;
+            label_sat.MouseEnter += label_MouseEnter;
+            label_sat.MouseLeave += label_MouseLeave;
             // 
             // label_1
             // 
             label_1.Dock = DockStyle.Fill;
             label_1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_1.Location = new Point(3, 39);
+            label_1.Location = new Point(3, 42);
             label_1.Margin = new Padding(3);
             label_1.Name = "label_1";
-            label_1.Size = new Size(62, 30);
+            label_1.Size = new Size(69, 33);
             label_1.TabIndex = 1;
             label_1.TextAlign = ContentAlignment.MiddleCenter;
             label_1.Click += label_click;
@@ -412,10 +432,10 @@
             // 
             label_2.Dock = DockStyle.Fill;
             label_2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_2.Location = new Point(71, 39);
+            label_2.Location = new Point(78, 42);
             label_2.Margin = new Padding(3);
             label_2.Name = "label_2";
-            label_2.Size = new Size(62, 30);
+            label_2.Size = new Size(70, 33);
             label_2.TabIndex = 1;
             label_2.TextAlign = ContentAlignment.MiddleCenter;
             label_2.Click += label_click;
@@ -427,10 +447,10 @@
             // 
             label_3.Dock = DockStyle.Fill;
             label_3.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_3.Location = new Point(139, 39);
+            label_3.Location = new Point(154, 42);
             label_3.Margin = new Padding(3);
             label_3.Name = "label_3";
-            label_3.Size = new Size(62, 30);
+            label_3.Size = new Size(70, 33);
             label_3.TabIndex = 1;
             label_3.TextAlign = ContentAlignment.MiddleCenter;
             label_3.Click += label_click;
@@ -442,10 +462,10 @@
             // 
             label_4.Dock = DockStyle.Fill;
             label_4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_4.Location = new Point(207, 39);
+            label_4.Location = new Point(230, 42);
             label_4.Margin = new Padding(3);
             label_4.Name = "label_4";
-            label_4.Size = new Size(62, 30);
+            label_4.Size = new Size(70, 33);
             label_4.TabIndex = 1;
             label_4.TextAlign = ContentAlignment.MiddleCenter;
             label_4.Click += label_click;
@@ -457,10 +477,10 @@
             // 
             label_5.Dock = DockStyle.Fill;
             label_5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_5.Location = new Point(275, 39);
+            label_5.Location = new Point(306, 42);
             label_5.Margin = new Padding(3);
             label_5.Name = "label_5";
-            label_5.Size = new Size(62, 30);
+            label_5.Size = new Size(70, 33);
             label_5.TabIndex = 1;
             label_5.TextAlign = ContentAlignment.MiddleCenter;
             label_5.Click += label_click;
@@ -472,10 +492,10 @@
             // 
             label_6.Dock = DockStyle.Fill;
             label_6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_6.Location = new Point(343, 39);
+            label_6.Location = new Point(382, 42);
             label_6.Margin = new Padding(3);
             label_6.Name = "label_6";
-            label_6.Size = new Size(62, 30);
+            label_6.Size = new Size(70, 33);
             label_6.TabIndex = 1;
             label_6.TextAlign = ContentAlignment.MiddleCenter;
             label_6.Click += label_click;
@@ -487,10 +507,10 @@
             // 
             label_7.Dock = DockStyle.Fill;
             label_7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_7.Location = new Point(411, 39);
+            label_7.Location = new Point(458, 42);
             label_7.Margin = new Padding(3);
             label_7.Name = "label_7";
-            label_7.Size = new Size(68, 30);
+            label_7.Size = new Size(71, 33);
             label_7.TabIndex = 1;
             label_7.TextAlign = ContentAlignment.MiddleCenter;
             label_7.Click += label_click;
@@ -502,10 +522,10 @@
             // 
             label_14.Dock = DockStyle.Fill;
             label_14.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_14.Location = new Point(411, 75);
+            label_14.Location = new Point(458, 81);
             label_14.Margin = new Padding(3);
             label_14.Name = "label_14";
-            label_14.Size = new Size(68, 30);
+            label_14.Size = new Size(71, 33);
             label_14.TabIndex = 1;
             label_14.TextAlign = ContentAlignment.MiddleCenter;
             label_14.Click += label_click;
@@ -517,10 +537,10 @@
             // 
             label_13.Dock = DockStyle.Fill;
             label_13.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_13.Location = new Point(343, 75);
+            label_13.Location = new Point(382, 81);
             label_13.Margin = new Padding(3);
             label_13.Name = "label_13";
-            label_13.Size = new Size(62, 30);
+            label_13.Size = new Size(70, 33);
             label_13.TabIndex = 1;
             label_13.TextAlign = ContentAlignment.MiddleCenter;
             label_13.Click += label_click;
@@ -532,10 +552,10 @@
             // 
             label_12.Dock = DockStyle.Fill;
             label_12.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_12.Location = new Point(275, 75);
+            label_12.Location = new Point(306, 81);
             label_12.Margin = new Padding(3);
             label_12.Name = "label_12";
-            label_12.Size = new Size(62, 30);
+            label_12.Size = new Size(70, 33);
             label_12.TabIndex = 1;
             label_12.TextAlign = ContentAlignment.MiddleCenter;
             label_12.Click += label_click;
@@ -547,10 +567,10 @@
             // 
             label_11.Dock = DockStyle.Fill;
             label_11.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_11.Location = new Point(207, 75);
+            label_11.Location = new Point(230, 81);
             label_11.Margin = new Padding(3);
             label_11.Name = "label_11";
-            label_11.Size = new Size(62, 30);
+            label_11.Size = new Size(70, 33);
             label_11.TabIndex = 1;
             label_11.TextAlign = ContentAlignment.MiddleCenter;
             label_11.Click += label_click;
@@ -562,10 +582,10 @@
             // 
             label_10.Dock = DockStyle.Fill;
             label_10.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_10.Location = new Point(139, 75);
+            label_10.Location = new Point(154, 81);
             label_10.Margin = new Padding(3);
             label_10.Name = "label_10";
-            label_10.Size = new Size(62, 30);
+            label_10.Size = new Size(70, 33);
             label_10.TabIndex = 1;
             label_10.TextAlign = ContentAlignment.MiddleCenter;
             label_10.Click += label_click;
@@ -577,10 +597,10 @@
             // 
             label_9.Dock = DockStyle.Fill;
             label_9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_9.Location = new Point(71, 75);
+            label_9.Location = new Point(78, 81);
             label_9.Margin = new Padding(3);
             label_9.Name = "label_9";
-            label_9.Size = new Size(62, 30);
+            label_9.Size = new Size(70, 33);
             label_9.TabIndex = 1;
             label_9.TextAlign = ContentAlignment.MiddleCenter;
             label_9.Click += label_click;
@@ -592,10 +612,10 @@
             // 
             label_8.Dock = DockStyle.Fill;
             label_8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_8.Location = new Point(3, 75);
+            label_8.Location = new Point(3, 81);
             label_8.Margin = new Padding(3);
             label_8.Name = "label_8";
-            label_8.Size = new Size(62, 30);
+            label_8.Size = new Size(69, 33);
             label_8.TabIndex = 1;
             label_8.TextAlign = ContentAlignment.MiddleCenter;
             label_8.Click += label_click;
@@ -607,10 +627,10 @@
             // 
             label_15.Dock = DockStyle.Fill;
             label_15.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_15.Location = new Point(3, 111);
+            label_15.Location = new Point(3, 120);
             label_15.Margin = new Padding(3);
             label_15.Name = "label_15";
-            label_15.Size = new Size(62, 30);
+            label_15.Size = new Size(69, 33);
             label_15.TabIndex = 1;
             label_15.TextAlign = ContentAlignment.MiddleCenter;
             label_15.Click += label_click;
@@ -622,10 +642,10 @@
             // 
             label_16.Dock = DockStyle.Fill;
             label_16.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_16.Location = new Point(71, 111);
+            label_16.Location = new Point(78, 120);
             label_16.Margin = new Padding(3);
             label_16.Name = "label_16";
-            label_16.Size = new Size(62, 30);
+            label_16.Size = new Size(70, 33);
             label_16.TabIndex = 1;
             label_16.TextAlign = ContentAlignment.MiddleCenter;
             label_16.Click += label_click;
@@ -637,10 +657,10 @@
             // 
             label_17.Dock = DockStyle.Fill;
             label_17.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_17.Location = new Point(139, 111);
+            label_17.Location = new Point(154, 120);
             label_17.Margin = new Padding(3);
             label_17.Name = "label_17";
-            label_17.Size = new Size(62, 30);
+            label_17.Size = new Size(70, 33);
             label_17.TabIndex = 1;
             label_17.TextAlign = ContentAlignment.MiddleCenter;
             label_17.Click += label_click;
@@ -652,10 +672,10 @@
             // 
             label_18.Dock = DockStyle.Fill;
             label_18.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_18.Location = new Point(207, 111);
+            label_18.Location = new Point(230, 120);
             label_18.Margin = new Padding(3);
             label_18.Name = "label_18";
-            label_18.Size = new Size(62, 30);
+            label_18.Size = new Size(70, 33);
             label_18.TabIndex = 1;
             label_18.TextAlign = ContentAlignment.MiddleCenter;
             label_18.Click += label_click;
@@ -667,10 +687,10 @@
             // 
             label_19.Dock = DockStyle.Fill;
             label_19.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_19.Location = new Point(275, 111);
+            label_19.Location = new Point(306, 120);
             label_19.Margin = new Padding(3);
             label_19.Name = "label_19";
-            label_19.Size = new Size(62, 30);
+            label_19.Size = new Size(70, 33);
             label_19.TabIndex = 1;
             label_19.TextAlign = ContentAlignment.MiddleCenter;
             label_19.Click += label_click;
@@ -682,10 +702,10 @@
             // 
             label_20.Dock = DockStyle.Fill;
             label_20.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_20.Location = new Point(343, 111);
+            label_20.Location = new Point(382, 120);
             label_20.Margin = new Padding(3);
             label_20.Name = "label_20";
-            label_20.Size = new Size(62, 30);
+            label_20.Size = new Size(70, 33);
             label_20.TabIndex = 1;
             label_20.TextAlign = ContentAlignment.MiddleCenter;
             label_20.Click += label_click;
@@ -697,10 +717,10 @@
             // 
             label_21.Dock = DockStyle.Fill;
             label_21.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_21.Location = new Point(411, 111);
+            label_21.Location = new Point(458, 120);
             label_21.Margin = new Padding(3);
             label_21.Name = "label_21";
-            label_21.Size = new Size(68, 30);
+            label_21.Size = new Size(71, 33);
             label_21.TabIndex = 1;
             label_21.TextAlign = ContentAlignment.MiddleCenter;
             label_21.Click += label_click;
@@ -712,10 +732,10 @@
             // 
             label_28.Dock = DockStyle.Fill;
             label_28.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_28.Location = new Point(411, 147);
+            label_28.Location = new Point(458, 159);
             label_28.Margin = new Padding(3);
             label_28.Name = "label_28";
-            label_28.Size = new Size(68, 30);
+            label_28.Size = new Size(71, 33);
             label_28.TabIndex = 1;
             label_28.TextAlign = ContentAlignment.MiddleCenter;
             label_28.Click += label_click;
@@ -727,10 +747,10 @@
             // 
             label_27.Dock = DockStyle.Fill;
             label_27.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_27.Location = new Point(343, 147);
+            label_27.Location = new Point(382, 159);
             label_27.Margin = new Padding(3);
             label_27.Name = "label_27";
-            label_27.Size = new Size(62, 30);
+            label_27.Size = new Size(70, 33);
             label_27.TabIndex = 1;
             label_27.TextAlign = ContentAlignment.MiddleCenter;
             label_27.Click += label_click;
@@ -742,10 +762,10 @@
             // 
             label_26.Dock = DockStyle.Fill;
             label_26.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_26.Location = new Point(275, 147);
+            label_26.Location = new Point(306, 159);
             label_26.Margin = new Padding(3);
             label_26.Name = "label_26";
-            label_26.Size = new Size(62, 30);
+            label_26.Size = new Size(70, 33);
             label_26.TabIndex = 1;
             label_26.TextAlign = ContentAlignment.MiddleCenter;
             label_26.Click += label_click;
@@ -757,10 +777,10 @@
             // 
             label_25.Dock = DockStyle.Fill;
             label_25.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_25.Location = new Point(207, 147);
+            label_25.Location = new Point(230, 159);
             label_25.Margin = new Padding(3);
             label_25.Name = "label_25";
-            label_25.Size = new Size(62, 30);
+            label_25.Size = new Size(70, 33);
             label_25.TabIndex = 1;
             label_25.TextAlign = ContentAlignment.MiddleCenter;
             label_25.Click += label_click;
@@ -772,10 +792,10 @@
             // 
             label_24.Dock = DockStyle.Fill;
             label_24.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_24.Location = new Point(139, 147);
+            label_24.Location = new Point(154, 159);
             label_24.Margin = new Padding(3);
             label_24.Name = "label_24";
-            label_24.Size = new Size(62, 30);
+            label_24.Size = new Size(70, 33);
             label_24.TabIndex = 1;
             label_24.TextAlign = ContentAlignment.MiddleCenter;
             label_24.Click += label_click;
@@ -787,10 +807,10 @@
             // 
             label_23.Dock = DockStyle.Fill;
             label_23.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_23.Location = new Point(71, 147);
+            label_23.Location = new Point(78, 159);
             label_23.Margin = new Padding(3);
             label_23.Name = "label_23";
-            label_23.Size = new Size(62, 30);
+            label_23.Size = new Size(70, 33);
             label_23.TabIndex = 1;
             label_23.TextAlign = ContentAlignment.MiddleCenter;
             label_23.Click += label_click;
@@ -802,10 +822,10 @@
             // 
             label_22.Dock = DockStyle.Fill;
             label_22.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_22.Location = new Point(3, 147);
+            label_22.Location = new Point(3, 159);
             label_22.Margin = new Padding(3);
             label_22.Name = "label_22";
-            label_22.Size = new Size(62, 30);
+            label_22.Size = new Size(69, 33);
             label_22.TabIndex = 1;
             label_22.TextAlign = ContentAlignment.MiddleCenter;
             label_22.Click += label_click;
@@ -817,10 +837,10 @@
             // 
             label_29.Dock = DockStyle.Fill;
             label_29.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_29.Location = new Point(3, 183);
+            label_29.Location = new Point(3, 198);
             label_29.Margin = new Padding(3);
             label_29.Name = "label_29";
-            label_29.Size = new Size(62, 30);
+            label_29.Size = new Size(69, 33);
             label_29.TabIndex = 1;
             label_29.TextAlign = ContentAlignment.MiddleCenter;
             label_29.Click += label_click;
@@ -832,10 +852,10 @@
             // 
             label_30.Dock = DockStyle.Fill;
             label_30.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_30.Location = new Point(71, 183);
+            label_30.Location = new Point(78, 198);
             label_30.Margin = new Padding(3);
             label_30.Name = "label_30";
-            label_30.Size = new Size(62, 30);
+            label_30.Size = new Size(70, 33);
             label_30.TabIndex = 1;
             label_30.TextAlign = ContentAlignment.MiddleCenter;
             label_30.Click += label_click;
@@ -847,10 +867,10 @@
             // 
             label_31.Dock = DockStyle.Fill;
             label_31.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_31.Location = new Point(139, 183);
+            label_31.Location = new Point(154, 198);
             label_31.Margin = new Padding(3);
             label_31.Name = "label_31";
-            label_31.Size = new Size(62, 30);
+            label_31.Size = new Size(70, 33);
             label_31.TabIndex = 1;
             label_31.TextAlign = ContentAlignment.MiddleCenter;
             label_31.Click += label_click;
@@ -862,10 +882,10 @@
             // 
             label_32.Dock = DockStyle.Fill;
             label_32.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_32.Location = new Point(207, 183);
+            label_32.Location = new Point(230, 198);
             label_32.Margin = new Padding(3);
             label_32.Name = "label_32";
-            label_32.Size = new Size(62, 30);
+            label_32.Size = new Size(70, 33);
             label_32.TabIndex = 1;
             label_32.TextAlign = ContentAlignment.MiddleCenter;
             label_32.Click += label_click;
@@ -877,10 +897,10 @@
             // 
             label_33.Dock = DockStyle.Fill;
             label_33.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_33.Location = new Point(275, 183);
+            label_33.Location = new Point(306, 198);
             label_33.Margin = new Padding(3);
             label_33.Name = "label_33";
-            label_33.Size = new Size(62, 30);
+            label_33.Size = new Size(70, 33);
             label_33.TabIndex = 1;
             label_33.TextAlign = ContentAlignment.MiddleCenter;
             label_33.Click += label_click;
@@ -892,10 +912,10 @@
             // 
             label_34.Dock = DockStyle.Fill;
             label_34.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_34.Location = new Point(343, 183);
+            label_34.Location = new Point(382, 198);
             label_34.Margin = new Padding(3);
             label_34.Name = "label_34";
-            label_34.Size = new Size(62, 30);
+            label_34.Size = new Size(70, 33);
             label_34.TabIndex = 1;
             label_34.TextAlign = ContentAlignment.MiddleCenter;
             label_34.Click += label_click;
@@ -907,10 +927,10 @@
             // 
             label_35.Dock = DockStyle.Fill;
             label_35.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_35.Location = new Point(411, 183);
+            label_35.Location = new Point(458, 198);
             label_35.Margin = new Padding(3);
             label_35.Name = "label_35";
-            label_35.Size = new Size(68, 30);
+            label_35.Size = new Size(71, 33);
             label_35.TabIndex = 1;
             label_35.TextAlign = ContentAlignment.MiddleCenter;
             label_35.Click += label_click;
@@ -922,10 +942,10 @@
             // 
             label_42.Dock = DockStyle.Fill;
             label_42.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_42.Location = new Point(411, 219);
+            label_42.Location = new Point(458, 237);
             label_42.Margin = new Padding(3);
             label_42.Name = "label_42";
-            label_42.Size = new Size(68, 30);
+            label_42.Size = new Size(71, 33);
             label_42.TabIndex = 1;
             label_42.TextAlign = ContentAlignment.MiddleCenter;
             label_42.Click += label_click;
@@ -937,10 +957,10 @@
             // 
             label_41.Dock = DockStyle.Fill;
             label_41.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_41.Location = new Point(343, 219);
+            label_41.Location = new Point(382, 237);
             label_41.Margin = new Padding(3);
             label_41.Name = "label_41";
-            label_41.Size = new Size(62, 30);
+            label_41.Size = new Size(70, 33);
             label_41.TabIndex = 1;
             label_41.TextAlign = ContentAlignment.MiddleCenter;
             label_41.Click += label_click;
@@ -952,10 +972,10 @@
             // 
             label_40.Dock = DockStyle.Fill;
             label_40.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_40.Location = new Point(275, 219);
+            label_40.Location = new Point(306, 237);
             label_40.Margin = new Padding(3);
             label_40.Name = "label_40";
-            label_40.Size = new Size(62, 30);
+            label_40.Size = new Size(70, 33);
             label_40.TabIndex = 1;
             label_40.TextAlign = ContentAlignment.MiddleCenter;
             label_40.Click += label_click;
@@ -967,10 +987,10 @@
             // 
             label_39.Dock = DockStyle.Fill;
             label_39.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_39.Location = new Point(207, 219);
+            label_39.Location = new Point(230, 237);
             label_39.Margin = new Padding(3);
             label_39.Name = "label_39";
-            label_39.Size = new Size(62, 30);
+            label_39.Size = new Size(70, 33);
             label_39.TabIndex = 1;
             label_39.TextAlign = ContentAlignment.MiddleCenter;
             label_39.Click += label_click;
@@ -982,10 +1002,10 @@
             // 
             label_38.Dock = DockStyle.Fill;
             label_38.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_38.Location = new Point(139, 219);
+            label_38.Location = new Point(154, 237);
             label_38.Margin = new Padding(3);
             label_38.Name = "label_38";
-            label_38.Size = new Size(62, 30);
+            label_38.Size = new Size(70, 33);
             label_38.TabIndex = 1;
             label_38.TextAlign = ContentAlignment.MiddleCenter;
             label_38.Click += label_click;
@@ -997,10 +1017,10 @@
             // 
             label_37.Dock = DockStyle.Fill;
             label_37.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_37.Location = new Point(71, 219);
+            label_37.Location = new Point(78, 237);
             label_37.Margin = new Padding(3);
             label_37.Name = "label_37";
-            label_37.Size = new Size(62, 30);
+            label_37.Size = new Size(70, 33);
             label_37.TabIndex = 1;
             label_37.TextAlign = ContentAlignment.MiddleCenter;
             label_37.Click += label_click;
@@ -1012,10 +1032,10 @@
             // 
             label_36.Dock = DockStyle.Fill;
             label_36.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label_36.Location = new Point(3, 219);
+            label_36.Location = new Point(3, 237);
             label_36.Margin = new Padding(3);
             label_36.Name = "label_36";
-            label_36.Size = new Size(62, 30);
+            label_36.Size = new Size(69, 33);
             label_36.TabIndex = 1;
             label_36.TextAlign = ContentAlignment.MiddleCenter;
             label_36.Click += label_click;
@@ -1029,7 +1049,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.White;
-            ClientSize = new Size(482, 482);
+            ClientSize = new Size(532, 503);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");

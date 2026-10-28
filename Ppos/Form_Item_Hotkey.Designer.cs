@@ -39,6 +39,14 @@
             label_search = new Label();
             textBox_search = new TextBox();
             dataGridView_item = new DataGridView();
+            small_barcode = new DataGridViewTextBoxColumn();
+            barcode = new DataGridViewTextBoxColumn();
+            code = new DataGridViewTextBoxColumn();
+            group_main = new DataGridViewTextBoxColumn();
+            group_sub = new DataGridViewTextBoxColumn();
+            name = new DataGridViewTextBoxColumn();
+            unit = new DataGridViewTextBoxColumn();
+            price = new DataGridViewTextBoxColumn();
             tableLayoutPanel_back = new TableLayoutPanel();
             tableLayoutPanel_back_detail = new TableLayoutPanel();
             panel_set = new Panel();
@@ -81,14 +89,6 @@
             backgroundWorker_sort = new System.ComponentModel.BackgroundWorker();
             backgroundWorker_row_height = new System.ComponentModel.BackgroundWorker();
             timer_title = new System.Windows.Forms.Timer(components);
-            small_barcode = new DataGridViewTextBoxColumn();
-            barcode = new DataGridViewTextBoxColumn();
-            code = new DataGridViewTextBoxColumn();
-            group_main = new DataGridViewTextBoxColumn();
-            group_sub = new DataGridViewTextBoxColumn();
-            name = new DataGridViewTextBoxColumn();
-            unit = new DataGridViewTextBoxColumn();
-            price = new DataGridViewTextBoxColumn();
             panel_search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
             tableLayoutPanel_back.SuspendLayout();
@@ -113,7 +113,7 @@
             panel_detail.Location = new Point(10, 10);
             panel_detail.Margin = new Padding(10, 10, 0, 0);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(244, 786);
+            panel_detail.Size = new Size(294, 786);
             panel_detail.TabIndex = 4;
             // 
             // panel_search
@@ -129,7 +129,7 @@
             // 
             // label_search
             // 
-            label_search.BackColor = Color.Lime;
+            label_search.BackColor = Color.Transparent;
             label_search.Dock = DockStyle.Fill;
             label_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
             label_search.ForeColor = Color.Gray;
@@ -165,7 +165,7 @@
             dataGridViewCellStyle1.BackColor = Color.Gray;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 128);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -202,9 +202,86 @@
             dataGridView_item.CellMouseMove += dataGridView_item_CellMouseMove;
             dataGridView_item.CellMouseUp += dataGridView_item_CellMouseUp;
             // 
+            // small_barcode
+            // 
+            small_barcode.HeaderText = "small_barcode";
+            small_barcode.MinimumWidth = 6;
+            small_barcode.Name = "small_barcode";
+            small_barcode.ReadOnly = true;
+            small_barcode.Visible = false;
+            small_barcode.Width = 125;
+            // 
+            // barcode
+            // 
+            barcode.HeaderText = "barcode";
+            barcode.MinimumWidth = 6;
+            barcode.Name = "barcode";
+            barcode.ReadOnly = true;
+            barcode.Visible = false;
+            barcode.Width = 125;
+            // 
+            // code
+            // 
+            code.HeaderText = "code";
+            code.MinimumWidth = 6;
+            code.Name = "code";
+            code.ReadOnly = true;
+            code.Visible = false;
+            code.Width = 50;
+            // 
+            // group_main
+            // 
+            group_main.HeaderText = "group_main";
+            group_main.MinimumWidth = 6;
+            group_main.Name = "group_main";
+            group_main.ReadOnly = true;
+            group_main.Visible = false;
+            group_main.Width = 125;
+            // 
+            // group_sub
+            // 
+            group_sub.HeaderText = "group_sub";
+            group_sub.MinimumWidth = 6;
+            group_sub.Name = "group_sub";
+            group_sub.ReadOnly = true;
+            group_sub.Visible = false;
+            group_sub.Width = 125;
+            // 
+            // name
+            // 
+            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            name.DefaultCellStyle = dataGridViewCellStyle2;
+            name.HeaderText = "";
+            name.MinimumWidth = 6;
+            name.Name = "name";
+            name.ReadOnly = true;
+            // 
+            // unit
+            // 
+            unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            unit.DefaultCellStyle = dataGridViewCellStyle3;
+            unit.HeaderText = "";
+            unit.MinimumWidth = 6;
+            unit.Name = "unit";
+            unit.ReadOnly = true;
+            unit.Visible = false;
+            unit.Width = 125;
+            // 
+            // price
+            // 
+            price.HeaderText = "price";
+            price.MinimumWidth = 6;
+            price.Name = "price";
+            price.ReadOnly = true;
+            price.Visible = false;
+            price.Width = 125;
+            // 
             // tableLayoutPanel_back
             // 
-            tableLayoutPanel_back.BackColor = Color.Lime;
+            tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back.ColumnCount = 2;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -224,10 +301,10 @@
             // 
             // tableLayoutPanel_back_detail
             // 
-            tableLayoutPanel_back_detail.BackColor = Color.Lime;
+            tableLayoutPanel_back_detail.BackColor = Color.Transparent;
             tableLayoutPanel_back_detail.ColumnCount = 2;
             tableLayoutPanel_back_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
+            tableLayoutPanel_back_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 350F));
             tableLayoutPanel_back_detail.Controls.Add(panel_detail, 0, 0);
             tableLayoutPanel_back_detail.Controls.Add(panel_set, 1, 0);
             tableLayoutPanel_back_detail.Dock = DockStyle.Fill;
@@ -246,17 +323,16 @@
             panel_set.BackColor = Color.White;
             panel_set.Controls.Add(tableLayoutPanel_set_hotkey);
             panel_set.Dock = DockStyle.Fill;
-            panel_set.Location = new Point(254, 10);
+            panel_set.Location = new Point(304, 10);
             panel_set.Margin = new Padding(0, 10, 0, 0);
             panel_set.Name = "panel_set";
-            panel_set.Size = new Size(400, 786);
+            panel_set.Size = new Size(350, 786);
             panel_set.TabIndex = 5;
             // 
             // tableLayoutPanel_set_hotkey
             // 
             tableLayoutPanel_set_hotkey.Anchor = AnchorStyles.Top;
             tableLayoutPanel_set_hotkey.AutoScroll = true;
-            tableLayoutPanel_set_hotkey.AutoSize = true;
             tableLayoutPanel_set_hotkey.ColumnCount = 1;
             tableLayoutPanel_set_hotkey.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel_set_hotkey.Controls.Add(label2, 0, 3);
@@ -264,7 +340,7 @@
             tableLayoutPanel_set_hotkey.Controls.Add(tableLayoutPanel_hot, 0, 4);
             tableLayoutPanel_set_hotkey.Controls.Add(tableLayoutPanel_sethotkey, 0, 0);
             tableLayoutPanel_set_hotkey.Controls.Add(tableLayoutPanel_last, 0, 2);
-            tableLayoutPanel_set_hotkey.Location = new Point(10, 3);
+            tableLayoutPanel_set_hotkey.Location = new Point(3, 3);
             tableLayoutPanel_set_hotkey.Name = "tableLayoutPanel_set_hotkey";
             tableLayoutPanel_set_hotkey.RowCount = 5;
             tableLayoutPanel_set_hotkey.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
@@ -272,7 +348,7 @@
             tableLayoutPanel_set_hotkey.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
             tableLayoutPanel_set_hotkey.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_set_hotkey.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel_set_hotkey.Size = new Size(381, 550);
+            tableLayoutPanel_set_hotkey.Size = new Size(335, 550);
             tableLayoutPanel_set_hotkey.TabIndex = 6;
             tableLayoutPanel_set_hotkey.Visible = false;
             // 
@@ -285,7 +361,7 @@
             label2.Location = new Point(0, 420);
             label2.Margin = new Padding(0);
             label2.Name = "label2";
-            label2.Size = new Size(381, 50);
+            label2.Size = new Size(335, 50);
             label2.TabIndex = 0;
             label2.Text = "ขายดี";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -301,7 +377,7 @@
             label_last_sale.Location = new Point(0, 290);
             label_last_sale.Margin = new Padding(0);
             label_last_sale.Name = "label_last_sale";
-            label_last_sale.Size = new Size(381, 50);
+            label_last_sale.Size = new Size(335, 50);
             label_last_sale.TabIndex = 0;
             label_last_sale.Text = "ล่าสุด";
             label_last_sale.TextAlign = ContentAlignment.MiddleCenter;
@@ -325,7 +401,7 @@
             tableLayoutPanel_hot.RowCount = 2;
             tableLayoutPanel_hot.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel_hot.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_hot.Size = new Size(381, 80);
+            tableLayoutPanel_hot.Size = new Size(335, 80);
             tableLayoutPanel_hot.TabIndex = 0;
             // 
             // label5
@@ -336,7 +412,7 @@
             label5.Location = new Point(0, 0);
             label5.Margin = new Padding(0);
             label5.Name = "label5";
-            label5.Size = new Size(196, 40);
+            label5.Size = new Size(164, 40);
             label5.TabIndex = 0;
             label5.Text = "ย้อนหลัง :";
             label5.TextAlign = ContentAlignment.MiddleRight;
@@ -351,7 +427,7 @@
             label6.Location = new Point(0, 40);
             label6.Margin = new Padding(0);
             label6.Name = "label6";
-            label6.Size = new Size(196, 40);
+            label6.Size = new Size(164, 40);
             label6.TabIndex = 0;
             label6.Text = "แสดง :";
             label6.TextAlign = ContentAlignment.MiddleRight;
@@ -365,7 +441,7 @@
             comboBox_hot_back_date.Font = new Font("Segoe UI", 12F);
             comboBox_hot_back_date.FormattingEnabled = true;
             comboBox_hot_back_date.Items.AddRange(new object[] { "1", "2", "3", "7", "15", "30", "60" });
-            comboBox_hot_back_date.Location = new Point(196, 2);
+            comboBox_hot_back_date.Location = new Point(164, 2);
             comboBox_hot_back_date.Margin = new Padding(0);
             comboBox_hot_back_date.Name = "comboBox_hot_back_date";
             comboBox_hot_back_date.Size = new Size(100, 36);
@@ -380,7 +456,7 @@
             comboBox_hot_limit.Font = new Font("Segoe UI", 12F);
             comboBox_hot_limit.FormattingEnabled = true;
             comboBox_hot_limit.Items.AddRange(new object[] { "10", "20", "30", "40", "50" });
-            comboBox_hot_limit.Location = new Point(196, 42);
+            comboBox_hot_limit.Location = new Point(164, 42);
             comboBox_hot_limit.Margin = new Padding(0);
             comboBox_hot_limit.Name = "comboBox_hot_limit";
             comboBox_hot_limit.Size = new Size(100, 36);
@@ -422,7 +498,7 @@
             tableLayoutPanel_sethotkey.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel_sethotkey.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel_sethotkey.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel_sethotkey.Size = new Size(381, 290);
+            tableLayoutPanel_sethotkey.Size = new Size(335, 290);
             tableLayoutPanel_sethotkey.TabIndex = 5;
             // 
             // comboBox_button_color
@@ -431,7 +507,7 @@
             comboBox_button_color.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_button_color.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBox_button_color.FormattingEnabled = true;
-            comboBox_button_color.Location = new Point(196, 252);
+            comboBox_button_color.Location = new Point(164, 252);
             comboBox_button_color.Margin = new Padding(0);
             comboBox_button_color.Name = "comboBox_button_color";
             comboBox_button_color.Size = new Size(100, 36);
@@ -445,7 +521,7 @@
             comboBox_font_color.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_font_color.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             comboBox_font_color.FormattingEnabled = true;
-            comboBox_font_color.Location = new Point(196, 212);
+            comboBox_font_color.Location = new Point(164, 212);
             comboBox_font_color.Margin = new Padding(0);
             comboBox_font_color.Name = "comboBox_font_color";
             comboBox_font_color.Size = new Size(100, 36);
@@ -460,7 +536,7 @@
             comboBox_image_type.Font = new Font("Segoe UI", 12F);
             comboBox_image_type.FormattingEnabled = true;
             comboBox_image_type.Items.AddRange(new object[] { "บน", "ซ้าย", "กลาง", "ไม่มี" });
-            comboBox_image_type.Location = new Point(196, 172);
+            comboBox_image_type.Location = new Point(164, 172);
             comboBox_image_type.Margin = new Padding(0);
             comboBox_image_type.Name = "comboBox_image_type";
             comboBox_image_type.Size = new Size(100, 36);
@@ -474,7 +550,7 @@
             comboBox_font_size.Font = new Font("Segoe UI", 12F);
             comboBox_font_size.FormattingEnabled = true;
             comboBox_font_size.Items.AddRange(new object[] { "10", "12", "14", "16", "18", "20", "22", "24", "26" });
-            comboBox_font_size.Location = new Point(196, 132);
+            comboBox_font_size.Location = new Point(164, 132);
             comboBox_font_size.Margin = new Padding(0);
             comboBox_font_size.Name = "comboBox_font_size";
             comboBox_font_size.Size = new Size(100, 36);
@@ -488,7 +564,7 @@
             comboBox_row_height.Font = new Font("Segoe UI", 12F);
             comboBox_row_height.FormattingEnabled = true;
             comboBox_row_height.Items.AddRange(new object[] { "100", "150", "200", "250", "300" });
-            comboBox_row_height.Location = new Point(196, 92);
+            comboBox_row_height.Location = new Point(164, 92);
             comboBox_row_height.Margin = new Padding(0);
             comboBox_row_height.Name = "comboBox_row_height";
             comboBox_row_height.Size = new Size(100, 36);
@@ -502,7 +578,7 @@
             comboBox_column_count.Font = new Font("Segoe UI", 12F);
             comboBox_column_count.FormattingEnabled = true;
             comboBox_column_count.Items.AddRange(new object[] { "2", "3", "4", "5", "6", "7", "8", "9" });
-            comboBox_column_count.Location = new Point(196, 52);
+            comboBox_column_count.Location = new Point(164, 52);
             comboBox_column_count.Margin = new Padding(0);
             comboBox_column_count.Name = "comboBox_column_count";
             comboBox_column_count.Size = new Size(100, 36);
@@ -517,7 +593,7 @@
             label_button_color.Location = new Point(0, 250);
             label_button_color.Margin = new Padding(0);
             label_button_color.Name = "label_button_color";
-            label_button_color.Size = new Size(196, 40);
+            label_button_color.Size = new Size(164, 40);
             label_button_color.TabIndex = 0;
             label_button_color.Text = "สีคีย์ลัด :";
             label_button_color.TextAlign = ContentAlignment.MiddleRight;
@@ -532,7 +608,7 @@
             label_font_color.Location = new Point(0, 210);
             label_font_color.Margin = new Padding(0);
             label_font_color.Name = "label_font_color";
-            label_font_color.Size = new Size(196, 40);
+            label_font_color.Size = new Size(164, 40);
             label_font_color.TabIndex = 0;
             label_font_color.Text = "สีตัวอักษร :";
             label_font_color.TextAlign = ContentAlignment.MiddleRight;
@@ -547,7 +623,7 @@
             label_image_type.Location = new Point(0, 170);
             label_image_type.Margin = new Padding(0);
             label_image_type.Name = "label_image_type";
-            label_image_type.Size = new Size(196, 40);
+            label_image_type.Size = new Size(164, 40);
             label_image_type.TabIndex = 0;
             label_image_type.Text = "ตำแหน่งภาพ :";
             label_image_type.TextAlign = ContentAlignment.MiddleRight;
@@ -562,7 +638,7 @@
             label_font_size.Location = new Point(0, 130);
             label_font_size.Margin = new Padding(0);
             label_font_size.Name = "label_font_size";
-            label_font_size.Size = new Size(196, 40);
+            label_font_size.Size = new Size(164, 40);
             label_font_size.TabIndex = 0;
             label_font_size.Text = "ขนาดอักษร :";
             label_font_size.TextAlign = ContentAlignment.MiddleRight;
@@ -577,7 +653,7 @@
             label_row_height.Location = new Point(0, 90);
             label_row_height.Margin = new Padding(0);
             label_row_height.Name = "label_row_height";
-            label_row_height.Size = new Size(196, 40);
+            label_row_height.Size = new Size(164, 40);
             label_row_height.TabIndex = 0;
             label_row_height.Text = "ความสูง :";
             label_row_height.TextAlign = ContentAlignment.MiddleRight;
@@ -592,7 +668,7 @@
             label_column_count.Location = new Point(0, 50);
             label_column_count.Margin = new Padding(0);
             label_column_count.Name = "label_column_count";
-            label_column_count.Size = new Size(196, 40);
+            label_column_count.Size = new Size(164, 40);
             label_column_count.TabIndex = 0;
             label_column_count.Text = "คีย์ลัดหนึ่งแถว :";
             label_column_count.TextAlign = ContentAlignment.MiddleRight;
@@ -605,7 +681,7 @@
             textBox_title.BackColor = Color.White;
             textBox_title.BorderStyle = BorderStyle.None;
             textBox_title.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_title.Location = new Point(196, 7);
+            textBox_title.Location = new Point(164, 7);
             textBox_title.Margin = new Padding(0);
             textBox_title.Name = "textBox_title";
             textBox_title.Size = new Size(100, 36);
@@ -622,7 +698,7 @@
             label1.Location = new Point(0, 0);
             label1.Margin = new Padding(0);
             label1.Name = "label1";
-            label1.Size = new Size(196, 50);
+            label1.Size = new Size(164, 50);
             label1.TabIndex = 0;
             label1.Text = "ชื่อคีย์ลัด :";
             label1.TextAlign = ContentAlignment.MiddleRight;
@@ -646,7 +722,7 @@
             tableLayoutPanel_last.RowCount = 2;
             tableLayoutPanel_last.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel_last.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_last.Size = new Size(381, 80);
+            tableLayoutPanel_last.Size = new Size(335, 80);
             tableLayoutPanel_last.TabIndex = 0;
             // 
             // comboBox_last_back_date
@@ -656,7 +732,7 @@
             comboBox_last_back_date.Font = new Font("Segoe UI", 12F);
             comboBox_last_back_date.FormattingEnabled = true;
             comboBox_last_back_date.Items.AddRange(new object[] { "1", "2", "3", "7", "15", "30", "60" });
-            comboBox_last_back_date.Location = new Point(196, 2);
+            comboBox_last_back_date.Location = new Point(164, 2);
             comboBox_last_back_date.Margin = new Padding(0);
             comboBox_last_back_date.Name = "comboBox_last_back_date";
             comboBox_last_back_date.Size = new Size(100, 36);
@@ -672,7 +748,7 @@
             label3.Location = new Point(0, 0);
             label3.Margin = new Padding(0);
             label3.Name = "label3";
-            label3.Size = new Size(196, 40);
+            label3.Size = new Size(164, 40);
             label3.TabIndex = 0;
             label3.Text = "ย้อนหลัง :";
             label3.TextAlign = ContentAlignment.MiddleRight;
@@ -687,7 +763,7 @@
             label4.Location = new Point(0, 40);
             label4.Margin = new Padding(0);
             label4.Name = "label4";
-            label4.Size = new Size(196, 40);
+            label4.Size = new Size(164, 40);
             label4.TabIndex = 0;
             label4.Text = "แสดง :";
             label4.TextAlign = ContentAlignment.MiddleRight;
@@ -701,7 +777,7 @@
             comboBox_last_limit.Font = new Font("Segoe UI", 12F);
             comboBox_last_limit.FormattingEnabled = true;
             comboBox_last_limit.Items.AddRange(new object[] { "10", "20", "30", "40", "50" });
-            comboBox_last_limit.Location = new Point(196, 42);
+            comboBox_last_limit.Location = new Point(164, 42);
             comboBox_last_limit.Margin = new Padding(0);
             comboBox_last_limit.Name = "comboBox_last_limit";
             comboBox_last_limit.Size = new Size(100, 36);
@@ -846,7 +922,7 @@
             // label8
             // 
             label8.Dock = DockStyle.Fill;
-            label8.Font = new Font("Segoe UI", 12F);
+            label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Red;
             label8.Location = new Point(393, 0);
             label8.Name = "label8";
@@ -874,83 +950,6 @@
             // 
             timer_title.Tick += timer_title_Tick;
             // 
-            // small_barcode
-            // 
-            small_barcode.HeaderText = "small_barcode";
-            small_barcode.MinimumWidth = 6;
-            small_barcode.Name = "small_barcode";
-            small_barcode.ReadOnly = true;
-            small_barcode.Visible = false;
-            small_barcode.Width = 125;
-            // 
-            // barcode
-            // 
-            barcode.HeaderText = "barcode";
-            barcode.MinimumWidth = 6;
-            barcode.Name = "barcode";
-            barcode.ReadOnly = true;
-            barcode.Visible = false;
-            barcode.Width = 125;
-            // 
-            // code
-            // 
-            code.HeaderText = "code";
-            code.MinimumWidth = 6;
-            code.Name = "code";
-            code.ReadOnly = true;
-            code.Visible = false;
-            code.Width = 50;
-            // 
-            // group_main
-            // 
-            group_main.HeaderText = "group_main";
-            group_main.MinimumWidth = 6;
-            group_main.Name = "group_main";
-            group_main.ReadOnly = true;
-            group_main.Visible = false;
-            group_main.Width = 125;
-            // 
-            // group_sub
-            // 
-            group_sub.HeaderText = "group_sub";
-            group_sub.MinimumWidth = 6;
-            group_sub.Name = "group_sub";
-            group_sub.ReadOnly = true;
-            group_sub.Visible = false;
-            group_sub.Width = 125;
-            // 
-            // name
-            // 
-            name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            name.DefaultCellStyle = dataGridViewCellStyle2;
-            name.HeaderText = "";
-            name.MinimumWidth = 6;
-            name.Name = "name";
-            name.ReadOnly = true;
-            // 
-            // unit
-            // 
-            unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            unit.DefaultCellStyle = dataGridViewCellStyle3;
-            unit.HeaderText = "";
-            unit.MinimumWidth = 6;
-            unit.Name = "unit";
-            unit.ReadOnly = true;
-            unit.Visible = false;
-            unit.Width = 6;
-            // 
-            // price
-            // 
-            price.HeaderText = "price";
-            price.MinimumWidth = 6;
-            price.Name = "price";
-            price.ReadOnly = true;
-            price.Visible = false;
-            price.Width = 125;
-            // 
             // Form_Item_Hotkey
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -971,7 +970,6 @@
             tableLayoutPanel_back_detail.ResumeLayout(false);
             tableLayoutPanel_back_detail.PerformLayout();
             panel_set.ResumeLayout(false);
-            panel_set.PerformLayout();
             tableLayoutPanel_set_hotkey.ResumeLayout(false);
             tableLayoutPanel_set_hotkey.PerformLayout();
             tableLayoutPanel_hot.ResumeLayout(false);

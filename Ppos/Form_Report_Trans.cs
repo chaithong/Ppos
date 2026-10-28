@@ -71,7 +71,7 @@ namespace Ppos
                 //  dataGridView_trans.Columns["small_cost"].HeaderCell.Style.BackColor = Color.FromArgb(192, 255, 192);
                 //  dataGridView_trans.Columns["small_cost_end"].HeaderCell.Style.BackColor = Color.FromArgb(192, 255, 192);
 
-                // dataGridView_trans.Columns["fill"].HeaderCell.Style.BackColor = Color.Lime;
+                // dataGridView_trans.Columns["fill"].HeaderCell.Style.BackColor = Color.FromArgb(128,255,128);
                 // dataGridView_trans.Columns["fill"].DefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
 
 
@@ -89,8 +89,8 @@ namespace Ppos
                 new Class_TouchGrid(dataGridView_item);
                 new Class_TouchGrid(dataGridView_trans);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
-                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
+                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
                 dataGridView_item.EnableHeadersVisualStyles = false;
                 dataGridView_trans.EnableHeadersVisualStyles = false;
 

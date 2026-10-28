@@ -163,18 +163,18 @@ namespace Ppos
                 button_save.Enabled = true;
                 if (cameraName == set_device)
                 {
-                    textBox_device.BackColor = Color.Lime;
-                    pictureBox_video.BackColor = Color.Lime;
+                   // textBox_device.BackColor = Color.Lime;
+                   // pictureBox_video.BackColor = Color.Lime;
 
-                    button_save.BackColor = Color.Lime;
+                   // button_save.BackColor = Color.Lime;
                     button_save.Enabled = false;
                 }
                 else
                 {
-                    textBox_device.BackColor = Color.White;
-                    pictureBox_video.BackColor = Color.White;
+                   // textBox_device.BackColor = Color.White;
+                  //  pictureBox_video.BackColor = Color.White;
 
-                    button_save.BackColor = Color.White;
+                   // button_save.BackColor = Color.White;
                     button_save.Enabled = true;
                 }
 
@@ -215,9 +215,9 @@ namespace Ppos
                             // เปลี่ยนค่า set
                             set_device = textBox_device.Text;
                             // เปลี่ยนสี textbox
-                            textBox_device.BackColor = Color.Lime;
-                            pictureBox_video.BackColor = Color.Lime;
-                            button_save.BackColor = Color.Lime;
+                           // textBox_device.BackColor = Color.Lime;
+                           // pictureBox_video.BackColor = Color.Lime;
+                           // button_save.BackColor = Color.Lime;
 
                         }
                         con_sqlite.Close();

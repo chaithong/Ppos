@@ -173,7 +173,7 @@
             dataGridViewCellStyle1.BackColor = Color.Gray;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 128);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -492,7 +492,7 @@
             // 
             // tableLayoutPanel_top
             // 
-            tableLayoutPanel_top.BackColor = Color.Lime;
+            tableLayoutPanel_top.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_top.ColumnCount = 6;
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.142857F));
@@ -553,7 +553,7 @@
             // 
             // button_cancel
             // 
-            button_cancel.BackColor = Color.Lime;
+            button_cancel.BackColor = Color.FromArgb(128, 255, 128);
             button_cancel.BackgroundImageLayout = ImageLayout.Zoom;
             button_cancel.Dock = DockStyle.Fill;
             button_cancel.Enabled = false;
@@ -578,7 +578,7 @@
             // 
             // button_edit_save
             // 
-            button_edit_save.BackColor = Color.Lime;
+            button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
             button_edit_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_edit_save.Dock = DockStyle.Fill;
             button_edit_save.Enabled = false;
@@ -603,7 +603,7 @@
             // 
             // button_add_save
             // 
-            button_add_save.BackColor = Color.Lime;
+            button_add_save.BackColor = Color.FromArgb(128, 255, 128);
             button_add_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_add_save.Dock = DockStyle.Fill;
             button_add_save.FlatAppearance.BorderSize = 0;
@@ -693,6 +693,7 @@
             // 
             // tableLayoutPanel_bottom
             // 
+            tableLayoutPanel_bottom.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_bottom.ColumnCount = 2;
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -744,7 +745,7 @@
             // 
             // customGroupBox_large
             // 
-            customGroupBox_large.BorderColor = Color.Lime;
+            customGroupBox_large.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_large.BorderRadius = 30;
             customGroupBox_large.BorderThickness = 10;
             customGroupBox_large.Controls.Add(textBox_large_price);
@@ -947,7 +948,7 @@
             // 
             // customGroupBox_other
             // 
-            customGroupBox_other.BorderColor = Color.Lime;
+            customGroupBox_other.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_other.BorderRadius = 30;
             customGroupBox_other.BorderThickness = 10;
             customGroupBox_other.Controls.Add(tableLayoutPanel_affective);
@@ -1083,7 +1084,7 @@
             // 
             // customGroupBox_item
             // 
-            customGroupBox_item.BorderColor = Color.Lime;
+            customGroupBox_item.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_item.BorderRadius = 30;
             customGroupBox_item.BorderThickness = 10;
             customGroupBox_item.Controls.Add(textBox_group_main);
@@ -1174,7 +1175,7 @@
             // 
             // customGroupBox_medium
             // 
-            customGroupBox_medium.BorderColor = Color.Lime;
+            customGroupBox_medium.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_medium.BorderRadius = 30;
             customGroupBox_medium.BorderThickness = 10;
             customGroupBox_medium.Controls.Add(textBox_medium_price);
@@ -1377,7 +1378,7 @@
             // 
             // customGroupBox_small
             // 
-            customGroupBox_small.BorderColor = Color.Lime;
+            customGroupBox_small.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_small.BorderRadius = 30;
             customGroupBox_small.BorderThickness = 10;
             customGroupBox_small.Controls.Add(textBox_small_cost_avg);
@@ -1554,7 +1555,7 @@
             // 
             // customGroupBox_picture
             // 
-            customGroupBox_picture.BorderColor = Color.Lime;
+            customGroupBox_picture.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox_picture.BorderRadius = 30;
             customGroupBox_picture.BorderThickness = 10;
             customGroupBox_picture.Controls.Add(pictureBox_item);
@@ -1672,7 +1673,7 @@
             // 
             // timer_show
             // 
-            timer_show.Interval = 50;
+            timer_show.Interval = 10;
             timer_show.Tick += timer_show_Tick;
             // 
             // Form_Item_Detail

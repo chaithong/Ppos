@@ -507,8 +507,13 @@ namespace Ppos
 
                         }
 
+                        b.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
                         b = button;
                         b.BackColor = Color.Cyan;
+
+                        b.FlatAppearance.MouseOverBackColor = Color.Cyan;
+
 
                     }
                     else
@@ -820,12 +825,42 @@ namespace Ppos
 
             }
         }
+        private void button_point_trans_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Class_Parameter.Active && !Class_Parameter.runbackground)
+                {
+                    Form_Point_Trans form_Point_Trans = new Form_Point_Trans();
+                    submenu_click(form_Point_Trans, (Button)sender);
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void button_report_Click(object sender, EventArgs e)
         {
             try
             {
 
                 menu_click(panel_report);
+            }
+            catch
+            {
+
+            }
+        }
+        private void button_report_sale_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Class_Parameter.Active && !Class_Parameter.runbackground)
+                {
+                    Form_Report_Sale form_Report_Sale = new Form_Report_Sale();
+                    submenu_click(form_Report_Sale, (Button)sender);
+                }
             }
             catch
             {
@@ -1237,7 +1272,7 @@ new Size(pictureBox_logo.Height * Ppos.Properties.Resources.logo_Ppos.Width / Pp
             try
             {
                 Button button = (Button)sender;
-                button.Font = new Font(button.Font.FontFamily,button.Font.Size+4,button.Font.Style);
+                button.Font = new Font(button.Font.FontFamily, button.Font.Size + 4, button.Font.Style);
             }
             catch
             {
@@ -1250,12 +1285,14 @@ new Size(pictureBox_logo.Height * Ppos.Properties.Resources.logo_Ppos.Width / Pp
             try
             {
                 Button button = (Button)sender;
-                button.Font = new Font(button.Font.FontFamily, button.Font.Size-4, button.Font.Style);
+                button.Font = new Font(button.Font.FontFamily, button.Font.Size - 4, button.Font.Style);
             }
             catch
             {
 
             }
         }
+
+       
     }
 }

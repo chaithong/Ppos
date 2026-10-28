@@ -27,7 +27,7 @@ namespace Ppos
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             new Class_TouchGrid(dataGridView_user);
-            dataGridView_user.ColumnHeadersDefaultCellStyle.BackColor = Color.Cyan;
+            dataGridView_user.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,255);
             dataGridView_user.EnableHeadersVisualStyles = false;
 
             button_add_user.Image = Class_Image.resizeImage(Ppos.Properties.Resources.create, new Size(40, 40));

@@ -54,7 +54,9 @@
             button_setting_store = new Button();
             panel_report = new Panel();
             button_report_trans = new Button();
+            button_report_sale = new Button();
             panel_member = new Panel();
+            button_point_trans = new Button();
             button_member_detail = new Button();
             panel_promotion = new Panel();
             button_set_item = new Button();
@@ -108,7 +110,7 @@
             button_exit.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_exit.ForeColor = Color.Black;
             button_exit.ImageAlign = ContentAlignment.MiddleLeft;
-            button_exit.Location = new Point(0, 1170);
+            button_exit.Location = new Point(0, 1270);
             button_exit.Name = "button_exit";
             button_exit.Size = new Size(400, 70);
             button_exit.TabIndex = 0;
@@ -128,7 +130,7 @@
             panel_main.Location = new Point(25, 0);
             panel_main.Margin = new Padding(0);
             panel_main.Name = "panel_main";
-            panel_main.Size = new Size(999, 774);
+            panel_main.Size = new Size(999, 985);
             panel_main.TabIndex = 1;
             // 
             // button_sale
@@ -222,7 +224,7 @@
             button_report.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             button_report.ForeColor = Color.DimGray;
             button_report.ImageAlign = ContentAlignment.MiddleLeft;
-            button_report.Location = new Point(0, 820);
+            button_report.Location = new Point(0, 870);
             button_report.Margin = new Padding(0);
             button_report.Name = "button_report";
             button_report.Size = new Size(400, 50);
@@ -393,7 +395,7 @@
             button_setting.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             button_setting.ForeColor = Color.DimGray;
             button_setting.ImageAlign = ContentAlignment.MiddleLeft;
-            button_setting.Location = new Point(0, 920);
+            button_setting.Location = new Point(0, 1020);
             button_setting.Margin = new Padding(0);
             button_setting.Name = "button_setting";
             button_setting.Size = new Size(400, 50);
@@ -429,18 +431,18 @@
             panel_menu.Location = new Point(0, 0);
             panel_menu.Margin = new Padding(0);
             panel_menu.Name = "panel_menu";
-            panel_menu.Size = new Size(421, 774);
+            panel_menu.Size = new Size(421, 985);
             panel_menu.TabIndex = 3;
             // 
             // panel_setting
             // 
-            panel_setting.BackColor = Color.FromArgb(192, 255, 255);
+            panel_setting.BackColor = Color.White;
             panel_setting.Controls.Add(button_setting_config_pro);
             panel_setting.Controls.Add(button_setting_camera);
             panel_setting.Controls.Add(button_setting_user);
             panel_setting.Controls.Add(button_setting_store);
             panel_setting.Dock = DockStyle.Top;
-            panel_setting.Location = new Point(0, 970);
+            panel_setting.Location = new Point(0, 1070);
             panel_setting.Name = "panel_setting";
             panel_setting.Size = new Size(400, 200);
             panel_setting.TabIndex = 1;
@@ -450,8 +452,8 @@
             button_setting_config_pro.BackColor = Color.White;
             button_setting_config_pro.Dock = DockStyle.Top;
             button_setting_config_pro.FlatAppearance.BorderSize = 0;
-            button_setting_config_pro.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_setting_config_pro.FlatAppearance.MouseOverBackColor = Color.White;
+            button_setting_config_pro.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_setting_config_pro.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_setting_config_pro.FlatStyle = FlatStyle.Flat;
             button_setting_config_pro.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_setting_config_pro.ForeColor = Color.DimGray;
@@ -472,8 +474,8 @@
             button_setting_camera.BackColor = Color.White;
             button_setting_camera.Dock = DockStyle.Top;
             button_setting_camera.FlatAppearance.BorderSize = 0;
-            button_setting_camera.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_setting_camera.FlatAppearance.MouseOverBackColor = Color.White;
+            button_setting_camera.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_setting_camera.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_setting_camera.FlatStyle = FlatStyle.Flat;
             button_setting_camera.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_setting_camera.ForeColor = Color.DimGray;
@@ -494,8 +496,8 @@
             button_setting_user.BackColor = Color.White;
             button_setting_user.Dock = DockStyle.Top;
             button_setting_user.FlatAppearance.BorderSize = 0;
-            button_setting_user.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_setting_user.FlatAppearance.MouseOverBackColor = Color.White;
+            button_setting_user.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_setting_user.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_setting_user.FlatStyle = FlatStyle.Flat;
             button_setting_user.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_setting_user.ForeColor = Color.DimGray;
@@ -517,8 +519,8 @@
             button_setting_store.BackColor = Color.White;
             button_setting_store.Dock = DockStyle.Top;
             button_setting_store.FlatAppearance.BorderSize = 0;
-            button_setting_store.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_setting_store.FlatAppearance.MouseOverBackColor = Color.White;
+            button_setting_store.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_setting_store.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_setting_store.FlatStyle = FlatStyle.Flat;
             button_setting_store.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_setting_store.ForeColor = Color.DimGray;
@@ -536,12 +538,13 @@
             // 
             // panel_report
             // 
-            panel_report.BackColor = Color.FromArgb(192, 255, 255);
+            panel_report.BackColor = Color.White;
             panel_report.Controls.Add(button_report_trans);
+            panel_report.Controls.Add(button_report_sale);
             panel_report.Dock = DockStyle.Top;
-            panel_report.Location = new Point(0, 870);
+            panel_report.Location = new Point(0, 920);
             panel_report.Name = "panel_report";
-            panel_report.Size = new Size(400, 50);
+            panel_report.Size = new Size(400, 100);
             panel_report.TabIndex = 5;
             // 
             // button_report_trans
@@ -549,40 +552,85 @@
             button_report_trans.BackColor = Color.White;
             button_report_trans.Dock = DockStyle.Top;
             button_report_trans.FlatAppearance.BorderSize = 0;
-            button_report_trans.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_report_trans.FlatAppearance.MouseOverBackColor = Color.White;
+            button_report_trans.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_report_trans.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_report_trans.FlatStyle = FlatStyle.Flat;
             button_report_trans.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_report_trans.ForeColor = Color.DimGray;
-            button_report_trans.Location = new Point(0, 0);
+            button_report_trans.Location = new Point(0, 50);
             button_report_trans.Name = "button_report_trans";
             button_report_trans.Padding = new Padding(40, 0, 0, 0);
             button_report_trans.Size = new Size(400, 50);
             button_report_trans.TabIndex = 0;
-            button_report_trans.Text = "- รายงานเคลื่อนไหวต้นทุน";
+            button_report_trans.Text = "- รายงานเคลื่อนไหวสินค้า";
             button_report_trans.TextAlign = ContentAlignment.MiddleLeft;
             button_report_trans.UseVisualStyleBackColor = false;
             button_report_trans.Click += button_report_trans_Click;
             button_report_trans.MouseEnter += button_MouseEnter;
             button_report_trans.MouseLeave += button_MouseLeave;
             // 
+            // button_report_sale
+            // 
+            button_report_sale.BackColor = Color.White;
+            button_report_sale.Dock = DockStyle.Top;
+            button_report_sale.FlatAppearance.BorderSize = 0;
+            button_report_sale.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_report_sale.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_report_sale.FlatStyle = FlatStyle.Flat;
+            button_report_sale.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button_report_sale.ForeColor = Color.DimGray;
+            button_report_sale.Location = new Point(0, 0);
+            button_report_sale.Name = "button_report_sale";
+            button_report_sale.Padding = new Padding(40, 0, 0, 0);
+            button_report_sale.Size = new Size(400, 50);
+            button_report_sale.TabIndex = 0;
+            button_report_sale.Text = "- รายงานขายสินค้า";
+            button_report_sale.TextAlign = ContentAlignment.MiddleLeft;
+            button_report_sale.UseVisualStyleBackColor = false;
+            button_report_sale.Click += button_report_sale_Click;
+            button_report_sale.MouseEnter += button_MouseEnter;
+            button_report_sale.MouseLeave += button_MouseLeave;
+            // 
             // panel_member
             // 
-            panel_member.BackColor = Color.FromArgb(192, 255, 255);
+            panel_member.BackColor = Color.White;
+            panel_member.Controls.Add(button_point_trans);
             panel_member.Controls.Add(button_member_detail);
             panel_member.Dock = DockStyle.Top;
             panel_member.Location = new Point(0, 770);
             panel_member.Name = "panel_member";
-            panel_member.Size = new Size(400, 50);
+            panel_member.Size = new Size(400, 100);
             panel_member.TabIndex = 4;
+            // 
+            // button_point_trans
+            // 
+            button_point_trans.BackColor = Color.White;
+            button_point_trans.Dock = DockStyle.Top;
+            button_point_trans.FlatAppearance.BorderSize = 0;
+            button_point_trans.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_point_trans.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_point_trans.FlatStyle = FlatStyle.Flat;
+            button_point_trans.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button_point_trans.ForeColor = Color.DimGray;
+            button_point_trans.Location = new Point(0, 50);
+            button_point_trans.Name = "button_point_trans";
+            button_point_trans.Padding = new Padding(40, 0, 0, 0);
+            button_point_trans.Size = new Size(400, 50);
+            button_point_trans.TabIndex = 1;
+            button_point_trans.Text = "- เคลื่อนไหวแต้มสมาชิก";
+            button_point_trans.TextAlign = ContentAlignment.MiddleLeft;
+            button_point_trans.UseVisualStyleBackColor = false;
+            button_point_trans.Click += button_point_trans_Click;
+            button_point_trans.MouseEnter += button_MouseEnter;
+            button_point_trans.MouseLeave += button_MouseLeave;
             // 
             // button_member_detail
             // 
             button_member_detail.BackColor = Color.White;
             button_member_detail.Dock = DockStyle.Top;
             button_member_detail.FlatAppearance.BorderSize = 0;
-            button_member_detail.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_member_detail.FlatAppearance.MouseOverBackColor = Color.White;
+            button_member_detail.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_member_detail.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_member_detail.FlatStyle = FlatStyle.Flat;
             button_member_detail.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_member_detail.ForeColor = Color.DimGray;
@@ -600,7 +648,7 @@
             // 
             // panel_promotion
             // 
-            panel_promotion.BackColor = Color.FromArgb(192, 255, 255);
+            panel_promotion.BackColor = Color.White;
             panel_promotion.Controls.Add(button_set_item);
             panel_promotion.Controls.Add(button_mix_item);
             panel_promotion.Controls.Add(button_pro_item);
@@ -615,8 +663,8 @@
             button_set_item.BackColor = Color.White;
             button_set_item.Dock = DockStyle.Top;
             button_set_item.FlatAppearance.BorderSize = 0;
-            button_set_item.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_set_item.FlatAppearance.MouseOverBackColor = Color.White;
+            button_set_item.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_set_item.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_set_item.FlatStyle = FlatStyle.Flat;
             button_set_item.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_set_item.ForeColor = Color.DimGray;
@@ -637,8 +685,8 @@
             button_mix_item.BackColor = Color.White;
             button_mix_item.Dock = DockStyle.Top;
             button_mix_item.FlatAppearance.BorderSize = 0;
-            button_mix_item.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_mix_item.FlatAppearance.MouseOverBackColor = Color.White;
+            button_mix_item.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_mix_item.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_mix_item.FlatStyle = FlatStyle.Flat;
             button_mix_item.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_mix_item.ForeColor = Color.DimGray;
@@ -659,8 +707,8 @@
             button_pro_item.BackColor = Color.White;
             button_pro_item.Dock = DockStyle.Top;
             button_pro_item.FlatAppearance.BorderSize = 0;
-            button_pro_item.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_pro_item.FlatAppearance.MouseOverBackColor = Color.White;
+            button_pro_item.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_pro_item.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_pro_item.FlatStyle = FlatStyle.Flat;
             button_pro_item.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_pro_item.ForeColor = Color.DimGray;
@@ -678,7 +726,7 @@
             // 
             // panel_load_excel
             // 
-            panel_load_excel.BackColor = Color.FromArgb(192, 255, 255);
+            panel_load_excel.BackColor = Color.White;
             panel_load_excel.Controls.Add(button_load_price);
             panel_load_excel.Controls.Add(button_load_qty);
             panel_load_excel.Controls.Add(button_load_add);
@@ -693,8 +741,8 @@
             button_load_price.BackColor = Color.White;
             button_load_price.Dock = DockStyle.Top;
             button_load_price.FlatAppearance.BorderSize = 0;
-            button_load_price.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_load_price.FlatAppearance.MouseOverBackColor = Color.White;
+            button_load_price.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_load_price.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_load_price.FlatStyle = FlatStyle.Flat;
             button_load_price.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_load_price.ForeColor = Color.DimGray;
@@ -716,8 +764,8 @@
             button_load_qty.BackColor = Color.White;
             button_load_qty.Dock = DockStyle.Top;
             button_load_qty.FlatAppearance.BorderSize = 0;
-            button_load_qty.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_load_qty.FlatAppearance.MouseOverBackColor = Color.White;
+            button_load_qty.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_load_qty.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_load_qty.FlatStyle = FlatStyle.Flat;
             button_load_qty.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_load_qty.ForeColor = Color.DimGray;
@@ -739,8 +787,8 @@
             button_load_add.BackColor = Color.White;
             button_load_add.Dock = DockStyle.Top;
             button_load_add.FlatAppearance.BorderSize = 0;
-            button_load_add.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_load_add.FlatAppearance.MouseOverBackColor = Color.White;
+            button_load_add.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_load_add.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_load_add.FlatStyle = FlatStyle.Flat;
             button_load_add.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_load_add.ForeColor = Color.DimGray;
@@ -785,7 +833,7 @@
             // 
             // panel_item
             // 
-            panel_item.BackColor = Color.FromArgb(192, 255, 255);
+            panel_item.BackColor = Color.White;
             panel_item.Controls.Add(button_item_adjust);
             panel_item.Controls.Add(button_item_hotkey);
             panel_item.Controls.Add(button_item_detail);
@@ -801,8 +849,8 @@
             button_item_adjust.BackColor = Color.White;
             button_item_adjust.Dock = DockStyle.Top;
             button_item_adjust.FlatAppearance.BorderSize = 0;
-            button_item_adjust.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_item_adjust.FlatAppearance.MouseOverBackColor = Color.White;
+            button_item_adjust.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_item_adjust.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_item_adjust.FlatStyle = FlatStyle.Flat;
             button_item_adjust.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_item_adjust.ForeColor = Color.DimGray;
@@ -824,8 +872,8 @@
             button_item_hotkey.BackColor = Color.White;
             button_item_hotkey.Dock = DockStyle.Top;
             button_item_hotkey.FlatAppearance.BorderSize = 0;
-            button_item_hotkey.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_item_hotkey.FlatAppearance.MouseOverBackColor = Color.White;
+            button_item_hotkey.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_item_hotkey.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_item_hotkey.FlatStyle = FlatStyle.Flat;
             button_item_hotkey.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_item_hotkey.ForeColor = Color.DimGray;
@@ -847,8 +895,8 @@
             button_item_detail.BackColor = Color.White;
             button_item_detail.Dock = DockStyle.Top;
             button_item_detail.FlatAppearance.BorderSize = 0;
-            button_item_detail.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_item_detail.FlatAppearance.MouseOverBackColor = Color.White;
+            button_item_detail.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_item_detail.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_item_detail.FlatStyle = FlatStyle.Flat;
             button_item_detail.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_item_detail.ForeColor = Color.DimGray;
@@ -870,8 +918,8 @@
             button_item_group.BackColor = Color.White;
             button_item_group.Dock = DockStyle.Top;
             button_item_group.FlatAppearance.BorderSize = 0;
-            button_item_group.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_item_group.FlatAppearance.MouseOverBackColor = Color.White;
+            button_item_group.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_item_group.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_item_group.FlatStyle = FlatStyle.Flat;
             button_item_group.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_item_group.ForeColor = Color.DimGray;
@@ -906,7 +954,7 @@
             button_menu.ForeColor = Color.Cyan;
             button_menu.Location = new Point(400, 0);
             button_menu.Name = "button_menu";
-            button_menu.Size = new Size(25, 774);
+            button_menu.Size = new Size(25, 985);
             button_menu.TabIndex = 6;
             button_menu.TabStop = false;
             button_menu.Text = ">";
@@ -932,7 +980,7 @@
             panel_menu_back.Dock = DockStyle.Left;
             panel_menu_back.Location = new Point(0, 0);
             panel_menu_back.Name = "panel_menu_back";
-            panel_menu_back.Size = new Size(400, 774);
+            panel_menu_back.Size = new Size(400, 985);
             panel_menu_back.TabIndex = 8;
             // 
             // timer_tab_menu
@@ -949,7 +997,7 @@
             panel_back.Location = new Point(0, 70);
             panel_back.Margin = new Padding(0);
             panel_back.Name = "panel_back";
-            panel_back.Size = new Size(1024, 774);
+            panel_back.Size = new Size(1024, 985);
             panel_back.TabIndex = 10;
             // 
             // tableLayoutPanel_back
@@ -964,7 +1012,7 @@
             tableLayoutPanel_back.RowCount = 2;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Size = new Size(1024, 844);
+            tableLayoutPanel_back.Size = new Size(1024, 1055);
             tableLayoutPanel_back.TabIndex = 11;
             // 
             // timer_check_tab
@@ -977,7 +1025,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
-            ClientSize = new Size(1024, 844);
+            ClientSize = new Size(1024, 1055);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
@@ -1034,11 +1082,13 @@
         private Label label_time;
         private Button button_setting_camera;
         private Button button_report_trans;
+        private Button button_report_sale;
         private Button button_set_item;
         private Button button_mix_item;
         private Button button_pro_item;
         public Panel panel_main;
         private Button button_member_detail;
+        private Button button_point_trans;
         private Button button_setting_config_pro;
         public Button button_item_group;
         private Button button_load_add;

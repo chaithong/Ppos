@@ -151,15 +151,11 @@ namespace Ppos
                 {
                     textBox_cash.Focus();
                 }
-
-
-
             }
             catch
             {
 
             }
-
         }
 
         private void button_enter(object sender, EventArgs e)
@@ -271,17 +267,7 @@ namespace Ppos
             }
         }
 
-        private void textBox_cash_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                //  textBox_cash.Focus();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         private void textBox_cash_KeyPress(object sender, KeyPressEventArgs e)
         {

@@ -227,7 +227,7 @@
             // groupBox_item
             // 
             groupBox_item.Anchor = AnchorStyles.Top;
-            groupBox_item.BorderColor = Color.Lime;
+            groupBox_item.BorderColor = Color.FromArgb(128, 255, 128);
             groupBox_item.BorderRadius = 30;
             groupBox_item.BorderThickness = 10;
             groupBox_item.Controls.Add(tableLayoutPanel_item);
@@ -235,7 +235,7 @@
             groupBox_item.Location = new Point(3, 507);
             groupBox_item.Name = "groupBox_item";
             groupBox_item.Padding = new Padding(15);
-            groupBox_item.Size = new Size(900, 270);
+            groupBox_item.Size = new Size(900, 400);
             groupBox_item.TabIndex = 8;
             groupBox_item.TabStop = false;
             groupBox_item.Text = "สินค้า";
@@ -259,7 +259,7 @@
             tableLayoutPanel_item.RowCount = 2;
             tableLayoutPanel_item.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
             tableLayoutPanel_item.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_item.Size = new Size(870, 204);
+            tableLayoutPanel_item.Size = new Size(870, 334);
             tableLayoutPanel_item.TabIndex = 0;
             // 
             // panel_search_item
@@ -341,7 +341,7 @@
             dataGridView_item.RowTemplate.ReadOnly = true;
             dataGridView_item.ScrollBars = ScrollBars.None;
             dataGridView_item.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_item.Size = new Size(425, 134);
+            dataGridView_item.Size = new Size(425, 264);
             dataGridView_item.TabIndex = 6;
             dataGridView_item.TabStop = false;
             dataGridView_item.CellClick += dataGridView_CellClick;
@@ -456,7 +456,7 @@
             dataGridView_item_pro.RowTemplate.ReadOnly = true;
             dataGridView_item_pro.ScrollBars = ScrollBars.None;
             dataGridView_item_pro.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_item_pro.Size = new Size(425, 134);
+            dataGridView_item_pro.Size = new Size(425, 264);
             dataGridView_item_pro.TabIndex = 7;
             dataGridView_item_pro.TabStop = false;
             dataGridView_item_pro.CellClick += dataGridView_CellClick;
@@ -957,7 +957,7 @@
             dataGridView_item_premium_pro.RowTemplate.Height = 40;
             dataGridView_item_premium_pro.RowTemplate.ReadOnly = true;
             dataGridView_item_premium_pro.ScrollBars = ScrollBars.None;
-            dataGridView_item_premium_pro.Size = new Size(425, 134);
+            dataGridView_item_premium_pro.Size = new Size(425, 264);
             dataGridView_item_premium_pro.TabIndex = 3;
             dataGridView_item_premium_pro.TabStop = false;
             dataGridView_item_premium_pro.CellClick += dataGridView_CellClick;
@@ -1063,15 +1063,15 @@
             // groupBox_premium
             // 
             groupBox_premium.Anchor = AnchorStyles.Top;
-            groupBox_premium.BorderColor = Color.Lime;
+            groupBox_premium.BorderColor = Color.FromArgb(128, 255, 128);
             groupBox_premium.BorderRadius = 30;
             groupBox_premium.BorderThickness = 10;
             groupBox_premium.Controls.Add(tableLayoutPanel1);
             groupBox_premium.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            groupBox_premium.Location = new Point(3, 783);
+            groupBox_premium.Location = new Point(3, 933);
             groupBox_premium.Name = "groupBox_premium";
             groupBox_premium.Padding = new Padding(15);
-            groupBox_premium.Size = new Size(900, 270);
+            groupBox_premium.Size = new Size(900, 400);
             groupBox_premium.TabIndex = 9;
             groupBox_premium.TabStop = false;
             groupBox_premium.Text = "แถมสินค้า";
@@ -1095,7 +1095,7 @@
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(870, 204);
+            tableLayoutPanel1.Size = new Size(870, 334);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel_search_item_premium
@@ -1179,7 +1179,7 @@
             button_use_item_premium.Location = new Point(425, 70);
             button_use_item_premium.Margin = new Padding(0);
             button_use_item_premium.Name = "button_use_item_premium";
-            button_use_item_premium.Size = new Size(20, 134);
+            button_use_item_premium.Size = new Size(20, 264);
             button_use_item_premium.TabIndex = 1;
             button_use_item_premium.TabStop = false;
             button_use_item_premium.UseVisualStyleBackColor = false;
@@ -1226,7 +1226,7 @@
             dataGridView_item_premium.RowTemplate.Height = 40;
             dataGridView_item_premium.RowTemplate.ReadOnly = true;
             dataGridView_item_premium.ScrollBars = ScrollBars.None;
-            dataGridView_item_premium.Size = new Size(425, 134);
+            dataGridView_item_premium.Size = new Size(425, 264);
             dataGridView_item_premium.TabIndex = 2;
             dataGridView_item_premium.TabStop = false;
             dataGridView_item_premium.CellClick += dataGridView_CellClick;
@@ -1253,7 +1253,7 @@
             // tableLayoutPanel_detail
             // 
             tableLayoutPanel_detail.AutoSize = true;
-            tableLayoutPanel_detail.BackColor = Color.White;
+            tableLayoutPanel_detail.BackColor = Color.Transparent;
             tableLayoutPanel_detail.ColumnCount = 2;
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -1272,7 +1272,7 @@
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_detail.Size = new Size(870, 149);
+            tableLayoutPanel_detail.Size = new Size(870, 154);
             tableLayoutPanel_detail.TabIndex = 3;
             // 
             // label3
@@ -1334,7 +1334,7 @@
             label5.ForeColor = Color.DimGray;
             label5.Location = new Point(9, 100);
             label5.Name = "label5";
-            label5.Size = new Size(188, 50);
+            label5.Size = new Size(188, 54);
             label5.TabIndex = 1;
             label5.Text = "การใช้งานต่อบิล :";
             label5.TextAlign = ContentAlignment.MiddleRight;
@@ -1467,7 +1467,7 @@
             customPanel_repeat.Location = new Point(200, 103);
             customPanel_repeat.Margin = new Padding(0, 3, 3, 3);
             customPanel_repeat.Name = "customPanel_repeat";
-            customPanel_repeat.Size = new Size(200, 44);
+            customPanel_repeat.Size = new Size(200, 48);
             customPanel_repeat.TabIndex = 7;
             // 
             // comboBox_repeat
@@ -1478,7 +1478,7 @@
             comboBox_repeat.FlatStyle = FlatStyle.Flat;
             comboBox_repeat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             comboBox_repeat.FormattingEnabled = true;
-            comboBox_repeat.Location = new Point(6, 3);
+            comboBox_repeat.Location = new Point(6, 5);
             comboBox_repeat.Name = "comboBox_repeat";
             comboBox_repeat.Size = new Size(188, 39);
             comboBox_repeat.TabIndex = 2;
@@ -1524,7 +1524,7 @@
             // 
             // tableLayoutPanel_button
             // 
-            tableLayoutPanel_button.BackColor = Color.Lime;
+            tableLayoutPanel_button.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_button.ColumnCount = 5;
             tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
@@ -1545,7 +1545,7 @@
             // 
             // button_cancel
             // 
-            button_cancel.BackColor = Color.Lime;
+            button_cancel.BackColor = Color.FromArgb(128, 255, 128);
             button_cancel.BackgroundImageLayout = ImageLayout.Zoom;
             button_cancel.Dock = DockStyle.Fill;
             button_cancel.Enabled = false;
@@ -1570,7 +1570,7 @@
             // 
             // button_edit_save
             // 
-            button_edit_save.BackColor = Color.Lime;
+            button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
             button_edit_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_edit_save.Dock = DockStyle.Fill;
             button_edit_save.Enabled = false;
@@ -1595,7 +1595,7 @@
             // 
             // button_add_save
             // 
-            button_add_save.BackColor = Color.Lime;
+            button_add_save.BackColor = Color.FromArgb(128, 255, 128);
             button_add_save.BackgroundImageLayout = ImageLayout.Zoom;
             button_add_save.Dock = DockStyle.Fill;
             button_add_save.FlatAppearance.BorderSize = 0;
@@ -1629,7 +1629,7 @@
             // 
             // label_search
             // 
-            label_search.BackColor = Color.Lime;
+            label_search.BackColor = Color.FromArgb(128, 255, 128);
             label_search.Dock = DockStyle.Fill;
             label_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
             label_search.ForeColor = Color.Gray;
@@ -1671,7 +1671,7 @@
             // groupBox_datetime
             // 
             groupBox_datetime.Anchor = AnchorStyles.Top;
-            groupBox_datetime.BorderColor = Color.Lime;
+            groupBox_datetime.BorderColor = Color.FromArgb(128, 255, 128);
             groupBox_datetime.BorderRadius = 30;
             groupBox_datetime.BorderThickness = 10;
             groupBox_datetime.Controls.Add(tableLayoutPanel_day);
@@ -1689,6 +1689,7 @@
             // tableLayoutPanel_day
             // 
             tableLayoutPanel_day.AutoSize = true;
+            tableLayoutPanel_day.BackColor = Color.Transparent;
             tableLayoutPanel_day.ColumnCount = 5;
             tableLayoutPanel_day.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_day.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
@@ -1874,6 +1875,7 @@
             // tableLayoutPanel_date
             // 
             tableLayoutPanel_date.AutoSize = true;
+            tableLayoutPanel_date.BackColor = Color.Transparent;
             tableLayoutPanel_date.ColumnCount = 4;
             tableLayoutPanel_date.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_date.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
@@ -2015,7 +2017,7 @@
             // 
             groupBox_detail.Anchor = AnchorStyles.Top;
             groupBox_detail.BackColor = Color.Transparent;
-            groupBox_detail.BorderColor = Color.Lime;
+            groupBox_detail.BorderColor = Color.FromArgb(128, 255, 128);
             groupBox_detail.BorderRadius = 30;
             groupBox_detail.BorderThickness = 10;
             groupBox_detail.Controls.Add(tableLayoutPanel_detail);
@@ -2023,7 +2025,7 @@
             groupBox_detail.Location = new Point(1, 6);
             groupBox_detail.Name = "groupBox_detail";
             groupBox_detail.Padding = new Padding(15);
-            groupBox_detail.Size = new Size(900, 215);
+            groupBox_detail.Size = new Size(900, 220);
             groupBox_detail.TabIndex = 6;
             groupBox_detail.TabStop = false;
             groupBox_detail.Text = "โปรโมชั่นสินค้า";
@@ -2061,7 +2063,7 @@
             dataGridViewCellStyle13.BackColor = Color.Gray;
             dataGridViewCellStyle13.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle13.SelectionBackColor = Color.FromArgb(128, 255, 128);
             dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
             dataGridView_promotion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
@@ -2242,7 +2244,7 @@
             // 
             // tableLayoutPanel_back
             // 
-            tableLayoutPanel_back.BackColor = Color.Lime;
+            tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back.ColumnCount = 2;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));

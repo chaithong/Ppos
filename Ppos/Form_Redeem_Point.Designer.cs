@@ -78,7 +78,7 @@
             // 
             // button_confirm
             // 
-            button_confirm.BackColor = Color.Lime;
+            button_confirm.BackColor = Color.White;
             button_confirm.Dock = DockStyle.Fill;
             button_confirm.FlatAppearance.BorderSize = 0;
             button_confirm.FlatAppearance.MouseDownBackColor = Color.Lime;
@@ -432,7 +432,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Lime;
+            BackColor = Color.White;
             ClientSize = new Size(782, 553);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;

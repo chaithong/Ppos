@@ -34,13 +34,13 @@ namespace Ppos
         {
             try
             {
-                tableLayoutPanel_back_detail.ColumnStyles[1].Width = (this.Width * (100 - Class_Parameter.sale_left_width) / 100) - dataGridView_item.Width;
+              /*  tableLayoutPanel_back_detail.ColumnStyles[1].Width = (this.Width * (100 - Class_Parameter.sale_left_width) / 100) - dataGridView_item.Width;
                 tableLayoutPanel_set.ColumnStyles[5].Width = tableLayoutPanel_back_detail.ColumnStyles[1].Width / 2;
                 tableLayoutPanel_set.ColumnStyles[6].Width = tableLayoutPanel_back_detail.ColumnStyles[1].Width / 2;
 
                 pictureBox_load_hotkey.Location = new System.Drawing.Point(
                   panel_detail.Location.X + (panel_detail.Width / 2) - (pictureBox_load_hotkey.Width / 2),
-                  panel_detail.Location.Y + (panel_detail.Height / 2) - (pictureBox_load_hotkey.Height / 2));
+                  panel_detail.Location.Y + (panel_detail.Height / 2) - (pictureBox_load_hotkey.Height / 2));*/
             }
             catch
             {
@@ -73,7 +73,7 @@ namespace Ppos
                     column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
                 new Class_TouchGrid(dataGridView_item);
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 dataGridView_item.MouseWheel += new MouseEventHandler(dataGridView_item_MouseWheel!);
@@ -160,7 +160,9 @@ namespace Ppos
 
                 ColorComboBoxHelper.SetSelectedColor(comboBox_font_color, Class_Parameter.font_color);
 
-                //  Class_Scroll_Panel.EnableDragScroll(panel_set);
+                
+                // ต้องใช้เฉพาะ ใช้ร่วมกดไม่ได้
+                EnableDragScroll(panel_set);
 
                 Enable(false);
             }
@@ -169,6 +171,101 @@ namespace Ppos
                 this.Close();
             }
 
+        }
+        ///  // ตัวแปรสำหรับจำสถานะ (ใช้ร่วมกันในการลาก)
+        public static bool isScrolling = false;
+        private static System.Drawing.Point startMousePoint = new System.Drawing.Point(0, 0);
+        private static System.Drawing.Point startScrollPoint = new System.Drawing.Point(0, 0);
+        private static Panel targetPanel;
+        public static void EnableDragScroll(Panel panel)
+        {
+            if (panel == null) return;
+
+            targetPanel = panel;
+            targetPanel.AutoScroll = true; // เปิด AutoScroll เสมอ
+
+            // ผูก Event ให้ Panel หลัก
+            RegisterEvents(targetPanel);
+
+            // วนลูปผูก Event ให้ทุก Object ย่อยที่อยู่ใน Panel ณ ขณะนั้น
+            foreach (Control ctrl in targetPanel.Controls)
+            {
+                if (ctrl is not DataGridView)
+                {
+                    RegisterEvents(ctrl);
+                    foreach (Control control in ctrl.Controls)
+                    {
+                        if (control is not DataGridView)
+                        {
+                            RegisterEvents(control);
+                            foreach (Control control2 in control.Controls)
+                            {
+                                if (control2 is not DataGridView)
+                                {
+                                    RegisterEvents(control2);
+                                    foreach (Control control3 in control2.Controls)
+                                    {
+                                        if (control3 is not DataGridView)
+                                        {
+                                            RegisterEvents(control3);
+                                        }
+
+
+                                    }
+                                }
+
+                            }
+                        }
+
+                    }
+                }
+
+            }
+        }
+        public static void RegisterEvents(Control ctrl)
+        {
+            if (ctrl == null)
+            {
+                return;
+            }
+            // ลบ Event เก่าออกก่อนเพื่อป้องกันการผูกซ้ำ (หากมีการเรียกฟังก์ชันซ้ำ)
+            ctrl.MouseDown -= Common_MouseDown!;
+            ctrl.MouseMove -= Common_MouseMove!;
+            ctrl.MouseUp -= Common_MouseUp!;
+
+            // ผูก Event ใหม่
+            ctrl.MouseDown += Common_MouseDown!;
+            ctrl.MouseMove += Common_MouseMove!;
+            ctrl.MouseUp += Common_MouseUp!;
+        }
+        private static void Common_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left && targetPanel != null)
+            {
+                isScrolling = true;
+                startMousePoint = Cursor.Position;
+                startScrollPoint = new System.Drawing.Point(targetPanel.HorizontalScroll.Value, targetPanel.VerticalScroll.Value);
+            }
+        }
+        private static void Common_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isScrolling && targetPanel != null)
+            {
+                int deltaX = Cursor.Position.X - startMousePoint.X;
+                int deltaY = Cursor.Position.Y - startMousePoint.Y;
+
+                int newScrollX = startScrollPoint.X - deltaX;
+                int newScrollY = startScrollPoint.Y - deltaY;
+
+                if (newScrollX < 0) newScrollX = 0;
+                if (newScrollY < 0) newScrollY = 0;
+
+                targetPanel.AutoScrollPosition = new System.Drawing.Point(newScrollX, newScrollY);
+            }
+        }
+        private static void Common_MouseUp(object sender, MouseEventArgs e)
+        {
+            isScrolling = false;
         }
         private void Enable(bool e)
         {

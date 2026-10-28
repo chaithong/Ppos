@@ -86,8 +86,6 @@
             button_confirm = new Button();
             pictureBox_item = new PictureBox();
             dataGridView_item = new DataGridView();
-            timer_search = new System.Windows.Forms.Timer(components);
-            timer_show = new System.Windows.Forms.Timer(components);
             small_barcode = new DataGridViewTextBoxColumn();
             code = new DataGridViewTextBoxColumn();
             group_main = new DataGridViewTextBoxColumn();
@@ -101,6 +99,8 @@
             cost_avg = new DataGridViewTextBoxColumn();
             qty_small = new DataGridViewTextBoxColumn();
             size = new DataGridViewTextBoxColumn();
+            timer_search = new System.Windows.Forms.Timer(components);
+            timer_show = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
             tableLayoutPanel_search.SuspendLayout();
             panel_search.SuspendLayout();
@@ -123,7 +123,7 @@
             // 
             // tableLayoutPanel_back
             // 
-            tableLayoutPanel_back.BackColor = Color.Lime;
+            tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back.ColumnCount = 1;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_search, 0, 0);
@@ -140,7 +140,7 @@
             // 
             // tableLayoutPanel_search
             // 
-            tableLayoutPanel_search.BackColor = Color.Lime;
+            tableLayoutPanel_search.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_search.ColumnCount = 6;
             tableLayoutPanel_search.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_search.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 3.84615421F));
@@ -199,7 +199,7 @@
             // 
             // button_increase
             // 
-            button_increase.BackColor = Color.Lime;
+            button_increase.BackColor = Color.FromArgb(128, 255, 128);
             button_increase.BackgroundImageLayout = ImageLayout.Zoom;
             button_increase.Dock = DockStyle.Fill;
             button_increase.FlatAppearance.BorderSize = 0;
@@ -270,7 +270,7 @@
             // 
             // tableLayoutPanel_bottom
             // 
-            tableLayoutPanel_bottom.BackColor = Color.Lime;
+            tableLayoutPanel_bottom.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_bottom.ColumnCount = 2;
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
@@ -301,7 +301,7 @@
             // 
             customGroupBox.Anchor = AnchorStyles.Top;
             customGroupBox.BackColor = Color.White;
-            customGroupBox.BorderColor = Color.Lime;
+            customGroupBox.BorderColor = Color.FromArgb(128, 255, 128);
             customGroupBox.BorderRadius = 30;
             customGroupBox.BorderThickness = 15;
             customGroupBox.Controls.Add(tableLayoutPanel_back_cost);
@@ -785,8 +785,8 @@
             button_cost_custom.BackColor = Color.Transparent;
             button_cost_custom.Dock = DockStyle.Fill;
             button_cost_custom.FlatAppearance.BorderSize = 0;
-            button_cost_custom.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_cost_custom.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_cost_custom.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
+            button_cost_custom.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_cost_custom.FlatStyle = FlatStyle.Flat;
             button_cost_custom.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_cost_custom.ForeColor = Color.Gray;
@@ -804,12 +804,12 @@
             // 
             // button_cost_avg
             // 
-            button_cost_avg.BackColor = Color.Lime;
+            button_cost_avg.BackColor = Color.FromArgb(128, 255, 128);
             button_cost_avg.BackgroundImageLayout = ImageLayout.Zoom;
             button_cost_avg.Dock = DockStyle.Fill;
             button_cost_avg.FlatAppearance.BorderSize = 0;
-            button_cost_avg.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_cost_avg.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_cost_avg.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
+            button_cost_avg.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_cost_avg.FlatStyle = FlatStyle.Flat;
             button_cost_avg.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_cost_avg.Location = new Point(0, 0);
@@ -829,8 +829,8 @@
             button_cost_last.BackColor = Color.Transparent;
             button_cost_last.Dock = DockStyle.Fill;
             button_cost_last.FlatAppearance.BorderSize = 0;
-            button_cost_last.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_cost_last.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_cost_last.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
+            button_cost_last.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_cost_last.FlatStyle = FlatStyle.Flat;
             button_cost_last.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_cost_last.ForeColor = Color.Gray;
@@ -866,11 +866,11 @@
             // 
             // button_cost_per_unit
             // 
-            button_cost_per_unit.BackColor = Color.Lime;
+            button_cost_per_unit.BackColor = Color.FromArgb(128, 255, 128);
             button_cost_per_unit.Dock = DockStyle.Fill;
             button_cost_per_unit.FlatAppearance.BorderSize = 0;
-            button_cost_per_unit.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_cost_per_unit.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_cost_per_unit.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
+            button_cost_per_unit.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_cost_per_unit.FlatStyle = FlatStyle.Flat;
             button_cost_per_unit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_cost_per_unit.Location = new Point(0, 0);
@@ -890,8 +890,8 @@
             button_cost_all.BackColor = Color.Transparent;
             button_cost_all.Dock = DockStyle.Fill;
             button_cost_all.FlatAppearance.BorderSize = 0;
-            button_cost_all.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_cost_all.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_cost_all.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
+            button_cost_all.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_cost_all.FlatStyle = FlatStyle.Flat;
             button_cost_all.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_cost_all.ForeColor = Color.Gray;
@@ -909,12 +909,12 @@
             // 
             // button_confirm
             // 
-            button_confirm.BackColor = Color.Lime;
+            button_confirm.BackColor = Color.FromArgb(128, 255, 128);
             button_confirm.BackgroundImageLayout = ImageLayout.Zoom;
             button_confirm.Dock = DockStyle.Bottom;
             button_confirm.FlatAppearance.BorderSize = 0;
-            button_confirm.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_confirm.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_confirm.FlatAppearance.MouseDownBackColor = Color.FromArgb(128, 255, 128);
+            button_confirm.FlatAppearance.MouseOverBackColor = Color.FromArgb(128, 255, 128);
             button_confirm.FlatStyle = FlatStyle.Flat;
             button_confirm.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
             button_confirm.Location = new Point(10, 720);
@@ -956,7 +956,7 @@
             dataGridViewCellStyle1.BackColor = Color.Gray;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 128);
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
@@ -990,14 +990,6 @@
             dataGridView_item.CellMouseDown += dataGridView_item_CellMouseDown;
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
             dataGridView_item.CellMouseLeave += dataGridView_item_CellMouseLeave;
-            // 
-            // timer_search
-            // 
-            timer_search.Tick += timer_search_Tick;
-            // 
-            // timer_show
-            // 
-            timer_show.Tick += timer_show_Tick;
             // 
             // small_barcode
             // 
@@ -1065,7 +1057,7 @@
             qty.Name = "qty";
             qty.ReadOnly = true;
             qty.Visible = false;
-            qty.Width = 6;
+            qty.Width = 125;
             // 
             // unit
             // 
@@ -1078,7 +1070,7 @@
             unit.Name = "unit";
             unit.ReadOnly = true;
             unit.Visible = false;
-            unit.Width = 6;
+            unit.Width = 125;
             // 
             // price
             // 
@@ -1124,6 +1116,15 @@
             size.ReadOnly = true;
             size.Visible = false;
             size.Width = 125;
+            // 
+            // timer_search
+            // 
+            timer_search.Tick += timer_search_Tick;
+            // 
+            // timer_show
+            // 
+            timer_show.Interval = 20;
+            timer_show.Tick += timer_show_Tick;
             // 
             // Form_Item_Adjust
             // 
