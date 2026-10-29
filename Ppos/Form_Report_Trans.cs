@@ -33,6 +33,8 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+
                 dataGridView_trans.Columns["small_qty_begin"]!.DefaultCellStyle.BackColor = Color.FromArgb(230, 255, 230);
                 dataGridView_trans.Columns["small_qty"]!.DefaultCellStyle.BackColor = Color.FromArgb(200, 255, 200);
                 dataGridView_trans.Columns["small_qty_end"]!.DefaultCellStyle.BackColor = Color.FromArgb(160, 255, 160);
@@ -311,6 +313,7 @@ namespace Ppos
             {
                 if (e.RowIndex != -1)
                 {
+                    // ป้องการกดซ้ำ
                     if (dataGridView_item.Rows[e.RowIndex].Cells["small_barcode"].Value!.ToString() != set_small_barcode)
                     {
 
@@ -503,7 +506,7 @@ namespace Ppos
                         dt_trans = new DataTable();
                         dt_trans.Load(er);
 
-                        if (dt.Rows.Count > 0)
+                        if (dt_trans.Rows.Count > 0)
                         {
                             dataGridView_trans.Columns["trans_date"]!.HeaderText = "วันที่";
                             dataGridView_trans.Columns["trans_time"]!.HeaderText = "เวลา";
@@ -545,6 +548,10 @@ namespace Ppos
                             dataGridView_trans.Columns["small_cost_total"]!.HeaderText = "";
 
                             button_excel.Visible = false;
+
+                            Class_Parameter.runbackground = false;
+                            dataGridView_item.Enabled = true;
+                            tableLayoutPanel_top.Enabled = true;
                         }
                     }
                 }

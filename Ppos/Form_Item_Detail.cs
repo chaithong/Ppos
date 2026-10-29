@@ -43,6 +43,8 @@ namespace Ppos
                    (panel_detail.Width / 2) - (tableLayoutPanel_back_detail_item.Width / 2),
                    0);
 
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+
                 dataGridView_item.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item, true, null);
 
                 foreach (DataGridViewColumn column in dataGridView_item.Columns)

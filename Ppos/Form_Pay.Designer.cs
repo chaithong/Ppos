@@ -37,6 +37,7 @@
             tableLayoutPanel_price_net = new TableLayoutPanel();
             label_price_net_title = new Label();
             label_price_net = new Label();
+            button_discount = new Button();
             tableLayoutPanel_button_confirm_exit = new TableLayoutPanel();
             customGroupBox_confirm = new CustomGroupBox();
             button_confirm = new Button();
@@ -220,6 +221,7 @@
             tableLayoutPanel_price_net.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
             tableLayoutPanel_price_net.Controls.Add(label_price_net_title, 0, 0);
             tableLayoutPanel_price_net.Controls.Add(label_price_net, 1, 0);
+            tableLayoutPanel_price_net.Controls.Add(button_discount, 2, 0);
             tableLayoutPanel_price_net.Dock = DockStyle.Fill;
             tableLayoutPanel_price_net.Location = new Point(10, 13);
             tableLayoutPanel_price_net.Name = "tableLayoutPanel_price_net";
@@ -258,6 +260,28 @@
             label_price_net.TextAlign = ContentAlignment.MiddleCenter;
             label_price_net.MouseEnter += label_enter;
             label_price_net.MouseLeave += label_leave;
+            // 
+            // button_discount
+            // 
+            button_discount.BackColor = Color.Red;
+            button_discount.Dock = DockStyle.Fill;
+            button_discount.FlatAppearance.BorderSize = 0;
+            button_discount.FlatAppearance.MouseDownBackColor = Color.Red;
+            button_discount.FlatAppearance.MouseOverBackColor = Color.Red;
+            button_discount.FlatStyle = FlatStyle.Flat;
+            button_discount.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_discount.Location = new Point(354, 0);
+            button_discount.Margin = new Padding(0);
+            button_discount.Name = "button_discount";
+            button_discount.Size = new Size(150, 71);
+            button_discount.TabIndex = 1;
+            button_discount.Text = "ลดราคา";
+            button_discount.TextAlign = ContentAlignment.BottomCenter;
+            button_discount.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_discount.UseVisualStyleBackColor = false;
+            button_discount.Click += button_discount_Click;
+            button_discount.MouseEnter += button_enter;
+            button_discount.MouseLeave += button_leave;
             // 
             // tableLayoutPanel_button_confirm_exit
             // 
@@ -1261,5 +1285,6 @@
         private Button button_100;
         private Button button_500;
         private Button button_1000;
+        private Button button_discount;
     }
 }

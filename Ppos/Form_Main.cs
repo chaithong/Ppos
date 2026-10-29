@@ -40,6 +40,7 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
 
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
                 // 2. สั่งสร้าง Object ตอนเปิดโปรแกรมขึ้นมา
                 _monitor = new SystemMonitor();
 
@@ -222,7 +223,7 @@ namespace Ppos
             {
                 if (e.CloseReason == CloseReason.UserClosing)
                 {
-                    if (MessageBox.Show("ต้องการออกจากโปรแกรมใช่หรือไม่ ?", "แจ้งเตือน", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                    if (MessageBox.Show("ต้องการออกจากโปรแกรมใช่หรือไม่ ?", "ออกโปรแกรม", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
                     {
                         e.Cancel = true; // ยกเลิกการปิด
                     }

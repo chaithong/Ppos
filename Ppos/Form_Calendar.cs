@@ -24,7 +24,7 @@ namespace Ppos
 
             button_next.Image = Class_Image.resizeImage(Ppos.Properties.Resources.next, new Size(50, 50));
 
-            button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(40, 40));
+            button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(60, 60));
 
            
 
@@ -836,7 +836,7 @@ namespace Ppos
                 if (((Label)sender).Text != "")
                 {
                   //  ((Label)sender).BackColor = Color.Transparent;
-                    ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size + 4, ((Label)sender).Font.Style);
+                    ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size + 2, ((Label)sender).Font.Style);
                 }
             }
             catch
@@ -852,7 +852,7 @@ namespace Ppos
                 if (((Label)sender).Text != "")
                 {
                    // ((Label)sender).BackColor = Color.White;
-                    ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size - 4, ((Label)sender).Font.Style);
+                    ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size - 2, ((Label)sender).Font.Style);
                 }
             }
             catch

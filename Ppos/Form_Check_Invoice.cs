@@ -32,7 +32,7 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
 
-
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
 
                 dataGridView_invoice.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_invoice, true, null);
                 foreach (DataGridViewColumn column in dataGridView_invoice.Columns)
@@ -185,7 +185,10 @@ namespace Ppos
                 form_Invoice_Detail.ShowDialog(this);
                 if (form_Invoice_Detail.void_bill)
                 {
-                    backgroundWorker_void.RunWorkerAsync();
+                    dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].Cells["status"].Value = "ยกเลิก";
+                    dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].Cells["void_bill"].Value = new Bitmap(40, 40);
+                    dataGridView_invoice.Rows[dataGridView_invoice.CurrentRow!.Index].DefaultCellStyle.ForeColor = Color.Red;
+                    dataGridView_invoice.ClearSelection();
                 }
             }
             catch

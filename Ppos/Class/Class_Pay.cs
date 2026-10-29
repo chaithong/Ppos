@@ -30,9 +30,26 @@ namespace Ppos.Class
                                                     "WHERE void = false and hole = false and effective_member = true";
                             cmd_sqlite.ExecuteNonQuery();
                         }
-                        // ส่วนลดปัดเศษ
                         double p_net = price_net();
-               
+                        // ส่วนลดท้ายบิล
+                        if(Form_Pay.discount_price != string.Empty)
+                        {
+                            if (Convert.ToDouble(Form_Pay.discount_price) > 0)
+                            {
+                                // update discount_custom
+                                cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET discount_custom = " + Convert.ToDouble(Form_Pay.discount_price) / p_net + " * price_net " +
+                                                         "WHERE void = false and hole = false ";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                // update discount_custom
+                                cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  price_net - discount_custom " +
+                                                        "WHERE void = false and hole = false ";
+                                cmd_sqlite.ExecuteNonQuery();
+                            }
+                        }
+                       
+                        p_net = price_net();
+                        // ส่วนลดปัดเศษ                              
                         if (Form_Sale.discount_round > 0 && p_net > 0)
                         {
 

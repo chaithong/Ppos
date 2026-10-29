@@ -23,7 +23,7 @@ namespace Ppos
         bool add_save = true, edit_save = true;
         int Limit = 20;
 
-        string set_pro_total;
+        string set_member_total;
 
         string set_id = "";
 
@@ -39,6 +39,9 @@ namespace Ppos
                 this.DoubleBuffered = true;
                 customGroupBox_detail.Location = new Point(
                 (panel_detail.Width / 2) - (customGroupBox_detail.Width / 2), 20);
+
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+
                 dataGridView_member.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_member, true, null);
 
                 foreach (DataGridViewColumn column in dataGridView_member.Columns)
@@ -79,12 +82,12 @@ namespace Ppos
                                 // อ่านค่าจากคอลัมน์แรก (ดัชนี 0) มาใส่ใน Source
                                 label_search.Text = Convert.ToInt32(reader[0].ToString()).ToString("#,##0");
                             }
-                            set_pro_total = label_search.Text;
+                            set_member_total = label_search.Text;
                         }
                     }
                 }
 
-
+                search_member();
             }
             catch
             {
@@ -97,7 +100,7 @@ namespace Ppos
         {
             try
             {
-                search_member();
+               
             }
             catch (Exception ex)
             {
@@ -154,7 +157,10 @@ namespace Ppos
                                                  "where status = true ";
                         if (textBox_search.Text != "")
                         {
-                            cmd_sqlite.CommandText += "and phone like '%" + textBox_search.Text + "%' ";
+                            cmd_sqlite.CommandText += "and ( phone like '%" + textBox_search.Text + "%' or " +
+                                                             "nick_name like '%" + textBox_search.Text + "%' or " +
+                                                             "first_name like '%" + textBox_search.Text + "%' or " +
+                                                             "last_name like '%" + textBox_search.Text + "%' ) ";
                         }
                         cmd_sqlite.CommandText += "order by id desc ";
                         if (Limit > 0)
@@ -213,10 +219,10 @@ namespace Ppos
                     }
                 }
                 // นับจำนวนค้นหา
-                label_search.Text = set_pro_total;
+                label_search.Text = set_member_total;
                 if (dataGridView_member.RowCount > 0)
                 {
-                    label_search.Text = dt.Rows.Count.ToString("#,##0") + " / " + set_pro_total;
+                    label_search.Text = dt.Rows.Count.ToString("#,##0") + " / " + set_member_total;
                 }
             }
             catch (Exception ex)
@@ -348,7 +354,7 @@ namespace Ppos
                                     cmd_sqlite.ExecuteNonQuery();
 
                                     // ลบโปรทั้งหมดอีก 1 รายการ
-                                    set_pro_total = (Convert.ToInt32(set_pro_total) - 1).ToString();
+                                    set_member_total = (Convert.ToInt32(set_member_total.Replace(",","")) - 1).ToString();
 
                                     stringempty();
 
@@ -696,7 +702,7 @@ namespace Ppos
                             textBox_search.Text = textBox_phone.Text;
 
                             // เพิ่มค่าทังหมด
-                            set_pro_total = (Convert.ToInt32(set_pro_total) + 1).ToString();
+                            set_member_total = (Convert.ToInt32(set_member_total.Replace(",","")) + 1).ToString();
 
                             // ค้นหา
                             search_member();

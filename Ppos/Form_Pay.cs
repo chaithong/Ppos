@@ -20,7 +20,7 @@ namespace Ppos
     public partial class Form_Pay : Form
     {
 
-        public static string amount_promptpay = "", point_max = "";
+        public static string amount_promptpay = "", point_max = "",discount_price = "";
         public bool exit = true;
 
         bool complete = false;
@@ -31,6 +31,7 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
+                button_discount.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new System.Drawing.Size(35, 35));
                 button_cash.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(40, 40));
                 button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.QR_Code, new System.Drawing.Size(40, 40));
                 button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new System.Drawing.Size(40, 40));
@@ -105,7 +106,7 @@ namespace Ppos
                         tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 0, 0);
                         tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
                     }
-                   
+
                     // ตัวเลข
                     if (Class_Parameter.keypad_numeric)
                     {
@@ -130,7 +131,7 @@ namespace Ppos
                     // tableLayoutPanel_back_pay.Dispose();
                     // this.Controls.Add(customGroupBox_right);
                     tableLayoutPanel_back_pay.Controls.Add(customGroupBox_right, 1, 0);
-                   // tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
+                    // tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
 
                 }
                 new TableLayoutResizer(tableLayoutPanel_back_pay);
@@ -207,7 +208,7 @@ namespace Ppos
                 textBox_cash.Focus();
 
                 button_cash_Click(sender, e);
-         
+
             }
             catch (Exception ex)
             {
@@ -267,7 +268,7 @@ namespace Ppos
             }
         }
 
-       
+
 
         private void textBox_cash_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -404,6 +405,7 @@ namespace Ppos
                 );
                 if (change < 0)
                 {
+                    button_discount.Visible = true;
                     customGroupBox_price_net_back.BorderColor = Color.Red;
                     tableLayoutPanel_price_net.BackColor = Color.Red;
                     customGroupBox_right.BorderColor = Color.Red;
@@ -412,6 +414,7 @@ namespace Ppos
                 }
                 else
                 {
+                    button_discount.Visible = false;
                     customGroupBox_price_net_back.BorderColor = Color.Lime;
                     tableLayoutPanel_price_net.BackColor = Color.Lime;
                     customGroupBox_right.BorderColor = Color.Lime;
@@ -504,14 +507,14 @@ namespace Ppos
                     point_max = Math.Floor(Math.Round(Convert.ToDouble(label_price_net.Text.Replace(",", "")) - cash - Convert.ToDouble(label_transfer.Text.Replace(",", "")), 2)).ToString();
 
                     // ถ้าคงเหลือมากกว่า ราคาที่มีผลสมาชิก
-                    if (Convert.ToDouble(point_max) > Class_Pay.price_net_effective_member())
+                    if (Convert.ToDouble(point_max.Replace(",", "")) > Class_Pay.price_net_effective_member())
                     {
                         // ค่าแต้มสูงสุดจะเท่ากับราคาที่มีผลสมาชิก
                         point_max = Math.Floor(Math.Round(Class_Pay.price_net_effective_member(), 2)).ToString();
 
                     }
                     // ถ้าเหลือมูลค่าที่ต้องจ่าย
-                    if (Convert.ToDouble(point_max) > 0)
+                    if (Convert.ToDouble(point_max.Replace(",", "")) > 0)
                     {
 
 
@@ -519,7 +522,7 @@ namespace Ppos
                         form_Redeem_Point.ShowDialog(this);
                         if (!form_Redeem_Point.exit)
                         {
-                            label_point.Text = Convert.ToDouble(form_Redeem_Point.point).ToString("#,##0");
+                            label_point.Text = Convert.ToDouble(form_Redeem_Point.point.Replace(",", "")).ToString("#,##0");
                             button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new System.Drawing.Size(35, 35));
                             cal_change();
                         }
@@ -549,6 +552,11 @@ namespace Ppos
                 if (complete)
                 {
                     this.Enabled = false;
+                    // ส่งค่า discount_price
+                    if (Convert.ToDouble(Form_Sale.price_net.Replace(",", "")) > Convert.ToDouble(label_price_net.Text.Replace(",","")))
+                    {
+                        discount_price = (Convert.ToDouble(Form_Sale.price_net.Replace(",", "")) - Convert.ToDouble(label_price_net.Text.Replace(",", ""))).ToString();
+                    }
                     backgroundWorker_confirm.RunWorkerAsync();
 
                 }
@@ -569,12 +577,13 @@ namespace Ppos
                 double cash = 0;
                 if (textBox_cash.Text != string.Empty)
                 {
-                    cash = Convert.ToDouble(textBox_cash.Text);
+                    cash = Convert.ToDouble(textBox_cash.Text.Replace(",", ""));
                 }
+              
                 Class_Pay.update_pay(cash,
-                                     Convert.ToDouble(label_transfer.Text),
-                                     Convert.ToInt32(label_point.Text),
-                                     Convert.ToDouble(label_change.Text)
+                                     Convert.ToDouble(label_transfer.Text.Replace(",", "")),
+                                     Convert.ToInt32(label_point.Text.Replace(",", "")),
+                                     Convert.ToDouble(label_change.Text.Replace(",", ""))
                                      );
             }
             catch (Exception ex)
@@ -697,6 +706,46 @@ namespace Ppos
             }
         }
 
-       
+        private void button_discount_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double cash = 0 , rate = 1;
+                if (textBox_cash.Text != string.Empty)
+                {
+                    cash = Convert.ToDouble(textBox_cash.Text.Replace(",", ""));
+                }
+               
+                // ถ้ายังจ่ายไม่ครบ
+                if (cash + Convert.ToDouble(label_transfer.Text.Replace(",", "")) + Convert.ToDouble(label_point.Text.Replace(",", "")) < 
+                    Convert.ToDouble(label_price_net.Text.Replace(",", "")))
+                {
+                    // ถ้ามีจ่ายบ้างแล้ว จะลดได้เต็มจำนวน
+                    if (cash + Convert.ToDouble(label_transfer.Text.Replace(",", "")) + Convert.ToDouble(label_point.Text.Replace(",", "")) > 0)
+                    {
+                        rate = 0;
+                    }
+                    discount_price = (Convert.ToDouble(label_price_net.Text.Replace(",", "")) - 
+                        cash - 
+                        Convert.ToDouble(label_transfer.Text.Replace(",", "")) - 
+                        Convert.ToDouble(label_point.Text.Replace(",", "")) -
+                        rate
+                        ).ToString();
+             
+                    Form_discount_custom form_Discount_Custom = new Form_discount_custom();
+                    form_Discount_Custom.ShowDialog(this);
+                    if (!form_Discount_Custom.exit)
+                    {
+                        label_price_net.Text = (Convert.ToDouble(Form_Sale.price_net.Replace(",","")) -
+                                               Convert.ToDouble(form_Discount_Custom.price_discount.Replace(",", ""))).ToString("#,##0");
+                        cal_change();
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

@@ -42,6 +42,7 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
                 groupBox_detail.Text = Class_Parameter.pro_base_item;
 
                 groupBox_detail.Location = new Point(
@@ -1170,7 +1171,7 @@ namespace Ppos
                             // ใส่ค่าค้นหา
                             textBox_search.Text = textBox_desc.Text;
                             // เพิ่มค่าทังหมด
-                            set_pro_total = (Convert.ToInt32(set_pro_total) + 1).ToString();
+                            set_pro_total = (Convert.ToInt32(set_pro_total.Replace(",", "")) + 1).ToString();
 
                             // ค้นหา
                             search_pro();
@@ -1506,7 +1507,7 @@ namespace Ppos
                                         cmd_sqlite.ExecuteNonQuery();
 
                                         // ลบโปรทั้งหมดอีก 1 รายการ
-                                        set_pro_total = (Convert.ToInt32(set_pro_total) - 1).ToString();
+                                        set_pro_total = (Convert.ToInt32(set_pro_total.Replace(",", "")) - 1).ToString();
 
                                         stringempty();
                                         dataGridView_item.Rows.Clear();

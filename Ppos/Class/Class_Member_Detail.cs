@@ -102,8 +102,8 @@ namespace Ppos.Class
                         {
                             cmd_sqlite.CommandText = "INSERT INTO Member_Point_Balance(created_by, created_date, id_member, trans_type, trans_desc ,sale_per_point, point_begin, point_increase, point_decrease, point_end) " +
                                                      "SELECT " +
-                                                     "datetime('now', 'localtime'), " +
                                                      "'" + Class_Parameter.User_Login + "', " +
+                                                     "datetime('now', 'localtime'), " +                                                   
                                                      "" + id + ", " +
                                                      "'เพิ่มแต้ม', " +
                                                      "''," +
@@ -115,12 +115,36 @@ namespace Ppos.Class
                                                      "from Member where id = " + id;
                             cmd_sqlite.ExecuteNonQuery();
                         }
+
+                        cmd_sqlite.CommandText = "UPDATE Member SET " +
+                            "updated_date = datetime('now', 'localtime'), " +
+                            "updated_by = '" + Class_Parameter.User_Login + "', " +
+                            "phone = '" + phone + "'," +
+                            "sex = '" + sex + "'," +
+                            "nick_name = '" + nick_name + "'," +
+                            "first_name = '" + first_name + "'," +
+                            "last_name = '" + last_name + "'," +
+                            "address = '" + address + "'," +
+                            "sub_district = '" + sub_district + "'," +
+                            "district = '" + district + "'," +
+                            "province = '" + province + "'," +
+                            "postal_code = '" + postal_code + "'," +
+                            "discount_percent = " + discount_percent + "," +
+                            "sale_per_point = " + sale_per_point + ", " +
+                            "point_increase = point_increase + " + point_increase + ", " +
+                            "point_decrease = point_decrease + " + point_decrease + ", " +
+                            "point_balance = point_balance + " + Convert.ToDouble(point_increase) + " " +
+                            "where id = " + id;
+
+                        cmd_sqlite.ExecuteNonQuery();
+
+                        // ปรับลดแต้ม
                         if (Convert.ToDouble(point_decrease) > 0)
                         {
                             cmd_sqlite.CommandText = "INSERT INTO Member_Point_Balance(created_by, created_date, id_member, trans_type, trans_desc,sale_per_point, point_begin, point_increase, point_decrease, point_end) " +
                                                     "SELECT " +
-                                                    "datetime('now', 'localtime'), " +
                                                     "'" + Class_Parameter.User_Login + "', " +
+                                                    "datetime('now', 'localtime'), " +                                                 
                                                     "" + id + ", " +
                                                     "'ลดแต้ม', " +
                                                     "''," +
@@ -150,7 +174,7 @@ namespace Ppos.Class
                              "sale_per_point = " + sale_per_point + ", " +
                              "point_increase = point_increase + " + point_increase + ", " +
                              "point_decrease = point_decrease + " + point_decrease + ", " +
-                             "point_balance = point_balance + " + (Convert.ToDouble(point_increase)-Convert.ToDouble(point_decrease)) + " " +
+                             "point_balance = point_balance + " + -Convert.ToDouble(point_decrease) + " " +
                              "where id = " +id;
 
                         cmd_sqlite.ExecuteNonQuery();
@@ -175,8 +199,8 @@ namespace Ppos.Class
                     {
                         cmd_sqlite.CommandText = "INSERT INTO Member_Point_Balance(created_by, created_date, id_member, trans_type, trans_desc,sale_per_point, point_begin, point_increase, point_decrease, point_end) " +
                                                     "SELECT " +
-                                                    "datetime('now', 'localtime'), " +
                                                     "'" + Class_Parameter.User_Login + "', " +
+                                                    "datetime('now', 'localtime'), " +
                                                     "" + id_member + ", " +
                                                     "'"+trans_type+"', " +
                                                     "'"+trans_desc+"'," +
@@ -219,8 +243,8 @@ namespace Ppos.Class
                     {
                         cmd_sqlite.CommandText = "INSERT INTO Member_Point_Balance(created_by, created_date, id_member, trans_type, trans_desc,sale_per_point, point_begin, point_increase, point_decrease, point_end) " +
                                                    "SELECT " +
-                                                   "datetime('now', 'localtime'), " +
                                                    "'" + Class_Parameter.User_Login + "', " +
+                                                   "datetime('now', 'localtime'), " +
                                                    "" + id_member + ", " +
                                                    "'" + trans_type + "', " +
                                                    "'" + trans_desc + "'," +

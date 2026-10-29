@@ -53,6 +53,9 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
+
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+
                 panel_detail.Controls.Add(pictureBox_load_hotkey);
                 pictureBox_load_hotkey.Size = new Size(200, 200);
                 pictureBox_load_hotkey.Image = Ppos.Properties.Resources.load;

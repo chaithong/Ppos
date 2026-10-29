@@ -29,6 +29,7 @@ namespace Ppos
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
             button_download_all_item.Location = new System.Drawing.Point((panel_back.Width / 2) - (button_download_all_item.Width / 2), 10);
 
             pictureBox_load_all_item.Location = button_download_all_item.Location;

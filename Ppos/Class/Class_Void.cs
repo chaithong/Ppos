@@ -48,7 +48,7 @@ namespace Ppos.Class
                                       0,
                                       0,
                                       point_use,
-                                      "คืนแต้มที่ใช้",
+                                      "คืนแต้ม",
                                       trx_no);
                         }
        
@@ -60,7 +60,7 @@ namespace Ppos.Class
                                       0,
                                       0,
                                       point_increase,
-                                      "ดึงแต้มที่ได้",
+                                      "ดึงแต้ม",
                                       trx_no);
                         }
                        

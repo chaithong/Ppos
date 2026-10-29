@@ -30,7 +30,7 @@ namespace Ppos
                 customGroupBox.Location = new Point(
                  (panel_detail.Width / 2) - (customGroupBox.Width / 2),
                  10);
-
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
                 if (!Class_Parameter.custom_cost_adjust)
                 {
                     // tableLayoutPanel_group.Visible = false;
