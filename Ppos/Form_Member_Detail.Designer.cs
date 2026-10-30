@@ -1077,7 +1077,6 @@
             textBox_sale_per_point.Size = new Size(172, 38);
             textBox_sale_per_point.TabIndex = 2;
             textBox_sale_per_point.TabStop = false;
-            textBox_sale_per_point.Text = "1";
             textBox_sale_per_point.KeyDown += textBox_phone_KeyDown;
             textBox_sale_per_point.KeyPress += textBox_sale_per_point_KeyPress;
             // 

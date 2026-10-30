@@ -122,7 +122,7 @@ namespace Ppos.Class
                                         price_net_ineffective_member(), 
                                         price_net_effective_member(),
                                         increase_point(),
-                                        "เพิ่มแต้ม",
+                                        "ได้แต้ม",
                                         trx_no);
 
                                 }

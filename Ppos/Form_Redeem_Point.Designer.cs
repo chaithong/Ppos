@@ -81,8 +81,9 @@
             button_confirm.BackColor = Color.White;
             button_confirm.Dock = DockStyle.Fill;
             button_confirm.FlatAppearance.BorderSize = 0;
-            button_confirm.FlatAppearance.MouseDownBackColor = Color.Lime;
-            button_confirm.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_confirm.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_confirm.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_confirm.FlatStyle = FlatStyle.Flat;
             button_confirm.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_confirm.Location = new Point(3, 456);
             button_confirm.Name = "button_confirm";
@@ -314,6 +315,7 @@
             button10.TabIndex = 0;
             button10.TabStop = false;
             button10.UseVisualStyleBackColor = true;
+            button10.Visible = false;
             // 
             // button11
             // 

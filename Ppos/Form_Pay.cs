@@ -20,7 +20,7 @@ namespace Ppos
     public partial class Form_Pay : Form
     {
 
-        public static string amount_promptpay = "", point_max = "",discount_price = "";
+        public static string amount_promptpay = "", point_max = "",discount_price = "",cash_change = "0";
         public bool exit = true;
 
         bool complete = false;
@@ -551,6 +551,7 @@ namespace Ppos
             {
                 if (complete)
                 {
+
                     this.Enabled = false;
                     // ส่งค่า discount_price
                     if (Convert.ToDouble(Form_Sale.price_net.Replace(",", "")) > Convert.ToDouble(label_price_net.Text.Replace(",","")))
@@ -559,13 +560,14 @@ namespace Ppos
                     }
                     backgroundWorker_confirm.RunWorkerAsync();
 
+                  
                 }
 
 
             }
             catch (Exception ex)
             {
-                this.Enabled = true;
+               // this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -588,7 +590,7 @@ namespace Ppos
             }
             catch (Exception ex)
             {
-                this.Enabled = true;
+               // this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -598,12 +600,16 @@ namespace Ppos
             try
             {
 
+
+                cash_change = label_change.Text;
+                Form_Cash_Change form_Cash_Change = new Form_Cash_Change();
+                form_Cash_Change.ShowDialog(this);
                 exit = false;
                 button_exit_Click(sender, e);
             }
             catch (Exception ex)
             {
-                this.Enabled = true;
+               // this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -725,7 +731,7 @@ namespace Ppos
                     {
                         rate = 0;
                     }
-                    discount_price = (Convert.ToDouble(label_price_net.Text.Replace(",", "")) - 
+                    discount_price = (Convert.ToDouble(Form_Sale.price_net.Replace(",", "")) - 
                         cash - 
                         Convert.ToDouble(label_transfer.Text.Replace(",", "")) - 
                         Convert.ToDouble(label_point.Text.Replace(",", "")) -

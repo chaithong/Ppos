@@ -63,6 +63,7 @@ namespace Ppos
                                                    coalesce(sum(ib.discount_promotion),0) as dis_pro,
                                                    coalesce(sum(ib.discount_member),0) as dis_member,
                                                    coalesce(sum(ib.discount_point),0) as dis_point,
+                                                   coalesce(sum(ib.discount_custom),0) as dis_custom,
                                                    coalesce(sum(ib.discount_round),0) as dis_round,
                                                    coalesce(sum(ib.price_net),0) as price_net
                                                    from Invoice_Head ih 
@@ -76,13 +77,14 @@ namespace Ppos
                         if (dt.Rows.Count > 0)
                         {
                             label_sum_bill.Text = Convert.ToDouble(dt.Rows[0]["bill"]).ToString("#,##0");
-                            label_sum_item.Text = Convert.ToDouble(dt.Rows[0]["item"]).ToString("#,##0");
+                           
 
-                            label_sum_qty.Text = Convert.ToDouble(dt.Rows[0]["qty"]).ToString("#,##0.###");
+                           
                             label_sum_price.Text = Convert.ToDouble(dt.Rows[0]["price_sum"]).ToString("#,##0.##");
                             label_sum_dis_pro.Text = Convert.ToDouble(dt.Rows[0]["dis_pro"]).ToString("#,##0.##");
                             label_sum_dis_member.Text = Convert.ToDouble(dt.Rows[0]["dis_member"]).ToString("#,##0.##");
                             label_dis_point.Text = Convert.ToDouble(dt.Rows[0]["dis_point"]).ToString("#,##0.##");
+                            label_dis_custom.Text = Convert.ToDouble(dt.Rows[0]["dis_custom"]).ToString("#,##0.##");
 
                             label_sum_price_net.Text = Convert.ToDouble(dt.Rows[0]["price_net"]).ToString("#,##0.##");
 
@@ -90,18 +92,19 @@ namespace Ppos
                                                    Convert.ToDouble(label_sum_dis_pro.Text) -
                                                    Convert.ToDouble(label_sum_dis_member.Text) -
                                                    Convert.ToDouble(label_dis_point.Text) -
+                                                   Convert.ToDouble(label_dis_custom.Text) -
                                                    Convert.ToDouble(label_sum_price_net.Text)
                                                   ).ToString("#,##0.##");
                         }
                         else
                         {
                             label_sum_bill.Text = "0";
-                            label_sum_item.Text = "0";
-                            label_sum_qty.Text = "0";
+                           
                             label_sum_price.Text = "0";
                             label_sum_dis_pro.Text = "0";
                             label_sum_dis_member.Text = "0";
                             label_dis_point.Text = "0";
+                            label_dis_custom.Text = "";
                             label_sum_round.Text = "0";
                             label_sum_price_net.Text = "0";
                         }

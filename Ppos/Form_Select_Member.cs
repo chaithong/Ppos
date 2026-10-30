@@ -374,7 +374,7 @@ namespace Ppos
                     "",
                     "",
                     "0",
-                    "1"
+                    Class_Parameter.sale_per_point
                     );
                 add_member = true;
                // textBox_search.Enabled = false;

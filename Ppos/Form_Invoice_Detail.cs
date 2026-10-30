@@ -154,7 +154,7 @@ namespace Ppos
                         if (dt.Rows.Count > 0)
                         {
                             Image pro;
-                            double sum_qty = 0, sum_price = 0, dis_pro = 0, dis_member = 0, dis_point = 0, dis_round = 0, price_net = 0;
+                            double sum_qty = 0, sum_price = 0, dis_pro = 0, dis_member = 0, dis_point = 0,dis_custom = 0, dis_round = 0, price_net = 0;
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
                                 pro = new Bitmap(30, 30);
@@ -209,6 +209,9 @@ namespace Ppos
                                 dis_point += Convert.ToDouble(dt.Rows[i]["discount_point"]);
                                 label_dis_point.Text = dis_point.ToString("#,##0.00");
 
+                                dis_custom += Convert.ToDouble(dt.Rows[i]["discount_custom"]);
+                                label_dis_custom.Text = dis_custom.ToString("#,##0.00");
+
                                 dis_round += Convert.ToDouble(dt.Rows[i]["discount_round"]);
                                 label_dis_round.Text = dis_round.ToString("#,##0.00");
 
@@ -225,7 +228,7 @@ namespace Ppos
                                                                discount_percent,sale_total,sale_ineffective_member,
                                                                sale_effective_member,sale_per_point,
                                                                point_increase,point_decrease,point_balance
-                                                               FROM Member WHERE status = true and id = " + Form_Check_Invoice.id_member_void;
+                                                               FROM Member WHERE id = " + Form_Check_Invoice.id_member_void;
                                 reader = cmd_sqlite.ExecuteReader();
                                 dt = new System.Data.DataTable();
                                 dt.Load(reader);

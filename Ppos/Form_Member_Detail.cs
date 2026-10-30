@@ -87,6 +87,8 @@ namespace Ppos
                     }
                 }
 
+                textBox_sale_per_point.Text = Class_Parameter.sale_per_point;
+
                 search_member();
             }
             catch

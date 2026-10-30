@@ -538,9 +538,9 @@ namespace Ppos
                    dt_trans.Rows[i]["trans_type"].ToString()!,
                    dt_trans.Rows[i]["trans_desc"].ToString()!,
                    dt_trans.Rows[i]["sale_per_point"].ToString()!,
-                   dt_trans.Rows[i]["point_begin"].ToString()!,
-                   dt_trans.Rows[i]["point_inc_dec"].ToString()!,
-                   dt_trans.Rows[i]["point_end"].ToString()!,
+                   Convert.ToDouble(dt_trans.Rows[i]["point_begin"]).ToString("#,##0")!,
+                   Convert.ToDouble(dt_trans.Rows[i]["point_inc_dec"]).ToString("#,##0")!,
+                   Convert.ToDouble(dt_trans.Rows[i]["point_end"]).ToString("#,##0")!,
                    ""
                    );
                     dataGridView_trans.ClearSelection();
@@ -641,7 +641,7 @@ namespace Ppos
                 {
                     using (SaveFileDialog saveFileDialoge = new SaveFileDialog())
                     {
-                        saveFileDialoge.FileName = "รายงานเคลือนไหวแต้ม_" +
+                        saveFileDialoge.FileName = "เคลือนไหวแต้ม_" +
                             dataGridView_member.Rows[dataGridView_member.CurrentRow!.Index].Cells["phone"].Value!.ToString() +"_"+
                             DateTime.Now.ToString("ddMMyyyy_HHmmss");
                         saveFileDialoge.DefaultExt = ".Xlsx";

@@ -138,6 +138,7 @@
             button_confirm.FlatAppearance.BorderSize = 0;
             button_confirm.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_confirm.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_confirm.FlatStyle = FlatStyle.Flat;
             button_confirm.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_confirm.Location = new Point(3, 556);
             button_confirm.Name = "button_confirm";

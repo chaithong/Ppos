@@ -23,6 +23,9 @@ namespace Ppos.Class
         public static string store_name { get; set; } = "";
         public static string User_Login { get; set; } = "Admin";
 
+        // member
+        public static string sale_per_point { get; set; } = "100";
+
         // ใน trans
         public static string Create_Item_Small = "สร้างสินค้าหน่วยเล็ก";
         public static string Create_Item_Medium = "สร้างสินค้าหน่วยกลาง";
