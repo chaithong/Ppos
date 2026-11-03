@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Sale));
             backgroundWorker_hotkey = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_hotkey_pag = new TableLayoutPanel();
@@ -307,25 +307,25 @@
             dataGridView_item.BorderStyle = BorderStyle.None;
             dataGridView_item.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle1.ForeColor = Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.White;
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             dataGridView_item.ColumnHeadersHeight = 40;
             dataGridView_item.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item.Columns.AddRange(new DataGridViewColumn[] { id_temp, item_code, small_barcode, barcode, delete, item_name, edit, item_qty, item_unit, item_price, item_price_total, pro, pro_id, pro_type, pro_desc, criterion_type, criterion_value, offer_type, offer_value, discount_type, repeat, premium, effective_member, sale_vat });
-            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = Color.White;
-            dataGridViewCellStyle7.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle7.ForeColor = Color.Black;
-            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 255, 255);
-            dataGridViewCellStyle7.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = Color.White;
+            dataGridViewCellStyle15.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle15.ForeColor = Color.Black;
+            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(192, 255, 255);
+            dataGridViewCellStyle15.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle15;
             dataGridView_item.Dock = DockStyle.Fill;
             dataGridView_item.Enabled = false;
             dataGridView_item.GridColor = Color.Cyan;
@@ -335,14 +335,14 @@
             dataGridView_item.Name = "dataGridView_item";
             dataGridView_item.ReadOnly = true;
             dataGridView_item.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = Color.White;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            dataGridViewCellStyle8.ForeColor = Color.Black;
-            dataGridViewCellStyle8.SelectionBackColor = Color.White;
-            dataGridViewCellStyle8.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle16.BackColor = Color.White;
+            dataGridViewCellStyle16.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle16.ForeColor = Color.Black;
+            dataGridViewCellStyle16.SelectionBackColor = Color.White;
+            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.RowHeadersDefaultCellStyle = dataGridViewCellStyle16;
             dataGridView_item.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             dataGridView_item.RowTemplate.Height = 50;
             dataGridView_item.RowTemplate.Resizable = DataGridViewTriState.False;
@@ -427,10 +427,10 @@
             // item_qty
             // 
             item_qty.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N3";
-            dataGridViewCellStyle2.NullValue = null;
-            item_qty.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle10.Format = "N3";
+            dataGridViewCellStyle10.NullValue = null;
+            item_qty.DefaultCellStyle = dataGridViewCellStyle10;
             item_qty.HeaderText = "จำนวน";
             item_qty.MinimumWidth = 6;
             item_qty.Name = "item_qty";
@@ -440,8 +440,8 @@
             // item_unit
             // 
             item_unit.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            item_unit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            item_unit.DefaultCellStyle = dataGridViewCellStyle11;
             item_unit.HeaderText = "";
             item_unit.MinimumWidth = 6;
             item_unit.Name = "item_unit";
@@ -451,10 +451,10 @@
             // item_price
             // 
             item_price.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            item_price.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N2";
+            dataGridViewCellStyle12.NullValue = null;
+            item_price.DefaultCellStyle = dataGridViewCellStyle12;
             item_price.HeaderText = "ราคา";
             item_price.MinimumWidth = 6;
             item_price.Name = "item_price";
@@ -464,10 +464,10 @@
             // item_price_total
             // 
             item_price_total.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.NullValue = null;
-            item_price_total.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = null;
+            item_price_total.DefaultCellStyle = dataGridViewCellStyle13;
             item_price_total.HeaderText = "รวม";
             item_price_total.MinimumWidth = 6;
             item_price_total.Name = "item_price_total";
@@ -477,11 +477,11 @@
             // pro
             // 
             pro.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.ForeColor = Color.Red;
-            dataGridViewCellStyle6.NullValue = resources.GetObject("dataGridViewCellStyle6.NullValue");
-            dataGridViewCellStyle6.SelectionForeColor = Color.Red;
-            pro.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.ForeColor = Color.Red;
+            dataGridViewCellStyle14.NullValue = resources.GetObject("dataGridViewCellStyle14.NullValue");
+            dataGridViewCellStyle14.SelectionForeColor = Color.Red;
+            pro.DefaultCellStyle = dataGridViewCellStyle14;
             pro.HeaderText = "";
             pro.MinimumWidth = 6;
             pro.Name = "pro";
@@ -699,11 +699,11 @@
             textBox_search.BackColor = Color.White;
             textBox_search.BorderStyle = BorderStyle.None;
             textBox_search.Dock = DockStyle.Bottom;
-            textBox_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_search.Location = new Point(0, -3);
+            textBox_search.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_search.Location = new Point(0, 1);
             textBox_search.Margin = new Padding(0);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(236, 44);
+            textBox_search.Size = new Size(236, 40);
             textBox_search.TabIndex = 0;
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.KeyDown += textBox_search_KeyDown;
@@ -944,7 +944,7 @@
             label_sum_qty.Padding = new Padding(0, 0, 6, 0);
             label_sum_qty.Size = new Size(200, 35);
             label_sum_qty.TabIndex = 2;
-            label_sum_qty.Text = "0.000";
+            label_sum_qty.Text = "0";
             label_sum_qty.TextAlign = ContentAlignment.MiddleRight;
             label_sum_qty.MouseEnter += sum_bill_enter;
             label_sum_qty.MouseLeave += sum_bill_leave;
@@ -993,7 +993,7 @@
             label_sum_price.Padding = new Padding(0, 0, 6, 0);
             label_sum_price.Size = new Size(200, 35);
             label_sum_price.TabIndex = 2;
-            label_sum_price.Text = "0.00";
+            label_sum_price.Text = "0";
             label_sum_price.TextAlign = ContentAlignment.MiddleRight;
             label_sum_price.MouseEnter += sum_bill_enter;
             label_sum_price.MouseLeave += sum_bill_leave;
@@ -1043,7 +1043,7 @@
             label_dis_pro.Padding = new Padding(0, 0, 6, 0);
             label_dis_pro.Size = new Size(200, 35);
             label_dis_pro.TabIndex = 2;
-            label_dis_pro.Text = "0.00";
+            label_dis_pro.Text = "0";
             label_dis_pro.TextAlign = ContentAlignment.MiddleRight;
             label_dis_pro.MouseEnter += sum_bill_enter;
             label_dis_pro.MouseLeave += sum_bill_leave;
@@ -1093,7 +1093,7 @@
             label_dis_member.Padding = new Padding(0, 0, 6, 0);
             label_dis_member.Size = new Size(200, 35);
             label_dis_member.TabIndex = 2;
-            label_dis_member.Text = "0.00";
+            label_dis_member.Text = "0";
             label_dis_member.TextAlign = ContentAlignment.MiddleRight;
             label_dis_member.MouseEnter += sum_bill_enter;
             label_dis_member.MouseLeave += sum_bill_leave;
@@ -1126,7 +1126,7 @@
             label_dis_round.Padding = new Padding(0, 0, 6, 0);
             label_dis_round.Size = new Size(200, 35);
             label_dis_round.TabIndex = 2;
-            label_dis_round.Text = "0.00";
+            label_dis_round.Text = "0";
             label_dis_round.TextAlign = ContentAlignment.MiddleRight;
             label_dis_round.MouseEnter += sum_bill_enter;
             label_dis_round.MouseLeave += sum_bill_leave;
@@ -1177,7 +1177,7 @@
             label_price_net.Name = "label_price_net";
             label_price_net.Size = new Size(200, 50);
             label_price_net.TabIndex = 2;
-            label_price_net.Text = "0.00";
+            label_price_net.Text = "0";
             label_price_net.TextAlign = ContentAlignment.MiddleRight;
             label_price_net.MouseEnter += sum_bill_enter;
             label_price_net.MouseLeave += sum_bill_leave;
@@ -1397,12 +1397,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Cyan;
             ClientSize = new Size(1281, 805);
+            ControlBox = false;
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form_Sale";
-            Text = "Form_Sale";
             Load += Form_Sale_Load;
             Resize += Form_Sale_Resize;
             tableLayoutPanel_hotkey_pag.ResumeLayout(false);

@@ -18,6 +18,8 @@ namespace Ppos
             InitializeComponent();
             try
             {
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+
                 button_check_item.Image = Class_Image.resizeImage(Ppos.Properties.Resources.product, new Size(60, 60));
                 button_check_promotion.Image = Class_Image.resizeImage(Ppos.Properties.Resources.promotions, new Size(60, 60));
                

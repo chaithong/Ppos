@@ -134,7 +134,7 @@ namespace Ppos
                     // tableLayoutPanel_back_pay.Controls.Add(customGroupBox_left, 1, 0);
 
                 }
-                new TableLayoutResizer(tableLayoutPanel_back_pay);
+                new TableLayoutResizer(tableLayoutPanel_back_pay,this);
                 textBox_cash.LostFocus += TextBox_cash_LostFocus;
             }
             catch
@@ -207,7 +207,7 @@ namespace Ppos
                 label_price_net.Text = Form_Sale.price_net;
                 textBox_cash.Focus();
 
-                button_cash_Click(sender, e);
+               // button_cash_Click(sender, e);
 
             }
             catch (Exception ex)

@@ -44,13 +44,11 @@
             button_OK.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_OK.FlatStyle = FlatStyle.Flat;
             button_OK.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_OK.Location = new Point(3, 391);
+            button_OK.Location = new Point(3, 363);
             button_OK.Name = "button_OK";
-            button_OK.Size = new Size(776, 188);
+            button_OK.Size = new Size(736, 176);
             button_OK.TabIndex = 0;
-            button_OK.Text = "ตกลง";
-            button_OK.TextAlign = ContentAlignment.MiddleRight;
-            button_OK.TextImageRelation = TextImageRelation.ImageBeforeText;
+            button_OK.TextAlign = ContentAlignment.BottomCenter;
             button_OK.UseVisualStyleBackColor = true;
             button_OK.Click += button_OK_Click;
             button_OK.KeyDown += button_OK_KeyDown;
@@ -64,7 +62,7 @@
             label_cash_change_title.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_cash_change_title.Location = new Point(3, 0);
             label_cash_change_title.Name = "label_cash_change_title";
-            label_cash_change_title.Size = new Size(776, 194);
+            label_cash_change_title.Size = new Size(736, 180);
             label_cash_change_title.TabIndex = 1;
             label_cash_change_title.Text = "เงินทอน";
             label_cash_change_title.TextAlign = ContentAlignment.MiddleCenter;
@@ -73,6 +71,7 @@
             // 
             // tableLayoutPanel_back
             // 
+            tableLayoutPanel_back.BackColor = Color.White;
             tableLayoutPanel_back.ColumnCount = 1;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
@@ -80,13 +79,14 @@
             tableLayoutPanel_back.Controls.Add(button_OK, 0, 2);
             tableLayoutPanel_back.Controls.Add(label_cash_change, 0, 1);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
-            tableLayoutPanel_back.Location = new Point(0, 0);
+            tableLayoutPanel_back.Location = new Point(20, 20);
+            tableLayoutPanel_back.Margin = new Padding(9);
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
             tableLayoutPanel_back.RowCount = 3;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel_back.Size = new Size(782, 582);
+            tableLayoutPanel_back.Size = new Size(742, 542);
             tableLayoutPanel_back.TabIndex = 2;
             // 
             // label_cash_change
@@ -94,9 +94,9 @@
             label_cash_change.AutoEllipsis = true;
             label_cash_change.Dock = DockStyle.Fill;
             label_cash_change.Font = new Font("Segoe UI", 48F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_cash_change.Location = new Point(3, 194);
+            label_cash_change.Location = new Point(3, 180);
             label_cash_change.Name = "label_cash_change";
-            label_cash_change.Size = new Size(776, 194);
+            label_cash_change.Size = new Size(736, 180);
             label_cash_change.TabIndex = 1;
             label_cash_change.Text = "-";
             label_cash_change.TextAlign = ContentAlignment.MiddleCenter;
@@ -108,13 +108,14 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            BackColor = Color.White;
+            BackColor = Color.Lime;
             ClientSize = new Size(782, 582);
             ControlBox = false;
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form_Cash_Change";
+            Padding = new Padding(20);
             StartPosition = FormStartPosition.CenterParent;
             tableLayoutPanel_back.ResumeLayout(false);
             ResumeLayout(false);

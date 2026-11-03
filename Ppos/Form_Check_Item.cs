@@ -76,20 +76,32 @@ namespace Ppos
             // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
             dataGridView_item.FirstDisplayedScrollingRowIndex = newIndex;
         }
+        private void textBox_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    textBox_search.SelectAll();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void textBox_search_TextChanged(object sender, EventArgs e)
         {
             try
             {
+
                 count_search = 0;
                 if (textBox_search.Text != string.Empty)
                 {
-
                     if (!timer_search.Enabled)
                     {
                         timer_search.Start();
                     }
-
-
                 }
                 else
                 {
@@ -99,12 +111,14 @@ namespace Ppos
                         timer_search.Stop();
                     }
                 }
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void timer_search_Tick(object sender, EventArgs e)
         {
             try
@@ -234,19 +248,18 @@ namespace Ppos
                         SQLiteDataReader er = cmd_sqlite.ExecuteReader();
                         DataTable dt = new System.Data.DataTable();
                         dt.Load(er);
-                      //  if (dt.Rows.Count >= 1 && dt.Rows.Count <= 3)
-                            if (dt.Rows.Count > 0)
-                            {
-           
+                        if (dt.Rows.Count > 0)
+                        {
+
                             dataGridView_item.Rows.Add("บาร์โค้ด :", dt.Rows[0]["barcode"].ToString()!);
                             dataGridView_item.Rows.Add("ชื่อสินค้า :", dt.Rows[0]["name"].ToString()!);
                             dataGridView_item.Rows.Add("คงเหลือ :", Convert.ToDouble(dt.Rows[0]["qty"]).ToString("#,##0.###") + " " + dt.Rows[0]["unit"].ToString()!);
                             dataGridView_item.Rows.Add("ราคา :", Convert.ToDouble(dt.Rows[0]["price"]).ToString("#,##0.##"));
-                           
+
                             if (dt.Rows[0]["pro_type"].ToString()! != string.Empty)
                             {
-         
-                                if(dt.Rows[0]["pro"].ToString()! != string.Empty)
+
+                                if (dt.Rows[0]["pro"].ToString()! != string.Empty)
                                 {
                                     dataGridView_item.Rows.Add("สินค้าโปรโมชั่น :", "สินค้าโปร");
                                 }
@@ -257,15 +270,15 @@ namespace Ppos
                                 dataGridView_item.Rows.Add("ประเภทโปรโมชั่น :", dt.Rows[0]["pro_type"].ToString()!);
                                 dataGridView_item.Rows.Add("ชื่อโปรโมชั่น :", dt.Rows[0]["pro_desc"].ToString()!);
 
-                                if(dt.Rows[0]["pro_type"].ToString()! != Class_Parameter.pro_set_item)
+                                if (dt.Rows[0]["pro_type"].ToString()! != Class_Parameter.pro_set_item)
                                 {
                                     dataGridView_item.Rows.Add("เกณฑ์ส่วนลด :", dt.Rows[0]["criterion_type"].ToString()! + " " + dt.Rows[0]["criterion_value"].ToString()!);
                                 }
 
-                                dataGridView_item.Rows.Add("ประเภทส่วนลด :", dt.Rows[0]["offer_type"].ToString()! + " " + dt.Rows[0]["offer_value"].ToString()! +" "+ dt.Rows[0]["discount_type"].ToString()!);
+                                dataGridView_item.Rows.Add("ประเภทส่วนลด :", dt.Rows[0]["offer_type"].ToString()! + " " + dt.Rows[0]["offer_value"].ToString()! + " " + dt.Rows[0]["discount_type"].ToString()!);
                                 dataGridView_item.Rows.Add("การใช้งานต่อบิล :", dt.Rows[0]["repeat"].ToString()!);
-                                dataGridView_item.Rows.Add("วันที่ใช้งาน :", dt.Rows[0]["start_date"].ToString()! +" ถึง "+ dt.Rows[0]["end_date"].ToString()!);
-                                if( dt.Rows[0]["end_time"].ToString()! != "00:00")
+                                dataGridView_item.Rows.Add("วันที่ใช้งาน :", dt.Rows[0]["start_date"].ToString()! + " ถึง " + dt.Rows[0]["end_date"].ToString()!);
+                                if (dt.Rows[0]["end_time"].ToString()! != "00:00")
                                 {
                                     dataGridView_item.Rows.Add("เวลาใช้งาน :", dt.Rows[0]["start_time"].ToString()! + " ถึง " + dt.Rows[0]["end_time"].ToString()!);
                                 }
@@ -274,7 +287,7 @@ namespace Ppos
                                     dataGridView_item.Rows.Add("เวลาใช้งาน :", "24 ชั่งโมง");
                                 }
                                 string day = "";
-                                if(Convert.ToBoolean(dt.Rows[0]["mon"]))
+                                if (Convert.ToBoolean(dt.Rows[0]["mon"]))
                                 {
                                     day += "จันทร์ ";
                                 }
@@ -309,8 +322,9 @@ namespace Ppos
                                 }
                                 dataGridView_item.Rows.Add("วันใช้งาน :", day);
                             }
-                           
+
                         }
+
                     }
                 }
 
@@ -376,7 +390,7 @@ namespace Ppos
             }
         }
 
-      
+
 
         private void Form_Check_Item_Shown(object sender, EventArgs e)
         {

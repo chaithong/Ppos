@@ -105,8 +105,8 @@
             // 
             tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back.ColumnCount = 2;
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
             tableLayoutPanel_back.Controls.Add(dataGridView_item, 0, 1);
             tableLayoutPanel_back.Controls.Add(panel_search, 0, 0);
             tableLayoutPanel_back.Controls.Add(dataGridView_trans, 1, 1);
@@ -163,13 +163,12 @@
             dataGridView_item.ScrollBars = ScrollBars.None;
             dataGridView_item.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_item.ShowCellToolTips = false;
-            dataGridView_item.Size = new Size(400, 454);
+            dataGridView_item.Size = new Size(296, 454);
             dataGridView_item.TabIndex = 2;
             dataGridView_item.TabStop = false;
             dataGridView_item.CellClick += dataGridView_item_CellClick;
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
             dataGridView_item.CellMouseLeave += dataGridView_item_CellMouseLeave;
-            dataGridView_item.CellMouseUp += dataGridView_item_CellMouseUp;
             // 
             // small_barcode
             // 
@@ -226,7 +225,7 @@
             panel_search.Location = new Point(0, 0);
             panel_search.Margin = new Padding(0);
             panel_search.Name = "panel_search";
-            panel_search.Size = new Size(400, 120);
+            panel_search.Size = new Size(296, 120);
             panel_search.TabIndex = 3;
             // 
             // label_search
@@ -237,9 +236,9 @@
             label_search.ForeColor = Color.Gray;
             label_search.Location = new Point(0, 0);
             label_search.Name = "label_search";
-            label_search.Size = new Size(400, 84);
+            label_search.Size = new Size(296, 84);
             label_search.TabIndex = 1;
-            label_search.TextAlign = ContentAlignment.BottomRight;
+            label_search.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_search
             // 
@@ -248,10 +247,11 @@
             textBox_search.Font = new Font("Segoe UI", 16.2F);
             textBox_search.Location = new Point(0, 84);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(400, 36);
+            textBox_search.Size = new Size(296, 36);
             textBox_search.TabIndex = 0;
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.TextChanged += textBox_search_TextChanged;
+            textBox_search.KeyDown += textBox_search_KeyDown;
             // 
             // dataGridView_trans
             // 
@@ -284,7 +284,7 @@
             dataGridView_trans.DefaultCellStyle = dataGridViewCellStyle21;
             dataGridView_trans.Dock = DockStyle.Fill;
             dataGridView_trans.GridColor = Color.Lime;
-            dataGridView_trans.Location = new Point(410, 120);
+            dataGridView_trans.Location = new Point(306, 120);
             dataGridView_trans.Margin = new Padding(10, 0, 0, 0);
             dataGridView_trans.Name = "dataGridView_trans";
             dataGridView_trans.ReadOnly = true;
@@ -295,7 +295,7 @@
             dataGridView_trans.RowTemplate.ReadOnly = true;
             dataGridView_trans.RowTemplate.Resizable = DataGridViewTriState.False;
             dataGridView_trans.ScrollBars = ScrollBars.None;
-            dataGridView_trans.Size = new Size(776, 454);
+            dataGridView_trans.Size = new Size(880, 454);
             dataGridView_trans.TabIndex = 4;
             dataGridView_trans.CellMouseEnter += dataGridView_trans_CellMouseEnter;
             dataGridView_trans.CellMouseLeave += dataGridView_trans_CellMouseLeave;
@@ -501,12 +501,12 @@
             tableLayoutPanel_top.Controls.Add(tableLayoutPanel_name, 2, 0);
             tableLayoutPanel_top.Controls.Add(button_excel, 4, 0);
             tableLayoutPanel_top.Dock = DockStyle.Fill;
-            tableLayoutPanel_top.Location = new Point(410, 0);
+            tableLayoutPanel_top.Location = new Point(306, 0);
             tableLayoutPanel_top.Margin = new Padding(10, 0, 0, 0);
             tableLayoutPanel_top.Name = "tableLayoutPanel_top";
             tableLayoutPanel_top.RowCount = 1;
             tableLayoutPanel_top.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_top.Size = new Size(776, 120);
+            tableLayoutPanel_top.Size = new Size(880, 120);
             tableLayoutPanel_top.TabIndex = 5;
             // 
             // button_sort
@@ -550,7 +550,7 @@
             tableLayoutPanel_name.RowCount = 2;
             tableLayoutPanel_name.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel_name.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_name.Size = new Size(376, 120);
+            tableLayoutPanel_name.Size = new Size(480, 120);
             tableLayoutPanel_name.TabIndex = 3;
             // 
             // tableLayoutPanel_date
@@ -570,14 +570,14 @@
             tableLayoutPanel_date.Name = "tableLayoutPanel_date";
             tableLayoutPanel_date.RowCount = 1;
             tableLayoutPanel_date.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_date.Size = new Size(376, 60);
+            tableLayoutPanel_date.Size = new Size(480, 60);
             tableLayoutPanel_date.TabIndex = 2;
             // 
             // label_date
             // 
             label_date.Dock = DockStyle.Fill;
             label_date.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_date.Location = new Point(91, 0);
+            label_date.Location = new Point(143, 0);
             label_date.Name = "label_date";
             label_date.Size = new Size(194, 60);
             label_date.TabIndex = 0;
@@ -596,7 +596,7 @@
             button_back_date.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_back_date.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_back_date.FlatStyle = FlatStyle.Flat;
-            button_back_date.Location = new Point(41, 3);
+            button_back_date.Location = new Point(93, 3);
             button_back_date.Name = "button_back_date";
             button_back_date.Size = new Size(44, 54);
             button_back_date.TabIndex = 1;
@@ -612,7 +612,7 @@
             button_next_date.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_next_date.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_next_date.FlatStyle = FlatStyle.Flat;
-            button_next_date.Location = new Point(291, 3);
+            button_next_date.Location = new Point(343, 3);
             button_next_date.Name = "button_next_date";
             button_next_date.Size = new Size(44, 54);
             button_next_date.TabIndex = 1;
@@ -625,7 +625,7 @@
             label_item_name.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_item_name.Location = new Point(3, 60);
             label_item_name.Name = "label_item_name";
-            label_item_name.Size = new Size(370, 60);
+            label_item_name.Size = new Size(474, 60);
             label_item_name.TabIndex = 3;
             label_item_name.TextAlign = ContentAlignment.MiddleCenter;
             label_item_name.MouseEnter += label_date_MouseEnter;
@@ -642,7 +642,7 @@
             button_excel.FlatStyle = FlatStyle.Flat;
             button_excel.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             button_excel.ForeColor = Color.Black;
-            button_excel.Location = new Point(679, 3);
+            button_excel.Location = new Point(783, 3);
             button_excel.Name = "button_excel";
             button_excel.Size = new Size(94, 114);
             button_excel.TabIndex = 0;

@@ -28,7 +28,7 @@ namespace Ppos
 
                 // panel_video.Location = new Point((this.Width/2)-(panel_video.Width/2),10);
                 customGroupBox_back.Location = new Point((this.Width / 2) - (customGroupBox_back.Width / 2), 10);
-                customGroupBox_back.Height = this.Height -100;
+                customGroupBox_back.Height = this.Height - 10;
 
                 button_test.Image = Class_Image.resizeImage(Ppos.Properties.Resources.camera, new Size(40, 40));
                 button_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.save, new Size(30, 30));
@@ -77,31 +77,31 @@ namespace Ppos
                 button_refresh_Click(sender, e);
 
                 // ถ้ามี device ใน DB จะเปิดทันที
-               /* for (int i = 0; i < dataGridView_device.RowCount; i++)
-                {
-                    if (dataGridView_device.Rows[i].Cells["device_names"].Value.ToString() == set_device)
-                    {
-                        dataGridView_device.Rows[i].Selected = true;
+                /* for (int i = 0; i < dataGridView_device.RowCount; i++)
+                 {
+                     if (dataGridView_device.Rows[i].Cells["device_names"].Value.ToString() == set_device)
+                     {
+                         dataGridView_device.Rows[i].Selected = true;
 
-                        textBox_device.Text = set_device;
-                        textBox_device.BackColor = Color.Lime;
-                        pictureBox_video.BackColor = Color.Lime;
-                        button_save.BackColor = Color.Lime;
+                         textBox_device.Text = set_device;
+                         textBox_device.BackColor = Color.Lime;
+                         pictureBox_video.BackColor = Color.Lime;
+                         button_save.BackColor = Color.Lime;
 
-                        pictureBox_video.Image = null;
+                         pictureBox_video.Image = null;
 
-                        if (!string.IsNullOrEmpty(GetMonikerStringByDeviceName(set_device)))
-                        {
-                            Form_Main.videoSource = new VideoCaptureDevice(GetMonikerStringByDeviceName(set_device));
+                         if (!string.IsNullOrEmpty(GetMonikerStringByDeviceName(set_device)))
+                         {
+                             Form_Main.videoSource = new VideoCaptureDevice(GetMonikerStringByDeviceName(set_device));
 
-                            // ผูก Event ข้อมูลภาพใหม่เข้ากับฟังก์ชันวาดรูป
-                            Form_Main.videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
-                            Form_Main.videoSource.Start(); // เริ่มส่งสัญญาณวิดีโอ
-                        }
+                             // ผูก Event ข้อมูลภาพใหม่เข้ากับฟังก์ชันวาดรูป
+                             Form_Main.videoSource.NewFrame += new NewFrameEventHandler(videoSource_NewFrame);
+                             Form_Main.videoSource.Start(); // เริ่มส่งสัญญาณวิดีโอ
+                         }
 
-                        break;
-                    }
-                }*/
+                         break;
+                     }
+                 }*/
             }
             catch
             {
@@ -163,18 +163,18 @@ namespace Ppos
                 button_save.Enabled = true;
                 if (cameraName == set_device)
                 {
-                   // textBox_device.BackColor = Color.Lime;
-                   // pictureBox_video.BackColor = Color.Lime;
+                    // textBox_device.BackColor = Color.Lime;
+                    // pictureBox_video.BackColor = Color.Lime;
 
-                   // button_save.BackColor = Color.Lime;
+                    // button_save.BackColor = Color.Lime;
                     button_save.Enabled = false;
                 }
                 else
                 {
-                   // textBox_device.BackColor = Color.White;
-                  //  pictureBox_video.BackColor = Color.White;
+                    // textBox_device.BackColor = Color.White;
+                    //  pictureBox_video.BackColor = Color.White;
 
-                   // button_save.BackColor = Color.White;
+                    // button_save.BackColor = Color.White;
                     button_save.Enabled = true;
                 }
 
@@ -215,14 +215,15 @@ namespace Ppos
                             // เปลี่ยนค่า set
                             set_device = textBox_device.Text;
                             // เปลี่ยนสี textbox
-                           // textBox_device.BackColor = Color.Lime;
-                           // pictureBox_video.BackColor = Color.Lime;
-                           // button_save.BackColor = Color.Lime;
+                            // textBox_device.BackColor = Color.Lime;
+                            // pictureBox_video.BackColor = Color.Lime;
+                            // button_save.BackColor = Color.Lime;
+
 
                         }
                         con_sqlite.Close();
                     }
-                    button_save.Enabled = true;
+                   // button_save.Enabled = true;
                 }
 
             }
@@ -318,6 +319,19 @@ namespace Ppos
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
                 button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size - 2, button.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Form_Setting_Camera_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                customGroupBox_back.Location = new Point((this.Width / 2) - (customGroupBox_back.Width / 2), 10);
+                customGroupBox_back.Height = this.Height - 10;
             }
             catch
             {

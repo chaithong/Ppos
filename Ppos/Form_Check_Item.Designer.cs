@@ -61,6 +61,7 @@
             textBox_search.TabIndex = 0;
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.TextChanged += textBox_search_TextChanged;
+            textBox_search.KeyDown += textBox_search_KeyDown;
             // 
             // dataGridView_item
             // 

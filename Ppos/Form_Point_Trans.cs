@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using YourProjectNamespace;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace Ppos
@@ -33,7 +34,8 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
-                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+                // ปรับขนาด tablelayoutpanel_back
+                new TableLayoutResizer(tableLayoutPanel_back, this);
 
                 dataGridView_member.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_member, true, null);
 
@@ -805,7 +807,7 @@ namespace Ppos
                                     worksheet.Cells[i + 2, 7] = dt.Rows[i]["point_end"].ToString();
                                    
 
-                                    button_excel.Text = ((i + 1) * 100 / dt.Rows.Count).ToString("0.00") + " %";
+                                    button_excel.Text = ((i + 1) * 100 / dt.Rows.Count).ToString("0") + " %";
                                 }
                             }
                         }

@@ -26,7 +26,7 @@ namespace Ppos.Class
                             cmd_sqlite.ExecuteNonQuery();
 
                             // update price_net
-                            cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  price_net - discount_point " +
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  abs(price_net - discount_point) " +
                                                     "WHERE void = false and hole = false and effective_member = true";
                             cmd_sqlite.ExecuteNonQuery();
                         }
@@ -42,7 +42,7 @@ namespace Ppos.Class
                                 cmd_sqlite.ExecuteNonQuery();
 
                                 // update discount_custom
-                                cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  price_net - discount_custom " +
+                                cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  abs(price_net - discount_custom) " +
                                                         "WHERE void = false and hole = false ";
                                 cmd_sqlite.ExecuteNonQuery();
                             }
@@ -60,15 +60,15 @@ namespace Ppos.Class
 
 
                             // update price_net
-                            cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  price_net - discount_round " +
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp SET price_net =  abs(price_net - discount_round) " +
                                                     "WHERE void = false and hole = false ";
                             cmd_sqlite.ExecuteNonQuery();
                         }
                         // ภาษี
                         cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp set "+
-                                                  "price_non_vat = case when sale_vat = false then price_net else 0 end, "+
-                                                  "price_vat = case when sale_vat = true then price_net / ("+((Convert.ToDouble(Class_Parameter.vat_rate) / 100)+1)+") else 0 end, "+
-                                                  "vat = case when sale_vat = true then price_net / "+ ((Convert.ToDouble(Class_Parameter.vat_rate) / 100) + 1) + " * "+ (Convert.ToDouble(Class_Parameter.vat_rate) / 100) + " else 0 end "+
+                                                  "price_non_vat = abs(case when sale_vat = false then price_net else 0 end), "+
+                                                  "price_vat = abs(case when sale_vat = true then price_net / ("+((Convert.ToDouble(Class_Parameter.vat_rate) / 100)+1)+") else 0 end), "+
+                                                  "vat = abs(case when sale_vat = true then price_net / "+ ((Convert.ToDouble(Class_Parameter.vat_rate) / 100) + 1) + " * "+ (Convert.ToDouble(Class_Parameter.vat_rate) / 100) + " else 0 end) "+
                                                   "where void = false and hole = false";
                         cmd_sqlite.ExecuteNonQuery();
 

@@ -171,10 +171,10 @@ namespace Ppos
                               dt.Rows[i]["small_barcode"].ToString()!,
                               dt.Rows[i]["item_barcode"].ToString()!,
                               dt.Rows[i]["item_name"].ToString()!,
-                              Convert.ToDouble(dt.Rows[i]["item_qty"]).ToString("#,##0.000"),
+                              Convert.ToDouble(dt.Rows[i]["item_qty"]).ToString("#,##0.###"),
                               dt.Rows[i]["item_unit"].ToString()!,
-                              Convert.ToDouble(dt.Rows[i]["item_price"]).ToString("#,##0.00"),
-                              (Convert.ToDouble(dt.Rows[i]["item_qty"]) * Convert.ToDouble(dt.Rows[i]["item_price"])).ToString("#,##0.00"),
+                              Convert.ToDouble(dt.Rows[i]["item_price"]).ToString("#,##0.##"),
+                              (Convert.ToDouble(dt.Rows[i]["item_qty"]) * Convert.ToDouble(dt.Rows[i]["item_price"])).ToString("#,##0.##"),
                               pro,
                               dt.Rows[i]["pro_id"].ToString()!,
                               dt.Rows[i]["pro_type"].ToString()!,
@@ -195,28 +195,28 @@ namespace Ppos
                                 dataGridView_item.Columns["seq"]!.HeaderText = (i + 1).ToString();
 
                                 sum_qty += Convert.ToDouble(dt.Rows[i]["item_qty"]);
-                                label_sum_qty.Text = sum_qty.ToString("#,##0.000");
+                                label_sum_qty.Text = sum_qty.ToString("#,##0.###");
 
                                 sum_price += Convert.ToDouble(dt.Rows[i]["item_qty"]) * Convert.ToDouble(dt.Rows[i]["item_price"]);
-                                label_sum_price.Text = sum_price.ToString("#,##0.00");
+                                label_sum_price.Text = sum_price.ToString("#,##0.##");
 
                                 dis_pro += Convert.ToDouble(dt.Rows[i]["discount_promotion"]);
-                                label_dis_pro.Text = dis_pro.ToString("#,##0.00");
+                                label_dis_pro.Text = dis_pro.ToString("#,##0.##");
 
                                 dis_member += Convert.ToDouble(dt.Rows[i]["discount_member"]);
-                                label_dis_member.Text = dis_member.ToString("#,##0.00");
+                                label_dis_member.Text = dis_member.ToString("#,##0.##");
 
                                 dis_point += Convert.ToDouble(dt.Rows[i]["discount_point"]);
-                                label_dis_point.Text = dis_point.ToString("#,##0.00");
+                                label_dis_point.Text = dis_point.ToString("#,##0.##");
 
                                 dis_custom += Convert.ToDouble(dt.Rows[i]["discount_custom"]);
-                                label_dis_custom.Text = dis_custom.ToString("#,##0.00");
+                                label_dis_custom.Text = dis_custom.ToString("#,##0.##");
 
                                 dis_round += Convert.ToDouble(dt.Rows[i]["discount_round"]);
-                                label_dis_round.Text = dis_round.ToString("#,##0.00");
+                                label_dis_round.Text = dis_round.ToString("#,##0.##");
 
                                 price_net += Convert.ToDouble(dt.Rows[i]["price_net"]);
-                                label_price_net.Text = price_net.ToString("#,##0.00");
+                                label_price_net.Text = price_net.ToString("#,##0.##");
 
 
                             }

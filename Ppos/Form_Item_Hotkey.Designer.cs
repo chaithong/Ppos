@@ -113,7 +113,7 @@
             panel_detail.Location = new Point(10, 10);
             panel_detail.Margin = new Padding(10, 10, 0, 0);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(294, 786);
+            panel_detail.Size = new Size(431, 786);
             panel_detail.TabIndex = 4;
             // 
             // panel_search
@@ -124,7 +124,7 @@
             panel_search.Location = new Point(0, 0);
             panel_search.Margin = new Padding(0);
             panel_search.Name = "panel_search";
-            panel_search.Size = new Size(400, 120);
+            panel_search.Size = new Size(263, 120);
             panel_search.TabIndex = 3;
             // 
             // label_search
@@ -135,9 +135,9 @@
             label_search.ForeColor = Color.Gray;
             label_search.Location = new Point(0, 0);
             label_search.Name = "label_search";
-            label_search.Size = new Size(400, 84);
+            label_search.Size = new Size(263, 84);
             label_search.TabIndex = 1;
-            label_search.TextAlign = ContentAlignment.BottomRight;
+            label_search.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // textBox_search
             // 
@@ -146,10 +146,11 @@
             textBox_search.Font = new Font("Segoe UI", 16.2F);
             textBox_search.Location = new Point(0, 84);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(400, 36);
+            textBox_search.Size = new Size(263, 36);
             textBox_search.TabIndex = 0;
             textBox_search.TextAlign = HorizontalAlignment.Center;
             textBox_search.TextChanged += textBox_search_TextChanged;
+            textBox_search.KeyDown += textBox_search_KeyDown;
             // 
             // dataGridView_item
             // 
@@ -193,7 +194,7 @@
             dataGridView_item.ScrollBars = ScrollBars.None;
             dataGridView_item.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_item.ShowCellToolTips = false;
-            dataGridView_item.Size = new Size(400, 796);
+            dataGridView_item.Size = new Size(263, 796);
             dataGridView_item.TabIndex = 2;
             dataGridView_item.TabStop = false;
             dataGridView_item.CellMouseDown += dataGridView_item_CellMouseDown;
@@ -283,8 +284,8 @@
             // 
             tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
             tableLayoutPanel_back.ColumnCount = 2;
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 400F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
             tableLayoutPanel_back.Controls.Add(dataGridView_item, 0, 1);
             tableLayoutPanel_back.Controls.Add(panel_search, 0, 0);
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_back_detail, 1, 1);
@@ -308,12 +309,12 @@
             tableLayoutPanel_back_detail.Controls.Add(panel_detail, 0, 0);
             tableLayoutPanel_back_detail.Controls.Add(panel_set, 1, 0);
             tableLayoutPanel_back_detail.Dock = DockStyle.Fill;
-            tableLayoutPanel_back_detail.Location = new Point(400, 120);
+            tableLayoutPanel_back_detail.Location = new Point(263, 120);
             tableLayoutPanel_back_detail.Margin = new Padding(0);
             tableLayoutPanel_back_detail.Name = "tableLayoutPanel_back_detail";
             tableLayoutPanel_back_detail.RowCount = 1;
             tableLayoutPanel_back_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back_detail.Size = new Size(654, 796);
+            tableLayoutPanel_back_detail.Size = new Size(791, 796);
             tableLayoutPanel_back_detail.TabIndex = 6;
             // 
             // panel_set
@@ -323,7 +324,7 @@
             panel_set.BackColor = Color.White;
             panel_set.Controls.Add(tableLayoutPanel_set_hotkey);
             panel_set.Dock = DockStyle.Fill;
-            panel_set.Location = new Point(304, 10);
+            panel_set.Location = new Point(441, 10);
             panel_set.Margin = new Padding(0, 10, 0, 0);
             panel_set.Name = "panel_set";
             panel_set.Size = new Size(350, 786);
@@ -802,12 +803,12 @@
             tableLayoutPanel_set.Controls.Add(button_delete, 4, 0);
             tableLayoutPanel_set.Controls.Add(label8, 5, 0);
             tableLayoutPanel_set.Dock = DockStyle.Fill;
-            tableLayoutPanel_set.Location = new Point(410, 0);
+            tableLayoutPanel_set.Location = new Point(273, 0);
             tableLayoutPanel_set.Margin = new Padding(10, 0, 0, 0);
             tableLayoutPanel_set.Name = "tableLayoutPanel_set";
             tableLayoutPanel_set.RowCount = 1;
             tableLayoutPanel_set.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_set.Size = new Size(644, 120);
+            tableLayoutPanel_set.Size = new Size(781, 120);
             tableLayoutPanel_set.TabIndex = 7;
             // 
             // button_hotkey_1
@@ -822,7 +823,7 @@
             button_hotkey_1.ForeColor = Color.Gray;
             button_hotkey_1.Location = new Point(3, 3);
             button_hotkey_1.Name = "button_hotkey_1";
-            button_hotkey_1.Size = new Size(72, 114);
+            button_hotkey_1.Size = new Size(100, 114);
             button_hotkey_1.TabIndex = 4;
             button_hotkey_1.Text = "-";
             button_hotkey_1.TextAlign = ContentAlignment.BottomCenter;
@@ -842,9 +843,9 @@
             button_hotkey_2.FlatStyle = FlatStyle.Flat;
             button_hotkey_2.Font = new Font("Segoe UI", 12F);
             button_hotkey_2.ForeColor = Color.Gray;
-            button_hotkey_2.Location = new Point(81, 3);
+            button_hotkey_2.Location = new Point(109, 3);
             button_hotkey_2.Name = "button_hotkey_2";
-            button_hotkey_2.Size = new Size(72, 114);
+            button_hotkey_2.Size = new Size(100, 114);
             button_hotkey_2.TabIndex = 4;
             button_hotkey_2.Text = "-";
             button_hotkey_2.TextAlign = ContentAlignment.BottomCenter;
@@ -863,9 +864,9 @@
             button_hotkey_3.FlatStyle = FlatStyle.Flat;
             button_hotkey_3.Font = new Font("Segoe UI", 12F);
             button_hotkey_3.ForeColor = Color.Gray;
-            button_hotkey_3.Location = new Point(159, 3);
+            button_hotkey_3.Location = new Point(215, 3);
             button_hotkey_3.Name = "button_hotkey_3";
-            button_hotkey_3.Size = new Size(72, 114);
+            button_hotkey_3.Size = new Size(100, 114);
             button_hotkey_3.TabIndex = 4;
             button_hotkey_3.Text = "-";
             button_hotkey_3.TextAlign = ContentAlignment.BottomCenter;
@@ -884,10 +885,10 @@
             button_sort.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_sort.FlatStyle = FlatStyle.Flat;
             button_sort.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_sort.Location = new Point(234, 0);
+            button_sort.Location = new Point(318, 0);
             button_sort.Margin = new Padding(0);
             button_sort.Name = "button_sort";
-            button_sort.Size = new Size(78, 120);
+            button_sort.Size = new Size(106, 120);
             button_sort.TabIndex = 2;
             button_sort.Text = "( 0 )";
             button_sort.TextAlign = ContentAlignment.BottomCenter;
@@ -906,10 +907,10 @@
             button_delete.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_delete.FlatStyle = FlatStyle.Flat;
             button_delete.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button_delete.Location = new Point(312, 0);
+            button_delete.Location = new Point(424, 0);
             button_delete.Margin = new Padding(0);
             button_delete.Name = "button_delete";
-            button_delete.Size = new Size(78, 120);
+            button_delete.Size = new Size(106, 120);
             button_delete.TabIndex = 3;
             button_delete.Text = "ลบทั้งหมด";
             button_delete.TextAlign = ContentAlignment.BottomCenter;
@@ -924,9 +925,9 @@
             label8.Dock = DockStyle.Fill;
             label8.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label8.ForeColor = Color.Red;
-            label8.Location = new Point(393, 0);
+            label8.Location = new Point(533, 0);
             label8.Name = "label8";
-            label8.Size = new Size(248, 120);
+            label8.Size = new Size(245, 120);
             label8.TabIndex = 5;
             label8.Text = "*คลิกขวาเพื่อลบ";
             label8.TextAlign = ContentAlignment.MiddleLeft;

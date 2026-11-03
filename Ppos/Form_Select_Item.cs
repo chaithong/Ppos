@@ -370,6 +370,11 @@ namespace Ppos
                 {
                     this.Close();
                 }
+                else if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    textBox_search.SelectAll();
+                }
             }
             catch
             {

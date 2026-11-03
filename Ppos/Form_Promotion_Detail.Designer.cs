@@ -566,6 +566,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "Form_Promotion_Detail";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "รายละเอียดโปรโมชั่น";
             Load += Form_Promotion_Detail_Load;

@@ -21,7 +21,7 @@ namespace Ppos
     public partial class Form_Load_Add : Form
     {
         string path_load;
-        bool status_upload,status_file;
+        bool status_upload, status_file;
         System.Data.DataTable dt;
         SQLiteDataReader dr;
 
@@ -684,7 +684,7 @@ namespace Ppos
                         }
                         else
                         {
-                            status_upload =false;
+                            status_upload = false;
                             status_file = false;
                         }
                     }
@@ -777,7 +777,7 @@ namespace Ppos
                 }
                 else
                 {
-                    if(status_file)
+                    if (status_file)
                     {
                         // แสดงปุ่มกด โหลด error
                         pictureBox_load_error.Visible = true;
@@ -1247,7 +1247,7 @@ namespace Ppos
             try
             {
                 System.Windows.Forms.Button button = (System.Windows.Forms.Button)sender;
-                button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size+2,button.Font.Style);
+                button.Font = new System.Drawing.Font("Segoe UI", button.Font.Size + 2, button.Font.Style);
             }
             catch
             {
@@ -1267,5 +1267,7 @@ namespace Ppos
 
             }
         }
+
+       
     }
 }

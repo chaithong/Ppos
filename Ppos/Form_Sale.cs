@@ -34,7 +34,7 @@ namespace Ppos
         public static string price_net;
         public static double discount_round;
 
-        public static string W_image_bar = "", W_item_bar = "", W_item_name = "", W_item_unit = "", W_item_price = "";
+        public static string W_image_bar = "", W_item_bar = "", W_item_name = "", W_item_unit = "", W_item_price = "",W_item_qty = "";
         bool hole_bill = false;
         bool discount_member = false;
         Panel parentPanel;
@@ -182,7 +182,7 @@ namespace Ppos
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 0, 0);
                     tableLayoutPanel_back.Controls.Add(tableLayoutPanel_left, 1, 0);
                 }
-                new TableLayoutResizer(tableLayoutPanel_back);
+                new TableLayoutResizer(tableLayoutPanel_back,this);
 
 
                 // ตรวจสอบสมาชิก
@@ -677,10 +677,10 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30)),
                                 dt_temp.Rows[i]["item_name"].ToString()!,
                                 Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(30, 30)),
-                                Convert.ToDouble(dt_temp.Rows[i]["item_qty"]).ToString("#,##0.000"),
+                                Convert.ToDouble(dt_temp.Rows[i]["item_qty"]).ToString("#,##0.###"),
                                 dt_temp.Rows[i]["item_unit"].ToString()!,
-                                Convert.ToDouble(dt_temp.Rows[i]["item_price"]).ToString("#,##0.00"),
-                                (Convert.ToDouble(dt_temp.Rows[i]["item_qty"]) * Convert.ToDouble(dt_temp.Rows[i]["item_price"])).ToString("#,##0.00"),
+                                Convert.ToDouble(dt_temp.Rows[i]["item_price"]).ToString("#,##0.##"),
+                                (Convert.ToDouble(dt_temp.Rows[i]["item_qty"]) * Convert.ToDouble(dt_temp.Rows[i]["item_price"])).ToString("#,##0.##"),
                                 pro,
                                 dt_temp.Rows[i]["pro_id"].ToString()!,
                                 dt_temp.Rows[i]["pro_type"].ToString()!,
@@ -782,7 +782,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                             textBox_search.Text = "";
                             return;
                         }
-                        qty = result.ToString("#,##0.000");
+                        qty = result.ToString("#,##0.###");
                         custom_qty = true;
                     }
                     else
@@ -835,7 +835,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 textBox_search.Text = "";
                                 return;
                             }
-                            qty = Convert.ToDouble(textBox_search.Text.Trim().Split("*")[0]).ToString("#,##0.000");
+                            qty = Convert.ToDouble(textBox_search.Text.Trim().Split("*")[0]).ToString("#,##0.###");
                             script = script_search(textBox_search.Text.Trim().Split("*")[1]);
                             custom_qty = true;
                         }
@@ -926,9 +926,10 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 W_item_name = dt.Rows[0]["name"].ToString()!;
                                 W_item_unit = dt.Rows[0]["unit"].ToString()!;
                                 W_item_price = dt.Rows[0]["price"].ToString()!;
+                                W_item_qty = "0";
 
                                 Form_Item_Weight form_Item_Weight = new Form_Item_Weight();
-                                form_Item_Weight.Size = new Size(this.Width / 3, this.Height / 2);
+                              
                                 form_Item_Weight.ShowDialog(this);
                                 form_Item_Weight.StartPosition = FormStartPosition.CenterParent;
                                 if (form_Item_Weight.exit)
@@ -1039,10 +1040,10 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30)),
                                 dt.Rows[0]["name"].ToString()!,
                                 Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(30, 30)),
-                                Convert.ToDouble(qty.Replace(",", "")).ToString("#,##0.000"),
+                                Convert.ToDouble(qty.Replace(",", "")).ToString("#,##0.###"),
                                 dt.Rows[0]["unit"].ToString()!,
-                                Convert.ToDouble(dt.Rows[0]["price"]).ToString("#,##0.00"),
-                                (Convert.ToDouble(qty.Replace(",", "")) * Convert.ToDouble(dt.Rows[0]["price"])).ToString("#,##0.00"),
+                                Convert.ToDouble(dt.Rows[0]["price"]).ToString("#,##0.##"),
+                                (Convert.ToDouble(qty.Replace(",", "")) * Convert.ToDouble(dt.Rows[0]["price"])).ToString("#,##0.##"),
                                 pro, // pro ถ้าเป็นสินค้าโปรจะแสดงคำนวน โปร
                                 dt.Rows[0]["pro_id"].ToString()!,
                                 dt.Rows[0]["pro_type"].ToString()!,
@@ -1304,6 +1305,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                         W_item_name = dataGridView_item.Rows[e.RowIndex].Cells["item_name"].Value!.ToString()!;
                         W_item_unit = dataGridView_item.Rows[e.RowIndex].Cells["item_unit"].Value!.ToString()!;
                         W_item_price = dataGridView_item.Rows[e.RowIndex].Cells["item_price"].Value!.ToString()!;
+                        W_item_qty = dataGridView_item.Rows[e.RowIndex].Cells["item_qty"].Value!.ToString()!;
 
                         Form_Item_Weight form_Item_Weight = new Form_Item_Weight();
                         form_Item_Weight.ShowDialog(this);
@@ -1412,7 +1414,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                             // แสดงในตาราง
                             dataGridView_item.Rows[e.RowIndex].Cells["item_qty"].Value = form_Item_Weight.weight;
                             dataGridView_item.Rows[e.RowIndex].Cells["item_price_total"].Value =
-                            (Convert.ToDouble(form_Item_Weight.weight.Replace(",", "")) * Convert.ToDouble(W_item_price.Replace(",", ""))).ToString("#,##0.00");
+                            (Convert.ToDouble(form_Item_Weight.weight.Replace(",", "")) * Convert.ToDouble(W_item_price.Replace(",", ""))).ToString("#,##0.##");
                         }
                     }
                     // กดดูโปร
@@ -1544,10 +1546,10 @@ hole FROM Invoice_Body_Temp where void = false ";
                                 Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30)),
                                 dt_temp.Rows[i]["item_name"].ToString()!,
                                 Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(30, 30)),
-                                Convert.ToDouble(dt_temp.Rows[i]["item_qty"]).ToString("#,##0.000"),
+                                Convert.ToDouble(dt_temp.Rows[i]["item_qty"]).ToString("#,##0.###"),
                                 dt_temp.Rows[i]["item_unit"].ToString()!,
-                                Convert.ToDouble(dt_temp.Rows[i]["item_price"]).ToString("#,##0.00"),
-                                (Convert.ToDouble(dt_temp.Rows[i]["item_qty"]) * Convert.ToDouble(dt_temp.Rows[i]["item_price"])).ToString("#,##0.00"),
+                                Convert.ToDouble(dt_temp.Rows[i]["item_price"]).ToString("#,##0.##"),
+                                (Convert.ToDouble(dt_temp.Rows[i]["item_qty"]) * Convert.ToDouble(dt_temp.Rows[i]["item_price"])).ToString("#,##0.##"),
                                 pro,
                                 dt_temp.Rows[i]["pro_id"].ToString()!,
                                 dt_temp.Rows[i]["pro_type"].ToString()!,
@@ -2238,12 +2240,18 @@ hole FROM Invoice_Body_Temp where void = false ";
                 // แสดงผลรวมด้านล่าง
                 // จำนวนทั้งหมด
                 string[] result = Class_Sale.sum_price();
-                label_sum_qty.Text = Convert.ToDouble(result[0]).ToString("#,##0.000");
-                label_sum_price.Text = Convert.ToDouble(result[1]).ToString("#,##0.00");
-                label_dis_pro.Text = Convert.ToDouble(result[2]).ToString("#,##0.00");
-                label_dis_member.Text = Convert.ToDouble(result[3]).ToString("#,##0.00");
-                label_dis_round.Text = Convert.ToDouble(result[4]).ToString("0.00");
-                label_price_net.Text = Convert.ToDouble(result[5]).ToString("#,##0.00");
+                /* label_sum_qty.Text = Convert.ToDouble(result[0]).ToString("#,##0.000");
+                 label_sum_price.Text = Convert.ToDouble(result[1]).ToString("#,##0.00");
+                 label_dis_pro.Text = Convert.ToDouble(result[2]).ToString("#,##0.00");
+                 label_dis_member.Text = Convert.ToDouble(result[3]).ToString("#,##0.00");
+                 label_dis_round.Text = Convert.ToDouble(result[4]).ToString("0.00");
+                 label_price_net.Text = Convert.ToDouble(result[5]).ToString("#,##0.00");*/
+                label_sum_qty.Text = Convert.ToDouble(result[0]).ToString("#,##0.###");
+                label_sum_price.Text = Convert.ToDouble(result[1]).ToString("#,##0.##");
+                label_dis_pro.Text = Convert.ToDouble(result[2]).ToString("#,##0.##");
+                label_dis_member.Text = Convert.ToDouble(result[3]).ToString("#,##0.##");
+                label_dis_round.Text = Convert.ToDouble(result[4]).ToString("0.##");
+                label_price_net.Text = Convert.ToDouble(result[5]).ToString("#,##0.##");
 
                 discount_round = Convert.ToDouble(result[4]);
             }
@@ -2290,7 +2298,7 @@ hole FROM Invoice_Body_Temp where void = false ";
             try
             {
                 if (dataGridView_item.RowCount > 0 &&
-                    label_price_net.Text != "0.00" //&& parentPanel.Controls.OfType<Form>().Count() == 1
+                    Convert.ToDouble(label_price_net.Text.Replace(",","")) > 0 //&& parentPanel.Controls.OfType<Form>().Count() == 1
                     )
                 {
                     // ส่งค่าให้ หน้า ชำระเงิน
@@ -2352,20 +2360,20 @@ hole FROM Invoice_Body_Temp where void = false ";
                 dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
 
                 //sum_qty = 0;
-                label_sum_qty.Text = "0.000";
+                label_sum_qty.Text = "0.###";
 
                 // sum_price = 0;
-                label_sum_price.Text = "0.00";
+                label_sum_price.Text = "0.##";
 
-                label_dis_pro.Text = "0.00";
+                label_dis_pro.Text = "0.##";
                 // tableLayoutPanel_discount_pro.Visible = false;
 
-                label_dis_member.Text = "0.00";
+                label_dis_member.Text = "0.##";
                 // tableLayoutPanel_discount_member.Visible = false;
 
-                label_price_net.Text = "0.00";
+                label_price_net.Text = "0.##";
 
-                label_dis_round.Text = "0.00";
+                label_dis_round.Text = "0.##";
 
                 // ถ้ามีสมาชิกจำทำการลบ
                 if (id_member != string.Empty)
@@ -2640,20 +2648,20 @@ hole FROM Invoice_Body_Temp where void = false ";
                         dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
 
                         //sum_qty = 0;
-                        label_sum_qty.Text = "0.000";
+                        label_sum_qty.Text = "0.###";
 
                         // sum_price = 0;
-                        label_sum_price.Text = "0.00";
+                        label_sum_price.Text = "0.##";
 
-                        label_dis_pro.Text = "0.00";
+                        label_dis_pro.Text = "0.##";
                         // tableLayoutPanel_discount_pro.Visible = false;
 
-                        label_dis_member.Text = "0.00";
+                        label_dis_member.Text = "0.##";
                         // tableLayoutPanel_discount_member.Visible = false;
 
-                        label_price_net.Text = "0.00";
+                        label_price_net.Text = "0.##";
 
-                        label_dis_round.Text = "0.00";
+                        label_dis_round.Text = "0.##";
                     }
 
                 }

@@ -217,7 +217,7 @@
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33334F));
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333473F));
             tableLayoutPanel_load.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_load.Size = new Size(580, 200);
+            tableLayoutPanel_load.Size = new Size(580, 210);
             tableLayoutPanel_load.TabIndex = 5;
             // 
             // label2
@@ -226,9 +226,9 @@
             label2.Dock = DockStyle.Fill;
             label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.Lime;
-            label2.Location = new Point(3, 66);
+            label2.Location = new Point(3, 69);
             label2.Name = "label2";
-            label2.Size = new Size(284, 66);
+            label2.Size = new Size(284, 70);
             label2.TabIndex = 0;
             label2.Text = "อัพโหลดเรียบร้อย :";
             label2.TextAlign = ContentAlignment.MiddleRight;
@@ -238,9 +238,9 @@
             label_item_load_complete.Dock = DockStyle.Fill;
             label_item_load_complete.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_item_load_complete.ForeColor = Color.Lime;
-            label_item_load_complete.Location = new Point(293, 66);
+            label_item_load_complete.Location = new Point(293, 69);
             label_item_load_complete.Name = "label_item_load_complete";
-            label_item_load_complete.Size = new Size(284, 66);
+            label_item_load_complete.Size = new Size(284, 70);
             label_item_load_complete.TabIndex = 1;
             label_item_load_complete.Text = "0";
             label_item_load_complete.TextAlign = ContentAlignment.MiddleLeft;
@@ -252,7 +252,7 @@
             label4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             label4.Location = new Point(3, 0);
             label4.Name = "label4";
-            label4.Size = new Size(284, 66);
+            label4.Size = new Size(284, 69);
             label4.TabIndex = 0;
             label4.Text = "อัพโหลดสินค้า :";
             label4.TextAlign = ContentAlignment.MiddleRight;
@@ -264,7 +264,7 @@
             label_item_load.ForeColor = Color.Black;
             label_item_load.Location = new Point(293, 0);
             label_item_load.Name = "label_item_load";
-            label_item_load.Size = new Size(284, 66);
+            label_item_load.Size = new Size(284, 69);
             label_item_load.TabIndex = 1;
             label_item_load.Text = "0";
             label_item_load.TextAlign = ContentAlignment.MiddleLeft;
@@ -275,9 +275,9 @@
             label7.Dock = DockStyle.Fill;
             label7.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(3, 132);
+            label7.Location = new Point(3, 139);
             label7.Name = "label7";
-            label7.Size = new Size(284, 68);
+            label7.Size = new Size(284, 71);
             label7.TabIndex = 0;
             label7.Text = "ข้อมูลไม่ถูกต้อง :";
             label7.TextAlign = ContentAlignment.MiddleRight;
@@ -287,9 +287,9 @@
             label_item_data_error.Dock = DockStyle.Fill;
             label_item_data_error.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_item_data_error.ForeColor = Color.Red;
-            label_item_data_error.Location = new Point(293, 132);
+            label_item_data_error.Location = new Point(293, 139);
             label_item_data_error.Name = "label_item_data_error";
-            label_item_data_error.Size = new Size(284, 68);
+            label_item_data_error.Size = new Size(284, 71);
             label_item_data_error.TabIndex = 1;
             label_item_data_error.Text = "0";
             label_item_data_error.TextAlign = ContentAlignment.MiddleLeft;
@@ -303,12 +303,12 @@
             tableLayoutPanel_button.Controls.Add(panel_dowload_templete, 0, 0);
             tableLayoutPanel_button.Controls.Add(panel_dowload_error, 1, 0);
             tableLayoutPanel_button.Dock = DockStyle.Bottom;
-            tableLayoutPanel_button.Location = new Point(10, 310);
+            tableLayoutPanel_button.Location = new Point(10, 320);
             tableLayoutPanel_button.Name = "tableLayoutPanel_button";
             tableLayoutPanel_button.RowCount = 1;
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_button.Size = new Size(580, 80);
+            tableLayoutPanel_button.Size = new Size(580, 70);
             tableLayoutPanel_button.TabIndex = 6;
             // 
             // panel_dowload_templete
@@ -318,7 +318,7 @@
             panel_dowload_templete.Dock = DockStyle.Fill;
             panel_dowload_templete.Location = new Point(3, 3);
             panel_dowload_templete.Name = "panel_dowload_templete";
-            panel_dowload_templete.Size = new Size(284, 74);
+            panel_dowload_templete.Size = new Size(284, 64);
             panel_dowload_templete.TabIndex = 0;
             // 
             // button_load_template
@@ -333,7 +333,7 @@
             button_load_template.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_load_template.Location = new Point(0, 0);
             button_load_template.Name = "button_load_template";
-            button_load_template.Size = new Size(284, 74);
+            button_load_template.Size = new Size(284, 64);
             button_load_template.TabIndex = 0;
             button_load_template.TabStop = false;
             button_load_template.Text = "รูปแบบเพิ่มสินค้า";
@@ -351,7 +351,7 @@
             pictureBox_load.Image = Properties.Resources.load;
             pictureBox_load.Location = new Point(0, 0);
             pictureBox_load.Name = "pictureBox_load";
-            pictureBox_load.Size = new Size(284, 74);
+            pictureBox_load.Size = new Size(284, 64);
             pictureBox_load.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_load.TabIndex = 1;
             pictureBox_load.TabStop = false;
@@ -363,7 +363,7 @@
             panel_dowload_error.Dock = DockStyle.Fill;
             panel_dowload_error.Location = new Point(293, 3);
             panel_dowload_error.Name = "panel_dowload_error";
-            panel_dowload_error.Size = new Size(284, 74);
+            panel_dowload_error.Size = new Size(284, 64);
             panel_dowload_error.TabIndex = 1;
             // 
             // button_load_error
@@ -379,7 +379,7 @@
             button_load_error.ForeColor = Color.Red;
             button_load_error.Location = new Point(0, 0);
             button_load_error.Name = "button_load_error";
-            button_load_error.Size = new Size(284, 74);
+            button_load_error.Size = new Size(284, 64);
             button_load_error.TabIndex = 0;
             button_load_error.TabStop = false;
             button_load_error.Text = "ข้อมูลไม่ถูกต้อง";
@@ -398,7 +398,7 @@
             pictureBox_load_error.Image = Properties.Resources.load;
             pictureBox_load_error.Location = new Point(0, 0);
             pictureBox_load_error.Name = "pictureBox_load_error";
-            pictureBox_load_error.Size = new Size(284, 74);
+            pictureBox_load_error.Size = new Size(284, 64);
             pictureBox_load_error.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox_load_error.TabIndex = 1;
             pictureBox_load_error.TabStop = false;

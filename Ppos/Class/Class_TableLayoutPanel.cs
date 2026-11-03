@@ -10,14 +10,16 @@ using System.Windows.Forms;
 public class TableLayoutResizer
 {
     private readonly TableLayoutPanel _tableLayoutPanel;
+    private readonly Form _form;
     private bool _isResizingColumn = false;
     private int _lastX = -1;
 
-    public TableLayoutResizer(TableLayoutPanel tableLayoutPanel)
+    public TableLayoutResizer(TableLayoutPanel tableLayoutPanel,Form form)
     {
         try
         {
             _tableLayoutPanel = tableLayoutPanel ?? throw new ArgumentNullException(nameof(tableLayoutPanel));
+            _form = form;
 
             // เปิด DoubleBuffered ลดอาการกระพริบ
             EnableDoubleBuffering(_tableLayoutPanel);
@@ -33,13 +35,18 @@ public class TableLayoutResizer
     private void EnableDoubleBuffering(Control control)
     {
         PropertyInfo property = typeof(Control).GetProperty("DoubleBuffered",BindingFlags.NonPublic | BindingFlags.Instance)!;
-        property?.SetValue(control, true, null);
+       // property?.SetValue(control, true, null);
+        if (property != null)
+        {
+            property.SetValue(control, true, null);
+        }
     }
 
     private void InitializeEvents()
     {
-        if((_tableLayoutPanel.Name == "tableLayoutPanel_back" ) ||
-            _tableLayoutPanel.Name == "tableLayoutPanel_back_pay" && Class_Parameter.pay_show_keypad)
+        if(_tableLayoutPanel.Name == "tableLayoutPanel_back"  ||
+            (_tableLayoutPanel.Name == "tableLayoutPanel_back_pay" && Class_Parameter.pay_show_keypad)
+            )
         {
             _tableLayoutPanel.MouseDown += TableLayoutPanel_MouseDown!;
             _tableLayoutPanel.MouseMove += TableLayoutPanel_MouseMove!;
@@ -55,8 +62,9 @@ public class TableLayoutResizer
         {
             if (ctrl != _tableLayoutPanel)
             {
-                if ((_tableLayoutPanel.Name == "tableLayoutPanel_back" ) ||
-                 _tableLayoutPanel.Name == "tableLayoutPanel_back_pay" && Class_Parameter.pay_show_keypad)
+                if (_tableLayoutPanel.Name == "tableLayoutPanel_back"  ||
+                 (_tableLayoutPanel.Name == "tableLayoutPanel_back_pay" && Class_Parameter.pay_show_keypad)
+                 )
                 {
                     ctrl.MouseMove += InnerControl_MouseMove!;
                     ctrl.MouseDown += InnerControl_MouseDown!;
@@ -187,8 +195,8 @@ public class TableLayoutResizer
                 con_sqlite.Open();
                 using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                 {
-                   // MessageBox.Show(_tableLayoutPanel.Name+" "+ _tableLayoutPanel.ColumnStyles[0].Width);
-                    if(_tableLayoutPanel.Name == "tableLayoutPanel_back")
+                  
+                    if(_form.Name == "Form_Sale")
                     {
                         Class_Parameter.sale_left_width = _tableLayoutPanel.ColumnStyles[0].Width;
                         // update 
@@ -199,7 +207,7 @@ public class TableLayoutResizer
                                                  "where title = 'sale_left_width'";
                        
                     }
-                    else
+                    else if (_form.Name == "Form_Pay")
                     {
                         Class_Parameter.pay_left_width = _tableLayoutPanel.ColumnStyles[0].Width;
                         // update 

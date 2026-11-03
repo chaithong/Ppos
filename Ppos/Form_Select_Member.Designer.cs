@@ -273,6 +273,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "Form_Select_Member";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "ค้นหาสมาชิก";
             Load += Form_Select_Member_Load;

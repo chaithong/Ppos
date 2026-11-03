@@ -28,7 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(0, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(800, 450);
+            label1.TabIndex = 0;
+            label1.Text = "อยู่ระหว่างพัฒนา";
+            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form_Report_Sale
             // 
@@ -36,6 +48,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form_Report_Sale";
             Text = "Form_Report_Sale";
@@ -43,5 +56,7 @@
         }
 
         #endregion
+
+        private Label label1;
     }
 }

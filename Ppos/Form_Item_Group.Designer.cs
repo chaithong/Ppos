@@ -40,6 +40,7 @@
             panel_back = new Panel();
             dataGridView_group = new DataGridView();
             Column1 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
             maingroup = new DataGridViewTextBoxColumn();
             subgroup = new DataGridViewTextBoxColumn();
             delete = new DataGridViewImageColumn();
@@ -69,15 +70,16 @@
             // tableLayoutPanel_back_top
             // 
             tableLayoutPanel_back_top.BackColor = Color.FromArgb(128, 255, 128);
-            tableLayoutPanel_back_top.ColumnCount = 5;
+            tableLayoutPanel_back_top.ColumnCount = 6;
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_back_top.Controls.Add(button_add_group, 3, 0);
-            tableLayoutPanel_back_top.Controls.Add(textBox_subgroup, 2, 0);
-            tableLayoutPanel_back_top.Controls.Add(textBox_maingroup, 1, 0);
+            tableLayoutPanel_back_top.Controls.Add(button_add_group, 4, 0);
+            tableLayoutPanel_back_top.Controls.Add(textBox_subgroup, 3, 0);
+            tableLayoutPanel_back_top.Controls.Add(textBox_maingroup, 2, 0);
             tableLayoutPanel_back_top.Dock = DockStyle.Fill;
             tableLayoutPanel_back_top.Location = new Point(0, 0);
             tableLayoutPanel_back_top.Margin = new Padding(0);
@@ -96,7 +98,7 @@
             button_add_group.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_add_group.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_add_group.FlatStyle = FlatStyle.Flat;
-            button_add_group.Location = new Point(722, 0);
+            button_add_group.Location = new Point(784, 0);
             button_add_group.Margin = new Padding(0);
             button_add_group.Name = "button_add_group";
             button_add_group.Size = new Size(125, 50);
@@ -112,7 +114,7 @@
             textBox_subgroup.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_subgroup.BorderStyle = BorderStyle.None;
             textBox_subgroup.Font = new Font("Segoe UI", 16.2F);
-            textBox_subgroup.Location = new Point(425, 7);
+            textBox_subgroup.Location = new Point(487, 7);
             textBox_subgroup.Margin = new Padding(3, 0, 0, 0);
             textBox_subgroup.Name = "textBox_subgroup";
             textBox_subgroup.Size = new Size(297, 36);
@@ -126,7 +128,7 @@
             textBox_maingroup.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_maingroup.BorderStyle = BorderStyle.None;
             textBox_maingroup.Font = new Font("Segoe UI", 16.2F);
-            textBox_maingroup.Location = new Point(122, 7);
+            textBox_maingroup.Location = new Point(184, 7);
             textBox_maingroup.Margin = new Padding(0, 0, 3, 0);
             textBox_maingroup.Name = "textBox_maingroup";
             textBox_maingroup.Size = new Size(297, 36);
@@ -167,7 +169,7 @@
             dataGridView_group.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView_group.ColumnHeadersHeight = 50;
             dataGridView_group.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView_group.Columns.AddRange(new DataGridViewColumn[] { Column1, maingroup, subgroup, delete, Column2 });
+            dataGridView_group.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, maingroup, subgroup, delete, Column2 });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
             dataGridViewCellStyle4.Font = new Font("Segoe UI", 13.8F);
@@ -204,6 +206,14 @@
             Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
             Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.HeaderText = "";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            Column3.Width = 125;
             // 
             // maingroup
             // 
@@ -274,6 +284,7 @@
         private TextBox textBox_maingroup;
         private Panel panel_back;
         private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn maingroup;
         private DataGridViewTextBoxColumn subgroup;
         private DataGridViewImageColumn delete;

@@ -78,7 +78,6 @@
             // 
             // customGroupBox
             // 
-            customGroupBox.Anchor = AnchorStyles.Top;
             customGroupBox.AutoSize = true;
             customGroupBox.BorderColor = Color.Cyan;
             customGroupBox.BorderRadius = 30;
@@ -493,6 +492,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form_Setting_Store";
             Text = "Form_Setting_Store";
+            Resize += Form_Setting_Store_Resize;
             panel_detail.ResumeLayout(false);
             panel_detail.PerformLayout();
             customGroupBox.ResumeLayout(false);

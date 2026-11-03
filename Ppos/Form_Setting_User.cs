@@ -27,7 +27,7 @@ namespace Ppos
                 column.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
             new Class_TouchGrid(dataGridView_user);
-            dataGridView_user.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,255);
+            dataGridView_user.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
             dataGridView_user.EnableHeadersVisualStyles = false;
 
             button_add_user.Image = Class_Image.resizeImage(Ppos.Properties.Resources.create, new Size(40, 40));
@@ -90,6 +90,7 @@ namespace Ppos
                                 }
                                 dataGridView_user.Rows.Insert(0,
                                     "",
+                                    "",
                                     dt.Rows[i][0].ToString(),
                                     dt.Rows[i][1].ToString(),
                                     trash,
@@ -144,6 +145,7 @@ namespace Ppos
                                                     "VALUES('" + Class_Parameter.User_Login + "',datetime('now', 'localtime'),'','','" + textBox_user.Text + "','" + textBox_pass.Text + "',false,false,true)";
                                 cmd_sqlite.ExecuteNonQuery();
                                 dataGridView_user.Rows.Insert(0,
+                                    "",
                                     "",
                                     textBox_user.Text,
                                     textBox_pass.Text,

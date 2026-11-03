@@ -76,7 +76,7 @@ namespace Ppos
 
                         if (dt.Rows.Count > 0)
                         {
-                            label_sum_bill.Text = Convert.ToDouble(dt.Rows[0]["bill"]).ToString("#,##0");
+                           // label_sum_bill.Text = Convert.ToDouble(dt.Rows[0]["bill"]).ToString("#,##0");
                            
 
                            
@@ -98,7 +98,7 @@ namespace Ppos
                         }
                         else
                         {
-                            label_sum_bill.Text = "0";
+                           // label_sum_bill.Text = "0";
                            
                             label_sum_price.Text = "0";
                             label_sum_dis_pro.Text = "0";

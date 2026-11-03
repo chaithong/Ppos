@@ -51,6 +51,7 @@ namespace Ppos
                 label_item_name.Text = Form_Sale.W_item_name;
                 label_item_unit.Text = Form_Sale.W_item_unit;
                 label_item_price.Text = Form_Sale.W_item_price;
+                textBox_weight.Text = Form_Sale.W_item_qty;
 
                 button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(50, 50));
              
@@ -85,7 +86,7 @@ namespace Ppos
                 {
                     if (w > 0)
                     {
-                        weight = Convert.ToDouble(textBox_weight.Text).ToString("#,##0.000");
+                        weight = Convert.ToDouble(textBox_weight.Text).ToString("#,##0.###");
                         exit = false;
                         this.Close();
                     }
@@ -125,6 +126,7 @@ namespace Ppos
             {
               
                 textBox_weight.Focus();
+                textBox_weight.SelectAll();
 
             }
             catch

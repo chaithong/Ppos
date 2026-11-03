@@ -127,9 +127,9 @@ namespace Ppos
                 }
                 else
                 {
-                    if(store_no.Text.Trim() != string.Empty)
+                    if (store_no.Text.Trim() != string.Empty)
                     {
-                        if(store_name.Text.Trim() != string.Empty)
+                        if (store_name.Text.Trim() != string.Empty)
                         {
                             // ถ้ามีภาพ master
                             if (System.IO.File.Exists(Form_Login.logo_path + @"\master.Png"))
@@ -431,6 +431,20 @@ namespace Ppos
                 System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
 
                 label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Form_Setting_Store_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                customGroupBox.Location = new System.Drawing.Point(
+                              (panel_detail.Width / 2) - (customGroupBox.Width / 2),
+                              10);
             }
             catch
             {

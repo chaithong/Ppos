@@ -69,10 +69,6 @@
             label_member = new Label();
             label_member_title = new Label();
             tableLayoutPanel_detail_sum = new TableLayoutPanel();
-            label_price_net = new Label();
-            label_dis_round = new Label();
-            label6 = new Label();
-            label5 = new Label();
             label_dis_point = new Label();
             label7 = new Label();
             label_dis_member = new Label();
@@ -83,9 +79,13 @@
             label2 = new Label();
             label1 = new Label();
             label_sum_qty = new Label();
-            backgroundWorker_void = new System.ComponentModel.BackgroundWorker();
+            label_price_net = new Label();
+            label6 = new Label();
+            label_dis_round = new Label();
+            label5 = new Label();
             label8 = new Label();
             label_dis_custom = new Label();
+            backgroundWorker_void = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_bill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
             tableLayoutPanel_bottom.SuspendLayout();
@@ -519,64 +519,6 @@
             tableLayoutPanel_detail_sum.Size = new Size(844, 275);
             tableLayoutPanel_detail_sum.TabIndex = 3;
             // 
-            // label_price_net
-            // 
-            label_price_net.Dock = DockStyle.Fill;
-            label_price_net.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_price_net.Location = new Point(200, 224);
-            label_price_net.Margin = new Padding(0);
-            label_price_net.Name = "label_price_net";
-            label_price_net.Size = new Size(200, 51);
-            label_price_net.TabIndex = 2;
-            label_price_net.Text = "0.00";
-            label_price_net.TextAlign = ContentAlignment.MiddleRight;
-            label_price_net.MouseEnter += label_enter;
-            label_price_net.MouseLeave += label_leave;
-            // 
-            // label_dis_round
-            // 
-            label_dis_round.Dock = DockStyle.Fill;
-            label_dis_round.Font = new Font("Segoe UI", 12F);
-            label_dis_round.Location = new Point(200, 192);
-            label_dis_round.Margin = new Padding(0);
-            label_dis_round.Name = "label_dis_round";
-            label_dis_round.Padding = new Padding(0, 0, 6, 0);
-            label_dis_round.Size = new Size(200, 32);
-            label_dis_round.TabIndex = 2;
-            label_dis_round.Text = "0.00";
-            label_dis_round.TextAlign = ContentAlignment.MiddleRight;
-            label_dis_round.MouseEnter += label_enter;
-            label_dis_round.MouseLeave += label_leave;
-            // 
-            // label6
-            // 
-            label6.Dock = DockStyle.Fill;
-            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(0, 224);
-            label6.Margin = new Padding(0);
-            label6.Name = "label6";
-            label6.Size = new Size(200, 51);
-            label6.TabIndex = 1;
-            label6.Text = "ราคาสุทธิ :";
-            label6.TextAlign = ContentAlignment.MiddleRight;
-            label6.MouseEnter += label_enter;
-            label6.MouseLeave += label_leave;
-            // 
-            // label5
-            // 
-            label5.Dock = DockStyle.Fill;
-            label5.Font = new Font("Segoe UI", 12F);
-            label5.Location = new Point(0, 192);
-            label5.Margin = new Padding(0);
-            label5.Name = "label5";
-            label5.Padding = new Padding(0, 0, 6, 0);
-            label5.Size = new Size(200, 32);
-            label5.TabIndex = 0;
-            label5.Text = "ส่วนลดปัดเศษ :";
-            label5.TextAlign = ContentAlignment.MiddleRight;
-            label5.MouseEnter += label_enter;
-            label5.MouseLeave += label_leave;
-            // 
             // label_dis_point
             // 
             label_dis_point.Dock = DockStyle.Fill;
@@ -587,7 +529,7 @@
             label_dis_point.Padding = new Padding(0, 0, 6, 0);
             label_dis_point.Size = new Size(200, 32);
             label_dis_point.TabIndex = 2;
-            label_dis_point.Text = "0.00";
+            label_dis_point.Text = "0";
             label_dis_point.TextAlign = ContentAlignment.MiddleRight;
             label_dis_point.MouseEnter += label_enter;
             label_dis_point.MouseLeave += label_leave;
@@ -617,7 +559,7 @@
             label_dis_member.Padding = new Padding(0, 0, 6, 0);
             label_dis_member.Size = new Size(200, 32);
             label_dis_member.TabIndex = 2;
-            label_dis_member.Text = "0.00";
+            label_dis_member.Text = "0";
             label_dis_member.TextAlign = ContentAlignment.MiddleRight;
             label_dis_member.MouseEnter += label_enter;
             label_dis_member.MouseLeave += label_leave;
@@ -647,7 +589,7 @@
             label_dis_pro.Padding = new Padding(0, 0, 6, 0);
             label_dis_pro.Size = new Size(200, 32);
             label_dis_pro.TabIndex = 2;
-            label_dis_pro.Text = "0.00";
+            label_dis_pro.Text = "0";
             label_dis_pro.TextAlign = ContentAlignment.MiddleRight;
             label_dis_pro.MouseEnter += label_enter;
             label_dis_pro.MouseLeave += label_leave;
@@ -677,7 +619,7 @@
             label_sum_price.Padding = new Padding(0, 0, 6, 0);
             label_sum_price.Size = new Size(200, 32);
             label_sum_price.TabIndex = 2;
-            label_sum_price.Text = "0.00";
+            label_sum_price.Text = "0";
             label_sum_price.TextAlign = ContentAlignment.MiddleRight;
             label_sum_price.MouseEnter += label_enter;
             label_sum_price.MouseLeave += label_leave;
@@ -722,15 +664,68 @@
             label_sum_qty.Padding = new Padding(0, 0, 6, 0);
             label_sum_qty.Size = new Size(200, 32);
             label_sum_qty.TabIndex = 2;
-            label_sum_qty.Text = "0.000";
+            label_sum_qty.Text = "0";
             label_sum_qty.TextAlign = ContentAlignment.MiddleRight;
             label_sum_qty.MouseEnter += label_enter;
             label_sum_qty.MouseLeave += label_leave;
             // 
-            // backgroundWorker_void
+            // label_price_net
             // 
-            backgroundWorker_void.DoWork += backgroundWorker_void_DoWork;
-            backgroundWorker_void.RunWorkerCompleted += backgroundWorker_void_RunWorkerCompleted;
+            label_price_net.Dock = DockStyle.Fill;
+            label_price_net.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label_price_net.Location = new Point(200, 224);
+            label_price_net.Margin = new Padding(0);
+            label_price_net.Name = "label_price_net";
+            label_price_net.Size = new Size(200, 51);
+            label_price_net.TabIndex = 2;
+            label_price_net.Text = "0";
+            label_price_net.TextAlign = ContentAlignment.MiddleRight;
+            label_price_net.MouseEnter += label_enter;
+            label_price_net.MouseLeave += label_leave;
+            // 
+            // label6
+            // 
+            label6.Dock = DockStyle.Fill;
+            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.Location = new Point(0, 224);
+            label6.Margin = new Padding(0);
+            label6.Name = "label6";
+            label6.Size = new Size(200, 51);
+            label6.TabIndex = 1;
+            label6.Text = "ราคาสุทธิ :";
+            label6.TextAlign = ContentAlignment.MiddleRight;
+            label6.MouseEnter += label_enter;
+            label6.MouseLeave += label_leave;
+            // 
+            // label_dis_round
+            // 
+            label_dis_round.Dock = DockStyle.Fill;
+            label_dis_round.Font = new Font("Segoe UI", 12F);
+            label_dis_round.Location = new Point(200, 192);
+            label_dis_round.Margin = new Padding(0);
+            label_dis_round.Name = "label_dis_round";
+            label_dis_round.Padding = new Padding(0, 0, 6, 0);
+            label_dis_round.Size = new Size(200, 32);
+            label_dis_round.TabIndex = 2;
+            label_dis_round.Text = "0";
+            label_dis_round.TextAlign = ContentAlignment.MiddleRight;
+            label_dis_round.MouseEnter += label_enter;
+            label_dis_round.MouseLeave += label_leave;
+            // 
+            // label5
+            // 
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Segoe UI", 12F);
+            label5.Location = new Point(0, 192);
+            label5.Margin = new Padding(0);
+            label5.Name = "label5";
+            label5.Padding = new Padding(0, 0, 6, 0);
+            label5.Size = new Size(200, 32);
+            label5.TabIndex = 0;
+            label5.Text = "ส่วนลดปัดเศษ :";
+            label5.TextAlign = ContentAlignment.MiddleRight;
+            label5.MouseEnter += label_enter;
+            label5.MouseLeave += label_leave;
             // 
             // label8
             // 
@@ -757,10 +752,15 @@
             label_dis_custom.Padding = new Padding(0, 0, 6, 0);
             label_dis_custom.Size = new Size(200, 32);
             label_dis_custom.TabIndex = 2;
-            label_dis_custom.Text = "0.00";
+            label_dis_custom.Text = "0";
             label_dis_custom.TextAlign = ContentAlignment.MiddleRight;
             label_dis_custom.MouseEnter += label_enter;
             label_dis_custom.MouseLeave += label_leave;
+            // 
+            // backgroundWorker_void
+            // 
+            backgroundWorker_void.DoWork += backgroundWorker_void_DoWork;
+            backgroundWorker_void.RunWorkerCompleted += backgroundWorker_void_RunWorkerCompleted;
             // 
             // Form_Invoice_Detail
             // 
@@ -773,6 +773,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "Form_Invoice_Detail";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Load += Form_Invoice_Detail_Load;
             tableLayoutPanel_bill.ResumeLayout(false);

@@ -34,13 +34,13 @@ namespace Ppos
         {
             try
             {
-              /*  tableLayoutPanel_back_detail.ColumnStyles[1].Width = (this.Width * (100 - Class_Parameter.sale_left_width) / 100) - dataGridView_item.Width;
-                tableLayoutPanel_set.ColumnStyles[5].Width = tableLayoutPanel_back_detail.ColumnStyles[1].Width / 2;
-                tableLayoutPanel_set.ColumnStyles[6].Width = tableLayoutPanel_back_detail.ColumnStyles[1].Width / 2;
+                /*  tableLayoutPanel_back_detail.ColumnStyles[1].Width = (this.Width * (100 - Class_Parameter.sale_left_width) / 100) - dataGridView_item.Width;
+                  tableLayoutPanel_set.ColumnStyles[5].Width = tableLayoutPanel_back_detail.ColumnStyles[1].Width / 2;
+                  tableLayoutPanel_set.ColumnStyles[6].Width = tableLayoutPanel_back_detail.ColumnStyles[1].Width / 2;
 
-                pictureBox_load_hotkey.Location = new System.Drawing.Point(
-                  panel_detail.Location.X + (panel_detail.Width / 2) - (pictureBox_load_hotkey.Width / 2),
-                  panel_detail.Location.Y + (panel_detail.Height / 2) - (pictureBox_load_hotkey.Height / 2));*/
+                  pictureBox_load_hotkey.Location = new System.Drawing.Point(
+                    panel_detail.Location.X + (panel_detail.Width / 2) - (pictureBox_load_hotkey.Width / 2),
+                    panel_detail.Location.Y + (panel_detail.Height / 2) - (pictureBox_load_hotkey.Height / 2));*/
             }
             catch
             {
@@ -54,7 +54,10 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
 
-                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+                new TableLayoutResizer(tableLayoutPanel_back, this);
+
+                // ต้องใช้เฉพาะ ใช้ร่วมกดไม่ได้
+                EnableDragScroll(panel_set);
 
                 panel_detail.Controls.Add(pictureBox_load_hotkey);
                 pictureBox_load_hotkey.Size = new Size(200, 200);
@@ -62,7 +65,7 @@ namespace Ppos
                 pictureBox_load_hotkey.SizeMode = PictureBoxSizeMode.Zoom;
                 pictureBox_load_hotkey.BackColor = System.Drawing.Color.Transparent;
 
-              
+
 
 
                 button_hotkey_1.Image = Class_Image.resizeImage(Ppos.Properties.Resources.additem, new Size(40, 40));
@@ -161,13 +164,10 @@ namespace Ppos
 
                 ColorComboBoxHelper.Initialize(comboBox_font_color);
 
-                ColorComboBoxHelper.SetSelectedColor(comboBox_font_color, Class_Parameter.font_color);
-
-                
-                // ต้องใช้เฉพาะ ใช้ร่วมกดไม่ได้
-                EnableDragScroll(panel_set);
+                ColorComboBoxHelper.SetSelectedColor(comboBox_font_color, Class_Parameter.font_color);         
 
                 Enable(false);
+               
             }
             catch
             {
@@ -438,6 +438,7 @@ namespace Ppos
                 Class_Scroll_Panel.EnableDragScroll(panel_detail);
                 Enable(true);
                 load = false;
+                textBox_search.Focus();
             }
             catch (Exception ex)
             {
@@ -1800,6 +1801,22 @@ namespace Ppos
                         cmd_sqlite.ExecuteNonQuery();
                         Class_Parameter.hotkey_hot_sale_limit = comboBox_hot_limit.Text;
                     }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void textBox_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    textBox_search.SelectAll();
                 }
             }
             catch

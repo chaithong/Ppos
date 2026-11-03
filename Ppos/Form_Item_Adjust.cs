@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YourProjectNamespace;
 
 namespace Ppos
 {
@@ -27,10 +28,7 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
-                customGroupBox.Location = new Point(
-                 (panel_detail.Width / 2) - (customGroupBox.Width / 2),
-                 10);
-                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+                
                 if (!Class_Parameter.custom_cost_adjust)
                 {
                     // tableLayoutPanel_group.Visible = false;
@@ -45,6 +43,10 @@ namespace Ppos
                                              ;
                 }
 
+                // เรียกใช้งานจาก Class คอนโทรลจะอยู่ตรงกลางและเลื่อน Scroll ได้ทันที
+                ControlHelper.SetupCenterWithScroll(panel_detail, customGroupBox);
+                // ปรับขนาด tablelayoutpanel_back
+                new TableLayoutResizer(tableLayoutPanel_back, this);
 
 
                 dataGridView_item.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item, true, null);
@@ -55,7 +57,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_item);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event
@@ -159,7 +161,7 @@ namespace Ppos
             try
             {
                 search();
-                timer_show.Start();            
+                timer_show.Start();
 
             }
             catch
@@ -173,12 +175,12 @@ namespace Ppos
             {
                 shows++;
 
-                 if (shows == 1)
+                if (shows == 1)
                 {
                     tableLayoutPanel_group.Visible = true;
 
                 }
-                else if(shows == 2)
+                else if (shows == 2)
                 {
                     tableLayoutPanel_item_detail.Visible = true;
 
@@ -188,14 +190,14 @@ namespace Ppos
                         timer_show.Stop();
                     }
                 }
-                else if(shows == 3)
+                else if (shows == 3)
                 {
-                   
+
                     tableLayoutPanel_back_cost.Visible = true;
                     textBox_search.Focus();
                     timer_show.Stop();
                 }
-               
+
             }
             catch
             {
@@ -277,7 +279,7 @@ namespace Ppos
                 return null!;
             }
         }
-      
+
 
         private void textBox_search_TextChanged(object sender, EventArgs e)
         {
@@ -481,16 +483,16 @@ namespace Ppos
             {
                 // ปรับสีปุ่ม
                 button_increase.FlatStyle = FlatStyle.Standard;
-                button_increase.BackColor = Color.FromArgb(192, 255, 192);
+                // button_increase.BackColor = Color.FromArgb(192, 255, 192);
                 button_increase.ForeColor = Color.Black;
 
 
                 button_decrease.FlatStyle = FlatStyle.Flat;
-                button_decrease.BackColor = Color.FromArgb(128,255,128);
+                // button_decrease.BackColor = Color.FromArgb(128, 255, 128);
                 button_decrease.ForeColor = Color.Gray;
 
                 button_custom.FlatStyle = FlatStyle.Flat;
-                button_custom.BackColor = Color.FromArgb(128,255,128);
+                // button_custom.BackColor = Color.FromArgb(128, 255, 128);
                 button_custom.ForeColor = Color.Gray;
 
 
@@ -509,15 +511,15 @@ namespace Ppos
             {
                 // ปรับสีปุ่ม
                 button_increase.FlatStyle = FlatStyle.Flat;
-                button_increase.BackColor = Color.FromArgb(128,255,128);
+                // button_increase.BackColor = Color.FromArgb(128, 255, 128);
                 button_increase.ForeColor = Color.Gray;
 
                 button_decrease.FlatStyle = FlatStyle.Standard;
-                button_decrease.BackColor = Color.FromArgb(192, 255, 192);
+                // button_decrease.BackColor = Color.FromArgb(192, 255, 192);
                 button_decrease.ForeColor = Color.Black;
 
                 button_custom.FlatStyle = FlatStyle.Flat;
-                button_custom.BackColor = Color.FromArgb(128,255,128);
+                // button_custom.BackColor = Color.FromArgb(128, 255, 128);
                 button_custom.ForeColor = Color.Gray;
 
 
@@ -536,15 +538,15 @@ namespace Ppos
             {
                 // ปรับสีปุ่ม
                 button_increase.FlatStyle = FlatStyle.Flat;
-                button_increase.BackColor = Color.FromArgb(128,255,128);
+                //  button_increase.BackColor = Color.FromArgb(128, 255, 128);
                 button_increase.ForeColor = Color.Gray;
 
                 button_decrease.FlatStyle = FlatStyle.Flat;
-                button_decrease.BackColor = Color.FromArgb(128,255,128);
+                // button_decrease.BackColor = Color.FromArgb(128, 255, 128);
                 button_decrease.ForeColor = Color.Gray;
 
                 button_custom.FlatStyle = FlatStyle.Standard;
-                button_custom.BackColor = Color.FromArgb(192, 255, 192);
+                // button_custom.BackColor = Color.FromArgb(192, 255, 192);
                 button_custom.ForeColor = Color.Black;
 
 
@@ -809,7 +811,7 @@ namespace Ppos
             try
             {
                 // button_cost_last.FlatStyle = FlatStyle.Standard;
-                button_cost_last.BackColor = Color.FromArgb(128,255,128);
+                button_cost_last.BackColor = Color.FromArgb(128, 255, 128);
                 button_cost_last.ForeColor = Color.Black;
 
                 // button_cost_avg.FlatStyle = FlatStyle.Flat;
@@ -845,7 +847,7 @@ namespace Ppos
                 button_cost_last.ForeColor = Color.Gray;
 
                 // button_cost_avg.FlatStyle = FlatStyle.Standard;
-                button_cost_avg.BackColor = Color.FromArgb(128,255,128);
+                button_cost_avg.BackColor = Color.FromArgb(128, 255, 128);
                 button_cost_avg.ForeColor = Color.Black;
 
                 //  button_cost_custom.FlatStyle = FlatStyle.Flat;
@@ -881,7 +883,7 @@ namespace Ppos
                 button_cost_avg.ForeColor = Color.Gray;
 
                 //button_cost_custom.FlatStyle = FlatStyle.Standard;
-                button_cost_custom.BackColor = Color.FromArgb(128,255,128);
+                button_cost_custom.BackColor = Color.FromArgb(128, 255, 128);
                 button_cost_custom.ForeColor = Color.Black;
 
                 textBox_cost.Enabled = true;
@@ -899,7 +901,7 @@ namespace Ppos
         {
             try
             {
-                button_cost_per_unit.BackColor = Color.FromArgb(128,255,128);
+                button_cost_per_unit.BackColor = Color.FromArgb(128, 255, 128);
                 button_cost_per_unit.ForeColor = Color.Black;
 
                 button_cost_all.BackColor = Color.Transparent;
@@ -917,7 +919,7 @@ namespace Ppos
                 button_cost_per_unit.BackColor = Color.Transparent;
                 button_cost_per_unit.ForeColor = Color.Gray;
 
-                button_cost_all.BackColor = Color.FromArgb(128,255,128);
+                button_cost_all.BackColor = Color.FromArgb(128, 255, 128);
                 button_cost_all.ForeColor = Color.Black;
 
                 label_per_unit.Text = button_cost_all.Text;
@@ -933,7 +935,7 @@ namespace Ppos
 
                 if (e.KeyCode == Keys.Enter)
                 {
-                   
+
                     if (textBox_barcode.Text != string.Empty)
                     {
                         e.SuppressKeyPress = true;
@@ -1013,7 +1015,7 @@ namespace Ppos
                                  textBox_barcode.Text,
                                  set_qty_small,
                                  textBox_qty.Text,
-                                 set_cost_last, 
+                                 set_cost_last,
                                  Class_Parameter.Adjust_Increase,
                                  "");
                         }
@@ -1024,7 +1026,7 @@ namespace Ppos
                                 textBox_barcode.Text,
                                 set_qty_small,
                                 textBox_qty.Text,
-                                set_cost_avg, 
+                                set_cost_avg,
                                 Class_Parameter.Adjust_Increase,
                                  "");
                         }
@@ -1170,6 +1172,22 @@ namespace Ppos
             }
         }
 
-      
+        private void textBox_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    textBox_search.SelectAll();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+       
     }
 }

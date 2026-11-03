@@ -12,6 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using YourProjectNamespace;
 
 namespace Ppos
 {
@@ -37,10 +38,12 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
-                customGroupBox_detail.Location = new Point(
-                (panel_detail.Width / 2) - (customGroupBox_detail.Width / 2), 20);
 
-                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+                // เรียกใช้งานจาก Class คอนโทรลจะอยู่ตรงกลางและเลื่อน Scroll ได้ทันที
+                ControlHelper.SetupCenterWithScroll(panel_detail, customGroupBox_detail);
+                // ปรับขนาด tablelayoutpanel_back
+                new TableLayoutResizer(tableLayoutPanel_back, this);
+
 
                 dataGridView_member.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_member, true, null);
 
@@ -50,7 +53,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_member);
 
-                dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
+                dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
                 dataGridView_member.EnableHeadersVisualStyles = false;
 
                 // เรียกใช้ Class ส่วนกลาง แล้วส่ง Panel ของ Form นี้เข้าไป
@@ -58,9 +61,9 @@ namespace Ppos
 
 
 
-                button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
 
-                button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+                button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
 
                 button_cancel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(40, 40));
 
@@ -90,6 +93,7 @@ namespace Ppos
                 textBox_sale_per_point.Text = Class_Parameter.sale_per_point;
 
                 search_member();
+
             }
             catch
             {
@@ -102,7 +106,7 @@ namespace Ppos
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
@@ -328,10 +332,26 @@ namespace Ppos
                     // ปุ่มแก้ไข
                     edit_save = true;
                     button_edit_save.Enabled = true;
-                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Standard;
-                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                    // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
+                  
+                }
+
+                textBox_search.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void dataGridView_member_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex != -1)
+                {
                     // กดลบ
                     if (e.ColumnIndex == dataGridView_member.Columns["delete"]!.Index)
                     {
@@ -340,10 +360,10 @@ namespace Ppos
                             // ปุ่มแก้ไข
                             edit_save = true;
                             button_edit_save.Enabled = false;
-                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                             button_edit_save.Text = "แก้ไข";
                             button_edit_save.FlatStyle = FlatStyle.Flat;
-                            button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                            // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
                             using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                             {
                                 con_sqlite.Open();
@@ -356,7 +376,7 @@ namespace Ppos
                                     cmd_sqlite.ExecuteNonQuery();
 
                                     // ลบโปรทั้งหมดอีก 1 รายการ
-                                    set_member_total = (Convert.ToInt32(set_member_total.Replace(",","")) - 1).ToString();
+                                    set_member_total = (Convert.ToInt32(set_member_total.Replace(",", "")) - 1).ToString();
 
                                     stringempty();
 
@@ -367,15 +387,12 @@ namespace Ppos
                         }
                     }
                 }
-
-                textBox_search.Focus();
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
         }
-
         private void timer_search_member_Tick(object sender, EventArgs e)
         {
             try
@@ -516,23 +533,23 @@ namespace Ppos
                         // ปุ่มแก้ไข
                         edit_save = false;
                         button_edit_save.Enabled = true;
-                        button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editSaveMember, new Size(50, 50));
+                        button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editSaveMember, new Size(40, 40));
                         button_edit_save.Text = "บันทึก";
                         button_edit_save.FlatStyle = FlatStyle.Standard;
-                        button_edit_save.BackColor = Color.FromArgb(192, 255, 192);
+                        //  button_edit_save.BackColor = Color.FromArgb(192, 255, 192);
 
                         // ปุ่มเพิ่ม
                         add_save = true;
                         button_add_save.Enabled = false;
-                        button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+                        button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
                         button_add_save.Text = "เพิ่ม";
                         button_add_save.FlatStyle = FlatStyle.Flat;
-                        button_add_save.BackColor = Color.FromArgb(128,255,128);
+                        //  button_add_save.BackColor = Color.FromArgb(128, 255, 128);
 
                         // เปิดปุ่มยกเลิก
                         button_cancel.Enabled = true;
                         button_cancel.FlatStyle = FlatStyle.Standard;
-                        button_cancel.BackColor = Color.FromArgb(192, 255, 192);
+                        // button_cancel.BackColor = Color.FromArgb(192, 255, 192);
 
                         // เปิดการแก้ไข
                         Enabled(true);
@@ -556,23 +573,23 @@ namespace Ppos
                             // ปุ่มแก้ไข
                             edit_save = true;
                             button_edit_save.Enabled = true;
-                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                             button_edit_save.Text = "แก้ไข";
                             button_edit_save.FlatStyle = FlatStyle.Standard;
-                            button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                            // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
 
                             // ปุ่มเพิ่ม
                             add_save = true;
                             button_add_save.Enabled = true;
-                            button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+                            button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
                             button_add_save.Text = "เพิ่ม";
                             button_add_save.FlatStyle = FlatStyle.Standard;
-                            button_add_save.BackColor = Color.FromArgb(128,255,128);
+                            //  button_add_save.BackColor = Color.FromArgb(128, 255, 128);
 
                             // ปุ่มยกเลิก
                             button_cancel.Enabled = false;
                             button_cancel.FlatStyle = FlatStyle.Flat;
-                            button_cancel.BackColor = Color.FromArgb(128,255,128);
+                            // button_cancel.BackColor = Color.FromArgb(128, 255, 128);
 
                             // 
                             // เริ่ม แก้ไข
@@ -628,23 +645,23 @@ namespace Ppos
                     // ปุ่มแก้ไข
                     edit_save = true;
                     button_edit_save.Enabled = false;
-                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Flat;
-                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                    // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
 
                     // ปุ่มเพิ่ม
                     add_save = false;
                     button_add_save.Enabled = true;
-                    button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addSaveMember, new Size(50, 50));
+                    button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addSaveMember, new Size(40, 40));
                     button_add_save.Text = "บันทึก";
                     button_add_save.FlatStyle = FlatStyle.Standard;
-                    button_add_save.BackColor = Color.FromArgb(192, 255, 192);
+                    //  button_add_save.BackColor = Color.FromArgb(192, 255, 192);
 
                     // เปิดปุ่มยกเลิก
                     button_cancel.Enabled = true;
                     button_cancel.FlatStyle = FlatStyle.Standard;
-                    button_cancel.BackColor = Color.FromArgb(192, 255, 192);
+                    // button_cancel.BackColor = Color.FromArgb(192, 255, 192);
 
 
                     // เปิดการแก้ไข
@@ -666,23 +683,23 @@ namespace Ppos
                             // ปุ่มแก้ไข
                             edit_save = true;
                             button_edit_save.Enabled = true;
-                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                            button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                             button_edit_save.Text = "แก้ไข";
                             button_edit_save.FlatStyle = FlatStyle.Standard;
-                            button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                            // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
 
                             // ปุ่มเพิ่ม
                             add_save = true;
                             button_add_save.Enabled = true;
-                            button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+                            button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
                             button_add_save.Text = "เพิ่ม";
                             button_add_save.FlatStyle = FlatStyle.Standard;
-                            button_add_save.BackColor = Color.FromArgb(128,255,128);
+                            // button_add_save.BackColor = Color.FromArgb(128, 255, 128);
 
                             // ปิดปุ่มยกเลิก
                             button_cancel.Enabled = false;
                             button_cancel.FlatStyle = FlatStyle.Flat;
-                            button_cancel.BackColor = Color.FromArgb(128,255,128);
+                            // button_cancel.BackColor = Color.FromArgb(128, 255, 128);
 
                             // เริ่ม เพิ่ม
                             Class_Member_Detail.Add(
@@ -704,7 +721,7 @@ namespace Ppos
                             textBox_search.Text = textBox_phone.Text;
 
                             // เพิ่มค่าทังหมด
-                            set_member_total = (Convert.ToInt32(set_member_total.Replace(",","")) + 1).ToString();
+                            set_member_total = (Convert.ToInt32(set_member_total.Replace(",", "")) + 1).ToString();
 
                             // ค้นหา
                             search_member();
@@ -737,7 +754,7 @@ namespace Ppos
                 // ปุ่มยกเลิก
                 button_cancel.Enabled = false;
                 button_cancel.FlatStyle = FlatStyle.Flat;
-                button_cancel.BackColor = Color.FromArgb(128,255,128);
+                // button_cancel.BackColor = Color.FromArgb(128, 255, 128);
 
                 Enabled(false);
 
@@ -746,18 +763,18 @@ namespace Ppos
                     // ปุ่มแก้ไข
                     edit_save = true;
                     button_edit_save.Enabled = true;
-                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Standard;
-                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                    // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
 
                     // ปุ่มเพิ่ม
                     add_save = true;
                     button_add_save.Enabled = true;
-                    button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+                    button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
                     button_add_save.Text = "เพิ่ม";
                     button_add_save.FlatStyle = FlatStyle.Standard;
-                    button_add_save.BackColor = Color.FromArgb(128,255,128);
+                    // button_add_save.BackColor = Color.FromArgb(128, 255, 128);
 
                     // กดเลือกสินค้าเพื่อคืนค่า
                     dataGridView_member_CellMouseDown(dataGridView_member,
@@ -769,18 +786,18 @@ namespace Ppos
                     // ปุ่มแก้ไข
                     edit_save = true;
                     button_edit_save.Enabled = false;
-                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(50, 50));
+                    button_edit_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new Size(40, 40));
                     button_edit_save.Text = "แก้ไข";
                     button_edit_save.FlatStyle = FlatStyle.Flat;
-                    button_edit_save.BackColor = Color.FromArgb(128,255,128);
+                    // button_edit_save.BackColor = Color.FromArgb(128, 255, 128);
 
                     // ปุ่มเพิ่ม
                     add_save = true;
                     button_add_save.Enabled = true;
-                    button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(50, 50));
+                    button_add_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.addMember, new Size(40, 40));
                     button_add_save.Text = "เพิ่ม";
                     button_add_save.FlatStyle = FlatStyle.Standard;
-                    button_add_save.BackColor = Color.FromArgb(128,255,128);
+                    //  button_add_save.BackColor = Color.FromArgb(128, 255, 128);
 
                     stringempty();
                 }
@@ -823,7 +840,7 @@ namespace Ppos
                 label_sale_total.Text = "0";
                 label_sale_ineffective_member.Text = "0";
                 label_sale_effective_member.Text = "0";
-                textBox_sale_per_point.Text = "1";
+                textBox_sale_per_point.Text = Class_Parameter.sale_per_point;
 
                 label_point_balance.Text = "0";
             }
@@ -842,7 +859,7 @@ namespace Ppos
                 {
                     if (Convert.ToDouble(textBox_sale_per_point.Text) > 0)
                     {
-                        if(textBox_discount_percent.Text == string.Empty)
+                        if (textBox_discount_percent.Text == string.Empty)
                         {
                             textBox_discount_percent.Text = "0";
                         }
@@ -994,7 +1011,7 @@ namespace Ppos
         {
             try
             {
-                if(e.KeyCode == Keys.Enter)
+                if (e.KeyCode == Keys.Enter)
                 {
                     e.SuppressKeyPress = true;
                     if (textBox_phone.Focused)
@@ -1045,9 +1062,9 @@ namespace Ppos
                     {
                         textBox_decrease_point.Focus();
                     }
-                   
+
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -1055,5 +1072,7 @@ namespace Ppos
 
             }
         }
+
+      
     }
 }

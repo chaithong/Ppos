@@ -33,7 +33,8 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
-                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+                // ปรับขนาด tablelayoutpanel_back
+                new TableLayoutResizer(tableLayoutPanel_back, this);
 
                 dataGridView_trans.Columns["small_qty_begin"]!.DefaultCellStyle.BackColor = Color.FromArgb(230, 255, 230);
                 dataGridView_trans.Columns["small_qty"]!.DefaultCellStyle.BackColor = Color.FromArgb(200, 255, 200);
@@ -91,8 +92,8 @@ namespace Ppos
                 new Class_TouchGrid(dataGridView_item);
                 new Class_TouchGrid(dataGridView_trans);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
-                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128,255,128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
                 dataGridView_item.EnableHeadersVisualStyles = false;
                 dataGridView_trans.EnableHeadersVisualStyles = false;
 
@@ -285,6 +286,12 @@ namespace Ppos
                             if (!selected)
                             {
                                 dataGridView_item.ClearSelection();
+                                if (dt.Rows.Count == 1) // มีรายการเดียว ทำการ กด
+                                {
+                                    dataGridView_item_CellClick(dataGridView_item, new DataGridViewCellEventArgs(4,0));
+
+                                }
+
                             }
 
                         }
@@ -349,10 +356,7 @@ namespace Ppos
                 dataGridView_item.Enabled = true;
             }
         }
-        private void dataGridView_item_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
-        {
-
-        }
+      
 
         private void button_sort_Click(object sender, EventArgs e)
         {
@@ -440,17 +444,17 @@ namespace Ppos
                        dt_trans.Rows[i]["trans_type"].ToString()!,
                        dt_trans.Rows[i]["trans_desc"].ToString()!,
                        dt_trans.Rows[i]["item_barcode"].ToString()!,
-                       Convert.ToDouble(dt_trans.Rows[i]["item_qty"]).ToString("#,##0.00"),
+                       Convert.ToDouble(dt_trans.Rows[i]["item_qty"]).ToString("#,##0.##"),
                        dt_trans.Rows[i]["unit"].ToString()!,
-                       Convert.ToDouble(dt_trans.Rows[i]["item_cost"]).ToString("#,##0.00"),
-                       Convert.ToDouble(dt_trans.Rows[i]["small_qty_begin"]).ToString("#,##0.00"),
-                       Convert.ToDouble(dt_trans.Rows[i]["small_qty"]).ToString("#,##0.00"),
-                       Convert.ToDouble(dt_trans.Rows[i]["small_qty_end"]).ToString("#,##0.00"),
+                       Convert.ToDouble(dt_trans.Rows[i]["item_cost"]).ToString("#,##0.##"),
+                       Convert.ToDouble(dt_trans.Rows[i]["small_qty_begin"]).ToString("#,##0.##"),
+                       Convert.ToDouble(dt_trans.Rows[i]["small_qty"]).ToString("#,##0.##"),
+                       Convert.ToDouble(dt_trans.Rows[i]["small_qty_end"]).ToString("#,##0.##"),
                        dt_trans.Rows[i]["small_unit"].ToString()!,
-                       Convert.ToDouble(dt_trans.Rows[i]["small_cost_begin"]).ToString("#,##0.00"),
-                       Convert.ToDouble(dt_trans.Rows[i]["small_cost"]).ToString("#,##0.00"),
-                       Convert.ToDouble(dt_trans.Rows[i]["small_cost_end"]).ToString("#,##0.00"),
-                       Convert.ToDouble(dt_trans.Rows[i]["small_cost_total"]).ToString("#,##0.00")
+                       Convert.ToDouble(dt_trans.Rows[i]["small_cost_begin"]).ToString("#,##0.##"),
+                       Convert.ToDouble(dt_trans.Rows[i]["small_cost"]).ToString("#,##0.##"),
+                       Convert.ToDouble(dt_trans.Rows[i]["small_cost_end"]).ToString("#,##0.##"),
+                       Convert.ToDouble(dt_trans.Rows[i]["small_cost_total"]).ToString("#,##0.##")
                         );
                     dataGridView_trans.ClearSelection();
                 }
@@ -819,7 +823,7 @@ namespace Ppos
                                     worksheet.Cells[i + 2, 15] = dt.Rows[i]["small_cost_end"].ToString();
                                     worksheet.Cells[i + 2, 16] = dt.Rows[i]["small_cost_total"].ToString();
 
-                                    button_excel.Text = ((i + 1) * 100 / dt.Rows.Count).ToString("0.00") + " %";
+                                    button_excel.Text = ((i + 1) * 100 / dt.Rows.Count).ToString("0") + " %";
                                 }
                             }
                         }
@@ -1058,6 +1062,22 @@ namespace Ppos
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void textBox_search_KeyDown(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    textBox_search.SelectAll();
+                }
+            }
+            catch
+            {
+
             }
         }
     }

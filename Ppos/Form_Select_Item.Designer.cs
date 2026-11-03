@@ -281,6 +281,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimizeBox = false;
             Name = "Form_Select_Item";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterParent;
             Text = "ค้นหาสินค้า";
             Load += Form_Select_Item_Load;

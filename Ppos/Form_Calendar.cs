@@ -27,6 +27,11 @@ namespace Ppos
             button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(60, 60));
 
            
+            if(Class_Parameter.calendar_title == "ปฏิทิน")
+            {
+                button_confirm.Visible = false;
+            }
+           
 
             label_title.Text = Class_Parameter.calendar_title;
             set_month = Convert.ToInt16(Class_Parameter.calendar_month);

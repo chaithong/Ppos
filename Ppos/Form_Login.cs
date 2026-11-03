@@ -285,8 +285,9 @@ namespace Ppos
             {
                 if (e.KeyCode == Keys.Enter)
                 {
-                    e.SuppressKeyPress = true;
+                    
                     button_login_Click(sender, e);
+                    e.SuppressKeyPress = true;
                 }
             }
             catch

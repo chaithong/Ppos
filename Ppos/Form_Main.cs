@@ -40,14 +40,14 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
 
-                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
+                Class_DoubleBuffer.EnableDoubleBuffering(panel_menu_back);
                 // 2. สั่งสร้าง Object ตอนเปิดโปรแกรมขึ้นมา
                 _monitor = new SystemMonitor();
 
                 panel_back.Location = new Point(button_menu.Width, 0);
                 panel_menu_back.Width = pictureBox_logo.Width;
 
-                // this.Size = new Size(1024, 768);
+                 //this.Size = new Size(1024, 768);
 
                 this.StartPosition = FormStartPosition.Manual;
                 this.Location = Screen.PrimaryScreen!.WorkingArea.Location;
@@ -71,7 +71,7 @@ namespace Ppos
                 button_report.Image = Class_Image.resizeImage(Ppos.Properties.Resources.reports, new Size(35, 35));
                 button_setting.Image = Class_Image.resizeImage(Ppos.Properties.Resources.setting, new Size(35, 35));
 
-                button_exit.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(35, 35));
+                button_exit.Image = Class_Image.resizeImage(Ppos.Properties.Resources.exitProgram, new Size(35, 35));
 
                 // button_menu.Image = Class_Image.resizeImage(Ppos.Properties.Resources.next, new Size(23, 23));
 
@@ -182,7 +182,7 @@ namespace Ppos
             {
                 label_date.Text = DateTime.Now.ToString("dd/MM/yyyy", cultures);
                 label_time.Text = DateTime.Now.ToString("HH:mm:ss", cultures);
-                /* drive = new DriveInfo(mainDriveLetter);
+                 drive = new DriveInfo(mainDriveLetter);
 
                  if (drive.IsReady)
                  {
@@ -192,13 +192,14 @@ namespace Ppos
                      usedSpaceGb = totalSizeGb - freeSpaceGb;
                      usedPercentage = (usedSpaceGb / totalSizeGb) * 100;
                      // เรียกดึงค่าเป็น % มาแสดงผลได้ทันที
-                     this.Text = Class_Parameter.Version +
+                     this.Text = Class_Parameter.Version + " (" + Class_Parameter.User_Login + ")" +
                  " ( CPU : " + _monitor.GetCpuUsage().ToString("00.00") + "% , " +
                  " RAM : " + _monitor.GetRamUsagePercentage().ToString("00.00") + "% , " +
                  " DISK : " + _monitor.GetDiskUsagePercentage().ToString("00.00") + "% , " +
-                 " DRIVE : " + usedPercentage.ToString("00.00") + "% )";
+                 " DRIVE : " + usedPercentage.ToString("00.00") + "% )" +
+                 " ใช้สำหรับทดสอบเท่านั้น *ห้ามจำหน่าย*";
 
-                 }*/
+                 }
 
             }
             catch
@@ -268,6 +269,7 @@ namespace Ppos
         {
             try
             {
+               
                 timer_tab_menu.Start();
 
             }
@@ -287,7 +289,7 @@ namespace Ppos
 
 
                     timer_check_tab.Stop();
-                    panel_menu_back.Width -= 25;
+                    panel_menu_back.Width -= 20;
                     if (panel_menu_back.Width <= 0)
                     {
                         show_menu = false;
@@ -301,7 +303,7 @@ namespace Ppos
                 }
                 else
                 {
-                    panel_menu_back.Width += 25;
+                    panel_menu_back.Width += 20;
                     if (panel_menu_back.Width >= pictureBox_logo.Width)
                     {
                         show_menu = true;
@@ -425,7 +427,7 @@ namespace Ppos
             try
             {
                 this.SuspendLayout();
-                P.Height -= 25;
+                P.Height -= 10;
                 if (P.Height <= 0)
                 {
                     timer_menu_1.Stop();
@@ -442,9 +444,10 @@ namespace Ppos
             try
             {
                 this.SuspendLayout();
-                P.Height += 25;
+                P.Height += 10;
                 if (P.Height >= P_Height)
                 {
+                    P.Height = P_Height;
                     timer_menu_2.Stop();
                 }
                 this.ResumeLayout(true);
@@ -505,15 +508,20 @@ namespace Ppos
                         if (b.Name != "button_sale")
                         {
                             b.BackColor = Color.White;
-
+                           
                         }
 
-                        b.FlatAppearance.MouseOverBackColor = Color.Transparent;
+                        // b.FlatAppearance.MouseOverBackColor = Color.Transparent;
+
+                        b.FlatStyle = FlatStyle.Flat;
 
                         b = button;
-                        b.BackColor = Color.Cyan;
-
-                        b.FlatAppearance.MouseOverBackColor = Color.Cyan;
+                        //  b.BackColor = Color.Cyan;
+                        if (b.Name != "button_sale")
+                        {
+                            b.FlatStyle = FlatStyle.Standard;
+                        }
+                       // b.FlatAppearance.MouseOverBackColor = Color.Cyan;
 
 
                     }
@@ -1294,6 +1302,28 @@ new Size(pictureBox_logo.Height * Ppos.Properties.Resources.logo_Ppos.Width / Pp
             }
         }
 
-       
+        private void label_date_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+
+                Class_Parameter.calendar_title = "ปฏิทิน";
+
+                Class_Parameter.calendar_day = label_date.Text.Split("/")[0];
+                Class_Parameter.calendar_month = label_date.Text.Split("/")[1];
+                Class_Parameter.calendar_year = label_date.Text.Split("/")[2];
+
+
+                Form_Calendar form_Calendar = new Form_Calendar();
+                form_Calendar.ShowDialog(this);
+
+              
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

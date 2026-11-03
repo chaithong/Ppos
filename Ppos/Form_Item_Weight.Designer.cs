@@ -73,7 +73,8 @@
             button_confirm.Dock = DockStyle.Fill;
             button_confirm.FlatAppearance.BorderSize = 0;
             button_confirm.FlatAppearance.MouseDownBackColor = Color.Transparent;
-            button_confirm.FlatAppearance.MouseOverBackColor = Color.Lime;
+            button_confirm.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_confirm.FlatStyle = FlatStyle.Flat;
             button_confirm.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_confirm.Location = new Point(3, 456);
             button_confirm.Name = "button_confirm";
@@ -564,6 +565,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Form_Item_Weight";
+            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "แก้ไขจำนวน";
             Shown += Form_Item_Weight_Shown;
