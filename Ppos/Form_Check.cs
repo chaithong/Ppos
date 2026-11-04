@@ -90,11 +90,10 @@ namespace Ppos
                 }
                 this.Close();
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void Check_Click(object sender, EventArgs e)
@@ -186,9 +185,9 @@ namespace Ppos
                 }
                 
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -233,9 +232,9 @@ namespace Ppos
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

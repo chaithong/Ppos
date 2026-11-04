@@ -112,7 +112,10 @@ namespace Ppos
                     label_month_year.Text = "ธันวาคม " + year;
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         public void getDateOfMonth_From(string month, string year)
         {
@@ -711,9 +714,9 @@ namespace Ppos
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -742,9 +745,9 @@ namespace Ppos
 
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -771,9 +774,9 @@ namespace Ppos
 
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -787,9 +790,9 @@ namespace Ppos
                     this.Close();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void label_click(object sender, EventArgs e)
@@ -813,9 +816,9 @@ namespace Ppos
                     label_set_days.Text = Convert.ToInt16(L_select_day.Text).ToString("00") + "-" + set_month.ToString("00") + "-" + set_year;
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void label_doubleclick(object sender, EventArgs e)
@@ -831,7 +834,10 @@ namespace Ppos
                     this.Close();
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void label_MouseEnter(object sender, EventArgs e)
@@ -844,9 +850,9 @@ namespace Ppos
                     ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size + 2, ((Label)sender).Font.Style);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -860,9 +866,9 @@ namespace Ppos
                     ((Label)sender).Font = new System.Drawing.Font(((Label)sender).Font.FontFamily, ((Label)sender).Font.Size - 2, ((Label)sender).Font.Style);
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -906,9 +912,9 @@ namespace Ppos
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -928,9 +934,9 @@ namespace Ppos
                     button.Image = Class_Image.resizeImage(Ppos.Properties.Resources.next, new Size(50, 50));
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

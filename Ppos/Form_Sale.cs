@@ -1149,9 +1149,9 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                     }
                 }
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -2359,21 +2359,17 @@ hole FROM Invoice_Body_Temp where void = false ";
                 // แสดงจำนวนบรรทัดสินค้า
                 dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
 
-                //sum_qty = 0;
-                label_sum_qty.Text = "0.###";
+                label_sum_qty.Text = "0";
 
-                // sum_price = 0;
-                label_sum_price.Text = "0.##";
+                label_sum_price.Text = "0";
 
-                label_dis_pro.Text = "0.##";
-                // tableLayoutPanel_discount_pro.Visible = false;
+                label_dis_pro.Text = "0";
 
-                label_dis_member.Text = "0.##";
-                // tableLayoutPanel_discount_member.Visible = false;
+                label_dis_member.Text = "0";
 
-                label_price_net.Text = "0.##";
+                label_price_net.Text = "0";
 
-                label_dis_round.Text = "0.##";
+                label_dis_round.Text = "0";
 
                 // ถ้ามีสมาชิกจำทำการลบ
                 if (id_member != string.Empty)
@@ -2562,6 +2558,8 @@ hole FROM Invoice_Body_Temp where void = false ";
                                 tableLayoutPanel_sum_price.BringToFront();
                                 tableLayoutPanel_sum_qty.Visible = true;
                                 tableLayoutPanel_sum_qty.BringToFront();
+
+                                panel_bottom_bill.BringToFront();
                             }
                             else
                             {
@@ -2647,21 +2645,17 @@ hole FROM Invoice_Body_Temp where void = false ";
                         // แสดงจำนวนบรรทัดสินค้า
                         dataGridView_item.Columns["delete"]!.HeaderText = dataGridView_item.RowCount.ToString();
 
-                        //sum_qty = 0;
-                        label_sum_qty.Text = "0.###";
+                        label_sum_qty.Text = "0";
 
-                        // sum_price = 0;
-                        label_sum_price.Text = "0.##";
+                        label_sum_price.Text = "0";
 
-                        label_dis_pro.Text = "0.##";
-                        // tableLayoutPanel_discount_pro.Visible = false;
+                        label_dis_pro.Text = "0";
 
-                        label_dis_member.Text = "0.##";
-                        // tableLayoutPanel_discount_member.Visible = false;
+                        label_dis_member.Text = "0";
 
-                        label_price_net.Text = "0.##";
+                        label_price_net.Text = "0";
 
-                        label_dis_round.Text = "0.##";
+                        label_dis_round.Text = "0";
                     }
 
                 }

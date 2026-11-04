@@ -32,9 +32,9 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
                 button_discount.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new System.Drawing.Size(35, 35));
-                button_cash.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(40, 40));
-                button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.QR_Code, new System.Drawing.Size(40, 40));
-                button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new System.Drawing.Size(40, 40));
+                button_cash.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(35, 35));
+                button_transfer.Image = Class_Image.resizeImage(Ppos.Properties.Resources.QR_Code, new System.Drawing.Size(35, 35));
+                button_member.Image = Class_Image.resizeImage(Ppos.Properties.Resources.editMember, new System.Drawing.Size(35, 35));
 
 
                 button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(70, 70));
