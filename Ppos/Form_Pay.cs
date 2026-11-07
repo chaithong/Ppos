@@ -600,10 +600,13 @@ namespace Ppos
             try
             {
 
-
-                cash_change = label_change.Text;
-                Form_Cash_Change form_Cash_Change = new Form_Cash_Change();
-                form_Cash_Change.ShowDialog(this);
+                if(Class_Parameter.pay_show_change)
+                {
+                    cash_change = label_change.Text;
+                    Form_Cash_Change form_Cash_Change = new Form_Cash_Change();
+                    form_Cash_Change.ShowDialog(this);
+                }
+               
                 exit = false;
                 button_exit_Click(sender, e);
             }

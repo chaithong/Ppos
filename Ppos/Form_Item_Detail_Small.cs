@@ -62,7 +62,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_item);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event

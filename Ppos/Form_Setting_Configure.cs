@@ -45,6 +45,10 @@ namespace Ppos
             {
                 pay_show_keypad.Image = Ppos.Properties.Resources.uncheck;
             }
+            if (!Class_Parameter.pay_show_change)
+            {
+                pay_show_change.Image = Ppos.Properties.Resources.uncheck;
+            }
         }
 
         private void Click_Status(object sender, EventArgs e)
@@ -85,41 +89,7 @@ namespace Ppos
 
                                 login_program.Image = Ppos.Properties.Resources.check;
                             }
-                        }
-                       /* else if (pictureBox.Name == "hide_menu")
-                        {
-                            if (Class_Parameter.hide_menu)
-                            {
-                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
-                                  "status = 0, " +
-                                  "updated_date = datetime('now', 'localtime'), " +
-                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
-                                  "WHERE title = 'hide_menu'";
-                                cmd_sqlite.ExecuteNonQuery();
-
-                                //_main.SetButtonVisibility(false);
-
-                                Class_Parameter.hide_menu = false;
-
-                                hide_menu.Image = Ppos.Properties.Resources.uncheck;
-                            }
-                            else
-                            {
-                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
-                                  "status = 1, " +
-                                  "updated_date = datetime('now', 'localtime'), " +
-                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
-                                  "WHERE title = 'hide_menu'";
-                                cmd_sqlite.ExecuteNonQuery();
-
-                                // _main.SetButtonVisibility(true);
-
-                                Class_Parameter.hide_menu = true;
-
-                                hide_menu.Image = Ppos.Properties.Resources.check;
-                            }
-
-                        }*/
+                        }                  
                         else if (pictureBox.Name == "use_item_medium_large")
                         {
                             if (Class_Parameter.use_item_medium_large)
@@ -241,6 +211,36 @@ namespace Ppos
                                 Class_Parameter.pay_show_keypad = true;
 
                                 pay_show_keypad.Image = Ppos.Properties.Resources.check;
+                            }
+
+                        }
+                        else if (pictureBox.Name == "pay_show_change")
+                        {
+                            if (Class_Parameter.pay_show_change)
+                            {
+                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
+                                  "status = 0, " +
+                                  "updated_date = datetime('now', 'localtime'), " +
+                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                  "WHERE title = 'pay_show_change'";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                Class_Parameter.pay_show_change = false;
+
+                                pay_show_change.Image = Ppos.Properties.Resources.uncheck;
+                            }
+                            else
+                            {
+                                cmd_sqlite.CommandText = "UPDATE Setting_Configure SET " +
+                                  "status = 1, " +
+                                  "updated_date = datetime('now', 'localtime'), " +
+                                  "updated_by = '" + Class_Parameter.User_Login + "' " +
+                                  "WHERE title = 'pay_show_change'";
+                                cmd_sqlite.ExecuteNonQuery();
+
+                                Class_Parameter.pay_show_change = true;
+
+                                pay_show_change.Image = Ppos.Properties.Resources.check;
                             }
 
                         }

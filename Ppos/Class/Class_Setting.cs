@@ -71,6 +71,10 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.pay_show_keypad = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "pay_show_change")
+                                    {
+                                        Class_Parameter.pay_show_change = Convert.ToBoolean(dt.Rows[i]["status"].ToString());
+                                    }
                                 }
                             }
 

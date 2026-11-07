@@ -499,6 +499,11 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'), '', '', 'pay_show_keypad', 1 
                                                    WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'pay_show_keypad') ";
                         cmd_sqlite.ExecuteNonQuery();
+                        // show change
+                        cmd_sqlite.CommandText = @"INSERT INTO Setting_Configure(created_by, created_date, updated_by, updated_date, title, status) 
+                                                   SELECT '',datetime('now', 'localtime'), '', '', 'pay_show_change', 1 
+                                                   WHERE NOT EXISTS(SELECT 1 from Setting_Configure WHERE title = 'pay_show_change') ";
+                        cmd_sqlite.ExecuteNonQuery();
 
                         // สร้าง store
 

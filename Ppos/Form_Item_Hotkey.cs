@@ -79,7 +79,7 @@ namespace Ppos
                     column.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
                 new Class_TouchGrid(dataGridView_item);
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 dataGridView_item.MouseWheel += new MouseEventHandler(dataGridView_item_MouseWheel!);

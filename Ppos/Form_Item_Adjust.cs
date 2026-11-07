@@ -57,7 +57,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_item);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event
@@ -68,7 +68,7 @@ namespace Ppos
 
                 button_increase.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(40, 40));
                 button_decrease.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(40, 40));
-                button_custom.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(50, 50));
+                button_custom.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(40, 40));
 
                 pictureBox_item.Image = Ppos.Properties.Resources.picture_dark;
 

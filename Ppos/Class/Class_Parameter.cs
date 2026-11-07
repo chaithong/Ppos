@@ -118,9 +118,11 @@ namespace Ppos.Class
         ////// configure
 
         public static bool login_program { get; set; } = true;
-      // public static bool hide_menu { get; set; } = true;
         public static bool use_item_medium_large { get; set; } = true;
         public static bool custom_cost_adjust { get; set; } = true;
+        public static bool sale_show_hotkey { get; set; } = true;
+        public static bool pay_show_keypad { get; set; } = true;
+        public static bool pay_show_change { get; set; } = true;
 
         ////// Sale
         public static int id_body_temp { get; set; } = 0;
@@ -137,7 +139,6 @@ namespace Ppos.Class
 
         public static bool keypad_numeric { get; set; } = true;
 
-        public static bool sale_show_hotkey { get; set; } = false;
-        public static bool pay_show_keypad { get; set; } = false;
+       
     }
 }

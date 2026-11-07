@@ -26,7 +26,7 @@ namespace Ppos
         int Corners = 30; // มุม
         int Limit = 20; // จำนวนแสดงผล
         int set_search = 5, count_set_search = 0;
-        int shows = 0;
+        
 
         // string cameraName; // ระบุชื่อกล้องที่คุณทราบ
         bool start_video = false;
@@ -54,7 +54,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_item);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_item.EnableHeadersVisualStyles = false;
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event
@@ -209,7 +209,7 @@ namespace Ppos
                 AutoComplete();
                 search();
                 textBox_search.Focus();
-                //  timer_show.Start();
+                  timer_show.Start();
 
             }
             catch
@@ -223,28 +223,28 @@ namespace Ppos
         {
             try
             {
-                shows++;
-                if (shows == 1)
+               
+                if (!customGroupBox_picture.Visible)
                 {
                     customGroupBox_picture.Visible = true;
                 }
-                else if (shows == 2)
+                else if (!customGroupBox_small.Visible)
                 {
                     customGroupBox_small.Visible = true;
                 }
-                else if (shows == 3)
+                else if (!customGroupBox_item.Visible)
                 {
                     customGroupBox_item.Visible = true;
                 }
-                else if (shows == 4)
+                else if (!customGroupBox_medium.Visible)
                 {
                     customGroupBox_medium.Visible = true;
                 }
-                else if (shows == 5)
+                else if (!customGroupBox_other.Visible)
                 {
                     customGroupBox_other.Visible = true;
                 }
-                else
+                else if(!customGroupBox_large.Visible)
                 {
                     customGroupBox_large.Visible = true;
                     timer_show.Stop();

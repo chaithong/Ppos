@@ -39,6 +39,7 @@
             textBox_maingroup = new TextBox();
             panel_back = new Panel();
             dataGridView_group = new DataGridView();
+            customGroupBox_back = new CustomGroupBox();
             Column1 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             maingroup = new DataGridViewTextBoxColumn();
@@ -49,6 +50,7 @@
             tableLayoutPanel_back_top.SuspendLayout();
             panel_back.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_group).BeginInit();
+            customGroupBox_back.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel_back
@@ -58,18 +60,18 @@
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_back_top, 0, 0);
             tableLayoutPanel_back.Controls.Add(panel_back, 0, 1);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
-            tableLayoutPanel_back.Location = new Point(0, 0);
+            tableLayoutPanel_back.Location = new Point(10, 13);
             tableLayoutPanel_back.Margin = new Padding(0);
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
             tableLayoutPanel_back.RowCount = 2;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Size = new Size(969, 500);
+            tableLayoutPanel_back.Size = new Size(939, 474);
             tableLayoutPanel_back.TabIndex = 0;
             // 
             // tableLayoutPanel_back_top
             // 
-            tableLayoutPanel_back_top.BackColor = Color.FromArgb(128, 255, 128);
+            tableLayoutPanel_back_top.BackColor = Color.White;
             tableLayoutPanel_back_top.ColumnCount = 6;
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
@@ -86,7 +88,7 @@
             tableLayoutPanel_back_top.Name = "tableLayoutPanel_back_top";
             tableLayoutPanel_back_top.RowCount = 1;
             tableLayoutPanel_back_top.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back_top.Size = new Size(969, 50);
+            tableLayoutPanel_back_top.Size = new Size(939, 50);
             tableLayoutPanel_back_top.TabIndex = 1;
             // 
             // button_add_group
@@ -98,7 +100,7 @@
             button_add_group.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_add_group.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_add_group.FlatStyle = FlatStyle.Flat;
-            button_add_group.Location = new Point(784, 0);
+            button_add_group.Location = new Point(769, 0);
             button_add_group.Margin = new Padding(0);
             button_add_group.Name = "button_add_group";
             button_add_group.Size = new Size(125, 50);
@@ -112,12 +114,11 @@
             // textBox_subgroup
             // 
             textBox_subgroup.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_subgroup.BorderStyle = BorderStyle.None;
             textBox_subgroup.Font = new Font("Segoe UI", 16.2F);
-            textBox_subgroup.Location = new Point(487, 7);
+            textBox_subgroup.Location = new Point(472, 7);
             textBox_subgroup.Margin = new Padding(3, 0, 0, 0);
             textBox_subgroup.Name = "textBox_subgroup";
-            textBox_subgroup.Size = new Size(297, 36);
+            textBox_subgroup.Size = new Size(297, 43);
             textBox_subgroup.TabIndex = 1;
             textBox_subgroup.TextAlign = HorizontalAlignment.Center;
             textBox_subgroup.TextChanged += textBox_TextChanged;
@@ -126,12 +127,11 @@
             // textBox_maingroup
             // 
             textBox_maingroup.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_maingroup.BorderStyle = BorderStyle.None;
             textBox_maingroup.Font = new Font("Segoe UI", 16.2F);
-            textBox_maingroup.Location = new Point(184, 7);
+            textBox_maingroup.Location = new Point(169, 7);
             textBox_maingroup.Margin = new Padding(0, 0, 3, 0);
             textBox_maingroup.Name = "textBox_maingroup";
-            textBox_maingroup.Size = new Size(297, 36);
+            textBox_maingroup.Size = new Size(297, 43);
             textBox_maingroup.TabIndex = 0;
             textBox_maingroup.TextAlign = HorizontalAlignment.Center;
             textBox_maingroup.TextChanged += textBox_TextChanged;
@@ -146,7 +146,7 @@
             panel_back.Location = new Point(0, 50);
             panel_back.Margin = new Padding(0);
             panel_back.Name = "panel_back";
-            panel_back.Size = new Size(969, 450);
+            panel_back.Size = new Size(939, 424);
             panel_back.TabIndex = 2;
             // 
             // dataGridView_group
@@ -192,12 +192,29 @@
             dataGridView_group.ScrollBars = ScrollBars.None;
             dataGridView_group.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_group.ShowCellToolTips = false;
-            dataGridView_group.Size = new Size(969, 450);
+            dataGridView_group.Size = new Size(939, 424);
             dataGridView_group.TabIndex = 0;
             dataGridView_group.TabStop = false;
             dataGridView_group.CellClick += dataGridView_group_CellClick;
             dataGridView_group.CellMouseEnter += dataGridView_group_CellMouseEnter;
             dataGridView_group.CellMouseLeave += dataGridView_group_CellMouseLeave;
+            // 
+            // customGroupBox_back
+            // 
+            customGroupBox_back.BackColor = Color.Cyan;
+            customGroupBox_back.BorderColor = Color.White;
+            customGroupBox_back.BorderRadius = 30;
+            customGroupBox_back.BorderThickness = 20;
+            customGroupBox_back.Controls.Add(tableLayoutPanel_back);
+            customGroupBox_back.Dock = DockStyle.Fill;
+            customGroupBox_back.Font = new Font("Segoe UI", 1F);
+            customGroupBox_back.Location = new Point(0, 0);
+            customGroupBox_back.Margin = new Padding(0);
+            customGroupBox_back.Name = "customGroupBox_back";
+            customGroupBox_back.Padding = new Padding(10);
+            customGroupBox_back.Size = new Size(959, 497);
+            customGroupBox_back.TabIndex = 1;
+            customGroupBox_back.TabStop = false;
             // 
             // Column1
             // 
@@ -217,7 +234,7 @@
             // 
             // maingroup
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             maingroup.DefaultCellStyle = dataGridViewCellStyle2;
             maingroup.HeaderText = "กลุ่มหลัก";
             maingroup.MinimumWidth = 6;
@@ -227,7 +244,7 @@
             // 
             // subgroup
             // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             subgroup.DefaultCellStyle = dataGridViewCellStyle3;
             subgroup.HeaderText = "กลุ่มย่อย";
             subgroup.MinimumWidth = 6;
@@ -257,12 +274,13 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 255, 192);
+            BackColor = Color.Cyan;
             ClientSize = new Size(969, 500);
-            Controls.Add(tableLayoutPanel_back);
+            Controls.Add(customGroupBox_back);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form_Item_Group";
+            Padding = new Padding(0, 0, 10, 3);
             Text = "Form_Item_Group";
             Load += Form_Item_Group_Load;
             tableLayoutPanel_back.ResumeLayout(false);
@@ -270,6 +288,7 @@
             tableLayoutPanel_back_top.PerformLayout();
             panel_back.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView_group).EndInit();
+            customGroupBox_back.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -283,6 +302,7 @@
         private Button button_add_group;
         private TextBox textBox_maingroup;
         private Panel panel_back;
+        private CustomGroupBox customGroupBox_back;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn maingroup;
