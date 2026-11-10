@@ -92,8 +92,8 @@ namespace Ppos
                 new Class_TouchGrid(dataGridView_item);
                 new Class_TouchGrid(dataGridView_trans);
 
-                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
-                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
+                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
                 dataGridView_item.EnableHeadersVisualStyles = false;
                 dataGridView_trans.EnableHeadersVisualStyles = false;
 

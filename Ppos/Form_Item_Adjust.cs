@@ -989,6 +989,7 @@ namespace Ppos
                         //   MessageBox.Show("กรุณากรองข้อมูลให้ครบถ้วน !!!", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+                   
                     // ลดมากกว่าคงเหลือ
                     if (Convert.ToDouble(textBox_qty.Text) > Convert.ToDouble(textBox_qty_last.Text) &&
                        Class_Parameter.inc_dec_custom == 2)
@@ -1000,6 +1001,11 @@ namespace Ppos
                     if ((Convert.ToDouble(textBox_qty.Text) == 0 && Class_Parameter.inc_dec_custom != 3) ||
                         (Class_Parameter.inc_dec_custom == 3 && Convert.ToDouble(textBox_qty.Text) == Convert.ToDouble(textBox_qty_last.Text))
                        )
+                    {
+                        return;
+                    }
+                    // ปรับเท่ากับบาร์โค้ด
+                    if (textBox_qty.Text == textBox_barcode.Text)
                     {
                         return;
                     }

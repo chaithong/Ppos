@@ -38,15 +38,17 @@
             button_test = new Button();
             button_save = new Button();
             textBox_device = new TextBox();
-            customGroupBox_back = new CustomGroupBox();
+            customGroupBox_detail = new CustomGroupBox();
             tableLayoutPanel_detail = new TableLayoutPanel();
             panel_detail = new Panel();
+            customGroupBox_back = new CustomGroupBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox_video).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_device).BeginInit();
             tableLayoutPanel_button.SuspendLayout();
-            customGroupBox_back.SuspendLayout();
+            customGroupBox_detail.SuspendLayout();
             tableLayoutPanel_detail.SuspendLayout();
             panel_detail.SuspendLayout();
+            customGroupBox_back.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox_video
@@ -213,21 +215,21 @@
             textBox_device.TabIndex = 2;
             textBox_device.TextAlign = HorizontalAlignment.Center;
             // 
-            // customGroupBox_back
+            // customGroupBox_detail
             // 
-            customGroupBox_back.BorderColor = Color.Cyan;
-            customGroupBox_back.BorderRadius = 30;
-            customGroupBox_back.BorderThickness = 20;
-            customGroupBox_back.Controls.Add(tableLayoutPanel_detail);
-            customGroupBox_back.Font = new Font("Segoe UI", 1F);
-            customGroupBox_back.Location = new Point(315, 19);
-            customGroupBox_back.Margin = new Padding(9);
-            customGroupBox_back.Name = "customGroupBox_back";
-            customGroupBox_back.Padding = new Padding(25);
-            customGroupBox_back.Size = new Size(600, 718);
-            customGroupBox_back.TabIndex = 3;
-            customGroupBox_back.TabStop = false;
-            customGroupBox_back.Text = " ";
+            customGroupBox_detail.BorderColor = Color.Cyan;
+            customGroupBox_detail.BorderRadius = 30;
+            customGroupBox_detail.BorderThickness = 20;
+            customGroupBox_detail.Controls.Add(tableLayoutPanel_detail);
+            customGroupBox_detail.Font = new Font("Segoe UI", 1F);
+            customGroupBox_detail.Location = new Point(315, 19);
+            customGroupBox_detail.Margin = new Padding(9);
+            customGroupBox_detail.Name = "customGroupBox_detail";
+            customGroupBox_detail.Padding = new Padding(25);
+            customGroupBox_detail.Size = new Size(600, 718);
+            customGroupBox_detail.TabIndex = 3;
+            customGroupBox_detail.TabStop = false;
+            customGroupBox_detail.Text = " ";
             // 
             // tableLayoutPanel_detail
             // 
@@ -253,33 +255,52 @@
             // panel_detail
             // 
             panel_detail.AutoScroll = true;
-            panel_detail.Controls.Add(customGroupBox_back);
+            panel_detail.BackColor = Color.White;
+            panel_detail.Controls.Add(customGroupBox_detail);
             panel_detail.Dock = DockStyle.Fill;
-            panel_detail.Location = new Point(0, 0);
+            panel_detail.Location = new Point(10, 13);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(1423, 964);
+            panel_detail.Size = new Size(1393, 938);
             panel_detail.TabIndex = 4;
+            // 
+            // customGroupBox_back
+            // 
+            customGroupBox_back.BackColor = Color.Transparent;
+            customGroupBox_back.BorderColor = Color.White;
+            customGroupBox_back.BorderRadius = 30;
+            customGroupBox_back.BorderThickness = 20;
+            customGroupBox_back.Controls.Add(panel_detail);
+            customGroupBox_back.Dock = DockStyle.Fill;
+            customGroupBox_back.Font = new Font("Segoe UI", 1F);
+            customGroupBox_back.Location = new Point(0, 0);
+            customGroupBox_back.Margin = new Padding(0);
+            customGroupBox_back.Name = "customGroupBox_back";
+            customGroupBox_back.Padding = new Padding(10);
+            customGroupBox_back.Size = new Size(1413, 961);
+            customGroupBox_back.TabIndex = 5;
+            customGroupBox_back.TabStop = false;
             // 
             // Form_Setting_Camera
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.Cyan;
             ClientSize = new Size(1423, 964);
-            Controls.Add(panel_detail);
+            Controls.Add(customGroupBox_back);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form_Setting_Camera";
+            Padding = new Padding(0, 0, 10, 3);
             Text = "Form_Setting_Other";
             Load += Form_Setting_Camera_Load;
-            Resize += Form_Setting_Camera_Resize;
             ((System.ComponentModel.ISupportInitialize)pictureBox_video).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_device).EndInit();
             tableLayoutPanel_button.ResumeLayout(false);
-            customGroupBox_back.ResumeLayout(false);
+            customGroupBox_detail.ResumeLayout(false);
             tableLayoutPanel_detail.ResumeLayout(false);
             tableLayoutPanel_detail.PerformLayout();
             panel_detail.ResumeLayout(false);
+            customGroupBox_back.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -293,8 +314,9 @@
         private TextBox textBox_device;
         private Button button_refresh;
         private DataGridViewTextBoxColumn device_names;
-        private CustomGroupBox customGroupBox_back;
+        private CustomGroupBox customGroupBox_detail;
         private Panel panel_detail;
         private TableLayoutPanel tableLayoutPanel_detail;
+        private CustomGroupBox customGroupBox_back;
     }
 }

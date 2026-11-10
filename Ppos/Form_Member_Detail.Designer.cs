@@ -35,34 +35,13 @@
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             tableLayoutPanel_back = new TableLayoutPanel();
+            tableLayoutPanel_right = new TableLayoutPanel();
+            customGroupBox_right_top = new CustomGroupBox();
             tableLayoutPanel_button = new TableLayoutPanel();
             button_cancel = new Button();
             button_add_save = new Button();
             button_edit_save = new Button();
-            panel_search = new Panel();
-            label_search = new Label();
-            textBox_search = new TextBox();
-            dataGridView_member = new DataGridView();
-            id = new DataGridViewTextBoxColumn();
-            phone = new DataGridViewTextBoxColumn();
-            sex = new DataGridViewTextBoxColumn();
-            nick_name = new DataGridViewTextBoxColumn();
-            first_name = new DataGridViewTextBoxColumn();
-            last_name = new DataGridViewTextBoxColumn();
-            address = new DataGridViewTextBoxColumn();
-            sub_district = new DataGridViewTextBoxColumn();
-            district = new DataGridViewTextBoxColumn();
-            province = new DataGridViewTextBoxColumn();
-            postal_code = new DataGridViewTextBoxColumn();
-            discount_percent = new DataGridViewTextBoxColumn();
-            sale_total = new DataGridViewTextBoxColumn();
-            sale_ineffective_member = new DataGridViewTextBoxColumn();
-            sale_effective_member = new DataGridViewTextBoxColumn();
-            sale_per_point = new DataGridViewTextBoxColumn();
-            point_increase = new DataGridViewTextBoxColumn();
-            point_decrease = new DataGridViewTextBoxColumn();
-            point_balance = new DataGridViewTextBoxColumn();
-            delete = new DataGridViewImageColumn();
+            customGroupBox_right_bottom = new CustomGroupBox();
             panel_detail = new Panel();
             customGroupBox_detail = new CustomGroupBox();
             tableLayoutPanel_detail = new TableLayoutPanel();
@@ -104,36 +83,100 @@
             label17 = new Label();
             textBox_sale_per_point = new TextBox();
             label11 = new Label();
+            customGroupBox_left = new CustomGroupBox();
+            tableLayoutPanel_left = new TableLayoutPanel();
+            panel_search = new Panel();
+            label_search = new Label();
+            textBox_search = new TextBox();
+            dataGridView_member = new DataGridView();
+            id = new DataGridViewTextBoxColumn();
+            phone = new DataGridViewTextBoxColumn();
+            sex = new DataGridViewTextBoxColumn();
+            nick_name = new DataGridViewTextBoxColumn();
+            first_name = new DataGridViewTextBoxColumn();
+            last_name = new DataGridViewTextBoxColumn();
+            address = new DataGridViewTextBoxColumn();
+            sub_district = new DataGridViewTextBoxColumn();
+            district = new DataGridViewTextBoxColumn();
+            province = new DataGridViewTextBoxColumn();
+            postal_code = new DataGridViewTextBoxColumn();
+            discount_percent = new DataGridViewTextBoxColumn();
+            sale_total = new DataGridViewTextBoxColumn();
+            sale_ineffective_member = new DataGridViewTextBoxColumn();
+            sale_effective_member = new DataGridViewTextBoxColumn();
+            sale_per_point = new DataGridViewTextBoxColumn();
+            point_increase = new DataGridViewTextBoxColumn();
+            point_decrease = new DataGridViewTextBoxColumn();
+            point_balance = new DataGridViewTextBoxColumn();
+            delete = new DataGridViewImageColumn();
             timer_search_member = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
+            tableLayoutPanel_right.SuspendLayout();
+            customGroupBox_right_top.SuspendLayout();
             tableLayoutPanel_button.SuspendLayout();
-            panel_search.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_member).BeginInit();
+            customGroupBox_right_bottom.SuspendLayout();
             panel_detail.SuspendLayout();
             customGroupBox_detail.SuspendLayout();
             tableLayoutPanel_detail.SuspendLayout();
             panel_sex.SuspendLayout();
+            customGroupBox_left.SuspendLayout();
+            tableLayoutPanel_left.SuspendLayout();
+            panel_search.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_member).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel_back
             // 
-            tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
+            tableLayoutPanel_back.BackColor = Color.Transparent;
             tableLayoutPanel_back.ColumnCount = 2;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_button, 1, 0);
-            tableLayoutPanel_back.Controls.Add(panel_search, 0, 0);
-            tableLayoutPanel_back.Controls.Add(dataGridView_member, 0, 1);
-            tableLayoutPanel_back.Controls.Add(panel_detail, 1, 1);
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
+            tableLayoutPanel_back.Controls.Add(customGroupBox_left, 0, 0);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
             tableLayoutPanel_back.Location = new Point(0, 0);
             tableLayoutPanel_back.Margin = new Padding(0);
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
-            tableLayoutPanel_back.RowCount = 2;
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel_back.RowCount = 1;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_back.Size = new Size(1534, 872);
             tableLayoutPanel_back.TabIndex = 0;
+            // 
+            // tableLayoutPanel_right
+            // 
+            tableLayoutPanel_right.BackColor = Color.Transparent;
+            tableLayoutPanel_right.ColumnCount = 1;
+            tableLayoutPanel_right.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_right.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_right.Controls.Add(customGroupBox_right_top, 0, 0);
+            tableLayoutPanel_right.Controls.Add(customGroupBox_right_bottom, 0, 1);
+            tableLayoutPanel_right.Dock = DockStyle.Fill;
+            tableLayoutPanel_right.Location = new Point(383, 0);
+            tableLayoutPanel_right.Margin = new Padding(0);
+            tableLayoutPanel_right.Name = "tableLayoutPanel_right";
+            tableLayoutPanel_right.RowCount = 2;
+            tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_right.Size = new Size(1151, 872);
+            tableLayoutPanel_right.TabIndex = 3;
+            // 
+            // customGroupBox_right_top
+            // 
+            customGroupBox_right_top.BackColor = Color.Transparent;
+            customGroupBox_right_top.BorderColor = Color.White;
+            customGroupBox_right_top.BorderRadius = 30;
+            customGroupBox_right_top.BorderThickness = 20;
+            customGroupBox_right_top.Controls.Add(tableLayoutPanel_button);
+            customGroupBox_right_top.Dock = DockStyle.Fill;
+            customGroupBox_right_top.Font = new Font("Segoe UI", 1F);
+            customGroupBox_right_top.Location = new Point(10, 0);
+            customGroupBox_right_top.Margin = new Padding(10, 0, 10, 0);
+            customGroupBox_right_top.Name = "customGroupBox_right_top";
+            customGroupBox_right_top.Padding = new Padding(10);
+            customGroupBox_right_top.Size = new Size(1131, 120);
+            customGroupBox_right_top.TabIndex = 0;
+            customGroupBox_right_top.TabStop = false;
             // 
             // tableLayoutPanel_button
             // 
@@ -148,12 +191,12 @@
             tableLayoutPanel_button.Controls.Add(button_add_save, 0, 0);
             tableLayoutPanel_button.Controls.Add(button_edit_save, 1, 0);
             tableLayoutPanel_button.Dock = DockStyle.Fill;
-            tableLayoutPanel_button.Location = new Point(393, 0);
-            tableLayoutPanel_button.Margin = new Padding(10, 0, 0, 0);
+            tableLayoutPanel_button.Location = new Point(10, 13);
+            tableLayoutPanel_button.Margin = new Padding(0);
             tableLayoutPanel_button.Name = "tableLayoutPanel_button";
             tableLayoutPanel_button.RowCount = 1;
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_button.Size = new Size(1141, 100);
+            tableLayoutPanel_button.Size = new Size(1111, 97);
             tableLayoutPanel_button.TabIndex = 4;
             // 
             // button_cancel
@@ -167,9 +210,9 @@
             button_cancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_cancel.Location = new Point(763, 3);
+            button_cancel.Location = new Point(743, 3);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(375, 94);
+            button_cancel.Size = new Size(365, 91);
             button_cancel.TabIndex = 4;
             button_cancel.TabStop = false;
             button_cancel.Text = " ยกเลิก";
@@ -191,7 +234,7 @@
             button_add_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             button_add_save.Location = new Point(3, 3);
             button_add_save.Name = "button_add_save";
-            button_add_save.Size = new Size(374, 94);
+            button_add_save.Size = new Size(364, 91);
             button_add_save.TabIndex = 3;
             button_add_save.TabStop = false;
             button_add_save.Text = " เพิ่ม";
@@ -213,9 +256,9 @@
             button_edit_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button_edit_save.FlatStyle = FlatStyle.Flat;
             button_edit_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_edit_save.Location = new Point(383, 3);
+            button_edit_save.Location = new Point(373, 3);
             button_edit_save.Name = "button_edit_save";
-            button_edit_save.Size = new Size(374, 94);
+            button_edit_save.Size = new Size(364, 91);
             button_edit_save.TabIndex = 2;
             button_edit_save.TabStop = false;
             button_edit_save.Text = "แก้ไข";
@@ -226,279 +269,22 @@
             button_edit_save.MouseEnter += button_MouseEnter;
             button_edit_save.MouseLeave += button_MouseLeave;
             // 
-            // panel_search
+            // customGroupBox_right_bottom
             // 
-            panel_search.Controls.Add(label_search);
-            panel_search.Controls.Add(textBox_search);
-            panel_search.Dock = DockStyle.Fill;
-            panel_search.Location = new Point(0, 0);
-            panel_search.Margin = new Padding(0);
-            panel_search.Name = "panel_search";
-            panel_search.Size = new Size(383, 100);
-            panel_search.TabIndex = 4;
-            // 
-            // label_search
-            // 
-            label_search.Dock = DockStyle.Fill;
-            label_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
-            label_search.ForeColor = Color.Gray;
-            label_search.Location = new Point(0, 0);
-            label_search.Name = "label_search";
-            label_search.Size = new Size(383, 64);
-            label_search.TabIndex = 2;
-            label_search.Text = "--";
-            label_search.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // textBox_search
-            // 
-            textBox_search.BorderStyle = BorderStyle.None;
-            textBox_search.Dock = DockStyle.Bottom;
-            textBox_search.Font = new Font("Segoe UI", 16.2F);
-            textBox_search.Location = new Point(0, 64);
-            textBox_search.Margin = new Padding(0);
-            textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(383, 36);
-            textBox_search.TabIndex = 1;
-            textBox_search.TextAlign = HorizontalAlignment.Center;
-            textBox_search.TextChanged += textBox_search_TextChanged;
-            // 
-            // dataGridView_member
-            // 
-            dataGridView_member.AllowUserToAddRows = false;
-            dataGridView_member.AllowUserToDeleteRows = false;
-            dataGridView_member.AllowUserToResizeColumns = false;
-            dataGridView_member.AllowUserToResizeRows = false;
-            dataGridView_member.BackgroundColor = Color.White;
-            dataGridView_member.BorderStyle = BorderStyle.None;
-            dataGridView_member.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridView_member.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = Color.Gray;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(128, 255, 128);
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dataGridView_member.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridView_member.ColumnHeadersHeight = 10;
-            dataGridView_member.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView_member.Columns.AddRange(new DataGridViewColumn[] { id, phone, sex, nick_name, first_name, last_name, address, sub_district, district, province, postal_code, discount_percent, sale_total, sale_ineffective_member, sale_effective_member, sale_per_point, point_increase, point_decrease, point_balance, delete });
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = Color.White;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle5.ForeColor = Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
-            dataGridView_member.DefaultCellStyle = dataGridViewCellStyle5;
-            dataGridView_member.Dock = DockStyle.Fill;
-            dataGridView_member.GridColor = Color.FromArgb(192, 255, 192);
-            dataGridView_member.Location = new Point(0, 100);
-            dataGridView_member.Margin = new Padding(0);
-            dataGridView_member.MultiSelect = false;
-            dataGridView_member.Name = "dataGridView_member";
-            dataGridView_member.ReadOnly = true;
-            dataGridView_member.RowHeadersVisible = false;
-            dataGridView_member.RowHeadersWidth = 51;
-            dataGridView_member.RowTemplate.Height = 50;
-            dataGridView_member.ScrollBars = ScrollBars.None;
-            dataGridView_member.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView_member.ShowCellToolTips = false;
-            dataGridView_member.Size = new Size(383, 772);
-            dataGridView_member.TabIndex = 2;
-            dataGridView_member.TabStop = false;
-            dataGridView_member.CellClick += dataGridView_member_CellClick;
-            dataGridView_member.CellMouseDown += dataGridView_member_CellMouseDown;
-            dataGridView_member.CellMouseEnter += dataGridView_member_CellMouseEnter;
-            dataGridView_member.CellMouseLeave += dataGridView_member_CellMouseLeave;
-            // 
-            // id
-            // 
-            id.HeaderText = "id";
-            id.MinimumWidth = 6;
-            id.Name = "id";
-            id.ReadOnly = true;
-            id.Visible = false;
-            id.Width = 125;
-            // 
-            // phone
-            // 
-            phone.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            phone.HeaderText = "phone";
-            phone.MinimumWidth = 6;
-            phone.Name = "phone";
-            phone.ReadOnly = true;
-            // 
-            // sex
-            // 
-            sex.HeaderText = "sex";
-            sex.MinimumWidth = 6;
-            sex.Name = "sex";
-            sex.ReadOnly = true;
-            sex.Visible = false;
-            sex.Width = 125;
-            // 
-            // nick_name
-            // 
-            nick_name.HeaderText = "nick_name";
-            nick_name.MinimumWidth = 6;
-            nick_name.Name = "nick_name";
-            nick_name.ReadOnly = true;
-            nick_name.Visible = false;
-            nick_name.Width = 125;
-            // 
-            // first_name
-            // 
-            first_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            first_name.DefaultCellStyle = dataGridViewCellStyle2;
-            first_name.HeaderText = "first_name";
-            first_name.MinimumWidth = 6;
-            first_name.Name = "first_name";
-            first_name.ReadOnly = true;
-            first_name.Visible = false;
-            // 
-            // last_name
-            // 
-            last_name.HeaderText = "last_name";
-            last_name.MinimumWidth = 6;
-            last_name.Name = "last_name";
-            last_name.ReadOnly = true;
-            last_name.Visible = false;
-            last_name.Width = 125;
-            // 
-            // address
-            // 
-            address.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
-            address.DefaultCellStyle = dataGridViewCellStyle3;
-            address.HeaderText = "address";
-            address.MinimumWidth = 6;
-            address.Name = "address";
-            address.ReadOnly = true;
-            address.Visible = false;
-            address.Width = 125;
-            // 
-            // sub_district
-            // 
-            sub_district.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
-            sub_district.DefaultCellStyle = dataGridViewCellStyle4;
-            sub_district.HeaderText = "sub_district";
-            sub_district.MinimumWidth = 6;
-            sub_district.Name = "sub_district";
-            sub_district.ReadOnly = true;
-            sub_district.Visible = false;
-            sub_district.Width = 125;
-            // 
-            // district
-            // 
-            district.HeaderText = "district";
-            district.MinimumWidth = 6;
-            district.Name = "district";
-            district.ReadOnly = true;
-            district.Visible = false;
-            district.Width = 125;
-            // 
-            // province
-            // 
-            province.HeaderText = "province";
-            province.MinimumWidth = 6;
-            province.Name = "province";
-            province.ReadOnly = true;
-            province.Visible = false;
-            province.Width = 125;
-            // 
-            // postal_code
-            // 
-            postal_code.HeaderText = "postal_code";
-            postal_code.MinimumWidth = 6;
-            postal_code.Name = "postal_code";
-            postal_code.ReadOnly = true;
-            postal_code.Visible = false;
-            postal_code.Width = 125;
-            // 
-            // discount_percent
-            // 
-            discount_percent.HeaderText = "discount_percent";
-            discount_percent.MinimumWidth = 6;
-            discount_percent.Name = "discount_percent";
-            discount_percent.ReadOnly = true;
-            discount_percent.Visible = false;
-            discount_percent.Width = 125;
-            // 
-            // sale_total
-            // 
-            sale_total.HeaderText = "sale_total";
-            sale_total.MinimumWidth = 6;
-            sale_total.Name = "sale_total";
-            sale_total.ReadOnly = true;
-            sale_total.Visible = false;
-            sale_total.Width = 125;
-            // 
-            // sale_ineffective_member
-            // 
-            sale_ineffective_member.HeaderText = "sale_ineffective_member";
-            sale_ineffective_member.MinimumWidth = 6;
-            sale_ineffective_member.Name = "sale_ineffective_member";
-            sale_ineffective_member.ReadOnly = true;
-            sale_ineffective_member.Visible = false;
-            sale_ineffective_member.Width = 125;
-            // 
-            // sale_effective_member
-            // 
-            sale_effective_member.HeaderText = "sale_effective_member";
-            sale_effective_member.MinimumWidth = 6;
-            sale_effective_member.Name = "sale_effective_member";
-            sale_effective_member.ReadOnly = true;
-            sale_effective_member.Visible = false;
-            sale_effective_member.Width = 125;
-            // 
-            // sale_per_point
-            // 
-            sale_per_point.HeaderText = "sale_per_point";
-            sale_per_point.MinimumWidth = 6;
-            sale_per_point.Name = "sale_per_point";
-            sale_per_point.ReadOnly = true;
-            sale_per_point.Visible = false;
-            sale_per_point.Width = 125;
-            // 
-            // point_increase
-            // 
-            point_increase.HeaderText = "point_increase";
-            point_increase.MinimumWidth = 6;
-            point_increase.Name = "point_increase";
-            point_increase.ReadOnly = true;
-            point_increase.Visible = false;
-            point_increase.Width = 125;
-            // 
-            // point_decrease
-            // 
-            point_decrease.HeaderText = "point_decrease";
-            point_decrease.MinimumWidth = 6;
-            point_decrease.Name = "point_decrease";
-            point_decrease.ReadOnly = true;
-            point_decrease.Visible = false;
-            point_decrease.Width = 125;
-            // 
-            // point_balance
-            // 
-            point_balance.HeaderText = "point_balance";
-            point_balance.MinimumWidth = 6;
-            point_balance.Name = "point_balance";
-            point_balance.ReadOnly = true;
-            point_balance.Visible = false;
-            point_balance.Width = 125;
-            // 
-            // delete
-            // 
-            delete.HeaderText = "";
-            delete.MinimumWidth = 6;
-            delete.Name = "delete";
-            delete.ReadOnly = true;
-            delete.Width = 70;
+            customGroupBox_right_bottom.BackColor = Color.Transparent;
+            customGroupBox_right_bottom.BorderColor = Color.White;
+            customGroupBox_right_bottom.BorderRadius = 30;
+            customGroupBox_right_bottom.BorderThickness = 20;
+            customGroupBox_right_bottom.Controls.Add(panel_detail);
+            customGroupBox_right_bottom.Dock = DockStyle.Fill;
+            customGroupBox_right_bottom.Font = new Font("Segoe UI", 1F);
+            customGroupBox_right_bottom.Location = new Point(10, 130);
+            customGroupBox_right_bottom.Margin = new Padding(10, 10, 10, 3);
+            customGroupBox_right_bottom.Name = "customGroupBox_right_bottom";
+            customGroupBox_right_bottom.Padding = new Padding(10);
+            customGroupBox_right_bottom.Size = new Size(1131, 739);
+            customGroupBox_right_bottom.TabIndex = 1;
+            customGroupBox_right_bottom.TabStop = false;
             // 
             // panel_detail
             // 
@@ -506,10 +292,10 @@
             panel_detail.BackColor = Color.White;
             panel_detail.Controls.Add(customGroupBox_detail);
             panel_detail.Dock = DockStyle.Fill;
-            panel_detail.Location = new Point(393, 110);
-            panel_detail.Margin = new Padding(10, 10, 0, 0);
+            panel_detail.Location = new Point(10, 13);
+            panel_detail.Margin = new Padding(10, 10, 10, 3);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(1141, 762);
+            panel_detail.Size = new Size(1111, 716);
             panel_detail.TabIndex = 3;
             // 
             // customGroupBox_detail
@@ -1089,6 +875,314 @@
             label11.Text = "ราคาขายต่อ 1 แต้ม :";
             label11.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // customGroupBox_left
+            // 
+            customGroupBox_left.BackColor = Color.Transparent;
+            customGroupBox_left.BorderColor = Color.White;
+            customGroupBox_left.BorderRadius = 30;
+            customGroupBox_left.BorderThickness = 20;
+            customGroupBox_left.Controls.Add(tableLayoutPanel_left);
+            customGroupBox_left.Dock = DockStyle.Fill;
+            customGroupBox_left.Font = new Font("Segoe UI", 1F);
+            customGroupBox_left.Location = new Point(0, 0);
+            customGroupBox_left.Margin = new Padding(0, 0, 0, 3);
+            customGroupBox_left.Name = "customGroupBox_left";
+            customGroupBox_left.Padding = new Padding(10);
+            customGroupBox_left.Size = new Size(383, 869);
+            customGroupBox_left.TabIndex = 2;
+            customGroupBox_left.TabStop = false;
+            // 
+            // tableLayoutPanel_left
+            // 
+            tableLayoutPanel_left.ColumnCount = 1;
+            tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_left.Controls.Add(panel_search, 0, 0);
+            tableLayoutPanel_left.Controls.Add(dataGridView_member, 0, 1);
+            tableLayoutPanel_left.Dock = DockStyle.Fill;
+            tableLayoutPanel_left.Location = new Point(10, 13);
+            tableLayoutPanel_left.Name = "tableLayoutPanel_left";
+            tableLayoutPanel_left.RowCount = 2;
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_left.Size = new Size(363, 846);
+            tableLayoutPanel_left.TabIndex = 1;
+            // 
+            // panel_search
+            // 
+            panel_search.Controls.Add(label_search);
+            panel_search.Controls.Add(textBox_search);
+            panel_search.Dock = DockStyle.Fill;
+            panel_search.Location = new Point(0, 0);
+            panel_search.Margin = new Padding(0);
+            panel_search.Name = "panel_search";
+            panel_search.Size = new Size(363, 120);
+            panel_search.TabIndex = 4;
+            // 
+            // label_search
+            // 
+            label_search.BackColor = Color.White;
+            label_search.Dock = DockStyle.Fill;
+            label_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
+            label_search.ForeColor = Color.Gray;
+            label_search.Location = new Point(0, 0);
+            label_search.Name = "label_search";
+            label_search.Size = new Size(363, 84);
+            label_search.TabIndex = 2;
+            label_search.Text = "--";
+            label_search.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // textBox_search
+            // 
+            textBox_search.BorderStyle = BorderStyle.None;
+            textBox_search.Dock = DockStyle.Bottom;
+            textBox_search.Font = new Font("Segoe UI", 16.2F);
+            textBox_search.Location = new Point(0, 84);
+            textBox_search.Margin = new Padding(0);
+            textBox_search.Name = "textBox_search";
+            textBox_search.Size = new Size(363, 36);
+            textBox_search.TabIndex = 1;
+            textBox_search.TextAlign = HorizontalAlignment.Center;
+            textBox_search.TextChanged += textBox_search_TextChanged;
+            // 
+            // dataGridView_member
+            // 
+            dataGridView_member.AllowUserToAddRows = false;
+            dataGridView_member.AllowUserToDeleteRows = false;
+            dataGridView_member.AllowUserToResizeColumns = false;
+            dataGridView_member.AllowUserToResizeRows = false;
+            dataGridView_member.BackgroundColor = Color.White;
+            dataGridView_member.BorderStyle = BorderStyle.None;
+            dataGridView_member.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dataGridView_member.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = Color.Gray;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 1F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView_member.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridView_member.ColumnHeadersHeight = 10;
+            dataGridView_member.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridView_member.Columns.AddRange(new DataGridViewColumn[] { id, phone, sex, nick_name, first_name, last_name, address, sub_district, district, province, postal_code, discount_percent, sale_total, sale_ineffective_member, sale_effective_member, sale_per_point, point_increase, point_decrease, point_balance, delete });
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.White;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle5.ForeColor = Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle5.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dataGridView_member.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridView_member.Dock = DockStyle.Fill;
+            dataGridView_member.GridColor = Color.Lime;
+            dataGridView_member.Location = new Point(0, 120);
+            dataGridView_member.Margin = new Padding(0);
+            dataGridView_member.MultiSelect = false;
+            dataGridView_member.Name = "dataGridView_member";
+            dataGridView_member.ReadOnly = true;
+            dataGridView_member.RowHeadersVisible = false;
+            dataGridView_member.RowHeadersWidth = 51;
+            dataGridView_member.RowTemplate.Height = 50;
+            dataGridView_member.ScrollBars = ScrollBars.None;
+            dataGridView_member.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView_member.ShowCellToolTips = false;
+            dataGridView_member.Size = new Size(363, 726);
+            dataGridView_member.TabIndex = 2;
+            dataGridView_member.TabStop = false;
+            dataGridView_member.CellClick += dataGridView_member_CellClick;
+            dataGridView_member.CellMouseDown += dataGridView_member_CellMouseDown;
+            dataGridView_member.CellMouseEnter += dataGridView_member_CellMouseEnter;
+            dataGridView_member.CellMouseLeave += dataGridView_member_CellMouseLeave;
+            // 
+            // id
+            // 
+            id.HeaderText = "id";
+            id.MinimumWidth = 6;
+            id.Name = "id";
+            id.ReadOnly = true;
+            id.Visible = false;
+            id.Width = 125;
+            // 
+            // phone
+            // 
+            phone.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            phone.HeaderText = "phone";
+            phone.MinimumWidth = 6;
+            phone.Name = "phone";
+            phone.ReadOnly = true;
+            // 
+            // sex
+            // 
+            sex.HeaderText = "sex";
+            sex.MinimumWidth = 6;
+            sex.Name = "sex";
+            sex.ReadOnly = true;
+            sex.Visible = false;
+            sex.Width = 125;
+            // 
+            // nick_name
+            // 
+            nick_name.HeaderText = "nick_name";
+            nick_name.MinimumWidth = 6;
+            nick_name.Name = "nick_name";
+            nick_name.ReadOnly = true;
+            nick_name.Visible = false;
+            nick_name.Width = 125;
+            // 
+            // first_name
+            // 
+            first_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            first_name.DefaultCellStyle = dataGridViewCellStyle2;
+            first_name.HeaderText = "first_name";
+            first_name.MinimumWidth = 6;
+            first_name.Name = "first_name";
+            first_name.ReadOnly = true;
+            first_name.Visible = false;
+            // 
+            // last_name
+            // 
+            last_name.HeaderText = "last_name";
+            last_name.MinimumWidth = 6;
+            last_name.Name = "last_name";
+            last_name.ReadOnly = true;
+            last_name.Visible = false;
+            last_name.Width = 125;
+            // 
+            // address
+            // 
+            address.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleRight;
+            address.DefaultCellStyle = dataGridViewCellStyle3;
+            address.HeaderText = "address";
+            address.MinimumWidth = 6;
+            address.Name = "address";
+            address.ReadOnly = true;
+            address.Visible = false;
+            address.Width = 125;
+            // 
+            // sub_district
+            // 
+            sub_district.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.False;
+            sub_district.DefaultCellStyle = dataGridViewCellStyle4;
+            sub_district.HeaderText = "sub_district";
+            sub_district.MinimumWidth = 6;
+            sub_district.Name = "sub_district";
+            sub_district.ReadOnly = true;
+            sub_district.Visible = false;
+            sub_district.Width = 125;
+            // 
+            // district
+            // 
+            district.HeaderText = "district";
+            district.MinimumWidth = 6;
+            district.Name = "district";
+            district.ReadOnly = true;
+            district.Visible = false;
+            district.Width = 125;
+            // 
+            // province
+            // 
+            province.HeaderText = "province";
+            province.MinimumWidth = 6;
+            province.Name = "province";
+            province.ReadOnly = true;
+            province.Visible = false;
+            province.Width = 125;
+            // 
+            // postal_code
+            // 
+            postal_code.HeaderText = "postal_code";
+            postal_code.MinimumWidth = 6;
+            postal_code.Name = "postal_code";
+            postal_code.ReadOnly = true;
+            postal_code.Visible = false;
+            postal_code.Width = 125;
+            // 
+            // discount_percent
+            // 
+            discount_percent.HeaderText = "discount_percent";
+            discount_percent.MinimumWidth = 6;
+            discount_percent.Name = "discount_percent";
+            discount_percent.ReadOnly = true;
+            discount_percent.Visible = false;
+            discount_percent.Width = 125;
+            // 
+            // sale_total
+            // 
+            sale_total.HeaderText = "sale_total";
+            sale_total.MinimumWidth = 6;
+            sale_total.Name = "sale_total";
+            sale_total.ReadOnly = true;
+            sale_total.Visible = false;
+            sale_total.Width = 125;
+            // 
+            // sale_ineffective_member
+            // 
+            sale_ineffective_member.HeaderText = "sale_ineffective_member";
+            sale_ineffective_member.MinimumWidth = 6;
+            sale_ineffective_member.Name = "sale_ineffective_member";
+            sale_ineffective_member.ReadOnly = true;
+            sale_ineffective_member.Visible = false;
+            sale_ineffective_member.Width = 125;
+            // 
+            // sale_effective_member
+            // 
+            sale_effective_member.HeaderText = "sale_effective_member";
+            sale_effective_member.MinimumWidth = 6;
+            sale_effective_member.Name = "sale_effective_member";
+            sale_effective_member.ReadOnly = true;
+            sale_effective_member.Visible = false;
+            sale_effective_member.Width = 125;
+            // 
+            // sale_per_point
+            // 
+            sale_per_point.HeaderText = "sale_per_point";
+            sale_per_point.MinimumWidth = 6;
+            sale_per_point.Name = "sale_per_point";
+            sale_per_point.ReadOnly = true;
+            sale_per_point.Visible = false;
+            sale_per_point.Width = 125;
+            // 
+            // point_increase
+            // 
+            point_increase.HeaderText = "point_increase";
+            point_increase.MinimumWidth = 6;
+            point_increase.Name = "point_increase";
+            point_increase.ReadOnly = true;
+            point_increase.Visible = false;
+            point_increase.Width = 125;
+            // 
+            // point_decrease
+            // 
+            point_decrease.HeaderText = "point_decrease";
+            point_decrease.MinimumWidth = 6;
+            point_decrease.Name = "point_decrease";
+            point_decrease.ReadOnly = true;
+            point_decrease.Visible = false;
+            point_decrease.Width = 125;
+            // 
+            // point_balance
+            // 
+            point_balance.HeaderText = "point_balance";
+            point_balance.MinimumWidth = 6;
+            point_balance.Name = "point_balance";
+            point_balance.ReadOnly = true;
+            point_balance.Visible = false;
+            point_balance.Width = 125;
+            // 
+            // delete
+            // 
+            delete.HeaderText = "";
+            delete.MinimumWidth = 6;
+            delete.Name = "delete";
+            delete.ReadOnly = true;
+            delete.Width = 70;
+            // 
             // timer_search_member
             // 
             timer_search_member.Tick += timer_search_member_Tick;
@@ -1097,7 +1191,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.Cyan;
             ClientSize = new Size(1534, 872);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
@@ -1106,16 +1200,21 @@
             Text = "Form_Member_Detail";
             Load += Form_Member_Detail_Load;
             tableLayoutPanel_back.ResumeLayout(false);
+            tableLayoutPanel_right.ResumeLayout(false);
+            customGroupBox_right_top.ResumeLayout(false);
             tableLayoutPanel_button.ResumeLayout(false);
-            panel_search.ResumeLayout(false);
-            panel_search.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_member).EndInit();
+            customGroupBox_right_bottom.ResumeLayout(false);
             panel_detail.ResumeLayout(false);
             customGroupBox_detail.ResumeLayout(false);
             customGroupBox_detail.PerformLayout();
             tableLayoutPanel_detail.ResumeLayout(false);
             tableLayoutPanel_detail.PerformLayout();
             panel_sex.ResumeLayout(false);
+            customGroupBox_left.ResumeLayout(false);
+            tableLayoutPanel_left.ResumeLayout(false);
+            panel_search.ResumeLayout(false);
+            panel_search.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_member).EndInit();
             ResumeLayout(false);
         }
 
@@ -1192,5 +1291,10 @@
         private DataGridViewTextBoxColumn point_decrease;
         private DataGridViewTextBoxColumn point_balance;
         private DataGridViewImageColumn delete;
+        private TableLayoutPanel tableLayoutPanel_left;
+        private CustomGroupBox customGroupBox_left;
+        private TableLayoutPanel tableLayoutPanel_right;
+        private CustomGroupBox customGroupBox_right_top;
+        private CustomGroupBox customGroupBox_right_bottom;
     }
 }

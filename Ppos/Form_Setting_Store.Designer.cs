@@ -30,7 +30,7 @@
         {
             panel_detail = new Panel();
             customGroupBox = new CustomGroupBox();
-            tableLayoutPanel_back = new TableLayoutPanel();
+            tableLayoutPanel_store = new TableLayoutPanel();
             tableLayoutPanel_detail = new TableLayoutPanel();
             label_store_no = new Label();
             label_store_name = new Label();
@@ -56,12 +56,16 @@
             tableLayoutPanel_top = new TableLayoutPanel();
             button_edit_save = new Button();
             button_cancel = new Button();
+            customGroupBox_back = new CustomGroupBox();
+            tableLayoutPanel_back = new TableLayoutPanel();
             panel_detail.SuspendLayout();
             customGroupBox.SuspendLayout();
-            tableLayoutPanel_back.SuspendLayout();
+            tableLayoutPanel_store.SuspendLayout();
             tableLayoutPanel_detail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).BeginInit();
             tableLayoutPanel_top.SuspendLayout();
+            customGroupBox_back.SuspendLayout();
+            tableLayoutPanel_back.SuspendLayout();
             SuspendLayout();
             // 
             // panel_detail
@@ -70,10 +74,10 @@
             panel_detail.BackColor = Color.White;
             panel_detail.Controls.Add(customGroupBox);
             panel_detail.Dock = DockStyle.Fill;
-            panel_detail.Location = new Point(0, 100);
+            panel_detail.Location = new Point(0, 120);
             panel_detail.Margin = new Padding(0);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(1311, 941);
+            panel_detail.Size = new Size(1281, 895);
             panel_detail.TabIndex = 0;
             // 
             // customGroupBox
@@ -82,7 +86,7 @@
             customGroupBox.BorderColor = Color.Cyan;
             customGroupBox.BorderRadius = 30;
             customGroupBox.BorderThickness = 20;
-            customGroupBox.Controls.Add(tableLayoutPanel_back);
+            customGroupBox.Controls.Add(tableLayoutPanel_store);
             customGroupBox.Font = new Font("Segoe UI", 1F);
             customGroupBox.Location = new Point(358, 6);
             customGroupBox.Name = "customGroupBox";
@@ -92,23 +96,23 @@
             customGroupBox.TabStop = false;
             customGroupBox.Text = "  ";
             // 
-            // tableLayoutPanel_back
+            // tableLayoutPanel_store
             // 
-            tableLayoutPanel_back.BackColor = Color.Transparent;
-            tableLayoutPanel_back.ColumnCount = 1;
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_detail, 0, 1);
-            tableLayoutPanel_back.Controls.Add(pictureBox, 0, 0);
-            tableLayoutPanel_back.Dock = DockStyle.Fill;
-            tableLayoutPanel_back.Location = new Point(25, 28);
-            tableLayoutPanel_back.Margin = new Padding(0);
-            tableLayoutPanel_back.Name = "tableLayoutPanel_back";
-            tableLayoutPanel_back.RowCount = 2;
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Size = new Size(564, 697);
-            tableLayoutPanel_back.TabIndex = 0;
+            tableLayoutPanel_store.BackColor = Color.Transparent;
+            tableLayoutPanel_store.ColumnCount = 1;
+            tableLayoutPanel_store.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_store.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_store.Controls.Add(tableLayoutPanel_detail, 0, 1);
+            tableLayoutPanel_store.Controls.Add(pictureBox, 0, 0);
+            tableLayoutPanel_store.Dock = DockStyle.Fill;
+            tableLayoutPanel_store.Location = new Point(25, 28);
+            tableLayoutPanel_store.Margin = new Padding(0);
+            tableLayoutPanel_store.Name = "tableLayoutPanel_store";
+            tableLayoutPanel_store.RowCount = 2;
+            tableLayoutPanel_store.RowStyles.Add(new RowStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel_store.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_store.Size = new Size(564, 697);
+            tableLayoutPanel_store.TabIndex = 0;
             // 
             // tableLayoutPanel_detail
             // 
@@ -427,12 +431,13 @@
             tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_top.Controls.Add(button_edit_save, 1, 0);
             tableLayoutPanel_top.Controls.Add(button_cancel, 2, 0);
-            tableLayoutPanel_top.Dock = DockStyle.Top;
+            tableLayoutPanel_top.Dock = DockStyle.Fill;
             tableLayoutPanel_top.Location = new Point(0, 0);
+            tableLayoutPanel_top.Margin = new Padding(0);
             tableLayoutPanel_top.Name = "tableLayoutPanel_top";
             tableLayoutPanel_top.RowCount = 1;
             tableLayoutPanel_top.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-            tableLayoutPanel_top.Size = new Size(1311, 100);
+            tableLayoutPanel_top.Size = new Size(1281, 120);
             tableLayoutPanel_top.TabIndex = 1;
             // 
             // button_edit_save
@@ -444,10 +449,10 @@
             button_edit_save.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_edit_save.FlatStyle = FlatStyle.Flat;
             button_edit_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_edit_save.Location = new Point(355, 0);
+            button_edit_save.Location = new Point(340, 0);
             button_edit_save.Margin = new Padding(0);
             button_edit_save.Name = "button_edit_save";
-            button_edit_save.Size = new Size(300, 100);
+            button_edit_save.Size = new Size(300, 120);
             button_edit_save.TabIndex = 0;
             button_edit_save.Text = "แก้ไข";
             button_edit_save.TextAlign = ContentAlignment.BottomCenter;
@@ -467,10 +472,10 @@
             button_cancel.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_cancel.Location = new Point(655, 0);
+            button_cancel.Location = new Point(640, 0);
             button_cancel.Margin = new Padding(0);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(300, 100);
+            button_cancel.Size = new Size(300, 120);
             button_cancel.TabIndex = 0;
             button_cancel.Text = "ยกเลิก";
             button_cancel.TextAlign = ContentAlignment.BottomCenter;
@@ -480,30 +485,65 @@
             button_cancel.MouseEnter += button_MouseEnter;
             button_cancel.MouseLeave += button_MouseLeave;
             // 
+            // customGroupBox_back
+            // 
+            customGroupBox_back.BackColor = Color.Transparent;
+            customGroupBox_back.BorderColor = Color.White;
+            customGroupBox_back.BorderRadius = 30;
+            customGroupBox_back.BorderThickness = 20;
+            customGroupBox_back.Controls.Add(tableLayoutPanel_back);
+            customGroupBox_back.Dock = DockStyle.Fill;
+            customGroupBox_back.Font = new Font("Segoe UI", 1F);
+            customGroupBox_back.Location = new Point(0, 0);
+            customGroupBox_back.Margin = new Padding(3, 3, 10, 3);
+            customGroupBox_back.Name = "customGroupBox_back";
+            customGroupBox_back.Padding = new Padding(10);
+            customGroupBox_back.Size = new Size(1301, 1038);
+            customGroupBox_back.TabIndex = 2;
+            customGroupBox_back.TabStop = false;
+            // 
+            // tableLayoutPanel_back
+            // 
+            tableLayoutPanel_back.ColumnCount = 1;
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_top, 0, 0);
+            tableLayoutPanel_back.Controls.Add(panel_detail, 0, 1);
+            tableLayoutPanel_back.Dock = DockStyle.Fill;
+            tableLayoutPanel_back.Location = new Point(10, 13);
+            tableLayoutPanel_back.Name = "tableLayoutPanel_back";
+            tableLayoutPanel_back.RowCount = 2;
+            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back.Size = new Size(1281, 1015);
+            tableLayoutPanel_back.TabIndex = 0;
+            // 
             // Form_Setting_Store
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(192, 255, 255);
+            BackColor = Color.Cyan;
             ClientSize = new Size(1311, 1041);
-            Controls.Add(panel_detail);
-            Controls.Add(tableLayoutPanel_top);
+            Controls.Add(customGroupBox_back);
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.None;
             Name = "Form_Setting_Store";
+            Padding = new Padding(0, 0, 10, 3);
             Text = "Form_Setting_Store";
             Resize += Form_Setting_Store_Resize;
             panel_detail.ResumeLayout(false);
             panel_detail.PerformLayout();
             customGroupBox.ResumeLayout(false);
-            tableLayoutPanel_back.ResumeLayout(false);
-            tableLayoutPanel_back.PerformLayout();
+            tableLayoutPanel_store.ResumeLayout(false);
+            tableLayoutPanel_store.PerformLayout();
             tableLayoutPanel_detail.ResumeLayout(false);
             tableLayoutPanel_detail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox).EndInit();
             tableLayoutPanel_top.ResumeLayout(false);
+            customGroupBox_back.ResumeLayout(false);
+            tableLayoutPanel_back.ResumeLayout(false);
+            tableLayoutPanel_back.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -535,6 +575,8 @@
         private TextBox postal_code;
         private TextBox phone;
         private TextBox email;
+        private TableLayoutPanel tableLayoutPanel_store;
+        private CustomGroupBox customGroupBox_back;
         private TableLayoutPanel tableLayoutPanel_back;
     }
 }

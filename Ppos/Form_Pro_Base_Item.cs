@@ -33,7 +33,7 @@ namespace Ppos
 
         DataTable dt;
 
-        Color E_Day = Color.WhiteSmoke;
+        Color E_Day = Color.FromArgb(192, 255, 192);
         Color D_Day = Color.White;
         public Form_Pro_Base_Item()
         {
@@ -58,7 +58,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_promotion);
 
-                dataGridView_promotion.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_promotion.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_promotion.EnableHeadersVisualStyles = false;
                 /////
                 dataGridView_item.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item, true, null);
@@ -706,7 +706,7 @@ namespace Ppos
         {
             try
             {
-                ((Label)sender).BackColor = Color.WhiteSmoke;
+               // ((Label)sender).BackColor = Color.;
             }
             catch (Exception ex)
             {
@@ -718,7 +718,7 @@ namespace Ppos
         {
             try
             {
-                ((Label)sender).BackColor = Color.White;
+              //  ((Label)sender).BackColor = Color.White;
 
             }
             catch (Exception ex)

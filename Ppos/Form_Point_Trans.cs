@@ -45,7 +45,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_member);
 
-                dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_member.EnableHeadersVisualStyles = false;
 
                 dataGridView_trans.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_member, true, null);
@@ -56,7 +56,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_trans);
 
-                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
                 dataGridView_trans.EnableHeadersVisualStyles = false;
 
                 button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(40, 40));
@@ -98,7 +98,7 @@ namespace Ppos
                 dataGridView_trans.Columns["point_end"]!.HeaderCell.Style.Font = new System.Drawing.Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
                 dataGridView_trans.Columns["point_end"]!.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 14F, FontStyle.Bold, GraphicsUnit.Point);
 
-                search_member();
+               
             }
             catch
             {
@@ -111,6 +111,7 @@ namespace Ppos
         {
             try
             {
+                search_member();
                 textBox_search.Focus();
             }
             catch (Exception ex)

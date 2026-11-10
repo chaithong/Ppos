@@ -53,7 +53,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_member);
 
-                dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_member.EnableHeadersVisualStyles = false;
 
                 // เรียกใช้ Class ส่วนกลาง แล้วส่ง Panel ของ Form นี้เข้าไป
@@ -92,7 +92,7 @@ namespace Ppos
 
                 textBox_sale_per_point.Text = Class_Parameter.sale_per_point;
 
-                search_member();
+               
 
             }
             catch
@@ -106,7 +106,7 @@ namespace Ppos
         {
             try
             {
-
+                search_member();
             }
             catch (Exception ex)
             {

@@ -18,37 +18,45 @@ namespace Ppos
         public Form_Setting_Configure(Form_Main form_Main)
         {
             InitializeComponent();
-            this.DoubleBuffered = true;
-            _main = form_Main;
+            try
+            {
+                this.DoubleBuffered = true;
 
-            if (!Class_Parameter.login_program)
-            {
-                login_program.Image = Ppos.Properties.Resources.uncheck;
+                // เรียกใช้ Class ส่วนกลาง แล้วส่ง Panel ของ Form นี้เข้าไป
+                Class_Scroll_Panel.EnableDragScroll(panel_back);
+
+                _main = form_Main;
+
+                if (!Class_Parameter.login_program)
+                {
+                    login_program.Image = Ppos.Properties.Resources.uncheck;
+                }
+                if (!Class_Parameter.use_item_medium_large)
+                {
+                    use_item_medium_large.Image = Ppos.Properties.Resources.uncheck;
+                }
+                if (!Class_Parameter.custom_cost_adjust)
+                {
+                    custom_cost_adjust.Image = Ppos.Properties.Resources.uncheck;
+                }
+                if (!Class_Parameter.sale_show_hotkey)
+                {
+                    sale_show_hotkey.Image = Ppos.Properties.Resources.uncheck;
+                }
+                if (!Class_Parameter.pay_show_keypad)
+                {
+                    pay_show_keypad.Image = Ppos.Properties.Resources.uncheck;
+                }
+                if (!Class_Parameter.pay_show_change)
+                {
+                    pay_show_change.Image = Ppos.Properties.Resources.uncheck;
+                }
             }
-            /*if (!Class_Parameter.hide_menu)
+            catch
             {
-                hide_menu.Image = Ppos.Properties.Resources.uncheck;
-            }*/
-            if (!Class_Parameter.use_item_medium_large)
-            {
-                use_item_medium_large.Image = Ppos.Properties.Resources.uncheck;
+
             }
-            if (!Class_Parameter.custom_cost_adjust)
-            {
-                custom_cost_adjust.Image = Ppos.Properties.Resources.uncheck;
-            }
-            if (!Class_Parameter.sale_show_hotkey)
-            {
-                sale_show_hotkey.Image = Ppos.Properties.Resources.uncheck;
-            }
-            if (!Class_Parameter.pay_show_keypad)
-            {
-                pay_show_keypad.Image = Ppos.Properties.Resources.uncheck;
-            }
-            if (!Class_Parameter.pay_show_change)
-            {
-                pay_show_change.Image = Ppos.Properties.Resources.uncheck;
-            }
+          
         }
 
         private void Click_Status(object sender, EventArgs e)

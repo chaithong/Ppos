@@ -29,46 +29,47 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle17 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle19 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle18 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle20 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle22 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle21 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle23 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle25 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle24 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle26 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle28 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle27 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle15 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle16 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle13 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle14 = new DataGridViewCellStyle();
             tableLayoutPanel_back = new TableLayoutPanel();
+            tableLayoutPanel_right = new TableLayoutPanel();
+            customGroupBox_right_top = new CustomGroupBox();
+            tableLayoutPanel_button = new TableLayoutPanel();
+            button_cancel = new Button();
+            button_edit_save = new Button();
+            button_add_save = new Button();
+            customGroupBox_right_bottom = new CustomGroupBox();
             panel_detail = new Panel();
             tableLayoutPanel_back_detail = new TableLayoutPanel();
             groupBox_detail = new CustomGroupBox();
             tableLayoutPanel_detail = new TableLayoutPanel();
+            comboBox_repeat = new ComboBox();
+            textBox_desc = new TextBox();
             label3 = new Label();
             label4 = new Label();
             label7 = new Label();
             label5 = new Label();
-            tableLayoutPanel_type_back = new TableLayoutPanel();
-            tableLayoutPanel_type = new TableLayoutPanel();
-            label_unit_type = new Label();
-            customPanel_offer_type = new CustomPanel();
-            textBox_offer = new TextBox();
+            tableLayoutPanel_offer = new TableLayoutPanel();
             comboBox_offer = new ComboBox();
-            customPanel_discount_type = new CustomPanel();
+            label_unit_type = new Label();
             comboBox_discount_type = new ComboBox();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            customPanel_criterion = new CustomPanel();
+            textBox_offer = new TextBox();
+            tableLayoutPanel_criterion = new TableLayoutPanel();
             textBox_criterion = new TextBox();
-            comboBox_criterion = new ComboBox();
             label_criterion = new Label();
-            customPanel_repeat = new CustomPanel();
-            comboBox_repeat = new ComboBox();
-            customPanel_item_desc = new CustomPanel();
-            textBox_desc = new TextBox();
+            comboBox_criterion = new ComboBox();
             groupBox_premium = new CustomGroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel_search_item_premium = new Panel();
@@ -105,14 +106,16 @@
             button_sat = new Button();
             button_sun = new Button();
             tableLayoutPanel_date = new TableLayoutPanel();
+            label_date_end = new Label();
+            label_date_start = new Label();
             label6 = new Label();
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
             tableLayoutPanel_time_start = new TableLayoutPanel();
             label1 = new Label();
-            textBox_hour_start = new TextBox();
             textBox_second_start = new TextBox();
+            textBox_hour_start = new TextBox();
             panel_up_down_hour_start = new Panel();
             label_down_hour_start = new Label();
             label_up_hour_start = new Label();
@@ -129,10 +132,6 @@
             panel_up_down_second_end = new Panel();
             label_down_second_end = new Label();
             label_up_second_end = new Label();
-            customPanel_date_start = new CustomPanel();
-            label_date_start = new Label();
-            customPanel_date_end = new CustomPanel();
-            label_date_end = new Label();
             groupBox_item = new CustomGroupBox();
             tableLayoutPanel_item = new TableLayoutPanel();
             panel_search_item = new Panel();
@@ -158,6 +157,11 @@
             panel_search_item_pro = new Panel();
             label_item_pro = new Label();
             textBox_search_item_pro = new TextBox();
+            customGroupBox_left = new CustomGroupBox();
+            tableLayoutPanel_left = new TableLayoutPanel();
+            panel_search = new Panel();
+            label_search = new Label();
+            textBox_search = new TextBox();
             dataGridView_promotion = new DataGridView();
             pro_id = new DataGridViewTextBoxColumn();
             pro_type = new DataGridViewTextBoxColumn();
@@ -181,31 +185,22 @@
             sat = new DataGridViewTextBoxColumn();
             sun = new DataGridViewTextBoxColumn();
             delete = new DataGridViewImageColumn();
-            tableLayoutPanel_button = new TableLayoutPanel();
-            button_cancel = new Button();
-            button_edit_save = new Button();
-            button_add_save = new Button();
-            panel_search = new Panel();
-            label_search = new Label();
-            textBox_search = new TextBox();
             timer_up_down = new System.Windows.Forms.Timer(components);
             timer_search_pro = new System.Windows.Forms.Timer(components);
             timer_search_item = new System.Windows.Forms.Timer(components);
             timer_search_item_premium = new System.Windows.Forms.Timer(components);
             timer_show = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
+            tableLayoutPanel_right.SuspendLayout();
+            customGroupBox_right_top.SuspendLayout();
+            tableLayoutPanel_button.SuspendLayout();
+            customGroupBox_right_bottom.SuspendLayout();
             panel_detail.SuspendLayout();
             tableLayoutPanel_back_detail.SuspendLayout();
             groupBox_detail.SuspendLayout();
             tableLayoutPanel_detail.SuspendLayout();
-            tableLayoutPanel_type_back.SuspendLayout();
-            tableLayoutPanel_type.SuspendLayout();
-            customPanel_offer_type.SuspendLayout();
-            customPanel_discount_type.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            customPanel_criterion.SuspendLayout();
-            customPanel_repeat.SuspendLayout();
-            customPanel_item_desc.SuspendLayout();
+            tableLayoutPanel_offer.SuspendLayout();
+            tableLayoutPanel_criterion.SuspendLayout();
             groupBox_premium.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel_search_item_premium.SuspendLayout();
@@ -221,38 +216,176 @@
             tableLayoutPanel_time_end.SuspendLayout();
             panel_up_down_hour_end.SuspendLayout();
             panel_up_down_second_end.SuspendLayout();
-            customPanel_date_start.SuspendLayout();
-            customPanel_date_end.SuspendLayout();
             groupBox_item.SuspendLayout();
             tableLayoutPanel_item.SuspendLayout();
             panel_search_item.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item_pro).BeginInit();
             panel_search_item_pro.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_promotion).BeginInit();
-            tableLayoutPanel_button.SuspendLayout();
+            customGroupBox_left.SuspendLayout();
+            tableLayoutPanel_left.SuspendLayout();
             panel_search.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_promotion).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel_back
             // 
-            tableLayoutPanel_back.BackColor = Color.FromArgb(128, 255, 128);
+            tableLayoutPanel_back.BackColor = Color.Transparent;
             tableLayoutPanel_back.ColumnCount = 2;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
-            tableLayoutPanel_back.Controls.Add(panel_detail, 1, 1);
-            tableLayoutPanel_back.Controls.Add(dataGridView_promotion, 0, 1);
-            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_button, 1, 0);
-            tableLayoutPanel_back.Controls.Add(panel_search, 0, 0);
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
+            tableLayoutPanel_back.Controls.Add(customGroupBox_left, 0, 0);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
             tableLayoutPanel_back.Location = new Point(0, 0);
             tableLayoutPanel_back.Margin = new Padding(0);
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
-            tableLayoutPanel_back.RowCount = 2;
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
+            tableLayoutPanel_back.RowCount = 1;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_back.Size = new Size(1536, 811);
             tableLayoutPanel_back.TabIndex = 0;
+            // 
+            // tableLayoutPanel_right
+            // 
+            tableLayoutPanel_right.ColumnCount = 1;
+            tableLayoutPanel_right.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_right.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_right.Controls.Add(customGroupBox_right_top, 0, 0);
+            tableLayoutPanel_right.Controls.Add(customGroupBox_right_bottom, 0, 1);
+            tableLayoutPanel_right.Dock = DockStyle.Fill;
+            tableLayoutPanel_right.Location = new Point(384, 0);
+            tableLayoutPanel_right.Margin = new Padding(0);
+            tableLayoutPanel_right.Name = "tableLayoutPanel_right";
+            tableLayoutPanel_right.RowCount = 2;
+            tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_right.Size = new Size(1152, 811);
+            tableLayoutPanel_right.TabIndex = 2;
+            // 
+            // customGroupBox_right_top
+            // 
+            customGroupBox_right_top.BackColor = Color.Transparent;
+            customGroupBox_right_top.BorderColor = Color.White;
+            customGroupBox_right_top.BorderRadius = 30;
+            customGroupBox_right_top.BorderThickness = 20;
+            customGroupBox_right_top.Controls.Add(tableLayoutPanel_button);
+            customGroupBox_right_top.Dock = DockStyle.Fill;
+            customGroupBox_right_top.Font = new Font("Segoe UI", 1F);
+            customGroupBox_right_top.Location = new Point(10, 0);
+            customGroupBox_right_top.Margin = new Padding(10, 0, 10, 0);
+            customGroupBox_right_top.Name = "customGroupBox_right_top";
+            customGroupBox_right_top.Padding = new Padding(10);
+            customGroupBox_right_top.Size = new Size(1132, 120);
+            customGroupBox_right_top.TabIndex = 0;
+            customGroupBox_right_top.TabStop = false;
+            // 
+            // tableLayoutPanel_button
+            // 
+            tableLayoutPanel_button.BackColor = Color.White;
+            tableLayoutPanel_button.ColumnCount = 3;
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333244F));
+            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_button.Controls.Add(button_cancel, 2, 0);
+            tableLayoutPanel_button.Controls.Add(button_edit_save, 1, 0);
+            tableLayoutPanel_button.Controls.Add(button_add_save, 0, 0);
+            tableLayoutPanel_button.Dock = DockStyle.Fill;
+            tableLayoutPanel_button.Location = new Point(10, 13);
+            tableLayoutPanel_button.Margin = new Padding(0);
+            tableLayoutPanel_button.Name = "tableLayoutPanel_button";
+            tableLayoutPanel_button.RowCount = 1;
+            tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_button.Size = new Size(1112, 97);
+            tableLayoutPanel_button.TabIndex = 3;
+            // 
+            // button_cancel
+            // 
+            button_cancel.BackColor = Color.White;
+            button_cancel.BackgroundImageLayout = ImageLayout.Zoom;
+            button_cancel.Dock = DockStyle.Fill;
+            button_cancel.Enabled = false;
+            button_cancel.FlatAppearance.BorderSize = 0;
+            button_cancel.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button_cancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            button_cancel.FlatStyle = FlatStyle.Flat;
+            button_cancel.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            button_cancel.Location = new Point(743, 3);
+            button_cancel.Name = "button_cancel";
+            button_cancel.Size = new Size(366, 91);
+            button_cancel.TabIndex = 4;
+            button_cancel.TabStop = false;
+            button_cancel.Text = " ยกเลิก";
+            button_cancel.TextAlign = ContentAlignment.BottomCenter;
+            button_cancel.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_cancel.UseVisualStyleBackColor = false;
+            button_cancel.Click += button_cancel_Click;
+            button_cancel.MouseEnter += button_MouseEnter;
+            button_cancel.MouseLeave += button_MouseLeave;
+            // 
+            // button_edit_save
+            // 
+            button_edit_save.BackColor = Color.White;
+            button_edit_save.BackgroundImageLayout = ImageLayout.Zoom;
+            button_edit_save.Dock = DockStyle.Fill;
+            button_edit_save.Enabled = false;
+            button_edit_save.FlatAppearance.BorderSize = 0;
+            button_edit_save.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button_edit_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            button_edit_save.FlatStyle = FlatStyle.Flat;
+            button_edit_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            button_edit_save.Location = new Point(373, 3);
+            button_edit_save.Name = "button_edit_save";
+            button_edit_save.Size = new Size(364, 91);
+            button_edit_save.TabIndex = 2;
+            button_edit_save.TabStop = false;
+            button_edit_save.Text = "แก้ไข";
+            button_edit_save.TextAlign = ContentAlignment.BottomCenter;
+            button_edit_save.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_edit_save.UseVisualStyleBackColor = false;
+            button_edit_save.Click += button_edit_save_Click;
+            button_edit_save.MouseEnter += button_MouseEnter;
+            button_edit_save.MouseLeave += button_MouseLeave;
+            // 
+            // button_add_save
+            // 
+            button_add_save.BackColor = Color.White;
+            button_add_save.BackgroundImageLayout = ImageLayout.Zoom;
+            button_add_save.Dock = DockStyle.Fill;
+            button_add_save.FlatAppearance.BorderSize = 0;
+            button_add_save.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
+            button_add_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
+            button_add_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            button_add_save.Location = new Point(3, 3);
+            button_add_save.Name = "button_add_save";
+            button_add_save.Size = new Size(364, 91);
+            button_add_save.TabIndex = 3;
+            button_add_save.TabStop = false;
+            button_add_save.Text = " เพิ่ม";
+            button_add_save.TextAlign = ContentAlignment.BottomCenter;
+            button_add_save.TextImageRelation = TextImageRelation.ImageAboveText;
+            button_add_save.UseVisualStyleBackColor = false;
+            button_add_save.Click += button_add_save_Click;
+            button_add_save.MouseEnter += button_MouseEnter;
+            button_add_save.MouseLeave += button_MouseLeave;
+            // 
+            // customGroupBox_right_bottom
+            // 
+            customGroupBox_right_bottom.BackColor = Color.Transparent;
+            customGroupBox_right_bottom.BorderColor = Color.White;
+            customGroupBox_right_bottom.BorderRadius = 30;
+            customGroupBox_right_bottom.BorderThickness = 20;
+            customGroupBox_right_bottom.Controls.Add(panel_detail);
+            customGroupBox_right_bottom.Dock = DockStyle.Fill;
+            customGroupBox_right_bottom.Font = new Font("Segoe UI", 1F);
+            customGroupBox_right_bottom.Location = new Point(10, 130);
+            customGroupBox_right_bottom.Margin = new Padding(10, 10, 10, 3);
+            customGroupBox_right_bottom.Name = "customGroupBox_right_bottom";
+            customGroupBox_right_bottom.Padding = new Padding(10);
+            customGroupBox_right_bottom.Size = new Size(1132, 678);
+            customGroupBox_right_bottom.TabIndex = 1;
+            customGroupBox_right_bottom.TabStop = false;
             // 
             // panel_detail
             // 
@@ -261,10 +394,10 @@
             panel_detail.BackgroundImageLayout = ImageLayout.Stretch;
             panel_detail.Controls.Add(tableLayoutPanel_back_detail);
             panel_detail.Dock = DockStyle.Fill;
-            panel_detail.Location = new Point(394, 110);
-            panel_detail.Margin = new Padding(10, 10, 0, 0);
+            panel_detail.Location = new Point(10, 13);
+            panel_detail.Margin = new Padding(0);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(1142, 701);
+            panel_detail.Size = new Size(1112, 655);
             panel_detail.TabIndex = 0;
             // 
             // tableLayoutPanel_back_detail
@@ -310,14 +443,14 @@
             tableLayoutPanel_detail.ColumnCount = 2;
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_detail.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_detail.Controls.Add(comboBox_repeat, 1, 3);
+            tableLayoutPanel_detail.Controls.Add(textBox_desc, 1, 0);
             tableLayoutPanel_detail.Controls.Add(label3, 0, 0);
             tableLayoutPanel_detail.Controls.Add(label4, 0, 1);
             tableLayoutPanel_detail.Controls.Add(label7, 0, 2);
             tableLayoutPanel_detail.Controls.Add(label5, 0, 3);
-            tableLayoutPanel_detail.Controls.Add(tableLayoutPanel_type_back, 1, 2);
-            tableLayoutPanel_detail.Controls.Add(tableLayoutPanel2, 1, 1);
-            tableLayoutPanel_detail.Controls.Add(customPanel_repeat, 1, 3);
-            tableLayoutPanel_detail.Controls.Add(customPanel_item_desc, 1, 0);
+            tableLayoutPanel_detail.Controls.Add(tableLayoutPanel_offer, 1, 2);
+            tableLayoutPanel_detail.Controls.Add(tableLayoutPanel_criterion, 1, 1);
             tableLayoutPanel_detail.Dock = DockStyle.Fill;
             tableLayoutPanel_detail.Location = new Point(15, 51);
             tableLayoutPanel_detail.Margin = new Padding(10);
@@ -329,6 +462,31 @@
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_detail.Size = new Size(870, 198);
             tableLayoutPanel_detail.TabIndex = 3;
+            // 
+            // comboBox_repeat
+            // 
+            comboBox_repeat.Anchor = AnchorStyles.Left;
+            comboBox_repeat.BackColor = Color.WhiteSmoke;
+            comboBox_repeat.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_repeat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            comboBox_repeat.FormattingEnabled = true;
+            comboBox_repeat.Location = new Point(203, 155);
+            comboBox_repeat.Name = "comboBox_repeat";
+            comboBox_repeat.Size = new Size(194, 39);
+            comboBox_repeat.TabIndex = 2;
+            comboBox_repeat.TabStop = false;
+            comboBox_repeat.SelectedIndexChanged += comboBox_repeat_SelectedIndexChanged;
+            // 
+            // textBox_desc
+            // 
+            textBox_desc.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_desc.BackColor = Color.White;
+            textBox_desc.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_desc.Location = new Point(203, 3);
+            textBox_desc.Name = "textBox_desc";
+            textBox_desc.Size = new Size(664, 43);
+            textBox_desc.TabIndex = 0;
+            textBox_desc.TabStop = false;
             // 
             // label3
             // 
@@ -382,41 +540,39 @@
             label5.Text = "การใช้งานต่อบิล :";
             label5.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // tableLayoutPanel_type_back
+            // tableLayoutPanel_offer
             // 
-            tableLayoutPanel_type_back.ColumnCount = 2;
-            tableLayoutPanel_type_back.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 430F));
-            tableLayoutPanel_type_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_type_back.Controls.Add(tableLayoutPanel_type, 0, 0);
-            tableLayoutPanel_type_back.Controls.Add(customPanel_discount_type, 1, 0);
-            tableLayoutPanel_type_back.Dock = DockStyle.Fill;
-            tableLayoutPanel_type_back.Location = new Point(200, 100);
-            tableLayoutPanel_type_back.Margin = new Padding(0);
-            tableLayoutPanel_type_back.Name = "tableLayoutPanel_type_back";
-            tableLayoutPanel_type_back.RowCount = 1;
-            tableLayoutPanel_type_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_type_back.Size = new Size(670, 50);
-            tableLayoutPanel_type_back.TabIndex = 4;
+            tableLayoutPanel_offer.ColumnCount = 4;
+            tableLayoutPanel_offer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel_offer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanel_offer.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_offer.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel_offer.Controls.Add(comboBox_offer, 0, 0);
+            tableLayoutPanel_offer.Controls.Add(label_unit_type, 2, 0);
+            tableLayoutPanel_offer.Controls.Add(comboBox_discount_type, 3, 0);
+            tableLayoutPanel_offer.Controls.Add(textBox_offer, 1, 0);
+            tableLayoutPanel_offer.Dock = DockStyle.Fill;
+            tableLayoutPanel_offer.Location = new Point(200, 100);
+            tableLayoutPanel_offer.Margin = new Padding(0);
+            tableLayoutPanel_offer.Name = "tableLayoutPanel_offer";
+            tableLayoutPanel_offer.RowCount = 1;
+            tableLayoutPanel_offer.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_offer.Size = new Size(670, 50);
+            tableLayoutPanel_offer.TabIndex = 4;
             // 
-            // tableLayoutPanel_type
+            // comboBox_offer
             // 
-            tableLayoutPanel_type.AutoSize = true;
-            tableLayoutPanel_type.BackColor = Color.Transparent;
-            tableLayoutPanel_type.ColumnCount = 3;
-            tableLayoutPanel_type.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 350F));
-            tableLayoutPanel_type.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel_type.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_type.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_type.Controls.Add(label_unit_type, 1, 0);
-            tableLayoutPanel_type.Controls.Add(customPanel_offer_type, 0, 0);
-            tableLayoutPanel_type.Dock = DockStyle.Fill;
-            tableLayoutPanel_type.Location = new Point(0, 0);
-            tableLayoutPanel_type.Margin = new Padding(0);
-            tableLayoutPanel_type.Name = "tableLayoutPanel_type";
-            tableLayoutPanel_type.RowCount = 1;
-            tableLayoutPanel_type.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_type.Size = new Size(430, 50);
-            tableLayoutPanel_type.TabIndex = 2;
+            comboBox_offer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_offer.BackColor = Color.WhiteSmoke;
+            comboBox_offer.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_offer.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            comboBox_offer.FormattingEnabled = true;
+            comboBox_offer.Location = new Point(3, 5);
+            comboBox_offer.Name = "comboBox_offer";
+            comboBox_offer.Size = new Size(194, 39);
+            comboBox_offer.TabIndex = 2;
+            comboBox_offer.TabStop = false;
+            comboBox_offer.SelectedIndexChanged += comboBox_type_SelectedIndexChanged;
             // 
             // label_unit_type
             // 
@@ -428,138 +584,68 @@
             label_unit_type.Location = new Point(350, 0);
             label_unit_type.Margin = new Padding(0);
             label_unit_type.Name = "label_unit_type";
-            label_unit_type.Size = new Size(80, 50);
+            label_unit_type.Size = new Size(120, 50);
             label_unit_type.TabIndex = 1;
             label_unit_type.Text = "หน่วย";
             label_unit_type.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // customPanel_offer_type
+            // comboBox_discount_type
             // 
-            customPanel_offer_type.BackColor = Color.WhiteSmoke;
-            customPanel_offer_type.BorderRadius = 5;
-            customPanel_offer_type.Controls.Add(textBox_offer);
-            customPanel_offer_type.Controls.Add(comboBox_offer);
-            customPanel_offer_type.Dock = DockStyle.Fill;
-            customPanel_offer_type.Location = new Point(0, 3);
-            customPanel_offer_type.Margin = new Padding(0, 3, 3, 3);
-            customPanel_offer_type.Name = "customPanel_offer_type";
-            customPanel_offer_type.Size = new Size(347, 44);
-            customPanel_offer_type.TabIndex = 2;
+            comboBox_discount_type.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_discount_type.BackColor = Color.White;
+            comboBox_discount_type.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_discount_type.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            comboBox_discount_type.FormattingEnabled = true;
+            comboBox_discount_type.Location = new Point(473, 5);
+            comboBox_discount_type.Name = "comboBox_discount_type";
+            comboBox_discount_type.Size = new Size(194, 39);
+            comboBox_discount_type.TabIndex = 2;
+            comboBox_discount_type.TabStop = false;
+            comboBox_discount_type.SelectedIndexChanged += comboBox_type_SelectedIndexChanged;
             // 
             // textBox_offer
             // 
             textBox_offer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_offer.BackColor = Color.WhiteSmoke;
-            textBox_offer.BorderStyle = BorderStyle.None;
+            textBox_offer.BackColor = Color.White;
             textBox_offer.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            textBox_offer.Location = new Point(200, 7);
+            textBox_offer.Location = new Point(203, 6);
             textBox_offer.Name = "textBox_offer";
-            textBox_offer.Size = new Size(133, 31);
+            textBox_offer.Size = new Size(144, 38);
             textBox_offer.TabIndex = 0;
             textBox_offer.TabStop = false;
             textBox_offer.TextAlign = HorizontalAlignment.Center;
             textBox_offer.KeyPress += textBox_criterion_KeyPress;
             // 
-            // comboBox_offer
+            // tableLayoutPanel_criterion
             // 
-            comboBox_offer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_offer.BackColor = Color.WhiteSmoke;
-            comboBox_offer.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_offer.FlatStyle = FlatStyle.Flat;
-            comboBox_offer.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            comboBox_offer.FormattingEnabled = true;
-            comboBox_offer.Location = new Point(6, 3);
-            comboBox_offer.Name = "comboBox_offer";
-            comboBox_offer.Size = new Size(188, 39);
-            comboBox_offer.TabIndex = 2;
-            comboBox_offer.TabStop = false;
-            comboBox_offer.SelectedIndexChanged += comboBox_type_SelectedIndexChanged;
-            // 
-            // customPanel_discount_type
-            // 
-            customPanel_discount_type.BackColor = Color.WhiteSmoke;
-            customPanel_discount_type.BorderRadius = 5;
-            customPanel_discount_type.Controls.Add(comboBox_discount_type);
-            customPanel_discount_type.Dock = DockStyle.Fill;
-            customPanel_discount_type.Location = new Point(430, 3);
-            customPanel_discount_type.Margin = new Padding(0, 3, 0, 3);
-            customPanel_discount_type.Name = "customPanel_discount_type";
-            customPanel_discount_type.Size = new Size(240, 44);
-            customPanel_discount_type.TabIndex = 3;
-            // 
-            // comboBox_discount_type
-            // 
-            comboBox_discount_type.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_discount_type.BackColor = Color.WhiteSmoke;
-            comboBox_discount_type.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_discount_type.FlatStyle = FlatStyle.Flat;
-            comboBox_discount_type.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            comboBox_discount_type.FormattingEnabled = true;
-            comboBox_discount_type.Location = new Point(6, 3);
-            comboBox_discount_type.Name = "comboBox_discount_type";
-            comboBox_discount_type.Size = new Size(228, 39);
-            comboBox_discount_type.TabIndex = 2;
-            comboBox_discount_type.TabStop = false;
-            comboBox_discount_type.SelectedIndexChanged += comboBox_type_SelectedIndexChanged;
-            // 
-            // tableLayoutPanel2
-            // 
-            tableLayoutPanel2.ColumnCount = 2;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 350F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel2.Controls.Add(customPanel_criterion, 0, 0);
-            tableLayoutPanel2.Controls.Add(label_criterion, 1, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(200, 50);
-            tableLayoutPanel2.Margin = new Padding(0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(670, 50);
-            tableLayoutPanel2.TabIndex = 6;
-            // 
-            // customPanel_criterion
-            // 
-            customPanel_criterion.BackColor = Color.WhiteSmoke;
-            customPanel_criterion.BorderRadius = 5;
-            customPanel_criterion.Controls.Add(textBox_criterion);
-            customPanel_criterion.Controls.Add(comboBox_criterion);
-            customPanel_criterion.Dock = DockStyle.Fill;
-            customPanel_criterion.Location = new Point(0, 3);
-            customPanel_criterion.Margin = new Padding(0, 3, 3, 3);
-            customPanel_criterion.Name = "customPanel_criterion";
-            customPanel_criterion.Size = new Size(347, 44);
-            customPanel_criterion.TabIndex = 6;
+            tableLayoutPanel_criterion.ColumnCount = 3;
+            tableLayoutPanel_criterion.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            tableLayoutPanel_criterion.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
+            tableLayoutPanel_criterion.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_criterion.Controls.Add(textBox_criterion, 1, 0);
+            tableLayoutPanel_criterion.Controls.Add(label_criterion, 2, 0);
+            tableLayoutPanel_criterion.Controls.Add(comboBox_criterion, 0, 0);
+            tableLayoutPanel_criterion.Dock = DockStyle.Fill;
+            tableLayoutPanel_criterion.Location = new Point(200, 50);
+            tableLayoutPanel_criterion.Margin = new Padding(0);
+            tableLayoutPanel_criterion.Name = "tableLayoutPanel_criterion";
+            tableLayoutPanel_criterion.RowCount = 1;
+            tableLayoutPanel_criterion.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_criterion.Size = new Size(670, 50);
+            tableLayoutPanel_criterion.TabIndex = 6;
             // 
             // textBox_criterion
             // 
-            textBox_criterion.Anchor = AnchorStyles.Left;
-            textBox_criterion.BackColor = Color.WhiteSmoke;
-            textBox_criterion.BorderStyle = BorderStyle.None;
+            textBox_criterion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_criterion.BackColor = Color.White;
             textBox_criterion.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            textBox_criterion.Location = new Point(200, 6);
+            textBox_criterion.Location = new Point(203, 6);
             textBox_criterion.Name = "textBox_criterion";
-            textBox_criterion.Size = new Size(130, 31);
+            textBox_criterion.Size = new Size(144, 38);
             textBox_criterion.TabIndex = 0;
             textBox_criterion.TabStop = false;
             textBox_criterion.TextAlign = HorizontalAlignment.Center;
             textBox_criterion.KeyPress += textBox_criterion_KeyPress;
-            // 
-            // comboBox_criterion
-            // 
-            comboBox_criterion.Anchor = AnchorStyles.Left;
-            comboBox_criterion.BackColor = Color.WhiteSmoke;
-            comboBox_criterion.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_criterion.FlatStyle = FlatStyle.Flat;
-            comboBox_criterion.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            comboBox_criterion.FormattingEnabled = true;
-            comboBox_criterion.Location = new Point(6, 3);
-            comboBox_criterion.Name = "comboBox_criterion";
-            comboBox_criterion.Size = new Size(188, 39);
-            comboBox_criterion.TabIndex = 2;
-            comboBox_criterion.TabStop = false;
-            comboBox_criterion.SelectedIndexChanged += comboBox_criterion_SelectedIndexChanged;
             // 
             // label_criterion
             // 
@@ -567,65 +653,27 @@
             label_criterion.Dock = DockStyle.Fill;
             label_criterion.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             label_criterion.ForeColor = Color.DimGray;
-            label_criterion.Location = new Point(353, 0);
-            label_criterion.Margin = new Padding(3, 0, 0, 0);
+            label_criterion.Location = new Point(350, 0);
+            label_criterion.Margin = new Padding(0);
             label_criterion.Name = "label_criterion";
-            label_criterion.Size = new Size(317, 50);
+            label_criterion.Size = new Size(320, 50);
             label_criterion.TabIndex = 1;
             label_criterion.Text = "บาท";
             label_criterion.TextAlign = ContentAlignment.MiddleLeft;
             // 
-            // customPanel_repeat
+            // comboBox_criterion
             // 
-            customPanel_repeat.BackColor = Color.WhiteSmoke;
-            customPanel_repeat.BorderRadius = 5;
-            customPanel_repeat.Controls.Add(comboBox_repeat);
-            customPanel_repeat.Dock = DockStyle.Left;
-            customPanel_repeat.Location = new Point(200, 153);
-            customPanel_repeat.Margin = new Padding(0, 3, 3, 3);
-            customPanel_repeat.Name = "customPanel_repeat";
-            customPanel_repeat.Size = new Size(200, 44);
-            customPanel_repeat.TabIndex = 7;
-            // 
-            // comboBox_repeat
-            // 
-            comboBox_repeat.Anchor = AnchorStyles.Left;
-            comboBox_repeat.BackColor = Color.WhiteSmoke;
-            comboBox_repeat.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_repeat.FlatStyle = FlatStyle.Flat;
-            comboBox_repeat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            comboBox_repeat.FormattingEnabled = true;
-            comboBox_repeat.Location = new Point(6, 3);
-            comboBox_repeat.Name = "comboBox_repeat";
-            comboBox_repeat.Size = new Size(188, 39);
-            comboBox_repeat.TabIndex = 2;
-            comboBox_repeat.TabStop = false;
-            comboBox_repeat.SelectedIndexChanged += comboBox_repeat_SelectedIndexChanged;
-            // 
-            // customPanel_item_desc
-            // 
-            customPanel_item_desc.BackColor = Color.WhiteSmoke;
-            customPanel_item_desc.BorderRadius = 5;
-            customPanel_item_desc.Controls.Add(textBox_desc);
-            customPanel_item_desc.Dock = DockStyle.Fill;
-            customPanel_item_desc.Location = new Point(200, 0);
-            customPanel_item_desc.Margin = new Padding(0, 0, 0, 3);
-            customPanel_item_desc.Name = "customPanel_item_desc";
-            customPanel_item_desc.Size = new Size(670, 47);
-            customPanel_item_desc.TabIndex = 8;
-            // 
-            // textBox_desc
-            // 
-            textBox_desc.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_desc.BackColor = Color.WhiteSmoke;
-            textBox_desc.BorderStyle = BorderStyle.None;
-            textBox_desc.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_desc.Location = new Point(6, 6);
-            textBox_desc.Margin = new Padding(6, 3, 6, 3);
-            textBox_desc.Name = "textBox_desc";
-            textBox_desc.Size = new Size(658, 36);
-            textBox_desc.TabIndex = 0;
-            textBox_desc.TabStop = false;
+            comboBox_criterion.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_criterion.BackColor = Color.WhiteSmoke;
+            comboBox_criterion.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_criterion.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            comboBox_criterion.FormattingEnabled = true;
+            comboBox_criterion.Location = new Point(3, 5);
+            comboBox_criterion.Name = "comboBox_criterion";
+            comboBox_criterion.Size = new Size(194, 39);
+            comboBox_criterion.TabIndex = 2;
+            comboBox_criterion.TabStop = false;
+            comboBox_criterion.SelectedIndexChanged += comboBox_criterion_SelectedIndexChanged;
             // 
             // groupBox_premium
             // 
@@ -764,25 +812,25 @@
             dataGridView_item_premium.BorderStyle = BorderStyle.None;
             dataGridView_item_premium.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item_premium.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = SystemColors.Control;
-            dataGridViewCellStyle17.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle17.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle17.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle17.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = DataGridViewTriState.True;
-            dataGridView_item_premium.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dataGridView_item_premium.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView_item_premium.ColumnHeadersHeight = 4;
             dataGridView_item_premium.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item_premium.Columns.AddRange(new DataGridViewColumn[] { item_code_premium, item_name_premium, item_price_premium, add_item_premium_pro, item_premium_barcode_small, item_premium_barcode_medium, item_premium_barcode_large });
-            dataGridViewCellStyle19.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = Color.White;
-            dataGridViewCellStyle19.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle19.ForeColor = Color.Black;
-            dataGridViewCellStyle19.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle19.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle19.WrapMode = DataGridViewTriState.False;
-            dataGridView_item_premium.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = Color.White;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 13.8F);
+            dataGridViewCellStyle3.ForeColor = Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dataGridView_item_premium.DefaultCellStyle = dataGridViewCellStyle3;
             dataGridView_item_premium.Dock = DockStyle.Fill;
             dataGridView_item_premium.GridColor = Color.FromArgb(192, 255, 192);
             dataGridView_item_premium.Location = new Point(15, 85);
@@ -815,9 +863,9 @@
             // item_name_premium
             // 
             item_name_premium.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle18.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.WrapMode = DataGridViewTriState.False;
-            item_name_premium.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            item_name_premium.DefaultCellStyle = dataGridViewCellStyle2;
             item_name_premium.HeaderText = "";
             item_name_premium.MinimumWidth = 6;
             item_name_premium.Name = "item_name_premium";
@@ -878,25 +926,25 @@
             dataGridView_item_premium_pro.BorderStyle = BorderStyle.None;
             dataGridView_item_premium_pro.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item_premium_pro.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle20.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = SystemColors.Control;
-            dataGridViewCellStyle20.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle20.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle20.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle20.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle20.WrapMode = DataGridViewTriState.True;
-            dataGridView_item_premium_pro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dataGridView_item_premium_pro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dataGridView_item_premium_pro.ColumnHeadersHeight = 4;
             dataGridView_item_premium_pro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item_premium_pro.Columns.AddRange(new DataGridViewColumn[] { item_code_premium_pro, item_name_premium_pro, item_price_premium_pro, delete_item_premium_pro, item_premium_barcode_small_pro, item_premium_barcode_medium_pro, item_premium_barcode_large_pro });
-            dataGridViewCellStyle22.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = Color.White;
-            dataGridViewCellStyle22.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle22.ForeColor = Color.Black;
-            dataGridViewCellStyle22.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle22.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle22.WrapMode = DataGridViewTriState.False;
-            dataGridView_item_premium_pro.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.White;
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 13.8F);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            dataGridView_item_premium_pro.DefaultCellStyle = dataGridViewCellStyle6;
             dataGridView_item_premium_pro.Dock = DockStyle.Fill;
             dataGridView_item_premium_pro.GridColor = Color.FromArgb(192, 255, 192);
             dataGridView_item_premium_pro.Location = new Point(457, 85);
@@ -929,9 +977,9 @@
             // item_name_premium_pro
             // 
             item_name_premium_pro.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle21.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.WrapMode = DataGridViewTriState.False;
-            item_name_premium_pro.DefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            item_name_premium_pro.DefaultCellStyle = dataGridViewCellStyle5;
             item_name_premium_pro.HeaderText = "";
             item_name_premium_pro.MinimumWidth = 6;
             item_name_premium_pro.Name = "item_name_premium_pro";
@@ -1193,14 +1241,14 @@
             tableLayoutPanel_date.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_date.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_date.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_date.Controls.Add(label_date_end, 3, 0);
+            tableLayoutPanel_date.Controls.Add(label_date_start, 1, 0);
             tableLayoutPanel_date.Controls.Add(label6, 0, 0);
             tableLayoutPanel_date.Controls.Add(label8, 2, 0);
             tableLayoutPanel_date.Controls.Add(label9, 0, 1);
             tableLayoutPanel_date.Controls.Add(label10, 2, 1);
             tableLayoutPanel_date.Controls.Add(tableLayoutPanel_time_start, 1, 1);
             tableLayoutPanel_date.Controls.Add(tableLayoutPanel_time_end, 3, 1);
-            tableLayoutPanel_date.Controls.Add(customPanel_date_start, 1, 0);
-            tableLayoutPanel_date.Controls.Add(customPanel_date_end, 3, 0);
             tableLayoutPanel_date.Dock = DockStyle.Top;
             tableLayoutPanel_date.Location = new Point(15, 51);
             tableLayoutPanel_date.Margin = new Padding(10);
@@ -1210,6 +1258,40 @@
             tableLayoutPanel_date.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_date.Size = new Size(870, 100);
             tableLayoutPanel_date.TabIndex = 0;
+            // 
+            // label_date_end
+            // 
+            label_date_end.BackColor = Color.White;
+            label_date_end.Dock = DockStyle.Fill;
+            label_date_end.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            label_date_end.ForeColor = Color.Black;
+            label_date_end.Location = new Point(566, 6);
+            label_date_end.Margin = new Padding(6);
+            label_date_end.Name = "label_date_end";
+            label_date_end.Size = new Size(298, 38);
+            label_date_end.TabIndex = 3;
+            label_date_end.Text = "99-99-9999";
+            label_date_end.TextAlign = ContentAlignment.MiddleCenter;
+            label_date_end.Click += label_date_Click;
+            label_date_end.MouseEnter += label_MouseEnter;
+            label_date_end.MouseLeave += label_MouseLeave;
+            // 
+            // label_date_start
+            // 
+            label_date_start.BackColor = Color.White;
+            label_date_start.Dock = DockStyle.Fill;
+            label_date_start.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            label_date_start.ForeColor = Color.Black;
+            label_date_start.Location = new Point(206, 6);
+            label_date_start.Margin = new Padding(6);
+            label_date_start.Name = "label_date_start";
+            label_date_start.Size = new Size(298, 38);
+            label_date_start.TabIndex = 3;
+            label_date_start.Text = "99-99-9999";
+            label_date_start.TextAlign = ContentAlignment.MiddleCenter;
+            label_date_start.Click += label_date_Click;
+            label_date_start.MouseEnter += label_MouseEnter;
+            label_date_start.MouseLeave += label_MouseLeave;
             // 
             // label6
             // 
@@ -1263,7 +1345,7 @@
             // 
             // tableLayoutPanel_time_start
             // 
-            tableLayoutPanel_time_start.BackColor = Color.WhiteSmoke;
+            tableLayoutPanel_time_start.BackColor = Color.White;
             tableLayoutPanel_time_start.ColumnCount = 5;
             tableLayoutPanel_time_start.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_time_start.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
@@ -1271,8 +1353,8 @@
             tableLayoutPanel_time_start.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
             tableLayoutPanel_time_start.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_time_start.Controls.Add(label1, 2, 0);
-            tableLayoutPanel_time_start.Controls.Add(textBox_hour_start, 1, 0);
             tableLayoutPanel_time_start.Controls.Add(textBox_second_start, 3, 0);
+            tableLayoutPanel_time_start.Controls.Add(textBox_hour_start, 1, 0);
             tableLayoutPanel_time_start.Controls.Add(panel_up_down_hour_start, 0, 0);
             tableLayoutPanel_time_start.Controls.Add(panel_up_down_sec_start, 4, 0);
             tableLayoutPanel_time_start.Dock = DockStyle.Fill;
@@ -1297,10 +1379,26 @@
             label1.Text = ":";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // textBox_second_start
+            // 
+            textBox_second_start.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_second_start.BackColor = Color.White;
+            textBox_second_start.BorderStyle = BorderStyle.None;
+            textBox_second_start.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            textBox_second_start.Location = new Point(165, 6);
+            textBox_second_start.Margin = new Padding(0);
+            textBox_second_start.MaxLength = 2;
+            textBox_second_start.Name = "textBox_second_start";
+            textBox_second_start.Size = new Size(50, 31);
+            textBox_second_start.TabIndex = 1;
+            textBox_second_start.TabStop = false;
+            textBox_second_start.Text = "00";
+            textBox_second_start.KeyPress += KeyPress_Number;
+            // 
             // textBox_hour_start
             // 
             textBox_hour_start.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_hour_start.BackColor = Color.WhiteSmoke;
+            textBox_hour_start.BackColor = Color.White;
             textBox_hour_start.BorderStyle = BorderStyle.None;
             textBox_hour_start.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             textBox_hour_start.Location = new Point(95, 6);
@@ -1313,22 +1411,6 @@
             textBox_hour_start.Text = "00";
             textBox_hour_start.TextAlign = HorizontalAlignment.Right;
             textBox_hour_start.KeyPress += KeyPress_Number;
-            // 
-            // textBox_second_start
-            // 
-            textBox_second_start.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_second_start.BackColor = Color.WhiteSmoke;
-            textBox_second_start.BorderStyle = BorderStyle.None;
-            textBox_second_start.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            textBox_second_start.Location = new Point(165, 6);
-            textBox_second_start.Margin = new Padding(0);
-            textBox_second_start.MaxLength = 2;
-            textBox_second_start.Name = "textBox_second_start";
-            textBox_second_start.Size = new Size(50, 31);
-            textBox_second_start.TabIndex = 1;
-            textBox_second_start.TabStop = false;
-            textBox_second_start.Text = "00";
-            textBox_second_start.KeyPress += KeyPress_Number;
             // 
             // panel_up_down_hour_start
             // 
@@ -1354,8 +1436,6 @@
             label_down_hour_start.TabIndex = 0;
             label_down_hour_start.TextAlign = ContentAlignment.BottomCenter;
             label_down_hour_start.MouseDown += label_mouseDown;
-            label_down_hour_start.MouseEnter += label_enter;
-            label_down_hour_start.MouseLeave += label_leave;
             label_down_hour_start.MouseUp += label_mouseUp;
             // 
             // label_up_hour_start
@@ -1370,8 +1450,6 @@
             label_up_hour_start.TabIndex = 0;
             label_up_hour_start.TextAlign = ContentAlignment.TopCenter;
             label_up_hour_start.MouseDown += label_mouseDown;
-            label_up_hour_start.MouseEnter += label_enter;
-            label_up_hour_start.MouseLeave += label_leave;
             label_up_hour_start.MouseUp += label_mouseUp;
             // 
             // panel_up_down_sec_start
@@ -1398,8 +1476,6 @@
             label_down_second_start.TabIndex = 3;
             label_down_second_start.TextAlign = ContentAlignment.MiddleCenter;
             label_down_second_start.MouseDown += label_mouseDown;
-            label_down_second_start.MouseEnter += label_enter;
-            label_down_second_start.MouseLeave += label_leave;
             label_down_second_start.MouseUp += label_mouseUp;
             // 
             // label_up_second_start
@@ -1414,13 +1490,11 @@
             label_up_second_start.TabIndex = 2;
             label_up_second_start.TextAlign = ContentAlignment.TopCenter;
             label_up_second_start.MouseDown += label_mouseDown;
-            label_up_second_start.MouseEnter += label_enter;
-            label_up_second_start.MouseLeave += label_leave;
             label_up_second_start.MouseUp += label_mouseUp;
             // 
             // tableLayoutPanel_time_end
             // 
-            tableLayoutPanel_time_end.BackColor = Color.WhiteSmoke;
+            tableLayoutPanel_time_end.BackColor = Color.White;
             tableLayoutPanel_time_end.ColumnCount = 5;
             tableLayoutPanel_time_end.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel_time_end.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 50F));
@@ -1457,7 +1531,7 @@
             // textBox_hour_end
             // 
             textBox_hour_end.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_hour_end.BackColor = Color.WhiteSmoke;
+            textBox_hour_end.BackColor = Color.White;
             textBox_hour_end.BorderStyle = BorderStyle.None;
             textBox_hour_end.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             textBox_hour_end.Location = new Point(98, 6);
@@ -1473,7 +1547,7 @@
             // textBox_second_end
             // 
             textBox_second_end.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_second_end.BackColor = Color.WhiteSmoke;
+            textBox_second_end.BackColor = Color.White;
             textBox_second_end.BorderStyle = BorderStyle.None;
             textBox_second_end.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             textBox_second_end.Location = new Point(168, 6);
@@ -1509,8 +1583,6 @@
             label_down_hour_end.TabIndex = 0;
             label_down_hour_end.TextAlign = ContentAlignment.BottomCenter;
             label_down_hour_end.MouseDown += label_mouseDown;
-            label_down_hour_end.MouseEnter += label_enter;
-            label_down_hour_end.MouseLeave += label_leave;
             label_down_hour_end.MouseUp += label_mouseUp;
             // 
             // label_up_hour_end
@@ -1525,8 +1597,6 @@
             label_up_hour_end.TabIndex = 0;
             label_up_hour_end.TextAlign = ContentAlignment.TopCenter;
             label_up_hour_end.MouseDown += label_mouseDown;
-            label_up_hour_end.MouseEnter += label_enter;
-            label_up_hour_end.MouseLeave += label_leave;
             label_up_hour_end.MouseUp += label_mouseUp;
             // 
             // panel_up_down_second_end
@@ -1553,8 +1623,6 @@
             label_down_second_end.TabIndex = 3;
             label_down_second_end.TextAlign = ContentAlignment.MiddleCenter;
             label_down_second_end.MouseDown += label_mouseDown;
-            label_down_second_end.MouseEnter += label_enter;
-            label_down_second_end.MouseLeave += label_leave;
             label_down_second_end.MouseUp += label_mouseUp;
             // 
             // label_up_second_end
@@ -1569,65 +1637,7 @@
             label_up_second_end.TabIndex = 2;
             label_up_second_end.TextAlign = ContentAlignment.TopCenter;
             label_up_second_end.MouseDown += label_mouseDown;
-            label_up_second_end.MouseEnter += label_enter;
-            label_up_second_end.MouseLeave += label_leave;
             label_up_second_end.MouseUp += label_mouseUp;
-            // 
-            // customPanel_date_start
-            // 
-            customPanel_date_start.BackColor = Color.WhiteSmoke;
-            customPanel_date_start.BorderRadius = 5;
-            customPanel_date_start.Controls.Add(label_date_start);
-            customPanel_date_start.Dock = DockStyle.Fill;
-            customPanel_date_start.Location = new Point(200, 3);
-            customPanel_date_start.Margin = new Padding(0, 3, 0, 3);
-            customPanel_date_start.Name = "customPanel_date_start";
-            customPanel_date_start.Size = new Size(310, 44);
-            customPanel_date_start.TabIndex = 4;
-            // 
-            // label_date_start
-            // 
-            label_date_start.BackColor = Color.WhiteSmoke;
-            label_date_start.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            label_date_start.ForeColor = Color.Black;
-            label_date_start.Location = new Point(6, 6);
-            label_date_start.Margin = new Padding(6);
-            label_date_start.Name = "label_date_start";
-            label_date_start.Size = new Size(299, 32);
-            label_date_start.TabIndex = 3;
-            label_date_start.Text = "99-99-9999";
-            label_date_start.TextAlign = ContentAlignment.MiddleCenter;
-            label_date_start.Click += label_date_Click;
-            label_date_start.MouseEnter += label_MouseEnter;
-            label_date_start.MouseLeave += label_MouseLeave;
-            // 
-            // customPanel_date_end
-            // 
-            customPanel_date_end.BackColor = Color.WhiteSmoke;
-            customPanel_date_end.BorderRadius = 5;
-            customPanel_date_end.Controls.Add(label_date_end);
-            customPanel_date_end.Dock = DockStyle.Fill;
-            customPanel_date_end.Location = new Point(560, 3);
-            customPanel_date_end.Margin = new Padding(0, 3, 0, 3);
-            customPanel_date_end.Name = "customPanel_date_end";
-            customPanel_date_end.Size = new Size(310, 44);
-            customPanel_date_end.TabIndex = 5;
-            // 
-            // label_date_end
-            // 
-            label_date_end.BackColor = Color.WhiteSmoke;
-            label_date_end.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            label_date_end.ForeColor = Color.Black;
-            label_date_end.Location = new Point(6, 6);
-            label_date_end.Margin = new Padding(6);
-            label_date_end.Name = "label_date_end";
-            label_date_end.Size = new Size(300, 32);
-            label_date_end.TabIndex = 3;
-            label_date_end.Text = "99-99-9999";
-            label_date_end.TextAlign = ContentAlignment.MiddleCenter;
-            label_date_end.Click += label_date_Click;
-            label_date_end.MouseEnter += label_MouseEnter;
-            label_date_end.MouseLeave += label_MouseLeave;
             // 
             // groupBox_item
             // 
@@ -1713,25 +1723,25 @@
             dataGridView_item.BorderStyle = BorderStyle.None;
             dataGridView_item.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle23.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = SystemColors.Control;
-            dataGridViewCellStyle23.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle23.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle23.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle23.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle23.WrapMode = DataGridViewTriState.True;
-            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = SystemColors.Control;
+            dataGridViewCellStyle7.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            dataGridViewCellStyle7.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = DataGridViewTriState.True;
+            dataGridView_item.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridView_item.ColumnHeadersHeight = 4;
             dataGridView_item.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item.Columns.AddRange(new DataGridViewColumn[] { item_code, item_name, item_price, add_item_pro, item_barcode_small, item_barcode_medium, item_barcode_large });
-            dataGridViewCellStyle25.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle25.BackColor = Color.White;
-            dataGridViewCellStyle25.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle25.ForeColor = Color.Black;
-            dataGridViewCellStyle25.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle25.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle25.WrapMode = DataGridViewTriState.False;
-            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = Color.White;
+            dataGridViewCellStyle9.Font = new Font("Segoe UI", 13.8F);
+            dataGridViewCellStyle9.ForeColor = Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle9.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
+            dataGridView_item.DefaultCellStyle = dataGridViewCellStyle9;
             dataGridView_item.Dock = DockStyle.Fill;
             dataGridView_item.GridColor = Color.FromArgb(192, 255, 192);
             dataGridView_item.Location = new Point(15, 85);
@@ -1765,9 +1775,9 @@
             // item_name
             // 
             item_name.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle24.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.WrapMode = DataGridViewTriState.False;
-            item_name.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.False;
+            item_name.DefaultCellStyle = dataGridViewCellStyle8;
             item_name.HeaderText = "";
             item_name.MinimumWidth = 6;
             item_name.Name = "item_name";
@@ -1828,25 +1838,25 @@
             dataGridView_item_pro.BorderStyle = BorderStyle.None;
             dataGridView_item_pro.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_item_pro.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle26.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle26.BackColor = SystemColors.Control;
-            dataGridViewCellStyle26.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle26.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle26.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle26.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle26.WrapMode = DataGridViewTriState.True;
-            dataGridView_item_pro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle26;
+            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = SystemColors.Control;
+            dataGridViewCellStyle10.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle10.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = DataGridViewTriState.True;
+            dataGridView_item_pro.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             dataGridView_item_pro.ColumnHeadersHeight = 4;
             dataGridView_item_pro.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_item_pro.Columns.AddRange(new DataGridViewColumn[] { item_code_pro, item_name_pro, item_price_pro, item_set_qty_pro, delete_item_pro, item_barcode_small_pro, item_barcode_medium_pro, item_barcode_large_pro });
-            dataGridViewCellStyle28.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle28.BackColor = Color.White;
-            dataGridViewCellStyle28.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle28.ForeColor = Color.Black;
-            dataGridViewCellStyle28.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle28.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle28.WrapMode = DataGridViewTriState.False;
-            dataGridView_item_pro.DefaultCellStyle = dataGridViewCellStyle28;
+            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = Color.White;
+            dataGridViewCellStyle12.Font = new Font("Segoe UI", 13.8F);
+            dataGridViewCellStyle12.ForeColor = Color.Black;
+            dataGridViewCellStyle12.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle12.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle12.WrapMode = DataGridViewTriState.False;
+            dataGridView_item_pro.DefaultCellStyle = dataGridViewCellStyle12;
             dataGridView_item_pro.Dock = DockStyle.Fill;
             dataGridView_item_pro.GridColor = Color.FromArgb(192, 255, 192);
             dataGridView_item_pro.Location = new Point(457, 85);
@@ -1881,9 +1891,9 @@
             // item_name_pro
             // 
             item_name_pro.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle27.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle27.WrapMode = DataGridViewTriState.False;
-            item_name_pro.DefaultCellStyle = dataGridViewCellStyle27;
+            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.WrapMode = DataGridViewTriState.False;
+            item_name_pro.DefaultCellStyle = dataGridViewCellStyle11;
             item_name_pro.HeaderText = "";
             item_name_pro.MinimumWidth = 6;
             item_name_pro.Name = "item_name_pro";
@@ -1983,6 +1993,76 @@
             textBox_search_item_pro.TextChanged += textBox_search_item_pro_TextChanged;
             textBox_search_item_pro.KeyDown += textBox_search_item_KeyDown;
             // 
+            // customGroupBox_left
+            // 
+            customGroupBox_left.BackColor = Color.Transparent;
+            customGroupBox_left.BorderColor = Color.White;
+            customGroupBox_left.BorderRadius = 30;
+            customGroupBox_left.BorderThickness = 20;
+            customGroupBox_left.Controls.Add(tableLayoutPanel_left);
+            customGroupBox_left.Dock = DockStyle.Fill;
+            customGroupBox_left.Font = new Font("Segoe UI", 1F);
+            customGroupBox_left.Location = new Point(0, 0);
+            customGroupBox_left.Margin = new Padding(0, 0, 0, 3);
+            customGroupBox_left.Name = "customGroupBox_left";
+            customGroupBox_left.Padding = new Padding(10);
+            customGroupBox_left.Size = new Size(384, 808);
+            customGroupBox_left.TabIndex = 1;
+            customGroupBox_left.TabStop = false;
+            // 
+            // tableLayoutPanel_left
+            // 
+            tableLayoutPanel_left.ColumnCount = 1;
+            tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_left.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_left.Controls.Add(panel_search, 0, 0);
+            tableLayoutPanel_left.Controls.Add(dataGridView_promotion, 0, 1);
+            tableLayoutPanel_left.Dock = DockStyle.Fill;
+            tableLayoutPanel_left.Location = new Point(10, 13);
+            tableLayoutPanel_left.Margin = new Padding(0);
+            tableLayoutPanel_left.Name = "tableLayoutPanel_left";
+            tableLayoutPanel_left.RowCount = 2;
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
+            tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_left.Size = new Size(364, 785);
+            tableLayoutPanel_left.TabIndex = 0;
+            // 
+            // panel_search
+            // 
+            panel_search.Controls.Add(label_search);
+            panel_search.Controls.Add(textBox_search);
+            panel_search.Dock = DockStyle.Fill;
+            panel_search.Location = new Point(0, 0);
+            panel_search.Margin = new Padding(0);
+            panel_search.Name = "panel_search";
+            panel_search.Size = new Size(364, 120);
+            panel_search.TabIndex = 4;
+            // 
+            // label_search
+            // 
+            label_search.BackColor = Color.White;
+            label_search.Dock = DockStyle.Fill;
+            label_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
+            label_search.ForeColor = Color.Gray;
+            label_search.Location = new Point(0, 0);
+            label_search.Name = "label_search";
+            label_search.Size = new Size(364, 84);
+            label_search.TabIndex = 1;
+            label_search.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // textBox_search
+            // 
+            textBox_search.BorderStyle = BorderStyle.None;
+            textBox_search.Dock = DockStyle.Bottom;
+            textBox_search.Font = new Font("Segoe UI", 16.2F);
+            textBox_search.Location = new Point(0, 84);
+            textBox_search.Name = "textBox_search";
+            textBox_search.Size = new Size(364, 36);
+            textBox_search.TabIndex = 0;
+            textBox_search.TabStop = false;
+            textBox_search.TextAlign = HorizontalAlignment.Center;
+            textBox_search.TextChanged += textBox_search_TextChanged;
+            // 
             // dataGridView_promotion
             // 
             dataGridView_promotion.AllowUserToAddRows = false;
@@ -1993,28 +2073,28 @@
             dataGridView_promotion.BorderStyle = BorderStyle.None;
             dataGridView_promotion.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridView_promotion.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle15.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.BackColor = Color.Gray;
-            dataGridViewCellStyle15.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle15.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle15.SelectionBackColor = Color.FromArgb(128, 255, 128);
-            dataGridViewCellStyle15.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle15.WrapMode = DataGridViewTriState.True;
-            dataGridView_promotion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle13.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = Color.Gray;
+            dataGridViewCellStyle13.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle13.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = Color.Lime;
+            dataGridViewCellStyle13.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = DataGridViewTriState.True;
+            dataGridView_promotion.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             dataGridView_promotion.ColumnHeadersHeight = 10;
             dataGridView_promotion.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridView_promotion.Columns.AddRange(new DataGridViewColumn[] { pro_id, pro_type, hourglass, pro_desc, criterion_type, criterion_value, offer_type, offer_value, discount_type, repeat, start_date, start_time, end_date, end_time, mon, tue, wed, thu, fri, sat, sun, delete });
-            dataGridViewCellStyle16.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle16.BackColor = Color.White;
-            dataGridViewCellStyle16.Font = new Font("Segoe UI", 13.8F);
-            dataGridViewCellStyle16.ForeColor = Color.Black;
-            dataGridViewCellStyle16.SelectionBackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle16.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle16.WrapMode = DataGridViewTriState.False;
-            dataGridView_promotion.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle14.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = Color.White;
+            dataGridViewCellStyle14.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle14.ForeColor = Color.Black;
+            dataGridViewCellStyle14.SelectionBackColor = Color.FromArgb(192, 255, 192);
+            dataGridViewCellStyle14.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle14.WrapMode = DataGridViewTriState.False;
+            dataGridView_promotion.DefaultCellStyle = dataGridViewCellStyle14;
             dataGridView_promotion.Dock = DockStyle.Fill;
             dataGridView_promotion.GridColor = Color.Lime;
-            dataGridView_promotion.Location = new Point(0, 100);
+            dataGridView_promotion.Location = new Point(0, 120);
             dataGridView_promotion.Margin = new Padding(0);
             dataGridView_promotion.MultiSelect = false;
             dataGridView_promotion.Name = "dataGridView_promotion";
@@ -2025,7 +2105,7 @@
             dataGridView_promotion.ScrollBars = ScrollBars.None;
             dataGridView_promotion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_promotion.ShowCellToolTips = false;
-            dataGridView_promotion.Size = new Size(384, 711);
+            dataGridView_promotion.Size = new Size(364, 665);
             dataGridView_promotion.TabIndex = 2;
             dataGridView_promotion.TabStop = false;
             dataGridView_promotion.CellMouseDown += dataGridView_promotion_CellMouseDown;
@@ -2231,132 +2311,6 @@
             delete.SortMode = DataGridViewColumnSortMode.Automatic;
             delete.Width = 50;
             // 
-            // tableLayoutPanel_button
-            // 
-            tableLayoutPanel_button.BackColor = Color.White;
-            tableLayoutPanel_button.ColumnCount = 3;
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333359F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.3333244F));
-            tableLayoutPanel_button.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_button.Controls.Add(button_cancel, 2, 0);
-            tableLayoutPanel_button.Controls.Add(button_edit_save, 1, 0);
-            tableLayoutPanel_button.Controls.Add(button_add_save, 0, 0);
-            tableLayoutPanel_button.Dock = DockStyle.Fill;
-            tableLayoutPanel_button.Location = new Point(394, 0);
-            tableLayoutPanel_button.Margin = new Padding(10, 0, 0, 0);
-            tableLayoutPanel_button.Name = "tableLayoutPanel_button";
-            tableLayoutPanel_button.RowCount = 1;
-            tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_button.Size = new Size(1142, 100);
-            tableLayoutPanel_button.TabIndex = 3;
-            // 
-            // button_cancel
-            // 
-            button_cancel.BackColor = Color.White;
-            button_cancel.BackgroundImageLayout = ImageLayout.Zoom;
-            button_cancel.Dock = DockStyle.Fill;
-            button_cancel.Enabled = false;
-            button_cancel.FlatAppearance.BorderSize = 0;
-            button_cancel.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_cancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            button_cancel.FlatStyle = FlatStyle.Flat;
-            button_cancel.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_cancel.Location = new Point(763, 3);
-            button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(376, 94);
-            button_cancel.TabIndex = 4;
-            button_cancel.TabStop = false;
-            button_cancel.Text = " ยกเลิก";
-            button_cancel.TextAlign = ContentAlignment.BottomCenter;
-            button_cancel.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_cancel.UseVisualStyleBackColor = false;
-            button_cancel.Click += button_cancel_Click;
-            button_cancel.MouseEnter += button_MouseEnter;
-            button_cancel.MouseLeave += button_MouseLeave;
-            // 
-            // button_edit_save
-            // 
-            button_edit_save.BackColor = Color.White;
-            button_edit_save.BackgroundImageLayout = ImageLayout.Zoom;
-            button_edit_save.Dock = DockStyle.Fill;
-            button_edit_save.Enabled = false;
-            button_edit_save.FlatAppearance.BorderSize = 0;
-            button_edit_save.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_edit_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            button_edit_save.FlatStyle = FlatStyle.Flat;
-            button_edit_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_edit_save.Location = new Point(383, 3);
-            button_edit_save.Name = "button_edit_save";
-            button_edit_save.Size = new Size(374, 94);
-            button_edit_save.TabIndex = 2;
-            button_edit_save.TabStop = false;
-            button_edit_save.Text = "แก้ไข";
-            button_edit_save.TextAlign = ContentAlignment.BottomCenter;
-            button_edit_save.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_edit_save.UseVisualStyleBackColor = false;
-            button_edit_save.Click += button_edit_save_Click;
-            button_edit_save.MouseEnter += button_MouseEnter;
-            button_edit_save.MouseLeave += button_MouseLeave;
-            // 
-            // button_add_save
-            // 
-            button_add_save.BackColor = Color.White;
-            button_add_save.BackgroundImageLayout = ImageLayout.Zoom;
-            button_add_save.Dock = DockStyle.Fill;
-            button_add_save.FlatAppearance.BorderSize = 0;
-            button_add_save.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 192);
-            button_add_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
-            button_add_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_add_save.Location = new Point(3, 3);
-            button_add_save.Name = "button_add_save";
-            button_add_save.Size = new Size(374, 94);
-            button_add_save.TabIndex = 3;
-            button_add_save.TabStop = false;
-            button_add_save.Text = " เพิ่ม";
-            button_add_save.TextAlign = ContentAlignment.BottomCenter;
-            button_add_save.TextImageRelation = TextImageRelation.ImageAboveText;
-            button_add_save.UseVisualStyleBackColor = false;
-            button_add_save.Click += button_add_save_Click;
-            button_add_save.MouseEnter += button_MouseEnter;
-            button_add_save.MouseLeave += button_MouseLeave;
-            // 
-            // panel_search
-            // 
-            panel_search.Controls.Add(label_search);
-            panel_search.Controls.Add(textBox_search);
-            panel_search.Dock = DockStyle.Fill;
-            panel_search.Location = new Point(0, 0);
-            panel_search.Margin = new Padding(0);
-            panel_search.Name = "panel_search";
-            panel_search.Size = new Size(384, 100);
-            panel_search.TabIndex = 4;
-            // 
-            // label_search
-            // 
-            label_search.BackColor = Color.FromArgb(128, 255, 128);
-            label_search.Dock = DockStyle.Fill;
-            label_search.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold);
-            label_search.ForeColor = Color.Gray;
-            label_search.Location = new Point(0, 0);
-            label_search.Name = "label_search";
-            label_search.Size = new Size(384, 64);
-            label_search.TabIndex = 1;
-            label_search.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // textBox_search
-            // 
-            textBox_search.BorderStyle = BorderStyle.None;
-            textBox_search.Dock = DockStyle.Bottom;
-            textBox_search.Font = new Font("Segoe UI", 16.2F);
-            textBox_search.Location = new Point(0, 64);
-            textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(384, 36);
-            textBox_search.TabIndex = 0;
-            textBox_search.TabStop = false;
-            textBox_search.TextAlign = HorizontalAlignment.Center;
-            textBox_search.TextChanged += textBox_search_TextChanged;
-            // 
             // timer_up_down
             // 
             timer_up_down.Tick += timer_up_down_Tick;
@@ -2382,7 +2336,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.White;
+            BackColor = Color.Cyan;
             ClientSize = new Size(1536, 811);
             Controls.Add(tableLayoutPanel_back);
             DoubleBuffered = true;
@@ -2391,6 +2345,10 @@
             Text = "Form_Pro_Item";
             Load += Form_Pro_Base_Item_Load;
             tableLayoutPanel_back.ResumeLayout(false);
+            tableLayoutPanel_right.ResumeLayout(false);
+            customGroupBox_right_top.ResumeLayout(false);
+            tableLayoutPanel_button.ResumeLayout(false);
+            customGroupBox_right_bottom.ResumeLayout(false);
             panel_detail.ResumeLayout(false);
             panel_detail.PerformLayout();
             tableLayoutPanel_back_detail.ResumeLayout(false);
@@ -2398,19 +2356,10 @@
             groupBox_detail.PerformLayout();
             tableLayoutPanel_detail.ResumeLayout(false);
             tableLayoutPanel_detail.PerformLayout();
-            tableLayoutPanel_type_back.ResumeLayout(false);
-            tableLayoutPanel_type_back.PerformLayout();
-            tableLayoutPanel_type.ResumeLayout(false);
-            tableLayoutPanel_type.PerformLayout();
-            customPanel_offer_type.ResumeLayout(false);
-            customPanel_offer_type.PerformLayout();
-            customPanel_discount_type.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            customPanel_criterion.ResumeLayout(false);
-            customPanel_criterion.PerformLayout();
-            customPanel_repeat.ResumeLayout(false);
-            customPanel_item_desc.ResumeLayout(false);
-            customPanel_item_desc.PerformLayout();
+            tableLayoutPanel_offer.ResumeLayout(false);
+            tableLayoutPanel_offer.PerformLayout();
+            tableLayoutPanel_criterion.ResumeLayout(false);
+            tableLayoutPanel_criterion.PerformLayout();
             groupBox_premium.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel_search_item_premium.ResumeLayout(false);
@@ -2433,8 +2382,6 @@
             tableLayoutPanel_time_end.PerformLayout();
             panel_up_down_hour_end.ResumeLayout(false);
             panel_up_down_second_end.ResumeLayout(false);
-            customPanel_date_start.ResumeLayout(false);
-            customPanel_date_end.ResumeLayout(false);
             groupBox_item.ResumeLayout(false);
             tableLayoutPanel_item.ResumeLayout(false);
             panel_search_item.ResumeLayout(false);
@@ -2443,10 +2390,11 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView_item_pro).EndInit();
             panel_search_item_pro.ResumeLayout(false);
             panel_search_item_pro.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView_promotion).EndInit();
-            tableLayoutPanel_button.ResumeLayout(false);
+            customGroupBox_left.ResumeLayout(false);
+            tableLayoutPanel_left.ResumeLayout(false);
             panel_search.ResumeLayout(false);
             panel_search.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView_promotion).EndInit();
             ResumeLayout(false);
         }
 
@@ -2528,11 +2476,9 @@
         private Label label_up_second_end;
         private System.Windows.Forms.Timer timer_up_down;
         private ComboBox comboBox_discount_type;
-        private TableLayoutPanel tableLayoutPanel_type_back;
-        private TableLayoutPanel tableLayoutPanel_discount_per;
-        private Panel panel1;
+        private TableLayoutPanel tableLayoutPanel_offer;
+
         private ComboBox comboBox_repeat;
-        private Panel panel2;
         private System.Windows.Forms.Timer timer_search_pro;
         private System.Windows.Forms.Timer timer_search_item;
         private System.Windows.Forms.Timer timer_search_item_premium;
@@ -2542,13 +2488,7 @@
         private CustomGroupBox groupBox_premium;
         private Label label_item;
         private Label label_item_premium;
-        private CustomPanel customPanel_discount_type;
-        private CustomPanel customPanel_date_start;
-        private CustomPanel customPanel_date_end;
-        private CustomPanel customPanel_criterion;
-        private TableLayoutPanel tableLayoutPanel2;
-        private CustomPanel customPanel_offer_type;
-        private CustomPanel customPanel_repeat;
+        private TableLayoutPanel tableLayoutPanel_criterion;
         private Label label_date_start;
         private Label label_date_end;
         private DataGridViewTextBoxColumn item_code;
@@ -2572,7 +2512,6 @@
         private DataGridViewTextBoxColumn item_premium_barcode_small_pro;
         private DataGridViewTextBoxColumn item_premium_barcode_medium_pro;
         private DataGridViewTextBoxColumn item_premium_barcode_large_pro;
-        private CustomPanel customPanel_item_desc;
         private DataGridViewTextBoxColumn pro_id;
         private DataGridViewTextBoxColumn pro_type;
         private DataGridViewImageColumn hourglass;
@@ -2605,5 +2544,10 @@
         private DataGridViewTextBoxColumn item_barcode_medium_pro;
         private DataGridViewTextBoxColumn item_barcode_large_pro;
         private TableLayoutPanel tableLayoutPanel_back_detail;
+        private CustomGroupBox customGroupBox_left;
+        private TableLayoutPanel tableLayoutPanel_right;
+        private CustomGroupBox customGroupBox_right_top;
+        private CustomGroupBox customGroupBox_right_bottom;
+        private TableLayoutPanel tableLayoutPanel_left;
     }
 }

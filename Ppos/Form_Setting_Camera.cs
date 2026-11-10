@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AForge.Video;
+using AForge.Video.DirectShow;
+using Ppos.Class;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,9 +12,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AForge.Video;
-using AForge.Video.DirectShow;
-using Ppos.Class;
+using YourProjectNamespace;
 
 namespace Ppos
 {
@@ -27,8 +28,10 @@ namespace Ppos
                 this.DoubleBuffered = true;
 
                 // panel_video.Location = new Point((this.Width/2)-(panel_video.Width/2),10);
-                customGroupBox_back.Location = new Point((this.Width / 2) - (customGroupBox_back.Width / 2), 10);
-                customGroupBox_back.Height = this.Height - 10;
+                //  customGroupBox_detail.Location = new Point((this.Width / 2) - (customGroupBox_detail.Width / 2), 10);
+                  customGroupBox_detail.Height = panel_detail.Height - 50;
+
+                ControlHelper.SetupCenterWithScroll(panel_detail, customGroupBox_detail);
 
                 button_test.Image = Class_Image.resizeImage(Ppos.Properties.Resources.camera, new Size(40, 40));
                 button_save.Image = Class_Image.resizeImage(Ppos.Properties.Resources.save, new Size(30, 30));
@@ -326,17 +329,6 @@ namespace Ppos
             }
         }
 
-        private void Form_Setting_Camera_Resize(object sender, EventArgs e)
-        {
-            try
-            {
-                customGroupBox_back.Location = new Point((this.Width / 2) - (customGroupBox_back.Width / 2), 10);
-                customGroupBox_back.Height = this.Height - 10;
-            }
-            catch
-            {
-
-            }
-        }
+      
     }
 }

@@ -34,7 +34,7 @@ namespace Ppos
 
         DataTable dt;
 
-        Color E_Day = Color.WhiteSmoke;
+        Color E_Day = Color.FromArgb(192, 255, 192);
         Color D_Day = Color.White;
         public Form_Pro_Mix_Item()
         {
@@ -59,7 +59,7 @@ namespace Ppos
                 }
                 new Class_TouchGrid(dataGridView_promotion);
 
-                dataGridView_promotion.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(128, 255, 128);
+                dataGridView_promotion.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_promotion.EnableHeadersVisualStyles = false;
                 /////
                 dataGridView_item.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item, true, null);
