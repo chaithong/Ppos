@@ -8,7 +8,7 @@ namespace Ppos.Class
 {
     internal class Class_Parameter
     {
-        public static string Version = "Ppos V 1.1";
+        public static string Version = "Ppos V 1.2";
         public static bool runbackground { get; set; } = false;
         public static bool Active { get; set; } = false; // ชื่อไฟล์ txt เก็บข้อมูล Renewal Code ที่ทำการต่ออายุ
         public static string STtxt = "ST.txt"; // ชื่อไฟล์ txt เก็บข้อมูลวันเริ่มใช้งาน

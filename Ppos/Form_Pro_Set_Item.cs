@@ -62,6 +62,8 @@ namespace Ppos
 
                 dataGridView_promotion.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_promotion.EnableHeadersVisualStyles = false;
+
+                dataGridView_promotion.MouseWheel += new MouseEventHandler(dataGridView_promotion_MouseWheel!);
                 /////
                 dataGridView_item.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item, true, null);
 
@@ -73,6 +75,8 @@ namespace Ppos
 
                 dataGridView_item.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
                 dataGridView_item.EnableHeadersVisualStyles = false;
+
+                dataGridView_item.MouseWheel += new MouseEventHandler(dataGridView_item_MouseWheel!);
                 /////
                 dataGridView_item_pro.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item_pro, true, null);
 
@@ -98,6 +102,8 @@ namespace Ppos
 
                 dataGridView_item_premium.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(192, 255, 192);
                 dataGridView_item_premium.EnableHeadersVisualStyles = false;
+
+                dataGridView_item_premium.MouseWheel += new MouseEventHandler(dataGridView_item_premium_MouseWheel!);
                 /////
                 /// /////
                 dataGridView_item_premium_pro.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item_premium_pro, true, null);
@@ -262,6 +268,58 @@ namespace Ppos
                 this.Close();
             }
         }
+        private void dataGridView_promotion_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_promotion.RowCount == 0) return;
+
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_promotion.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_promotion.RowCount)
+            {
+                newIndex = dataGridView_promotion.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_promotion.FirstDisplayedScrollingRowIndex = newIndex;
+        }
+        private void dataGridView_item_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_item.RowCount == 0) return;
+
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_item.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_item.RowCount)
+            {
+                newIndex = dataGridView_item.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_item.FirstDisplayedScrollingRowIndex = newIndex;
+        }
         private void dataGridView_item_pro_MouseWheel(object sender, MouseEventArgs e)
         {
             // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
@@ -287,6 +345,32 @@ namespace Ppos
 
             // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
             dataGridView_item_pro.FirstDisplayedScrollingRowIndex = newIndex;
+        }
+        private void dataGridView_item_premium_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_item_premium.RowCount == 0) return;
+
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_item_premium.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_item_premium.RowCount)
+            {
+                newIndex = dataGridView_item_premium.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_item_premium.FirstDisplayedScrollingRowIndex = newIndex;
         }
         private void dataGridView_item_premium_pro_MouseWheel(object sender, MouseEventArgs e)
         {
@@ -318,22 +402,34 @@ namespace Ppos
         {
             try
             {
-                shows++;
-                if (shows == 1)
+                /* shows++;
+                 if (shows == 1)
+                 {
+                     groupBox_detail.Visible = true;
+                 }
+                 else if (shows == 2)
+                 {
+                     groupBox_datetime.Visible = true;
+                 }
+                 else
+                 {
+                     groupBox_item.Visible = true;
+                     timer_show.Stop();
+                 }*/
+
+                if (!groupBox_detail.Visible)
                 {
                     groupBox_detail.Visible = true;
                 }
-                else if (shows == 2)
+                else if (!groupBox_datetime.Visible)
                 {
                     groupBox_datetime.Visible = true;
                 }
-                else
+                else if (!groupBox_item.Visible)
                 {
                     groupBox_item.Visible = true;
                     timer_show.Stop();
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -373,7 +469,7 @@ namespace Ppos
             try
             {
                 search_pro();
-               // timer_show.Start();
+                timer_show.Start();
             }
             catch (Exception ex)
             {
@@ -480,7 +576,7 @@ namespace Ppos
                                      dt.Rows[i]["fri"].ToString()!,
                                      dt.Rows[i]["sat"].ToString()!,
                                      dt.Rows[i]["sun"].ToString()!,
-                                    Class_Image.resizeImage(Ppos.Properties.Resources.uncheck, new Size(30, 30)));
+                                    Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(30, 30)));
                                 // ถ้าเป็นข้อมูลที่เลือกไว้ จะ select ให้
                                 if (dt.Rows[i]["pro_id"].ToString() == set_pro_id)
                                 {

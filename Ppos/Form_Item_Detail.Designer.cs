@@ -209,7 +209,7 @@
             dataGridView_item.ScrollBars = ScrollBars.None;
             dataGridView_item.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_item.ShowCellToolTips = false;
-            dataGridView_item.Size = new Size(365, 756);
+            dataGridView_item.Size = new Size(442, 756);
             dataGridView_item.TabIndex = 0;
             dataGridView_item.TabStop = false;
             dataGridView_item.CellClick += dataGridView_item_CellClick;
@@ -507,7 +507,7 @@
             panel_search.Location = new Point(0, 0);
             panel_search.Margin = new Padding(0);
             panel_search.Name = "panel_search";
-            panel_search.Size = new Size(365, 100);
+            panel_search.Size = new Size(442, 100);
             panel_search.TabIndex = 0;
             // 
             // label_search
@@ -518,7 +518,7 @@
             label_search.ForeColor = Color.Gray;
             label_search.Location = new Point(0, 0);
             label_search.Name = "label_search";
-            label_search.Size = new Size(365, 64);
+            label_search.Size = new Size(442, 64);
             label_search.TabIndex = 1;
             label_search.Text = "--";
             label_search.TextAlign = ContentAlignment.MiddleCenter;
@@ -532,7 +532,7 @@
             textBox_search.Location = new Point(0, 64);
             textBox_search.Margin = new Padding(0);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(365, 36);
+            textBox_search.Size = new Size(442, 36);
             textBox_search.TabIndex = 0;
             textBox_search.TabStop = false;
             textBox_search.TextAlign = HorizontalAlignment.Center;
@@ -556,7 +556,7 @@
             tableLayoutPanel_button.RowCount = 1;
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_button.Size = new Size(1116, 97);
+            tableLayoutPanel_button.Size = new Size(1039, 97);
             tableLayoutPanel_button.TabIndex = 2;
             // 
             // button_cancel
@@ -570,9 +570,9 @@
             button_cancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_cancel.Location = new Point(747, 3);
+            button_cancel.Location = new Point(695, 3);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(366, 91);
+            button_cancel.Size = new Size(341, 91);
             button_cancel.TabIndex = 1;
             button_cancel.TabStop = false;
             button_cancel.Text = " ยกเลิก";
@@ -594,7 +594,7 @@
             button_add_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             button_add_save.Location = new Point(3, 3);
             button_add_save.Name = "button_add_save";
-            button_add_save.Size = new Size(366, 91);
+            button_add_save.Size = new Size(340, 91);
             button_add_save.TabIndex = 1;
             button_add_save.TabStop = false;
             button_add_save.Text = " เพิ่ม";
@@ -616,9 +616,9 @@
             button_edit_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button_edit_save.FlatStyle = FlatStyle.Flat;
             button_edit_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_edit_save.Location = new Point(375, 3);
+            button_edit_save.Location = new Point(349, 3);
             button_edit_save.Name = "button_edit_save";
-            button_edit_save.Size = new Size(366, 91);
+            button_edit_save.Size = new Size(340, 91);
             button_edit_save.TabIndex = 1;
             button_edit_save.TabStop = false;
             button_edit_save.Text = "แก้ไข";
@@ -683,8 +683,8 @@
             // 
             tableLayoutPanel_back.BackColor = Color.Cyan;
             tableLayoutPanel_back.ColumnCount = 2;
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel_back.Controls.Add(customGroupBox_back_left, 0, 0);
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
@@ -693,7 +693,6 @@
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
             tableLayoutPanel_back.RowCount = 1;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_back.Size = new Size(1541, 882);
             tableLayoutPanel_back.TabIndex = 3;
             // 
@@ -710,7 +709,7 @@
             customGroupBox_back_left.Margin = new Padding(0, 0, 0, 3);
             customGroupBox_back_left.Name = "customGroupBox_back_left";
             customGroupBox_back_left.Padding = new Padding(10);
-            customGroupBox_back_left.Size = new Size(385, 879);
+            customGroupBox_back_left.Size = new Size(462, 879);
             customGroupBox_back_left.TabIndex = 4;
             customGroupBox_back_left.TabStop = false;
             // 
@@ -728,7 +727,7 @@
             tableLayoutPanel_left.RowCount = 2;
             tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
             tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_left.Size = new Size(365, 856);
+            tableLayoutPanel_left.Size = new Size(442, 856);
             tableLayoutPanel_left.TabIndex = 0;
             // 
             // tableLayoutPanel_right
@@ -739,13 +738,13 @@
             tableLayoutPanel_right.Controls.Add(customGroupBox_back_right_bottom, 0, 1);
             tableLayoutPanel_right.Controls.Add(customGroupBox_back_right_top, 0, 0);
             tableLayoutPanel_right.Dock = DockStyle.Fill;
-            tableLayoutPanel_right.Location = new Point(385, 0);
+            tableLayoutPanel_right.Location = new Point(462, 0);
             tableLayoutPanel_right.Margin = new Padding(0);
             tableLayoutPanel_right.Name = "tableLayoutPanel_right";
             tableLayoutPanel_right.RowCount = 2;
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_right.Size = new Size(1156, 882);
+            tableLayoutPanel_right.Size = new Size(1079, 882);
             tableLayoutPanel_right.TabIndex = 1;
             // 
             // customGroupBox_back_right_bottom
@@ -760,7 +759,7 @@
             customGroupBox_back_right_bottom.Margin = new Padding(10, 10, 10, 3);
             customGroupBox_back_right_bottom.Name = "customGroupBox_back_right_bottom";
             customGroupBox_back_right_bottom.Padding = new Padding(10);
-            customGroupBox_back_right_bottom.Size = new Size(1136, 749);
+            customGroupBox_back_right_bottom.Size = new Size(1059, 749);
             customGroupBox_back_right_bottom.TabIndex = 4;
             customGroupBox_back_right_bottom.TabStop = false;
             // 
@@ -774,7 +773,7 @@
             panel_detail.Location = new Point(10, 13);
             panel_detail.Margin = new Padding(0);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(1116, 726);
+            panel_detail.Size = new Size(1039, 726);
             panel_detail.TabIndex = 1;
             // 
             // tableLayoutPanel_back_detail_item
@@ -1734,7 +1733,7 @@
             customGroupBox_back_right_top.Margin = new Padding(10, 0, 10, 0);
             customGroupBox_back_right_top.Name = "customGroupBox_back_right_top";
             customGroupBox_back_right_top.Padding = new Padding(10);
-            customGroupBox_back_right_top.Size = new Size(1136, 120);
+            customGroupBox_back_right_top.Size = new Size(1059, 120);
             customGroupBox_back_right_top.TabIndex = 4;
             customGroupBox_back_right_top.TabStop = false;
             // 

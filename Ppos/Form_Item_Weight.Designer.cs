@@ -42,7 +42,7 @@
             label_barcode = new Label();
             label_item_name = new Label();
             label_item_unit = new Label();
-            label_item_price = new Label();
+            textBox_price = new TextBox();
             tableLayoutPanel_keypad = new TableLayoutPanel();
             button1 = new Button();
             button2 = new Button();
@@ -80,6 +80,7 @@
             button_confirm.Name = "button_confirm";
             button_confirm.Size = new Size(463, 94);
             button_confirm.TabIndex = 0;
+            button_confirm.TabStop = false;
             button_confirm.Text = "ตกลง";
             button_confirm.TextAlign = ContentAlignment.MiddleRight;
             button_confirm.TextImageRelation = TextImageRelation.ImageBeforeText;
@@ -92,13 +93,13 @@
             // 
             textBox_weight.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_weight.BackColor = Color.White;
-            textBox_weight.BorderStyle = BorderStyle.None;
             textBox_weight.Font = new Font("Segoe UI", 28.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_weight.Location = new Point(157, 208);
+            textBox_weight.Location = new Point(160, 220);
             textBox_weight.Margin = new Padding(0);
             textBox_weight.Name = "textBox_weight";
-            textBox_weight.Size = new Size(292, 63);
-            textBox_weight.TabIndex = 1;
+            textBox_weight.Size = new Size(299, 70);
+            textBox_weight.TabIndex = 0;
+            textBox_weight.Click += textbox_click;
             textBox_weight.KeyDown += textBox_weight_KeyDown;
             textBox_weight.KeyPress += textBox_weight_KeyPress;
             textBox_weight.Leave += textBox_weight_Leave;
@@ -111,14 +112,14 @@
             tableLayoutPanel_back_detail.Controls.Add(pictureBox_item, 0, 0);
             tableLayoutPanel_back_detail.Controls.Add(tableLayoutPanel_detail, 0, 1);
             tableLayoutPanel_back_detail.Dock = DockStyle.Fill;
-            tableLayoutPanel_back_detail.Location = new Point(10, 10);
-            tableLayoutPanel_back_detail.Margin = new Padding(10);
+            tableLayoutPanel_back_detail.Location = new Point(0, 0);
+            tableLayoutPanel_back_detail.Margin = new Padding(0, 0, 10, 0);
             tableLayoutPanel_back_detail.Name = "tableLayoutPanel_back_detail";
             tableLayoutPanel_back_detail.RowCount = 2;
             tableLayoutPanel_back_detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
             tableLayoutPanel_back_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back_detail.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel_back_detail.Size = new Size(449, 433);
+            tableLayoutPanel_back_detail.Size = new Size(459, 453);
             tableLayoutPanel_back_detail.TabIndex = 2;
             // 
             // pictureBox_item
@@ -127,7 +128,7 @@
             pictureBox_item.Location = new Point(0, 0);
             pictureBox_item.Margin = new Padding(0);
             pictureBox_item.Name = "pictureBox_item";
-            pictureBox_item.Size = new Size(449, 150);
+            pictureBox_item.Size = new Size(459, 150);
             pictureBox_item.SizeMode = PictureBoxSizeMode.CenterImage;
             pictureBox_item.TabIndex = 1;
             pictureBox_item.TabStop = false;
@@ -149,7 +150,7 @@
             tableLayoutPanel_detail.Controls.Add(label_barcode, 1, 0);
             tableLayoutPanel_detail.Controls.Add(label_item_name, 1, 1);
             tableLayoutPanel_detail.Controls.Add(label_item_unit, 1, 2);
-            tableLayoutPanel_detail.Controls.Add(label_item_price, 1, 3);
+            tableLayoutPanel_detail.Controls.Add(textBox_price, 1, 3);
             tableLayoutPanel_detail.Dock = DockStyle.Fill;
             tableLayoutPanel_detail.Location = new Point(0, 150);
             tableLayoutPanel_detail.Margin = new Padding(0);
@@ -160,7 +161,7 @@
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 17.391304F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 17.391304F));
             tableLayoutPanel_detail.RowStyles.Add(new RowStyle(SizeType.Percent, 30.434782F));
-            tableLayoutPanel_detail.Size = new Size(449, 283);
+            tableLayoutPanel_detail.Size = new Size(459, 303);
             tableLayoutPanel_detail.TabIndex = 2;
             // 
             // label_weight
@@ -168,10 +169,10 @@
             label_weight.BackColor = Color.White;
             label_weight.Dock = DockStyle.Fill;
             label_weight.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label_weight.Location = new Point(0, 196);
+            label_weight.Location = new Point(0, 208);
             label_weight.Margin = new Padding(0);
             label_weight.Name = "label_weight";
-            label_weight.Size = new Size(157, 87);
+            label_weight.Size = new Size(160, 95);
             label_weight.TabIndex = 0;
             label_weight.Text = "จำนวน :";
             label_weight.TextAlign = ContentAlignment.MiddleRight;
@@ -187,7 +188,7 @@
             label_bar.Margin = new Padding(0);
             label_bar.Name = "label_bar";
             label_bar.Padding = new Padding(0, 0, 5, 0);
-            label_bar.Size = new Size(157, 49);
+            label_bar.Size = new Size(160, 52);
             label_bar.TabIndex = 0;
             label_bar.Text = "บาร์โค้ด :";
             label_bar.TextAlign = ContentAlignment.MiddleRight;
@@ -199,11 +200,11 @@
             label_price.Dock = DockStyle.Fill;
             label_price.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label_price.ForeColor = Color.Gray;
-            label_price.Location = new Point(0, 147);
+            label_price.Location = new Point(0, 156);
             label_price.Margin = new Padding(0);
             label_price.Name = "label_price";
             label_price.Padding = new Padding(0, 0, 5, 0);
-            label_price.Size = new Size(157, 49);
+            label_price.Size = new Size(160, 52);
             label_price.TabIndex = 0;
             label_price.Text = "ราคาขาย :";
             label_price.TextAlign = ContentAlignment.MiddleRight;
@@ -215,11 +216,11 @@
             label_unit.Dock = DockStyle.Fill;
             label_unit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label_unit.ForeColor = Color.Gray;
-            label_unit.Location = new Point(0, 98);
+            label_unit.Location = new Point(0, 104);
             label_unit.Margin = new Padding(0);
             label_unit.Name = "label_unit";
             label_unit.Padding = new Padding(0, 0, 5, 0);
-            label_unit.Size = new Size(157, 49);
+            label_unit.Size = new Size(160, 52);
             label_unit.TabIndex = 0;
             label_unit.Text = "หน่วย :";
             label_unit.TextAlign = ContentAlignment.MiddleRight;
@@ -231,11 +232,11 @@
             label_name.Dock = DockStyle.Fill;
             label_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label_name.ForeColor = Color.Gray;
-            label_name.Location = new Point(0, 49);
+            label_name.Location = new Point(0, 52);
             label_name.Margin = new Padding(0);
             label_name.Name = "label_name";
             label_name.Padding = new Padding(0, 0, 5, 0);
-            label_name.Size = new Size(157, 49);
+            label_name.Size = new Size(160, 52);
             label_name.TabIndex = 0;
             label_name.Text = "ชื่อสินค้า :";
             label_name.TextAlign = ContentAlignment.MiddleRight;
@@ -248,9 +249,9 @@
             label_barcode.Dock = DockStyle.Fill;
             label_barcode.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label_barcode.ForeColor = Color.Gray;
-            label_barcode.Location = new Point(160, 0);
+            label_barcode.Location = new Point(163, 0);
             label_barcode.Name = "label_barcode";
-            label_barcode.Size = new Size(286, 49);
+            label_barcode.Size = new Size(293, 52);
             label_barcode.TabIndex = 2;
             label_barcode.TextAlign = ContentAlignment.MiddleLeft;
             label_barcode.MouseEnter += bar_enter;
@@ -262,9 +263,9 @@
             label_item_name.Dock = DockStyle.Fill;
             label_item_name.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label_item_name.ForeColor = Color.Gray;
-            label_item_name.Location = new Point(160, 49);
+            label_item_name.Location = new Point(163, 52);
             label_item_name.Name = "label_item_name";
-            label_item_name.Size = new Size(286, 49);
+            label_item_name.Size = new Size(293, 52);
             label_item_name.TabIndex = 2;
             label_item_name.TextAlign = ContentAlignment.MiddleLeft;
             label_item_name.MouseEnter += bar_enter;
@@ -276,27 +277,27 @@
             label_item_unit.Dock = DockStyle.Fill;
             label_item_unit.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label_item_unit.ForeColor = Color.Gray;
-            label_item_unit.Location = new Point(160, 98);
+            label_item_unit.Location = new Point(163, 104);
             label_item_unit.Name = "label_item_unit";
-            label_item_unit.Size = new Size(286, 49);
+            label_item_unit.Size = new Size(293, 52);
             label_item_unit.TabIndex = 2;
             label_item_unit.TextAlign = ContentAlignment.MiddleLeft;
             label_item_unit.MouseEnter += bar_enter;
             label_item_unit.MouseLeave += bar_leave;
             // 
-            // label_item_price
+            // textBox_price
             // 
-            label_item_price.AutoEllipsis = true;
-            label_item_price.Dock = DockStyle.Fill;
-            label_item_price.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-            label_item_price.ForeColor = Color.Gray;
-            label_item_price.Location = new Point(160, 147);
-            label_item_price.Name = "label_item_price";
-            label_item_price.Size = new Size(286, 49);
-            label_item_price.TabIndex = 2;
-            label_item_price.TextAlign = ContentAlignment.MiddleLeft;
-            label_item_price.MouseEnter += bar_enter;
-            label_item_price.MouseLeave += bar_leave;
+            textBox_price.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_price.BackColor = Color.White;
+            textBox_price.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_price.Location = new Point(160, 158);
+            textBox_price.Margin = new Padding(0);
+            textBox_price.Name = "textBox_price";
+            textBox_price.Size = new Size(299, 47);
+            textBox_price.TabIndex = 1;
+            textBox_price.Click += textbox_click;
+            textBox_price.KeyDown += textBox_weight_KeyDown;
+            textBox_price.KeyPress += textBox_weight_KeyPress;
             // 
             // tableLayoutPanel_keypad
             // 
@@ -339,6 +340,7 @@
             button1.Name = "button1";
             button1.Size = new Size(98, 132);
             button1.TabIndex = 0;
+            button1.TabStop = false;
             button1.Text = "1";
             button1.UseVisualStyleBackColor = false;
             button1.Click += keypad_click;
@@ -355,6 +357,7 @@
             button2.Name = "button2";
             button2.Size = new Size(98, 132);
             button2.TabIndex = 0;
+            button2.TabStop = false;
             button2.Text = "2";
             button2.UseVisualStyleBackColor = false;
             button2.Click += keypad_click;
@@ -371,6 +374,7 @@
             button3.Name = "button3";
             button3.Size = new Size(99, 132);
             button3.TabIndex = 0;
+            button3.TabStop = false;
             button3.Text = "3";
             button3.UseVisualStyleBackColor = false;
             button3.Click += keypad_click;
@@ -387,6 +391,7 @@
             button4.Name = "button4";
             button4.Size = new Size(98, 132);
             button4.TabIndex = 0;
+            button4.TabStop = false;
             button4.Text = "4";
             button4.UseVisualStyleBackColor = false;
             button4.Click += keypad_click;
@@ -403,6 +408,7 @@
             button5.Name = "button5";
             button5.Size = new Size(98, 132);
             button5.TabIndex = 0;
+            button5.TabStop = false;
             button5.Text = "5";
             button5.UseVisualStyleBackColor = false;
             button5.Click += keypad_click;
@@ -419,6 +425,7 @@
             button6.Name = "button6";
             button6.Size = new Size(99, 132);
             button6.TabIndex = 0;
+            button6.TabStop = false;
             button6.Text = "6";
             button6.UseVisualStyleBackColor = false;
             button6.Click += keypad_click;
@@ -435,6 +442,7 @@
             button7.Name = "button7";
             button7.Size = new Size(98, 132);
             button7.TabIndex = 0;
+            button7.TabStop = false;
             button7.Text = "7";
             button7.UseVisualStyleBackColor = false;
             button7.Click += keypad_click;
@@ -451,6 +459,7 @@
             button8.Name = "button8";
             button8.Size = new Size(98, 132);
             button8.TabIndex = 0;
+            button8.TabStop = false;
             button8.Text = "8";
             button8.UseVisualStyleBackColor = false;
             button8.Click += keypad_click;
@@ -467,6 +476,7 @@
             button9.Name = "button9";
             button9.Size = new Size(99, 132);
             button9.TabIndex = 0;
+            button9.TabStop = false;
             button9.Text = "9";
             button9.UseVisualStyleBackColor = false;
             button9.Click += keypad_click;
@@ -483,6 +493,7 @@
             button_point.Name = "button_point";
             button_point.Size = new Size(98, 133);
             button_point.TabIndex = 0;
+            button_point.TabStop = false;
             button_point.Text = ".";
             button_point.UseVisualStyleBackColor = false;
             button_point.Click += keypad_click;
@@ -499,6 +510,7 @@
             button0.Name = "button0";
             button0.Size = new Size(98, 133);
             button0.TabIndex = 0;
+            button0.TabStop = false;
             button0.Text = "0";
             button0.UseVisualStyleBackColor = false;
             button0.Click += keypad_click;
@@ -515,6 +527,7 @@
             button_delete.Name = "button_delete";
             button_delete.Size = new Size(99, 133);
             button_delete.TabIndex = 0;
+            button_delete.TabStop = false;
             button_delete.Text = "ลบ";
             button_delete.UseVisualStyleBackColor = false;
             button_delete.Click += keypad_click;
@@ -567,7 +580,7 @@
             Name = "Form_Item_Weight";
             ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "แก้ไขจำนวน";
+            Text = "แก้ไขสินค้า";
             Shown += Form_Item_Weight_Shown;
             tableLayoutPanel_back_detail.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox_item).EndInit();
@@ -608,6 +621,6 @@
         private Label label_barcode;
         private Label label_item_name;
         private Label label_item_unit;
-        private Label label_item_price;
+        private TextBox textBox_price;
     }
 }

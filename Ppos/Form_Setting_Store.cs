@@ -26,6 +26,7 @@ namespace Ppos
             try
             {
                 this.DoubleBuffered = true;
+                Class_DoubleBuffer.EnableDoubleBuffering(tableLayoutPanel_back);
                 customGroupBox.Location = new System.Drawing.Point(
                                (panel_detail.Width / 2) - (customGroupBox.Width / 2),
                                10);

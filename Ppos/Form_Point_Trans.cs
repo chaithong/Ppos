@@ -48,6 +48,8 @@ namespace Ppos
                 dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_member.EnableHeadersVisualStyles = false;
 
+                dataGridView_member.MouseWheel += new MouseEventHandler(dataGridView_member_MouseWheel!);
+
                 dataGridView_trans.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_member, true, null);
 
                 foreach (DataGridViewColumn column in dataGridView_trans.Columns)
@@ -58,6 +60,8 @@ namespace Ppos
 
                 dataGridView_trans.ColumnHeadersDefaultCellStyle.BackColor = Color.White;
                 dataGridView_trans.EnableHeadersVisualStyles = false;
+
+                dataGridView_trans.MouseWheel += new MouseEventHandler(dataGridView_trans_MouseWheel!);
 
                 button_excel.Image = Class_Image.resizeImage(Ppos.Properties.Resources.Excel, new Size(40, 40));
 
@@ -106,7 +110,58 @@ namespace Ppos
             }
 
         }
+        private void dataGridView_member_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_member.RowCount == 0) return;
 
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_member.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_member.RowCount)
+            {
+                newIndex = dataGridView_member.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_member.FirstDisplayedScrollingRowIndex = newIndex;
+        }
+        private void dataGridView_trans_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_trans.RowCount == 0) return;
+
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_trans.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_trans.RowCount)
+            {
+                newIndex = dataGridView_trans.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_trans.FirstDisplayedScrollingRowIndex = newIndex;
+        }
         private void Form_Point_Trans_Load(object sender, EventArgs e)
         {
             try
@@ -354,7 +409,7 @@ namespace Ppos
                         if (dt_trans.Rows.Count > 0)
                         {
                             button_excel.Visible = true;
-                            dataGridView_trans.ScrollBars = System.Windows.Forms.ScrollBars.None;
+                          //  dataGridView_trans.ScrollBars = System.Windows.Forms.ScrollBars.None;
                             backgroundWorker_point.RunWorkerAsync();
 
                         }
@@ -376,43 +431,7 @@ namespace Ppos
             }
         }
 
-        private void button_sort_MouseEnter(object sender, EventArgs e)
-        {
-            try
-            {
-                if (sort == "desc")
-                {
-                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(35, 45));
-                }
-                else
-                {
-                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(35, 45));
-                }
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void button_sort_MouseLeave(object sender, EventArgs e)
-        {
-            try
-            {
-                if (sort == "desc")
-                {
-                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(30, 40));
-                }
-                else
-                {
-                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(30, 40));
-                }
-            }
-            catch
-            {
-
-            }
-        }
+       
 
         private void button_back_date_Click(object sender, EventArgs e)
         {
@@ -500,34 +519,7 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        private void label_MouseEnter(object sender, EventArgs e)
-        {
-            try
-            {
-                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-
-                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size + 2, label.Font.Style);
-            }
-            catch
-            {
-
-            }
-        }
-
-        private void label_MouseLeave(object sender, EventArgs e)
-        {
-            try
-            {
-                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
-
-                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
-            }
-            catch
-            {
-
-            }
-        }
-
+       
         private void backgroundWorker_point_DoWork(object sender, DoWorkEventArgs e)
         {
             try
@@ -561,7 +553,7 @@ namespace Ppos
             {
                 tableLayoutPanel_top.Enabled = true;
                 dataGridView_member.Enabled = true;
-                dataGridView_trans.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+               // dataGridView_trans.ScrollBars = System.Windows.Forms.ScrollBars.Both;
                 Class_Parameter.runbackground = false;
             }
             catch
@@ -634,7 +626,70 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void label_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
 
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size + 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void label_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label label = (System.Windows.Forms.Label)sender;
+
+                label.Font = new System.Drawing.Font(label.Font.FontFamily, label.Font.Size - 2, label.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+        private void button_sort_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sort == "desc")
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(35, 45));
+                }
+                else
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(35, 45));
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button_sort_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sort == "desc")
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustUp, new Size(30, 40));
+                }
+                else
+                {
+                    button_sort.Image = Class_Image.resizeImage(Ppos.Properties.Resources.adjustDown, new Size(30, 40));
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void button_excel_Click(object sender, EventArgs e)
         {
             try
@@ -782,6 +837,7 @@ namespace Ppos
                                                  point_end
                                                  FROM Member_Point_Balance
                                                    WHERE id_member= " + set_id + " " +
+                                                   " and date(created_date) = '" + currentDate.ToString("yyyy-MM-dd") + "' " +
                                                    "order by id " + sort + " ";
 
                             var er = cmd_sqlite.ExecuteReader();

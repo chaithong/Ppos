@@ -19,6 +19,7 @@ namespace Ppos
         public static string sqlite_path = @"Data Source=" + path + @"\database.db;Version=3";
         public static string item_path = path + @"\Image\Item";
         public static string logo_path = path + @"\Image\Logo";
+        public static string invoice_path = path + @"\Invoice";
         bool save_user = false, save_pass = false;
         DataTable dt;
         public Form_Login()

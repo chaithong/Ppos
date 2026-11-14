@@ -7,7 +7,7 @@ namespace Ppos.Class
 {
     internal class Class_Tax_Invoice
     {
-        public static string Generate(string type)
+        public static string Generate()
         {
             try
             {
@@ -28,7 +28,7 @@ namespace Ppos.Class
                         {
                             DateTime targetDate = DateTime.Now;
                             string julianDateShort = $"{targetDate:yy}{targetDate.DayOfYear:D3}";
-                            return Class_Parameter.store_no + julianDateShort + type + dt_running.Rows[0][0].ToString()!;
+                            return Class_Parameter.store_no + julianDateShort + dt_running.Rows[0][0].ToString()!;
                         }
                     }
                 }

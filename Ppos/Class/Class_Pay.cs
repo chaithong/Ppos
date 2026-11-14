@@ -72,7 +72,7 @@ namespace Ppos.Class
                                                   "where void = false and hole = false";
                         cmd_sqlite.ExecuteNonQuery();
 
-                        string trx_no = Class_Tax_Invoice.Generate("0");
+                        string trx_no = Class_Tax_Invoice.Generate();
                         // adjust qty
                         cmd_sqlite.CommandText = @"SELECT ibt.item_barcode,ibt.qty_small,sum(ibt.item_qty) as qty,ibt.item_cost_avg
                                                    from Invoice_Body_Temp ibt 
@@ -96,9 +96,9 @@ namespace Ppos.Class
                                     );
                             }
                         }
-
+                        int inc_point = increase_point();
                         // update point member
-                        if(Form_Sale.id_member != "")
+                        if (Form_Sale.id_member != "")
                         {
                             // ถ้าใช้ point จะลด point
                             if (point > 0)
@@ -115,13 +115,13 @@ namespace Ppos.Class
                             if (price_net_effective_member() > 0)
                             {
                                 // ถ้าผลรวมตามเงื่อนไขสมาชิกแล้วได้มากกว่า 1 แต้ม
-                                if (increase_point() > 0)
+                                if (inc_point > 0)
                                 {
                                     Class_Member_Detail.increase_point(Form_Sale.id_member, 
                                         price_net(),
                                         price_net_ineffective_member(), 
                                         price_net_effective_member(),
-                                        increase_point(),
+                                        inc_point,
                                         "ได้แต้ม",
                                         trx_no);
 
@@ -177,8 +177,8 @@ namespace Ppos.Class
                         Class_Last_Sale.last_sale();
                         // ขายดี
                         Class_Hot_Sale.hot_sale();
-
-
+                        // สร้างในเสร็จ
+                        Class_Invoice.Generate(trx_no,Form_Sale.id_member,point, inc_point ,cash,transfer,change);
                     }
                 }
             }

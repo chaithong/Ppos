@@ -36,7 +36,7 @@ namespace Ppos
 
                 button_add_group.Image = Class_Image.resizeImage(Ppos.Properties.Resources.create, new Size(40, 40));
 
-                dataGridView_group.Location = new System.Drawing.Point((panel_back.Width / 2) - (dataGridView_group.Width / 2), 0);
+              //  dataGridView_group.Location = new System.Drawing.Point((panel_back.Width / 2) - (dataGridView_group.Width / 2), 0);
 
                 // เพิ่ม Code นี้ใน Constructor หรือ Form_Load เพื่อผูก Event
                 dataGridView_group.MouseWheel += new MouseEventHandler(dataGridView_group_MouseWheel);
@@ -191,12 +191,9 @@ namespace Ppos
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
                                 dataGridView_group.Rows.Add(
-                                    "",
-                                    "",
                                     dt.Rows[i][0].ToString()!,
                                     dt.Rows[i][1].ToString()!,
-                                    image,
-                                    "");
+                                    image);
                             }
                             dataGridView_group.ClearSelection();
                         }

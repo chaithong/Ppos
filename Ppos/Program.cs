@@ -48,6 +48,11 @@ namespace Ppos
                 {
                     System.IO.Directory.CreateDirectory(Form_Login.logo_path);
                 }
+                // สร้าง path invoice
+                if (!System.IO.Directory.Exists(Form_Login.invoice_path))
+                {
+                    System.IO.Directory.CreateDirectory(Form_Login.invoice_path);
+                }
 
                 ApplicationConfiguration.Initialize();
 

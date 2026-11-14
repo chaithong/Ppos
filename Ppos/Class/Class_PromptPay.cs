@@ -1,7 +1,4 @@
 ﻿using QRCoder;
-using QRCoder.Core.Generators;
-using QRCoder.Core.Models;
-using QRCoder.Core.Renderers;
 using System;
 using System.Collections.Generic;
 using System.Data;

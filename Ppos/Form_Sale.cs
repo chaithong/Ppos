@@ -34,6 +34,8 @@ namespace Ppos
         public static string price_net;
         public static double discount_round;
 
+        public static bool item_pro = false;
+
         public static string W_image_bar = "", W_item_bar = "", W_item_name = "", W_item_unit = "", W_item_price = "",W_item_qty = "";
         bool hole_bill = false;
         bool discount_member = false;
@@ -910,12 +912,15 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                     con_sqlite.Open();
                     using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                     {
+                        string price ;
                         cmd_sqlite.CommandText = script;
                         SQLiteDataReader reader = cmd_sqlite.ExecuteReader();
                         dt = new System.Data.DataTable();
                         dt.Load(reader);
                         if (dt.Rows.Count > 0)
                         {
+                            price = dt.Rows[0]["price"].ToString()!;
+
                             // ถ้าเป็นสินค้าน้ำหนัก และ ไม่ได้กำหนดน้ำหนักไว้ที่ช่องค้นหา
                             if (Convert.ToBoolean(dt.Rows[0]["item_weight"]) && !custom_qty)
                             {
@@ -928,10 +933,21 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 W_item_price = dt.Rows[0]["price"].ToString()!;
                                 W_item_qty = "0";
 
-                                Form_Item_Weight form_Item_Weight = new Form_Item_Weight();
+                               
+                                if (dt.Rows[0]["pro_type"].ToString() != string.Empty)
+                                {
+                                    // สินค้าโปรจะแก้ราคาไม่ได้
+                                    item_pro = true;
+                                }
+
+                                 Form_Item_Weight form_Item_Weight = new Form_Item_Weight();
                               
                                 form_Item_Weight.ShowDialog(this);
                                 form_Item_Weight.StartPosition = FormStartPosition.CenterParent;
+
+                                // คืนค่า item_pro ตั้งต้น
+                                item_pro = false;
+
                                 if (form_Item_Weight.exit)
                                 {
                                     textBox_search.Text = "";
@@ -939,6 +955,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 }
                                 else
                                 {
+                                    price = form_Item_Weight.price;
                                     qty = form_Item_Weight.weight;
                                 }
                             }
@@ -969,7 +986,8 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 dt.Rows[0]["name"].ToString()!, // item_name
                                 qty.Replace(",", ""), // item_qty
                                 dt.Rows[0]["unit"].ToString()!, // item_unit 
-                                dt.Rows[0]["price"].ToString()!, // item_price
+                                price.Replace(",",""), // item_price
+                               // dt.Rows[0]["price"].ToString()!, // item_price
                                 (Convert.ToDouble(qty.Replace(",", "")) * Convert.ToDouble(dt.Rows[0]["price"].ToString()!)).ToString(), // item_price_sum
                                 dt.Rows[0]["cost_avg"].ToString()!, // ต้นทุน
                                 dt.Rows[0]["small_qty"].ToString()!, // จำนวนหน่วยเล็ก
@@ -1042,8 +1060,10 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 Class_Image.resizeImage(Ppos.Properties.Resources.edits, new Size(30, 30)),
                                 Convert.ToDouble(qty.Replace(",", "")).ToString("#,##0.###"),
                                 dt.Rows[0]["unit"].ToString()!,
-                                Convert.ToDouble(dt.Rows[0]["price"]).ToString("#,##0.##"),
-                                (Convert.ToDouble(qty.Replace(",", "")) * Convert.ToDouble(dt.Rows[0]["price"])).ToString("#,##0.##"),
+                              //  Convert.ToDouble(dt.Rows[0]["price"]).ToString("#,##0.##"),
+                                price,
+                               // (Convert.ToDouble(qty.Replace(",", "")) * Convert.ToDouble(dt.Rows[0]["price"])).ToString("#,##0.##"),
+                               (Convert.ToDouble(qty.Replace(",", "")) * Convert.ToDouble(price.Replace(",", ""))).ToString("#,##0.##"),
                                 pro, // pro ถ้าเป็นสินค้าโปรจะแสดงคำนวน โปร
                                 dt.Rows[0]["pro_id"].ToString()!,
                                 dt.Rows[0]["pro_type"].ToString()!,
@@ -1307,9 +1327,17 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                         W_item_price = dataGridView_item.Rows[e.RowIndex].Cells["item_price"].Value!.ToString()!;
                         W_item_qty = dataGridView_item.Rows[e.RowIndex].Cells["item_qty"].Value!.ToString()!;
 
+                        if (dataGridView_item.Rows[e.RowIndex].Cells["pro_type"].Value!.ToString() != string.Empty)
+                        {
+                            // สินค้าโปรจะแก้ราคาไม่ได้
+                            item_pro = true;
+                        }
+
                         Form_Item_Weight form_Item_Weight = new Form_Item_Weight();
                         form_Item_Weight.ShowDialog(this);
                         form_Item_Weight.StartPosition = FormStartPosition.CenterParent;
+                        // คืนค่า item_pro ตั้งต้น
+                        item_pro = false;
                         if (!form_Item_Weight.exit)
                         {
 
@@ -1377,8 +1405,9 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
 
                                     cmd_sqlite.CommandText = "UPDATE Invoice_Body_Temp " +
                                                              "SET item_qty = " + form_Item_Weight.weight.Replace(",", "") + ", " +
-                                                             "item_price_sum = " + form_Item_Weight.weight.Replace(",", "") + " * item_price, " +
-                                                             "price_net = (" + form_Item_Weight.weight.Replace(",", "") + " * item_price) - discount_promotion - discount_member, " +
+                                                             "item_price = " + form_Item_Weight.price.Replace(",", "") + ", " +
+                                                             "item_price_sum = " + form_Item_Weight.weight.Replace(",", "") + " * "+ form_Item_Weight.price.Replace(",", "") + ", " +                                                     
+                                                             "price_net = (" + form_Item_Weight.weight.Replace(",", "") + " * "+ form_Item_Weight.price.Replace(",", "") + ") - discount_promotion - discount_member, " +
                                                              "updated_date = datetime('now', 'localtime'), " +
                                                              "updated_by = '" + Class_Parameter.User_Login + "' " +
                                                              "WHERE id = " + dataGridView_item.Rows[e.RowIndex].Cells["id_temp"].Value!.ToString()!;
@@ -1388,7 +1417,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
 
                             // ถ้าเป็นสินค้าโปร จะคำนวนใหม่
 
-                            if (dataGridView_item.Rows[e.RowIndex].Cells["pro_type"].Value!.ToString() != "")
+                            if (dataGridView_item.Rows[e.RowIndex].Cells["pro_type"].Value!.ToString() != string.Empty)
                             {
                                 Class_Sale.Pro(
                                     dataGridView_item.Rows[e.RowIndex].Cells["pro_id"].Value!.ToString()!,
@@ -1413,8 +1442,9 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
 
                             // แสดงในตาราง
                             dataGridView_item.Rows[e.RowIndex].Cells["item_qty"].Value = form_Item_Weight.weight;
+                            dataGridView_item.Rows[e.RowIndex].Cells["item_price"].Value = form_Item_Weight.price;
                             dataGridView_item.Rows[e.RowIndex].Cells["item_price_total"].Value =
-                            (Convert.ToDouble(form_Item_Weight.weight.Replace(",", "")) * Convert.ToDouble(W_item_price.Replace(",", ""))).ToString("#,##0.##");
+                            (Convert.ToDouble(form_Item_Weight.weight.Replace(",", "")) * Convert.ToDouble(form_Item_Weight.price.Replace(",", ""))).ToString("#,##0.##");
                         }
                     }
                     // กดดูโปร
@@ -2329,11 +2359,7 @@ hole FROM Invoice_Body_Temp where void = false ";
                             {
                                 sort_hotkey();
                             }
-                        }
-                     
-        
-                       
-
+                        }                  
                     };
 
                     form_Pay.Show();

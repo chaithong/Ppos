@@ -32,22 +32,21 @@
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             tableLayoutPanel_back = new TableLayoutPanel();
-            tableLayoutPanel_bottom = new TableLayoutPanel();
+            tableLayoutPanel_top = new TableLayoutPanel();
             button_add_user = new Button();
             textBox_pass = new TextBox();
             textBox_user = new TextBox();
             dataGridView_user = new DataGridView();
-            seq = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
+            customGroupBox_back = new CustomGroupBox();
+            tableLayoutPanel_bottom = new TableLayoutPanel();
             user = new DataGridViewTextBoxColumn();
             pass = new DataGridViewTextBoxColumn();
             delete = new DataGridViewImageColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            customGroupBox_back = new CustomGroupBox();
             tableLayoutPanel_back.SuspendLayout();
-            tableLayoutPanel_bottom.SuspendLayout();
+            tableLayoutPanel_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_user).BeginInit();
             customGroupBox_back.SuspendLayout();
+            tableLayoutPanel_bottom.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel_back
@@ -55,8 +54,8 @@
             tableLayoutPanel_back.BackColor = Color.Cyan;
             tableLayoutPanel_back.ColumnCount = 1;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_bottom, 0, 0);
-            tableLayoutPanel_back.Controls.Add(dataGridView_user, 0, 1);
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_top, 0, 0);
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_bottom, 0, 1);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
             tableLayoutPanel_back.Location = new Point(10, 13);
             tableLayoutPanel_back.Margin = new Padding(0);
@@ -67,27 +66,27 @@
             tableLayoutPanel_back.Size = new Size(994, 742);
             tableLayoutPanel_back.TabIndex = 0;
             // 
-            // tableLayoutPanel_bottom
+            // tableLayoutPanel_top
             // 
-            tableLayoutPanel_bottom.BackColor = Color.White;
-            tableLayoutPanel_bottom.ColumnCount = 6;
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_bottom.Controls.Add(button_add_user, 4, 0);
-            tableLayoutPanel_bottom.Controls.Add(textBox_pass, 3, 0);
-            tableLayoutPanel_bottom.Controls.Add(textBox_user, 2, 0);
-            tableLayoutPanel_bottom.Dock = DockStyle.Fill;
-            tableLayoutPanel_bottom.Location = new Point(0, 0);
-            tableLayoutPanel_bottom.Margin = new Padding(0);
-            tableLayoutPanel_bottom.Name = "tableLayoutPanel_bottom";
-            tableLayoutPanel_bottom.RowCount = 1;
-            tableLayoutPanel_bottom.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_bottom.Size = new Size(994, 50);
-            tableLayoutPanel_bottom.TabIndex = 3;
+            tableLayoutPanel_top.BackColor = Color.White;
+            tableLayoutPanel_top.ColumnCount = 5;
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_top.Controls.Add(button_add_user, 3, 0);
+            tableLayoutPanel_top.Controls.Add(textBox_pass, 2, 0);
+            tableLayoutPanel_top.Controls.Add(textBox_user, 1, 0);
+            tableLayoutPanel_top.Dock = DockStyle.Fill;
+            tableLayoutPanel_top.Location = new Point(0, 0);
+            tableLayoutPanel_top.Margin = new Padding(0);
+            tableLayoutPanel_top.Name = "tableLayoutPanel_top";
+            tableLayoutPanel_top.RowCount = 1;
+            tableLayoutPanel_top.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_top.Size = new Size(994, 50);
+            tableLayoutPanel_top.TabIndex = 3;
             // 
             // button_add_user
             // 
@@ -99,7 +98,7 @@
             button_add_user.FlatAppearance.MouseOverBackColor = Color.Cyan;
             button_add_user.FlatStyle = FlatStyle.Flat;
             button_add_user.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            button_add_user.Location = new Point(797, 0);
+            button_add_user.Location = new Point(734, 0);
             button_add_user.Margin = new Padding(0);
             button_add_user.Name = "button_add_user";
             button_add_user.Size = new Size(125, 50);
@@ -116,7 +115,7 @@
             // 
             textBox_pass.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_pass.Font = new Font("Segoe UI", 16.2F);
-            textBox_pass.Location = new Point(500, 3);
+            textBox_pass.Location = new Point(437, 3);
             textBox_pass.Name = "textBox_pass";
             textBox_pass.Size = new Size(294, 43);
             textBox_pass.TabIndex = 1;
@@ -129,7 +128,7 @@
             // 
             textBox_user.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_user.Font = new Font("Segoe UI", 16.2F);
-            textBox_user.Location = new Point(200, 3);
+            textBox_user.Location = new Point(137, 3);
             textBox_user.Name = "textBox_user";
             textBox_user.Size = new Size(294, 43);
             textBox_user.TabIndex = 0;
@@ -157,7 +156,7 @@
             dataGridView_user.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView_user.ColumnHeadersHeight = 50;
             dataGridView_user.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView_user.Columns.AddRange(new DataGridViewColumn[] { seq, Column2, user, pass, delete, Column1 });
+            dataGridView_user.Columns.AddRange(new DataGridViewColumn[] { user, pass, delete });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = Color.White;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -168,7 +167,7 @@
             dataGridView_user.DefaultCellStyle = dataGridViewCellStyle2;
             dataGridView_user.Dock = DockStyle.Fill;
             dataGridView_user.GridColor = Color.FromArgb(128, 255, 255);
-            dataGridView_user.Location = new Point(0, 50);
+            dataGridView_user.Location = new Point(134, 0);
             dataGridView_user.Margin = new Padding(0);
             dataGridView_user.MultiSelect = false;
             dataGridView_user.Name = "dataGridView_user";
@@ -188,62 +187,12 @@
             dataGridView_user.ScrollBars = ScrollBars.None;
             dataGridView_user.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_user.ShowCellToolTips = false;
-            dataGridView_user.Size = new Size(994, 692);
+            dataGridView_user.Size = new Size(725, 692);
             dataGridView_user.TabIndex = 2;
             dataGridView_user.TabStop = false;
             dataGridView_user.CellClick += dataGridView_user_CellClick;
             dataGridView_user.CellMouseEnter += dataGridView_user_CellMouseEnter;
             dataGridView_user.CellMouseLeave += dataGridView_user_CellMouseLeave;
-            // 
-            // seq
-            // 
-            seq.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            seq.HeaderText = "";
-            seq.MinimumWidth = 6;
-            seq.Name = "seq";
-            seq.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
-            Column2.Width = 125;
-            // 
-            // user
-            // 
-            user.HeaderText = "ชื่อ";
-            user.MinimumWidth = 6;
-            user.Name = "user";
-            user.ReadOnly = true;
-            user.Width = 300;
-            // 
-            // pass
-            // 
-            pass.HeaderText = "รหัส";
-            pass.MinimumWidth = 6;
-            pass.Name = "pass";
-            pass.ReadOnly = true;
-            pass.Width = 300;
-            // 
-            // delete
-            // 
-            delete.HeaderText = "";
-            delete.MinimumWidth = 6;
-            delete.Name = "delete";
-            delete.ReadOnly = true;
-            delete.Resizable = DataGridViewTriState.True;
-            delete.SortMode = DataGridViewColumnSortMode.Automatic;
-            delete.Width = 125;
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column1.HeaderText = "";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
             // 
             // customGroupBox_back
             // 
@@ -262,6 +211,50 @@
             customGroupBox_back.TabIndex = 1;
             customGroupBox_back.TabStop = false;
             // 
+            // tableLayoutPanel_bottom
+            // 
+            tableLayoutPanel_bottom.BackColor = Color.White;
+            tableLayoutPanel_bottom.ColumnCount = 3;
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 725F));
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_bottom.Controls.Add(dataGridView_user, 1, 0);
+            tableLayoutPanel_bottom.Dock = DockStyle.Fill;
+            tableLayoutPanel_bottom.Location = new Point(0, 50);
+            tableLayoutPanel_bottom.Margin = new Padding(0);
+            tableLayoutPanel_bottom.Name = "tableLayoutPanel_bottom";
+            tableLayoutPanel_bottom.RowCount = 1;
+            tableLayoutPanel_bottom.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_bottom.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_bottom.Size = new Size(994, 692);
+            tableLayoutPanel_bottom.TabIndex = 4;
+            // 
+            // user
+            // 
+            user.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            user.HeaderText = "ชื่อ";
+            user.MinimumWidth = 6;
+            user.Name = "user";
+            user.ReadOnly = true;
+            // 
+            // pass
+            // 
+            pass.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            pass.HeaderText = "รหัส";
+            pass.MinimumWidth = 6;
+            pass.Name = "pass";
+            pass.ReadOnly = true;
+            // 
+            // delete
+            // 
+            delete.HeaderText = "";
+            delete.MinimumWidth = 6;
+            delete.Name = "delete";
+            delete.ReadOnly = true;
+            delete.Resizable = DataGridViewTriState.True;
+            delete.SortMode = DataGridViewColumnSortMode.Automatic;
+            delete.Width = 125;
+            // 
             // Form_Setting_User
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -276,10 +269,11 @@
             Text = "Form_Setting_User";
             Load += Form_Setting_User_Load;
             tableLayoutPanel_back.ResumeLayout(false);
-            tableLayoutPanel_bottom.ResumeLayout(false);
-            tableLayoutPanel_bottom.PerformLayout();
+            tableLayoutPanel_top.ResumeLayout(false);
+            tableLayoutPanel_top.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_user).EndInit();
             customGroupBox_back.ResumeLayout(false);
+            tableLayoutPanel_bottom.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -288,15 +282,13 @@
         private TableLayoutPanel tableLayoutPanel_back;
         private Button button_add_user;
         private DataGridView dataGridView_user;
-        private TableLayoutPanel tableLayoutPanel_bottom;
+        private TableLayoutPanel tableLayoutPanel_top;
         private TextBox textBox_user;
         private TextBox textBox_pass;
-        private DataGridViewTextBoxColumn seq;
-        private DataGridViewTextBoxColumn Column2;
+        private CustomGroupBox customGroupBox_back;
+        private TableLayoutPanel tableLayoutPanel_bottom;
         private DataGridViewTextBoxColumn user;
         private DataGridViewTextBoxColumn pass;
         private DataGridViewImageColumn delete;
-        private DataGridViewTextBoxColumn Column1;
-        private CustomGroupBox customGroupBox_back;
     }
 }

@@ -844,6 +844,7 @@ namespace Ppos
                     using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
                     {
                         cmd_sqlite.CommandText = script();
+                        Clipboard.SetText(script());
                         var er = cmd_sqlite.ExecuteReader();
                         dt = new System.Data.DataTable();
                         dt.Load(er);
@@ -917,7 +918,7 @@ namespace Ppos
                     script += "and (name like '%" + textBox_search.Text + "%' or large_barcode like '%" + textBox_search.Text + "%' ) ";
                 }
 
-                script += ") i where i.barcode not in(select ih.barcode from Item_Hotkey ih) order by code desc ";
+                script += ") i where i.barcode not in(select ih.barcode from Item_Hotkey ih where ih.pag not in(4,5)) order by code desc ";
                 if (Limit > 0)
                 {
                     script += "limit " + Limit;
@@ -1723,7 +1724,7 @@ namespace Ppos
                         Class_Parameter.hotkey_last_sale_back_date = comboBox_last_back_date.Text;
                     }
                 }
-
+                Class_Last_Sale.last_sale();
             }
             catch
             {
@@ -1750,6 +1751,7 @@ namespace Ppos
                         Class_Parameter.hotkey_last_sale_limit = comboBox_last_limit.Text;
                     }
                 }
+                Class_Last_Sale.last_sale();
             }
             catch
             {
@@ -1776,6 +1778,7 @@ namespace Ppos
                         Class_Parameter.hotkey_hot_sale_back_date = comboBox_hot_back_date.Text;
                     }
                 }
+                Class_Hot_Sale.hot_sale();
             }
             catch
             {
@@ -1802,6 +1805,7 @@ namespace Ppos
                         Class_Parameter.hotkey_hot_sale_limit = comboBox_hot_limit.Text;
                     }
                 }
+                Class_Hot_Sale.hot_sale();
             }
             catch
             {

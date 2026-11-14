@@ -96,6 +96,7 @@
             timer_search = new System.Windows.Forms.Timer(components);
             backgroundWorker_excel = new System.ComponentModel.BackgroundWorker();
             backgroundWorker_report = new System.ComponentModel.BackgroundWorker();
+            timer_date = new System.Windows.Forms.Timer(components);
             tableLayoutPanel_back.SuspendLayout();
             customGroupBox_left.SuspendLayout();
             tableLayoutPanel_left.SuspendLayout();
@@ -761,6 +762,10 @@
             backgroundWorker_report.DoWork += backgroundWorker_report_DoWork;
             backgroundWorker_report.RunWorkerCompleted += backgroundWorker_report_RunWorkerCompleted;
             // 
+            // timer_date
+            // 
+            timer_date.Tick += timer_date_Tick;
+            // 
             // Form_Report_Trans
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -839,5 +844,6 @@
         private TableLayoutPanel tableLayoutPanel_right;
         private CustomGroupBox customGroupBox_right_top;
         private CustomGroupBox customGroupBox_right_bottom;
+        private System.Windows.Forms.Timer timer_date;
     }
 }

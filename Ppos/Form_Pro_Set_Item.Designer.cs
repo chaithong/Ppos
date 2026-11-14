@@ -116,16 +116,16 @@
             dataGridView_item_premium = new DataGridView();
             textBox_hour_start = new TextBox();
             tableLayoutPanel_detail = new TableLayoutPanel();
-            label3 = new Label();
+            comboBox_repeat = new ComboBox();
             textBox_desc = new TextBox();
+            label3 = new Label();
             label7 = new Label();
             label5 = new Label();
             tableLayoutPanel_offer = new TableLayoutPanel();
+            comboBox_discount_type = new ComboBox();
+            comboBox_offer = new ComboBox();
             label_unit_type = new Label();
             textBox_offer = new TextBox();
-            comboBox_offer = new ComboBox();
-            comboBox_discount_type = new ComboBox();
-            comboBox_repeat = new ComboBox();
             fri = new DataGridViewTextBoxColumn();
             sat = new DataGridViewTextBoxColumn();
             sun = new DataGridViewTextBoxColumn();
@@ -237,6 +237,7 @@
             groupBox_item.TabIndex = 8;
             groupBox_item.TabStop = false;
             groupBox_item.Text = "สินค้า";
+            groupBox_item.Visible = false;
             // 
             // tableLayoutPanel_item
             // 
@@ -1238,6 +1239,31 @@
             tableLayoutPanel_detail.Size = new Size(870, 148);
             tableLayoutPanel_detail.TabIndex = 3;
             // 
+            // comboBox_repeat
+            // 
+            comboBox_repeat.Anchor = AnchorStyles.Left;
+            comboBox_repeat.BackColor = Color.White;
+            comboBox_repeat.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_repeat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            comboBox_repeat.FormattingEnabled = true;
+            comboBox_repeat.Location = new Point(203, 105);
+            comboBox_repeat.Name = "comboBox_repeat";
+            comboBox_repeat.Size = new Size(194, 39);
+            comboBox_repeat.TabIndex = 2;
+            comboBox_repeat.TabStop = false;
+            comboBox_repeat.SelectedIndexChanged += comboBox_repeat_SelectedIndexChanged;
+            // 
+            // textBox_desc
+            // 
+            textBox_desc.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            textBox_desc.BackColor = Color.White;
+            textBox_desc.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_desc.Location = new Point(203, 3);
+            textBox_desc.Name = "textBox_desc";
+            textBox_desc.Size = new Size(664, 43);
+            textBox_desc.TabIndex = 0;
+            textBox_desc.TabStop = false;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -1250,17 +1276,6 @@
             label3.TabIndex = 1;
             label3.Text = "รายละเอียด :";
             label3.TextAlign = ContentAlignment.MiddleRight;
-            // 
-            // textBox_desc
-            // 
-            textBox_desc.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            textBox_desc.BackColor = Color.White;
-            textBox_desc.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_desc.Location = new Point(203, 3);
-            textBox_desc.Name = "textBox_desc";
-            textBox_desc.Size = new Size(664, 43);
-            textBox_desc.TabIndex = 0;
-            textBox_desc.TabStop = false;
             // 
             // label7
             // 
@@ -1308,6 +1323,33 @@
             tableLayoutPanel_offer.Size = new Size(670, 50);
             tableLayoutPanel_offer.TabIndex = 4;
             // 
+            // comboBox_discount_type
+            // 
+            comboBox_discount_type.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_discount_type.BackColor = Color.White;
+            comboBox_discount_type.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_discount_type.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            comboBox_discount_type.FormattingEnabled = true;
+            comboBox_discount_type.Location = new Point(473, 5);
+            comboBox_discount_type.Name = "comboBox_discount_type";
+            comboBox_discount_type.Size = new Size(194, 39);
+            comboBox_discount_type.TabIndex = 2;
+            comboBox_discount_type.TabStop = false;
+            // 
+            // comboBox_offer
+            // 
+            comboBox_offer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            comboBox_offer.BackColor = Color.White;
+            comboBox_offer.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox_offer.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            comboBox_offer.FormattingEnabled = true;
+            comboBox_offer.Location = new Point(3, 5);
+            comboBox_offer.Name = "comboBox_offer";
+            comboBox_offer.Size = new Size(194, 39);
+            comboBox_offer.TabIndex = 2;
+            comboBox_offer.TabStop = false;
+            comboBox_offer.SelectedIndexChanged += comboBox_type_SelectedIndexChanged;
+            // 
             // label_unit_type
             // 
             label_unit_type.AutoSize = true;
@@ -1335,47 +1377,6 @@
             textBox_offer.TabStop = false;
             textBox_offer.TextAlign = HorizontalAlignment.Center;
             textBox_offer.KeyPress += textBox_offer_KeyPress;
-            // 
-            // comboBox_offer
-            // 
-            comboBox_offer.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_offer.BackColor = Color.White;
-            comboBox_offer.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_offer.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            comboBox_offer.FormattingEnabled = true;
-            comboBox_offer.Location = new Point(3, 5);
-            comboBox_offer.Name = "comboBox_offer";
-            comboBox_offer.Size = new Size(194, 39);
-            comboBox_offer.TabIndex = 2;
-            comboBox_offer.TabStop = false;
-            comboBox_offer.SelectedIndexChanged += comboBox_type_SelectedIndexChanged;
-            // 
-            // comboBox_discount_type
-            // 
-            comboBox_discount_type.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            comboBox_discount_type.BackColor = Color.White;
-            comboBox_discount_type.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_discount_type.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            comboBox_discount_type.FormattingEnabled = true;
-            comboBox_discount_type.Location = new Point(473, 5);
-            comboBox_discount_type.Name = "comboBox_discount_type";
-            comboBox_discount_type.Size = new Size(194, 39);
-            comboBox_discount_type.TabIndex = 2;
-            comboBox_discount_type.TabStop = false;
-            // 
-            // comboBox_repeat
-            // 
-            comboBox_repeat.Anchor = AnchorStyles.Left;
-            comboBox_repeat.BackColor = Color.White;
-            comboBox_repeat.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox_repeat.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            comboBox_repeat.FormattingEnabled = true;
-            comboBox_repeat.Location = new Point(203, 105);
-            comboBox_repeat.Name = "comboBox_repeat";
-            comboBox_repeat.Size = new Size(194, 39);
-            comboBox_repeat.TabIndex = 2;
-            comboBox_repeat.TabStop = false;
-            comboBox_repeat.SelectedIndexChanged += comboBox_repeat_SelectedIndexChanged;
             // 
             // fri
             // 
@@ -1431,7 +1432,7 @@
             tableLayoutPanel_button.Name = "tableLayoutPanel_button";
             tableLayoutPanel_button.RowCount = 1;
             tableLayoutPanel_button.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_button.Size = new Size(970, 97);
+            tableLayoutPanel_button.Size = new Size(903, 97);
             tableLayoutPanel_button.TabIndex = 3;
             // 
             // button_cancel
@@ -1445,9 +1446,9 @@
             button_cancel.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button_cancel.FlatStyle = FlatStyle.Flat;
             button_cancel.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_cancel.Location = new Point(649, 3);
+            button_cancel.Location = new Point(604, 3);
             button_cancel.Name = "button_cancel";
-            button_cancel.Size = new Size(318, 91);
+            button_cancel.Size = new Size(296, 91);
             button_cancel.TabIndex = 4;
             button_cancel.TabStop = false;
             button_cancel.Text = " ยกเลิก";
@@ -1469,9 +1470,9 @@
             button_edit_save.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 192);
             button_edit_save.FlatStyle = FlatStyle.Flat;
             button_edit_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
-            button_edit_save.Location = new Point(326, 3);
+            button_edit_save.Location = new Point(303, 3);
             button_edit_save.Name = "button_edit_save";
-            button_edit_save.Size = new Size(317, 91);
+            button_edit_save.Size = new Size(295, 91);
             button_edit_save.TabIndex = 2;
             button_edit_save.TabStop = false;
             button_edit_save.Text = "แก้ไข";
@@ -1493,7 +1494,7 @@
             button_add_save.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold);
             button_add_save.Location = new Point(3, 3);
             button_add_save.Name = "button_add_save";
-            button_add_save.Size = new Size(317, 91);
+            button_add_save.Size = new Size(294, 91);
             button_add_save.TabIndex = 3;
             button_add_save.TabStop = false;
             button_add_save.Text = " เพิ่ม";
@@ -1512,7 +1513,7 @@
             panel_search.Location = new Point(0, 0);
             panel_search.Margin = new Padding(0);
             panel_search.Name = "panel_search";
-            panel_search.Size = new Size(316, 120);
+            panel_search.Size = new Size(383, 120);
             panel_search.TabIndex = 4;
             // 
             // label_search
@@ -1523,7 +1524,7 @@
             label_search.ForeColor = Color.Gray;
             label_search.Location = new Point(0, 0);
             label_search.Name = "label_search";
-            label_search.Size = new Size(316, 84);
+            label_search.Size = new Size(383, 84);
             label_search.TabIndex = 1;
             label_search.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -1534,7 +1535,7 @@
             textBox_search.Font = new Font("Segoe UI", 16.2F);
             textBox_search.Location = new Point(0, 84);
             textBox_search.Name = "textBox_search";
-            textBox_search.Size = new Size(316, 36);
+            textBox_search.Size = new Size(383, 36);
             textBox_search.TabIndex = 0;
             textBox_search.TabStop = false;
             textBox_search.TextAlign = HorizontalAlignment.Center;
@@ -1550,7 +1551,7 @@
             panel_detail.Location = new Point(10, 13);
             panel_detail.Margin = new Padding(0);
             panel_detail.Name = "panel_detail";
-            panel_detail.Size = new Size(970, 655);
+            panel_detail.Size = new Size(903, 655);
             panel_detail.TabIndex = 0;
             // 
             // tableLayoutPanel_back_detail
@@ -1588,6 +1589,7 @@
             groupBox_detail.TabIndex = 6;
             groupBox_detail.TabStop = false;
             groupBox_detail.Text = "โปรโมชั่นสินค้า";
+            groupBox_detail.Visible = false;
             // 
             // groupBox_datetime
             // 
@@ -1605,6 +1607,7 @@
             groupBox_datetime.TabIndex = 7;
             groupBox_datetime.TabStop = false;
             groupBox_datetime.Text = "วันเวลาใช้งาน";
+            groupBox_datetime.Visible = false;
             // 
             // tableLayoutPanel_day
             // 
@@ -1992,7 +1995,7 @@
             dataGridView_promotion.ScrollBars = ScrollBars.None;
             dataGridView_promotion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_promotion.ShowCellToolTips = false;
-            dataGridView_promotion.Size = new Size(316, 665);
+            dataGridView_promotion.Size = new Size(383, 665);
             dataGridView_promotion.TabIndex = 2;
             dataGridView_promotion.TabStop = false;
             dataGridView_promotion.CellMouseDown += dataGridView_promotion_CellMouseDown;
@@ -2147,8 +2150,8 @@
             // 
             tableLayoutPanel_back.BackColor = Color.Transparent;
             tableLayoutPanel_back.ColumnCount = 2;
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
-            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 75F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_right, 1, 0);
             tableLayoutPanel_back.Controls.Add(customGroupBox_left, 0, 0);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
@@ -2157,7 +2160,6 @@
             tableLayoutPanel_back.Name = "tableLayoutPanel_back";
             tableLayoutPanel_back.RowCount = 1;
             tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_back.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel_back.Size = new Size(1346, 811);
             tableLayoutPanel_back.TabIndex = 1;
             // 
@@ -2169,13 +2171,13 @@
             tableLayoutPanel_right.Controls.Add(customGroupBox_right_top, 0, 0);
             tableLayoutPanel_right.Controls.Add(customGroupBox_right_bottom, 0, 1);
             tableLayoutPanel_right.Dock = DockStyle.Fill;
-            tableLayoutPanel_right.Location = new Point(336, 0);
+            tableLayoutPanel_right.Location = new Point(403, 0);
             tableLayoutPanel_right.Margin = new Padding(0);
             tableLayoutPanel_right.Name = "tableLayoutPanel_right";
             tableLayoutPanel_right.RowCount = 2;
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
             tableLayoutPanel_right.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_right.Size = new Size(1010, 811);
+            tableLayoutPanel_right.Size = new Size(943, 811);
             tableLayoutPanel_right.TabIndex = 3;
             // 
             // customGroupBox_right_top
@@ -2191,7 +2193,7 @@
             customGroupBox_right_top.Margin = new Padding(10, 0, 10, 0);
             customGroupBox_right_top.Name = "customGroupBox_right_top";
             customGroupBox_right_top.Padding = new Padding(10);
-            customGroupBox_right_top.Size = new Size(990, 120);
+            customGroupBox_right_top.Size = new Size(923, 120);
             customGroupBox_right_top.TabIndex = 0;
             customGroupBox_right_top.TabStop = false;
             // 
@@ -2208,7 +2210,7 @@
             customGroupBox_right_bottom.Margin = new Padding(10, 10, 10, 3);
             customGroupBox_right_bottom.Name = "customGroupBox_right_bottom";
             customGroupBox_right_bottom.Padding = new Padding(10);
-            customGroupBox_right_bottom.Size = new Size(990, 678);
+            customGroupBox_right_bottom.Size = new Size(923, 678);
             customGroupBox_right_bottom.TabIndex = 1;
             customGroupBox_right_bottom.TabStop = false;
             // 
@@ -2225,7 +2227,7 @@
             customGroupBox_left.Margin = new Padding(0, 0, 0, 3);
             customGroupBox_left.Name = "customGroupBox_left";
             customGroupBox_left.Padding = new Padding(10);
-            customGroupBox_left.Size = new Size(336, 808);
+            customGroupBox_left.Size = new Size(403, 808);
             customGroupBox_left.TabIndex = 2;
             customGroupBox_left.TabStop = false;
             // 
@@ -2243,12 +2245,11 @@
             tableLayoutPanel_left.RowCount = 2;
             tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Absolute, 120F));
             tableLayoutPanel_left.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_left.Size = new Size(316, 785);
+            tableLayoutPanel_left.Size = new Size(383, 785);
             tableLayoutPanel_left.TabIndex = 0;
             // 
             // timer_show
             // 
-            timer_show.Interval = 50;
             timer_show.Tick += timer_show_Tick;
             // 
             // Form_Pro_Set_Item

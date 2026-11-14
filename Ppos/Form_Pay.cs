@@ -1,9 +1,8 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using Ppos.Class;
 using QRCoder;
-using QRCoder.Core.Generators;
-using QRCoder.Core.Models;
-using QRCoder.Core.Renderers;
+using QuestPDF.Drawing;
+using QuestPDF.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +29,7 @@ namespace Ppos
             InitializeComponent();
             try
             {
+
                 this.DoubleBuffered = true;
                 button_discount.Image = Class_Image.resizeImage(Ppos.Properties.Resources.edits, new System.Drawing.Size(35, 35));
                 button_cash.Image = Class_Image.resizeImage(Ppos.Properties.Resources.sales, new System.Drawing.Size(35, 35));
@@ -406,18 +406,18 @@ namespace Ppos
                 if (change < 0)
                 {
                     button_discount.Visible = true;
-                    customGroupBox_price_net_back.BorderColor = Color.Red;
-                    tableLayoutPanel_price_net.BackColor = Color.Red;
-                    customGroupBox_right.BorderColor = Color.Red;
+                    customGroupBox_price_net_back.BorderColor = System.Drawing.Color.Red;
+                    tableLayoutPanel_price_net.BackColor = System.Drawing.Color.Red;
+                    customGroupBox_right.BorderColor = System.Drawing.Color.Red;
                     label_change.Text = "0";
                     complete = false;
                 }
                 else
                 {
                     button_discount.Visible = false;
-                    customGroupBox_price_net_back.BorderColor = Color.Lime;
-                    tableLayoutPanel_price_net.BackColor = Color.Lime;
-                    customGroupBox_right.BorderColor = Color.Lime;
+                    customGroupBox_price_net_back.BorderColor = System.Drawing.Color.Lime;
+                    tableLayoutPanel_price_net.BackColor = System.Drawing.Color.Lime;
+                    customGroupBox_right.BorderColor = System.Drawing.Color.Lime;
                     label_change.Text = change.ToString("#,##0.##");
                     complete = true;
                 }
@@ -587,6 +587,7 @@ namespace Ppos
                                      Convert.ToInt32(label_point.Text.Replace(",", "")),
                                      Convert.ToDouble(label_change.Text.Replace(",", ""))
                                      );
+                
             }
             catch (Exception ex)
             {

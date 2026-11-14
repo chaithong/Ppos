@@ -41,6 +41,8 @@ namespace Ppos
 
                 // เรียกใช้งานจาก Class คอนโทรลจะอยู่ตรงกลางและเลื่อน Scroll ได้ทันที
                 ControlHelper.SetupCenterWithScroll(panel_detail, customGroupBox_detail);
+                // เรียกใช้ Class ส่วนกลาง แล้วส่ง Panel ของ Form นี้เข้าไป
+                Class_Scroll_Panel.EnableDragScroll(panel_detail);
                 // ปรับขนาด tablelayoutpanel_back
                 new TableLayoutResizer(tableLayoutPanel_back, this);
 
@@ -56,8 +58,9 @@ namespace Ppos
                 dataGridView_member.ColumnHeadersDefaultCellStyle.BackColor = Color.Lime;
                 dataGridView_member.EnableHeadersVisualStyles = false;
 
-                // เรียกใช้ Class ส่วนกลาง แล้วส่ง Panel ของ Form นี้เข้าไป
-                Class_Scroll_Panel.EnableDragScroll(panel_detail);
+                dataGridView_member.MouseWheel += new MouseEventHandler(dataGridView_member_MouseWheel!);
+
+               
 
 
 
@@ -101,6 +104,32 @@ namespace Ppos
             }
 
 
+        }
+        private void dataGridView_member_MouseWheel(object sender, MouseEventArgs e)
+        {
+            // ตรวจสอบว่ามีข้อมูลใน DataGridView หรือไม่
+            if (dataGridView_member.RowCount == 0) return;
+
+            // ดึงค่าดัชนีแถวปัจจุบันที่แสดงอยู่บนสุด
+            int currentIndex = dataGridView_member.FirstDisplayedScrollingRowIndex;
+            if (currentIndex < 0) currentIndex = 0;
+
+            // e.Delta > 0 คือหมุนขึ้น (เลื่อนบรรทัดขึ้น), e.Delta < 0 คือหมุนลง (เลื่อนบรรทัดลง)
+            int scrollLines = 1; // จำนวนแถวที่ต้องการให้เลื่อนต่อการหมุน 1 กริ๊ก
+            int newIndex = currentIndex + (e.Delta > 0 ? -scrollLines : scrollLines);
+
+            // ตรวจสอบไม่ให้ดัชนีหลุดขอบบนและขอบล่างของตาราง
+            if (newIndex < 0)
+            {
+                newIndex = 0;
+            }
+            else if (newIndex >= dataGridView_member.RowCount)
+            {
+                newIndex = dataGridView_member.RowCount - 1;
+            }
+
+            // สั่งให้ตารางเลื่อนไปยังแถวที่คำนวณได้
+            dataGridView_member.FirstDisplayedScrollingRowIndex = newIndex;
         }
         private void Form_Member_Detail_Load(object sender, EventArgs e)
         {

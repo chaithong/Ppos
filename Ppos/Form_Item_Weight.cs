@@ -11,7 +11,8 @@ namespace Ppos
 {
     public partial class Form_Item_Weight : Form
     {
-        public string weight;
+        bool focus_w = true;
+        public string weight, price;
         public bool exit = true;
         Image set_image = null;
         int c = 0;
@@ -50,11 +51,16 @@ namespace Ppos
                 label_barcode.Text = Form_Sale.W_item_bar;
                 label_item_name.Text = Form_Sale.W_item_name;
                 label_item_unit.Text = Form_Sale.W_item_unit;
-                label_item_price.Text = Form_Sale.W_item_price;
+                textBox_price.Text = Form_Sale.W_item_price;
                 textBox_weight.Text = Form_Sale.W_item_qty;
 
                 button_confirm.Image = Class_Image.resizeImage(Ppos.Properties.Resources.confirms, new Size(50, 50));
-             
+
+                if (Form_Sale.item_pro)
+                {
+                    textBox_price.Enabled = false;
+                }
+
 
             }
             catch
@@ -80,13 +86,14 @@ namespace Ppos
 
         private void button_confirm_Click(object sender, EventArgs e)
         {
-            if (textBox_weight.Text != string.Empty)
+            if (textBox_weight.Text != string.Empty && textBox_price.Text != string.Empty)
             {
-                if (double.TryParse(textBox_weight.Text, out double w))
+                if (double.TryParse(textBox_weight.Text, out double w) && double.TryParse(textBox_price.Text, out double p))
                 {
-                    if (w > 0)
+                    if (w > 0 && p > 0)
                     {
                         weight = Convert.ToDouble(textBox_weight.Text).ToString("#,##0.###");
+                        price = Convert.ToDouble(textBox_price.Text).ToString("#,##0.##");
                         exit = false;
                         this.Close();
                     }
@@ -104,7 +111,7 @@ namespace Ppos
                 {
                     button_confirm_Click(sender, e);
                 }
-                else if(e.KeyCode == Keys.Escape)
+                else if (e.KeyCode == Keys.Escape)
                 {
                     this.Close();
                 }
@@ -118,13 +125,13 @@ namespace Ppos
 
         private void textBox_weight_Leave(object sender, EventArgs e)
         {
-            textBox_weight.Focus();
+            // textBox_weight.Focus();
         }
         private void Form_Item_Weight_Shown(object sender, EventArgs e)
         {
             try
             {
-              
+
                 textBox_weight.Focus();
                 textBox_weight.SelectAll();
 
@@ -135,7 +142,7 @@ namespace Ppos
             }
         }
 
-       
+
 
         private void textBox_weight_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -250,7 +257,7 @@ namespace Ppos
         {
             try
             {
-                label_weight.Font = new Font(label_weight.Font.FontFamily, label_weight.Font.Size + 4, label_weight.Font.Style);
+                label_weight.Font = new Font(label_weight.Font.FontFamily, label_weight.Font.Size + 2, label_weight.Font.Style);
             }
             catch
             {
@@ -262,7 +269,7 @@ namespace Ppos
         {
             try
             {
-                label_weight.Font = new Font(label_weight.Font.FontFamily, label_weight.Font.Size - 4, label_weight.Font.Style);
+                label_weight.Font = new Font(label_weight.Font.FontFamily, label_weight.Font.Size - 2, label_weight.Font.Style);
             }
             catch
             {
@@ -274,7 +281,7 @@ namespace Ppos
         {
             try
             {
-                button_confirm.Font = new Font(label_weight.Font.FontFamily, label_weight.Font.Size + 2, label_weight.Font.Style);
+                button_confirm.Font = new Font(button_confirm.Font.FontFamily, button_confirm.Font.Size + 2, button_confirm.Font.Style);
             }
             catch
             {
@@ -286,7 +293,7 @@ namespace Ppos
         {
             try
             {
-                button_confirm.Font = new Font(label_weight.Font.FontFamily, label_weight.Font.Size - 2, label_weight.Font.Style);
+                button_confirm.Font = new Font(button_confirm.Font.FontFamily, button_confirm.Font.Size - 2, button_confirm.Font.Style);
             }
             catch
             {
@@ -294,13 +301,22 @@ namespace Ppos
             }
         }
 
-     
+
 
         private void keypad_click(object sender, EventArgs e)
         {
             try
             {
                 Button button = (Button)sender;
+                if(focus_w)
+                {
+                    textBox_weight.Focus();
+                }
+                else
+                {
+                    textBox_price.Focus();
+                }
+               
                 if (button.Name == "button_delete")
                 {
                     SendKeys.Send("{BACKSPACE}");
@@ -338,6 +354,28 @@ namespace Ppos
                 Button button = (Button)sender;
                 button.ForeColor = Color.Gray;
                 button.Font = new Font(button.Font.FontFamily, button.Font.Size - 5, button.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+       
+
+        private void textbox_click(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBox textBox = (TextBox)sender;
+                if(textBox.Name == "textBox_price")
+                {
+                    focus_w = false;
+                }
+                else
+                {
+                    focus_w= true;
+                }
             }
             catch
             {

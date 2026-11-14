@@ -18,8 +18,9 @@ namespace Ppos
     public partial class Form_Load_QTY : Form
     {
         string path_load;
-        bool status_upload , status_file;
+        bool status_upload, status_file;
         DataTable dt;
+        Form_Load_Template form_Load_Template;
         SQLiteDataReader dr;
         public Form_Load_QTY()
         {
@@ -86,33 +87,38 @@ namespace Ppos
                 panel_load.Focus();
                 if (Convert.ToUInt32(label_item_all.Text.Replace(",", "")) > 0)
                 {
-                    using (SaveFileDialog saveFileDialoge = new SaveFileDialog())
+                    form_Load_Template = new Form_Load_Template();
+                    form_Load_Template.ShowDialog(this);
+                    if (!form_Load_Template.exit)
                     {
-                        saveFileDialoge.FileName = "ปรับจำนวน_" + DateTime.Now.ToString("ddMMyyyy_HHmmss");
-                        saveFileDialoge.DefaultExt = ".Xlsx";
-                        saveFileDialoge.Filter = "Xlsx|*.Xlsx";
-                        saveFileDialoge.Title = "บันทึกรูปแบบปรับจำนวน";
-
-
-                        if (saveFileDialoge.ShowDialog(this) == DialogResult.OK)
+                        using (SaveFileDialog saveFileDialoge = new SaveFileDialog())
                         {
-                            path_load = saveFileDialoge.FileName;
+                            saveFileDialoge.FileName = "ปรับจำนวน_" + DateTime.Now.ToString("ddMMyyyy_HHmmss");
+                            saveFileDialoge.DefaultExt = ".Xlsx";
+                            saveFileDialoge.Filter = "Xlsx|*.Xlsx";
+                            saveFileDialoge.Title = "บันทึกรูปแบบปรับจำนวน";
 
-                            button_download_all_item.Enabled = false;
+                            if (saveFileDialoge.ShowDialog(this) == DialogResult.OK)
+                            {
+                                path_load = saveFileDialoge.FileName;
 
-                            button_upload.Enabled = false;
+                                button_download_all_item.Enabled = false;
 
-                            button_template.Enabled = false;
+                                button_upload.Enabled = false;
 
-                            button_template.Text = "ดาวน์โหลดรูปแบบ 0%";
+                                button_template.Enabled = false;
 
-                            button_error.Enabled = false;
+                                button_template.Text = "ดาวน์โหลดรูปแบบ 0%";
 
-                            Class_Parameter.runbackground = true;
+                                button_error.Enabled = false;
 
-                            backgroundWorker_template.RunWorkerAsync();
+                                Class_Parameter.runbackground = true;
+
+                                backgroundWorker_template.RunWorkerAsync();
+                            }
                         }
                     }
+
                 }
 
 
@@ -217,6 +223,14 @@ namespace Ppos
                                      "small_cost_last,small_cost_avg,small_qty " +
                                      "from Item " +
                                      "where status = 1 ";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
 
                             cmd_sqlite.CommandText += "union all " +
                                       "SELECT group_main,group_sub,name," +
@@ -224,6 +238,14 @@ namespace Ppos
                                       "from Item " +
                                       "where status = 1 " +
                                       "and medium_barcode <> '' ";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
 
                             cmd_sqlite.CommandText += "union all " +
                                       "SELECT group_main,group_sub,name," +
@@ -231,6 +253,14 @@ namespace Ppos
                                       "from Item " +
                                       "where status = 1 " +
                                       "and large_barcode <> ''";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
 
                             cmd_sqlite.CommandText += "order by group_main,group_sub,name ";
 
@@ -849,7 +879,7 @@ where iteq.cus <> '') and status = '';";
                 }
                 else
                 {
-                    if(status_file)
+                    if (status_file)
                     {
                         // แสดงปุ่มกด โหลด error
                         pictureBox_load_error.Visible = true;
@@ -862,7 +892,7 @@ where iteq.cus <> '') and status = '';";
                     }
                     else
                     {
-                        MessageBox.Show("ไฟล์ข้อมูลไม่ถูกต้อง !!!","แจ้งเตือน",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("ไฟล์ข้อมูลไม่ถูกต้อง !!!", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 }
@@ -1141,6 +1171,281 @@ WHERE iteq.status <> '';";
             catch
             {
 
+            }
+        }
+        private void label_enter(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label lagel = (System.Windows.Forms.Label)sender;
+                lagel.Font = new System.Drawing.Font(lagel.Font.FontFamily, lagel.Font.Size + 2, lagel.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void label_leave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label lagel = (System.Windows.Forms.Label)sender;
+                lagel.Font = new System.Drawing.Font(lagel.Font.FontFamily, lagel.Font.Size - 2, lagel.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void button_download_all_item_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                panel_load.Focus();
+                if (Convert.ToUInt32(label_item_all.Text.Replace(",", "")) > 0)
+                {
+                    form_Load_Template = new Form_Load_Template();
+                    form_Load_Template.ShowDialog(this);
+                    if (!form_Load_Template.exit)
+                    {
+                        using (SaveFileDialog saveFileDialoge = new SaveFileDialog())
+                        {
+                            saveFileDialoge.FileName = "สินค้า_" + DateTime.Now.ToString("ddMMyyyy_HHmmss");
+                            saveFileDialoge.DefaultExt = ".Xlsx";
+                            saveFileDialoge.Filter = "Xlsx|*.Xlsx";
+                            saveFileDialoge.Title = "บันทึกไฟล์สินค้า";
+
+
+                            if (saveFileDialoge.ShowDialog(this) == DialogResult.OK)
+                            {
+                                path_load = saveFileDialoge.FileName;
+
+                                panel_load.Focus();
+
+                                button_download_all_item.Visible = false;
+
+                                button_upload.Enabled = false;
+
+                                button_template.Enabled = false;
+
+                                button_error.Enabled = false;
+
+                                Class_Parameter.runbackground = true;
+
+                                backgroundWorker_load_all_item.RunWorkerAsync();
+                            }
+                        }
+                    }
+                }
+
+
+            }
+            catch
+            {
+                Class_Parameter.runbackground = false;
+            }
+        }
+        private void backgroundWorker_load_all_item_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                // 2. ประกาศตัวแปร COM Objects
+                Excel.Application App = new Excel.Application();
+                Excel.Workbooks workbooks = App.Workbooks;
+                Excel.Workbook workbook = workbooks.Add(Type.Missing);
+                Excel.Worksheet worksheet = (Excel.Worksheet)workbook.Sheets[1];
+
+                uint excelProcessId = 0;
+                GetWindowThreadProcessId((IntPtr)App.Hwnd, out excelProcessId);
+                try
+                {
+
+                    worksheet.Name = "สินค้า";
+
+
+
+                    worksheet.Columns[1].ColumnWidth = 30;
+
+                    worksheet.Rows[1].Font.Size = 14;
+                    worksheet.Rows[1].Font.Bold = true;
+
+                    worksheet.Cells[1, 1] = " กลุ่มหลัก ";
+                    worksheet.Cells[1, 1].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[1].NumberFormat = "@";
+
+                    worksheet.Cells[1, 2] = " กลุ่มย่อย ";
+                    worksheet.Cells[1, 2].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[2].NumberFormat = "@";
+
+                    worksheet.Cells[1, 3] = " บาร์โค้ด ";
+                    worksheet.Cells[1, 3].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[3].NumberFormat = "@";
+
+                    worksheet.Cells[1, 4] = " ชื่อสินค้า ";
+                    worksheet.Cells[1, 4].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[4].NumberFormat = "@";
+
+                    worksheet.Cells[1, 5] = " จำนวน ";
+                    worksheet.Cells[1, 5].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[5].NumberFormat = "General";
+
+                    worksheet.Cells[1, 6] = " หน่วย ";
+                    worksheet.Cells[1, 6].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[6].NumberFormat = "@";
+
+                    worksheet.Cells[1, 7] = " ราคาต่อหน่วย ";
+                    worksheet.Cells[1, 7].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[7].NumberFormat = "General";
+
+                    worksheet.Cells[1, 8] = " ต้นทุนต่อหน่วย ";
+                    worksheet.Cells[1, 8].Interior.Color = ColorTranslator.ToOle(Color.Silver);
+                    worksheet.Columns[8].NumberFormat = "General";
+
+                    worksheet.Activate();
+                    worksheet.Application.ActiveWindow.SplitRow = 1;
+                    worksheet.Application.ActiveWindow.FreezePanes = true;
+
+                    // สร้างเส้น                
+                    Excel.Range rangeAllBorders = worksheet.Range[worksheet.Cells[1, 1], worksheet.Cells[1, 8]];
+                    rangeAllBorders.Borders.LineStyle = Excel.XlLineStyle.xlContinuous;
+                    rangeAllBorders.Borders.Weight = Excel.XlBorderWeight.xlThin;
+                    rangeAllBorders.Borders.Color = ColorTranslator.ToOle(Color.Black);
+
+                    // เริ่มใส่ข้อมูล
+                    using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                    {
+                        con_sqlite.Open();
+                        using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                        {
+
+                            cmd_sqlite.CommandText = "SELECT group_main,group_sub,name," +
+                                     "small_barcode as barcode,small_unit,small_price," +
+                                     "small_cost_last,small_cost_avg,small_qty " +
+                                     "from Item " +
+                                     "where status = 1 ";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
+
+                            cmd_sqlite.CommandText += "union all " +
+                                      "SELECT group_main,group_sub,name," +
+                                      "medium_barcode,medium_unit,medium_price,medium_cost_last,medium_cost_avg,medium_qty " +
+                                      "from Item " +
+                                      "where status = 1 " +
+                                      "and medium_barcode <> '' ";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
+
+                            cmd_sqlite.CommandText += "union all " +
+                                      "SELECT group_main,group_sub,name," +
+                                      "large_barcode,large_unit,large_price,large_cost_last,large_cost_avg,large_qty " +
+                                      "from Item " +
+                                      "where status = 1 " +
+                                      "and large_barcode <> ''";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
+
+                            cmd_sqlite.CommandText += "order by group_main,group_sub,name ";
+
+                            dr = cmd_sqlite.ExecuteReader();
+                            dt = new System.Data.DataTable();
+                            dt.Load(dr);
+                            if (dt.Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    worksheet.Cells[i + 2, 1] = dt.Rows[i]["group_main"].ToString();
+                                    worksheet.Cells[i + 2, 2] = dt.Rows[i]["group_sub"].ToString();
+                                    worksheet.Cells[i + 2, 3] = dt.Rows[i]["barcode"].ToString();
+                                    worksheet.Cells[i + 2, 4] = dt.Rows[i]["name"].ToString();
+                                    worksheet.Cells[i + 2, 5] = dt.Rows[i]["small_qty"].ToString();
+                                    worksheet.Cells[i + 2, 6] = dt.Rows[i]["small_unit"].ToString();
+                                    worksheet.Cells[i + 2, 7] = dt.Rows[i]["small_price"].ToString();
+                                    worksheet.Cells[i + 2, 8] = dt.Rows[i]["small_cost_avg"].ToString();
+
+                                    panel_load.Width = (i + 1) * panel_back.Width / dt.Rows.Count;
+                                }
+                            }
+                        }
+                    }
+
+                    worksheet.Columns.AutoFit();
+
+                    // 4. บันทึกไฟล์ไปยัง Path ที่ผู้ใช้เลือกจาก Dialog
+                    // ลบไฟล์เก่าทิ้งก่อน (ถ้ามีชื่อซ้ำและต้องการเซฟทับโดยไม่ให้ Excel ถามแจ้งเตือน)
+                    App.DisplayAlerts = false;
+                    App.Visible = false; // ซ่อนหน้าต่าง Excel ไว้เบื้องหลังขณะทำงาน
+
+                    workbook.SaveAs(path_load);
+
+                }
+                finally
+                {
+
+                    // ปิดแบบนุ่มนวลก่อน
+                    try { App.Quit(); } catch { }
+
+                    // สั่งจัดการขั้นเด็ดขาดดึง Process เจาะจงตัวนี้มาสั่งปิดทันที [2]
+                    if (excelProcessId != 0)
+                    {
+                        try
+                        {
+                            Process excelProcess = Process.GetProcessById((int)excelProcessId);
+                            if (excelProcess != null && !excelProcess.HasExited)
+                            {
+                                excelProcess.Kill(); // ตัดจบกระบวนการทันที ไม่เหลือค้างแน่นอน [2]
+                            }
+                        }
+                        catch { /* หากกระบวนการปิดไปแล้ว จะข้ามส่วนนี้อัตโนมัติ */}
+                    }
+                }
+            }
+            catch
+            {
+                Class_Parameter.runbackground = false;
+            }
+        }
+
+        private void backgroundWorker_load_all_item_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                Class_Parameter.runbackground = false;
+
+                MessageBox.Show(path_load, "ดาวน์โหลดไฟล์ เรียบร้อย", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                button_download_all_item.Visible = true;
+
+                button_upload.Enabled = true;
+
+                button_template.Enabled = true;
+
+                button_error.Enabled = true;
+
+                panel_load.Width = 0;
+            }
+            catch
+            {
+                Class_Parameter.runbackground = false;
             }
         }
     }

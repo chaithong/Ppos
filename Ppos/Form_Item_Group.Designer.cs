@@ -37,18 +37,15 @@
             button_add_group = new Button();
             textBox_subgroup = new TextBox();
             textBox_maingroup = new TextBox();
-            panel_back = new Panel();
+            tableLayoutPanel_bottom = new TableLayoutPanel();
             dataGridView_group = new DataGridView();
             customGroupBox_back = new CustomGroupBox();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
             maingroup = new DataGridViewTextBoxColumn();
             subgroup = new DataGridViewTextBoxColumn();
             delete = new DataGridViewImageColumn();
-            Column2 = new DataGridViewTextBoxColumn();
             tableLayoutPanel_back.SuspendLayout();
             tableLayoutPanel_back_top.SuspendLayout();
-            panel_back.SuspendLayout();
+            tableLayoutPanel_bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_group).BeginInit();
             customGroupBox_back.SuspendLayout();
             SuspendLayout();
@@ -58,7 +55,7 @@
             tableLayoutPanel_back.ColumnCount = 1;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_back_top, 0, 0);
-            tableLayoutPanel_back.Controls.Add(panel_back, 0, 1);
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_bottom, 0, 1);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
             tableLayoutPanel_back.Location = new Point(10, 13);
             tableLayoutPanel_back.Margin = new Padding(0);
@@ -72,16 +69,16 @@
             // tableLayoutPanel_back_top
             // 
             tableLayoutPanel_back_top.BackColor = Color.White;
-            tableLayoutPanel_back_top.ColumnCount = 6;
+            tableLayoutPanel_back_top.ColumnCount = 5;
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 125F));
             tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel_back_top.Controls.Add(button_add_group, 4, 0);
-            tableLayoutPanel_back_top.Controls.Add(textBox_subgroup, 3, 0);
-            tableLayoutPanel_back_top.Controls.Add(textBox_maingroup, 2, 0);
+            tableLayoutPanel_back_top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_back_top.Controls.Add(button_add_group, 3, 0);
+            tableLayoutPanel_back_top.Controls.Add(textBox_subgroup, 2, 0);
+            tableLayoutPanel_back_top.Controls.Add(textBox_maingroup, 1, 0);
             tableLayoutPanel_back_top.Dock = DockStyle.Fill;
             tableLayoutPanel_back_top.Location = new Point(0, 0);
             tableLayoutPanel_back_top.Margin = new Padding(0);
@@ -100,7 +97,7 @@
             button_add_group.FlatAppearance.MouseDownBackColor = Color.Transparent;
             button_add_group.FlatAppearance.MouseOverBackColor = Color.Transparent;
             button_add_group.FlatStyle = FlatStyle.Flat;
-            button_add_group.Location = new Point(769, 0);
+            button_add_group.Location = new Point(707, 0);
             button_add_group.Margin = new Padding(0);
             button_add_group.Name = "button_add_group";
             button_add_group.Size = new Size(125, 50);
@@ -115,7 +112,7 @@
             // 
             textBox_subgroup.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_subgroup.Font = new Font("Segoe UI", 16.2F);
-            textBox_subgroup.Location = new Point(472, 7);
+            textBox_subgroup.Location = new Point(410, 3);
             textBox_subgroup.Margin = new Padding(3, 0, 0, 0);
             textBox_subgroup.Name = "textBox_subgroup";
             textBox_subgroup.Size = new Size(297, 43);
@@ -128,7 +125,7 @@
             // 
             textBox_maingroup.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             textBox_maingroup.Font = new Font("Segoe UI", 16.2F);
-            textBox_maingroup.Location = new Point(169, 7);
+            textBox_maingroup.Location = new Point(107, 3);
             textBox_maingroup.Margin = new Padding(0, 0, 3, 0);
             textBox_maingroup.Name = "textBox_maingroup";
             textBox_maingroup.Size = new Size(297, 43);
@@ -137,17 +134,22 @@
             textBox_maingroup.TextChanged += textBox_TextChanged;
             textBox_maingroup.KeyDown += textBox_maingroup_KeyDown;
             // 
-            // panel_back
+            // tableLayoutPanel_bottom
             // 
-            panel_back.AutoScroll = true;
-            panel_back.BackColor = Color.White;
-            panel_back.Controls.Add(dataGridView_group);
-            panel_back.Dock = DockStyle.Fill;
-            panel_back.Location = new Point(0, 50);
-            panel_back.Margin = new Padding(0);
-            panel_back.Name = "panel_back";
-            panel_back.Size = new Size(939, 424);
-            panel_back.TabIndex = 2;
+            tableLayoutPanel_bottom.BackColor = Color.White;
+            tableLayoutPanel_bottom.ColumnCount = 3;
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 725F));
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel_bottom.Controls.Add(dataGridView_group, 1, 0);
+            tableLayoutPanel_bottom.Dock = DockStyle.Fill;
+            tableLayoutPanel_bottom.Location = new Point(0, 50);
+            tableLayoutPanel_bottom.Margin = new Padding(0);
+            tableLayoutPanel_bottom.Name = "tableLayoutPanel_bottom";
+            tableLayoutPanel_bottom.RowCount = 1;
+            tableLayoutPanel_bottom.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_bottom.Size = new Size(939, 424);
+            tableLayoutPanel_bottom.TabIndex = 2;
             // 
             // dataGridView_group
             // 
@@ -161,7 +163,7 @@
             dataGridView_group.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = Color.White;
-            dataGridViewCellStyle1.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = Color.White;
             dataGridViewCellStyle1.SelectionForeColor = Color.Black;
@@ -169,10 +171,10 @@
             dataGridView_group.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView_group.ColumnHeadersHeight = 50;
             dataGridView_group.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridView_group.Columns.AddRange(new DataGridViewColumn[] { Column1, Column3, maingroup, subgroup, delete, Column2 });
+            dataGridView_group.Columns.AddRange(new DataGridViewColumn[] { maingroup, subgroup, delete });
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = Color.White;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 13.8F);
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dataGridViewCellStyle4.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = Color.White;
             dataGridViewCellStyle4.SelectionForeColor = Color.Black;
@@ -180,7 +182,7 @@
             dataGridView_group.DefaultCellStyle = dataGridViewCellStyle4;
             dataGridView_group.Dock = DockStyle.Fill;
             dataGridView_group.GridColor = Color.FromArgb(128, 255, 128);
-            dataGridView_group.Location = new Point(0, 0);
+            dataGridView_group.Location = new Point(107, 0);
             dataGridView_group.Margin = new Padding(0);
             dataGridView_group.MultiSelect = false;
             dataGridView_group.Name = "dataGridView_group";
@@ -192,7 +194,7 @@
             dataGridView_group.ScrollBars = ScrollBars.None;
             dataGridView_group.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView_group.ShowCellToolTips = false;
-            dataGridView_group.Size = new Size(939, 424);
+            dataGridView_group.Size = new Size(725, 424);
             dataGridView_group.TabIndex = 0;
             dataGridView_group.TabStop = false;
             dataGridView_group.CellClick += dataGridView_group_CellClick;
@@ -216,41 +218,25 @@
             customGroupBox_back.TabIndex = 1;
             customGroupBox_back.TabStop = false;
             // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column1.HeaderText = "";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.ReadOnly = true;
-            Column3.Width = 125;
-            // 
             // maingroup
             // 
+            maingroup.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
             maingroup.DefaultCellStyle = dataGridViewCellStyle2;
             maingroup.HeaderText = "กลุ่มหลัก";
             maingroup.MinimumWidth = 6;
             maingroup.Name = "maingroup";
             maingroup.ReadOnly = true;
-            maingroup.Width = 300;
             // 
             // subgroup
             // 
+            subgroup.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
             subgroup.DefaultCellStyle = dataGridViewCellStyle3;
             subgroup.HeaderText = "กลุ่มย่อย";
             subgroup.MinimumWidth = 6;
             subgroup.Name = "subgroup";
             subgroup.ReadOnly = true;
-            subgroup.Width = 300;
             // 
             // delete
             // 
@@ -261,14 +247,6 @@
             delete.Resizable = DataGridViewTriState.True;
             delete.SortMode = DataGridViewColumnSortMode.Automatic;
             delete.Width = 125;
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column2.HeaderText = "";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.ReadOnly = true;
             // 
             // Form_Item_Group
             // 
@@ -286,7 +264,7 @@
             tableLayoutPanel_back.ResumeLayout(false);
             tableLayoutPanel_back_top.ResumeLayout(false);
             tableLayoutPanel_back_top.PerformLayout();
-            panel_back.ResumeLayout(false);
+            tableLayoutPanel_bottom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView_group).EndInit();
             customGroupBox_back.ResumeLayout(false);
             ResumeLayout(false);
@@ -301,13 +279,10 @@
         private TextBox textBox_subgroup;
         private Button button_add_group;
         private TextBox textBox_maingroup;
-        private Panel panel_back;
         private CustomGroupBox customGroupBox_back;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column3;
+        private TableLayoutPanel tableLayoutPanel_bottom;
         private DataGridViewTextBoxColumn maingroup;
         private DataGridViewTextBoxColumn subgroup;
         private DataGridViewImageColumn delete;
-        private DataGridViewTextBoxColumn Column2;
     }
 }

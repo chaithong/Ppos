@@ -132,13 +132,13 @@ namespace Ppos
                             e.Handled = true;
                         }
                     }
-                    else if (dotIndex == -1)
+                   /* else if (dotIndex == -1)
                     {
                         if (txt.TextLength >= 5) // ไม่เกิน 5 หลัก
                         {
                             e.Handled = true;
                         }
-                    }
+                    }*/
                 }
             }
             catch

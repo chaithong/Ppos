@@ -57,6 +57,7 @@
             backgroundWorker_upload = new System.ComponentModel.BackgroundWorker();
             backgroundWorker_error = new System.ComponentModel.BackgroundWorker();
             customGroupBox_back = new CustomGroupBox();
+            backgroundWorker_load_all_item = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_back.SuspendLayout();
             panel_back.SuspendLayout();
             customGroupBox_all_item.SuspendLayout();
@@ -147,6 +148,8 @@
             label1.TabIndex = 0;
             label1.Text = "สินค้าทั้งหมด :";
             label1.TextAlign = ContentAlignment.MiddleRight;
+            label1.MouseEnter += label_enter;
+            label1.MouseLeave += label_leave;
             // 
             // label_item_all
             // 
@@ -159,6 +162,8 @@
             label_item_all.TabIndex = 1;
             label_item_all.Text = "0";
             label_item_all.TextAlign = ContentAlignment.MiddleLeft;
+            label_item_all.MouseEnter += label_enter;
+            label_item_all.MouseLeave += label_leave;
             // 
             // customGroupBox_add_item
             // 
@@ -169,7 +174,7 @@
             customGroupBox_add_item.Controls.Add(tableLayoutPanel_load);
             customGroupBox_add_item.Controls.Add(tableLayoutPanel_button);
             customGroupBox_add_item.Controls.Add(button_upload);
-            customGroupBox_add_item.Location = new Point(199, 304);
+            customGroupBox_add_item.Location = new Point(199, 333);
             customGroupBox_add_item.Name = "customGroupBox_add_item";
             customGroupBox_add_item.Padding = new Padding(10);
             customGroupBox_add_item.Size = new Size(600, 400);
@@ -212,6 +217,8 @@
             label2.TabIndex = 0;
             label2.Text = "อัพโหลดเรียบร้อย :";
             label2.TextAlign = ContentAlignment.MiddleRight;
+            label2.MouseEnter += label_enter;
+            label2.MouseLeave += label_leave;
             // 
             // label_item_load_complete
             // 
@@ -224,6 +231,8 @@
             label_item_load_complete.TabIndex = 1;
             label_item_load_complete.Text = "0";
             label_item_load_complete.TextAlign = ContentAlignment.MiddleLeft;
+            label_item_load_complete.MouseEnter += label_enter;
+            label_item_load_complete.MouseLeave += label_leave;
             // 
             // label4
             // 
@@ -236,6 +245,8 @@
             label4.TabIndex = 0;
             label4.Text = "อัพโหลดสินค้า :";
             label4.TextAlign = ContentAlignment.MiddleRight;
+            label4.MouseEnter += label_enter;
+            label4.MouseLeave += label_leave;
             // 
             // label_item_load
             // 
@@ -248,6 +259,8 @@
             label_item_load.TabIndex = 1;
             label_item_load.Text = "0";
             label_item_load.TextAlign = ContentAlignment.MiddleLeft;
+            label_item_load.MouseEnter += label_enter;
+            label_item_load.MouseLeave += label_leave;
             // 
             // label7
             // 
@@ -261,6 +274,8 @@
             label7.TabIndex = 0;
             label7.Text = "ข้อมูลไม่ถูกต้อง :";
             label7.TextAlign = ContentAlignment.MiddleRight;
+            label7.MouseEnter += label_enter;
+            label7.MouseLeave += label_leave;
             // 
             // label_item_load_error
             // 
@@ -273,6 +288,8 @@
             label_item_load_error.TabIndex = 1;
             label_item_load_error.Text = "0";
             label_item_load_error.TextAlign = ContentAlignment.MiddleLeft;
+            label_item_load_error.MouseEnter += label_enter;
+            label_item_load_error.MouseLeave += label_leave;
             // 
             // tableLayoutPanel_button
             // 
@@ -419,10 +436,11 @@
             button_download_all_item.Size = new Size(600, 130);
             button_download_all_item.TabIndex = 1;
             button_download_all_item.TabStop = false;
-            button_download_all_item.Text = ">>ดาวน์โหลดสินค้าทั้งหมด<<";
+            button_download_all_item.Text = ">>ดาวน์โหลดสินค้า<<";
             button_download_all_item.TextAlign = ContentAlignment.BottomCenter;
             button_download_all_item.TextImageRelation = TextImageRelation.ImageAboveText;
             button_download_all_item.UseVisualStyleBackColor = false;
+            button_download_all_item.Click += button_download_all_item_Click;
             button_download_all_item.MouseEnter += button_download_all_item_MouseEnter;
             button_download_all_item.MouseLeave += button_download_all_item_MouseLeave;
             // 
@@ -479,6 +497,11 @@
             customGroupBox_back.Size = new Size(1205, 739);
             customGroupBox_back.TabIndex = 3;
             customGroupBox_back.TabStop = false;
+            // 
+            // backgroundWorker_load_all_item
+            // 
+            backgroundWorker_load_all_item.DoWork += backgroundWorker_load_all_item_DoWork;
+            backgroundWorker_load_all_item.RunWorkerCompleted += backgroundWorker_load_all_item_RunWorkerCompleted;
             // 
             // Form_Load_QTY
             // 
@@ -541,5 +564,6 @@
         private CustomGroupBox customGroupBox_all_item;
         private TableLayoutPanel tableLayoutPanel_all_item;
         private CustomGroupBox customGroupBox_back;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_load_all_item;
     }
 }

@@ -23,6 +23,7 @@ namespace Ppos
         string path_load;
         bool status_upload, status_file;
         System.Data.DataTable dt;
+        Form_Load_Template form_Load_Template;
         SQLiteDataReader dr;
 
         public Form_Load_Add()
@@ -81,30 +82,35 @@ namespace Ppos
                 panel_load.Focus();
                 if (Convert.ToUInt32(label_item_all.Text.Replace(",", "")) > 0)
                 {
-                    using (SaveFileDialog saveFileDialoge = new SaveFileDialog())
+                    form_Load_Template = new Form_Load_Template();
+                    form_Load_Template.ShowDialog(this);
+                    if (!form_Load_Template.exit)
                     {
-                        saveFileDialoge.FileName = "สินค้าทั้งหมด_" + DateTime.Now.ToString("ddMMyyyy_HHmmss");
-                        saveFileDialoge.DefaultExt = ".Xlsx";
-                        saveFileDialoge.Filter = "Xlsx|*.Xlsx";
-                        saveFileDialoge.Title = "บันทึกไฟล์สินค้า";
-
-
-                        if (saveFileDialoge.ShowDialog(this) == DialogResult.OK)
+                        using (SaveFileDialog saveFileDialoge = new SaveFileDialog())
                         {
-                            path_load = saveFileDialoge.FileName;
-                            panel_load.Focus();
+                            saveFileDialoge.FileName = "สินค้า_" + DateTime.Now.ToString("ddMMyyyy_HHmmss");
+                            saveFileDialoge.DefaultExt = ".Xlsx";
+                            saveFileDialoge.Filter = "Xlsx|*.Xlsx";
+                            saveFileDialoge.Title = "บันทึกไฟล์สินค้า";
 
-                            button_download_all_item.Visible = false;
 
-                            button_upload.Enabled = false;
+                            if (saveFileDialoge.ShowDialog(this) == DialogResult.OK)
+                            {
+                                path_load = saveFileDialoge.FileName;
+                                panel_load.Focus();
 
-                            button_load_template.Enabled = false;
+                                button_download_all_item.Visible = false;
 
-                            button_load_error.Enabled = false;
+                                button_upload.Enabled = false;
 
-                            Class_Parameter.runbackground = true;
+                                button_load_template.Enabled = false;
 
-                            backgroundWorker_export_all_item.RunWorkerAsync();
+                                button_load_error.Enabled = false;
+
+                                Class_Parameter.runbackground = true;
+
+                                backgroundWorker_export_all_item.RunWorkerAsync();
+                            }
                         }
                     }
                 }
@@ -197,6 +203,14 @@ namespace Ppos
                                      "small_cost_last,small_cost_avg,small_qty " +
                                      "from Item " +
                                      "where status = 1 ";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
 
                             cmd_sqlite.CommandText += "union all " +
                                       "SELECT group_main,group_sub,name," +
@@ -204,6 +218,14 @@ namespace Ppos
                                       "from Item " +
                                       "where status = 1 " +
                                       "and medium_barcode <> '' ";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
 
                             cmd_sqlite.CommandText += "union all " +
                                       "SELECT group_main,group_sub,name," +
@@ -211,6 +233,14 @@ namespace Ppos
                                       "from Item " +
                                       "where status = 1 " +
                                       "and large_barcode <> ''";
+                            if (form_Load_Template.group_main != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_main = '" + form_Load_Template.group_main + "' ";
+                            }
+                            if (form_Load_Template.group_sub != "ทั้งหมด")
+                            {
+                                cmd_sqlite.CommandText += "and group_sub = '" + form_Load_Template.group_sub + "' ";
+                            }
 
                             cmd_sqlite.CommandText += "order by group_main,group_sub,name ";
 
@@ -1268,6 +1298,30 @@ namespace Ppos
             }
         }
 
-       
+        private void label_enter(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label lagel = (System.Windows.Forms.Label)sender;
+                lagel.Font = new System.Drawing.Font(lagel.Font.FontFamily, lagel.Font.Size + 2, lagel.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void label_leave(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Label lagel = (System.Windows.Forms.Label)sender;
+                lagel.Font = new System.Drawing.Font(lagel.Font.FontFamily, lagel.Font.Size - 2, lagel.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
     }
 }

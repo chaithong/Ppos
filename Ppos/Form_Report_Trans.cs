@@ -22,6 +22,7 @@ namespace Ppos
         string set_item_total, set_small_barcode = "";
         string path_load;
         int set_search = 5, count_set_search = 0;
+        int set_trans = 5, count_set_trans = 0;
         DataTable dt_trans, dt;
         string sort = "desc";
         int Limit = 20, Limit_trans = 0; // จำนวนแสดงผล
@@ -288,7 +289,7 @@ namespace Ppos
                                 dataGridView_item.ClearSelection();
                                 if (dt.Rows.Count == 1) // มีรายการเดียว ทำการ กด
                                 {
-                                    dataGridView_item_CellClick(dataGridView_item, new DataGridViewCellEventArgs(4,0));
+                                    dataGridView_item_CellClick(dataGridView_item, new DataGridViewCellEventArgs(4, 0));
 
                                 }
 
@@ -325,7 +326,7 @@ namespace Ppos
                     {
 
                         dataGridView_item.Enabled = false;
-                        dataGridView_trans.Rows.Clear();
+                       // dataGridView_trans.Rows.Clear();
                         set_small_barcode = dataGridView_item.Rows[e.RowIndex].Cells["small_barcode"].Value!.ToString()!;
                         //////////// ค้นหาภาพ
                         if (System.IO.File.Exists(Form_Login.item_path + @"\" + dataGridView_item.Rows[e.RowIndex].Cells["small_barcode"].Value!.ToString() + ".Png"))
@@ -356,7 +357,7 @@ namespace Ppos
                 dataGridView_item.Enabled = true;
             }
         }
-      
+
 
         private void button_sort_Click(object sender, EventArgs e)
         {
@@ -364,9 +365,9 @@ namespace Ppos
             {
                 if (set_small_barcode != string.Empty && dataGridView_trans.RowCount > 0)
                 {
-                    tableLayoutPanel_top.Enabled = false;
+                   // tableLayoutPanel_top.Enabled = false;
                     dataGridView_item.Enabled = false;
-                    dataGridView_trans.Rows.Clear();
+                   // dataGridView_trans.Rows.Clear();
                     if (sort == "desc")
                     {
                         sort = "asc";
@@ -429,7 +430,7 @@ namespace Ppos
         {
             try
             {
-                worker = sender as BackgroundWorker;
+                worker = (BackgroundWorker)sender;
                 for (int i = 0; i < dt_trans.Rows.Count; i++)
                 {
                     // ตรวจสอบว่าผู้ใช้กดปุ่ม Cancel หรือยังในทุกๆ รอบของลูป
@@ -471,9 +472,8 @@ namespace Ppos
             try
             {
                 Class_Parameter.runbackground = false;
-                dataGridView_trans.ScrollBars = ScrollBars.Both;
+               // dataGridView_trans.ScrollBars = ScrollBars.Both;
                 dataGridView_item.Enabled = true;
-
                 tableLayoutPanel_top.Enabled = true;
             }
             catch (Exception ex)
@@ -486,6 +486,8 @@ namespace Ppos
             try
             {
                 Class_Parameter.runbackground = true;
+                dataGridView_trans.Rows.Clear();
+                tableLayoutPanel_top.Enabled = false;
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -530,7 +532,7 @@ namespace Ppos
 
                             button_excel.Visible = true;
 
-                            dataGridView_trans.ScrollBars = ScrollBars.None;
+                           // dataGridView_trans.ScrollBars = ScrollBars.None;
                             backgroundWorker_report.RunWorkerAsync();
                         }
                         else
@@ -680,7 +682,7 @@ namespace Ppos
             try
             {
 
-                worker = sender as BackgroundWorker;
+                worker = (BackgroundWorker)sender;
                 // 2. ประกาศตัวแปร COM Objects
                 Excel.Application App = new Excel.Application();
                 Excel.Workbooks workbooks = App.Workbooks;
@@ -920,9 +922,15 @@ namespace Ppos
                 label_date.Text = currentDate.ToString("dd/MM/yyyy");
                 if (label_item_name.Text != string.Empty)
                 {
-                    tableLayoutPanel_top.Enabled = false;
-                    dataGridView_trans.Rows.Clear();
-                    search_trans();
+                    if (backgroundWorker_report.IsBusy)
+                    {
+                        backgroundWorker_report.CancelAsync();
+                    }
+                    count_set_trans = 0;
+                    if (!timer_date.Enabled)
+                    {
+                        timer_date.Start();
+                    }
                 }
 
             }
@@ -940,9 +948,15 @@ namespace Ppos
                 label_date.Text = currentDate.ToString("dd/MM/yyyy");
                 if (label_item_name.Text != string.Empty)
                 {
-                    tableLayoutPanel_top.Enabled = false;
-                    dataGridView_trans.Rows.Clear();
-                    search_trans();
+                    if (backgroundWorker_report.IsBusy)
+                    {
+                        backgroundWorker_report.CancelAsync();
+                    }
+                    count_set_trans = 0;
+                    if(!timer_date.Enabled)
+                    {
+                        timer_date.Start();
+                    }
                 }
             }
             catch (Exception ex)
@@ -950,7 +964,26 @@ namespace Ppos
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        private void timer_date_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                count_set_trans++;
+                if (count_set_trans >= set_trans)
+                {
+                    count_set_trans = 0;
+                    timer_date.Stop();
+                   // dataGridView_trans.Rows.Clear();
+                    search_trans();
 
+                }
+            }
+            catch (Exception ex)
+            {
+                timer_date.Stop();
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void label_date_Click(object sender, EventArgs e)
         {
             try
@@ -979,14 +1012,16 @@ namespace Ppos
                     if (isValid)
                     {
                         currentDate = date;
+
+                        if (label_item_name.Text != string.Empty)
+                        {
+                            //tableLayoutPanel_top.Enabled = false;
+                            // dataGridView_trans.Rows.Clear();
+                            search_trans();
+                        }
+
                     }
 
-                    if (label_item_name.Text != string.Empty)
-                    {
-                        tableLayoutPanel_top.Enabled = false;
-                        dataGridView_trans.Rows.Clear();
-                        search_trans();
-                    }
 
 
 
@@ -1080,5 +1115,7 @@ namespace Ppos
 
             }
         }
+
+        
     }
 }

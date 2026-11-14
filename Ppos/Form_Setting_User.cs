@@ -83,18 +83,15 @@ namespace Ppos
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
                                 trash = Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(30, 30));
-                                /// ถ้าเป็น user login จะไม่แสดงลบ
+                                // ถ้าเป็น user login จะไม่แสดงลบ
                                 if (dt.Rows[i][0].ToString() == Class_Parameter.User_Login)
                                 {
                                     trash = new Bitmap(20, 20);
                                 }
                                 dataGridView_user.Rows.Insert(0,
-                                    "",
-                                    "",
-                                    dt.Rows[i][0].ToString(),
-                                    dt.Rows[i][1].ToString(),
-                                    trash,
-                                    "");
+                                    dt.Rows[i][0].ToString()!,
+                                    dt.Rows[i][1].ToString()!,
+                                    trash);
                             }
                             dataGridView_user.ClearSelection();
                         }
@@ -145,12 +142,9 @@ namespace Ppos
                                                     "VALUES('" + Class_Parameter.User_Login + "',datetime('now', 'localtime'),'','','" + textBox_user.Text + "','" + textBox_pass.Text + "',false,false,true)";
                                 cmd_sqlite.ExecuteNonQuery();
                                 dataGridView_user.Rows.Insert(0,
-                                    "",
-                                    "",
                                     textBox_user.Text,
                                     textBox_pass.Text,
-                                    Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(30, 30)),
-                                    "");
+                                    Class_Image.resizeImage(Ppos.Properties.Resources.exits, new Size(30, 30)));
 
                                 dataGridView_user.Rows[0].Selected = true;
 
