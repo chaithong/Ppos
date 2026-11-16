@@ -178,7 +178,7 @@ namespace Ppos.Class
                         // ขายดี
                         Class_Hot_Sale.hot_sale();
                         // สร้างในเสร็จ
-                        Class_Invoice.Generate(trx_no,Form_Sale.id_member,point, inc_point ,cash,transfer,change);
+                        Class_Invoice.Generate(true,trx_no, Form_Sale.id_member, point, inc_point, transfer, cash,  change);
                     }
                 }
             }

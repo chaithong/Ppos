@@ -167,7 +167,7 @@
             label_store_no.Name = "label_store_no";
             label_store_no.Size = new Size(144, 49);
             label_store_no.TabIndex = 0;
-            label_store_no.Text = "*รหัสร้าน :";
+            label_store_no.Text = "รหัสร้าน :";
             label_store_no.TextAlign = ContentAlignment.MiddleRight;
             label_store_no.MouseEnter += label_enter;
             label_store_no.MouseLeave += label_leave;

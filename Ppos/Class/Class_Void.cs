@@ -1,13 +1,16 @@
-﻿using System;
+﻿using AForge;
+using System;
 using System.Collections.Generic;
 using System.Data.SQLite;
+using System.Security.Cryptography.Xml;
+using System.Security.Policy;
 using System.Text;
 
 namespace Ppos.Class
 {
     internal class Class_Void
     {
-        public static void update_void(string trx_no ,string id_member,int point_use,int point_increase)
+        public static void update_void(string trx_no ,string id_member,int point_use,int point_increase,double transfer,double cash,double cash_change)
         {
             try
             {
@@ -73,6 +76,13 @@ namespace Ppos.Class
                                                          "void_date = datetime('now', 'localtime') " +
                                                     "WHERE trx_no = '" + trx_no+"'";
                         cmd_sqlite.ExecuteNonQuery();
+
+                        // ขายล่าสุด
+                        Class_Last_Sale.last_sale();
+                        // ขายดี
+                        Class_Hot_Sale.hot_sale();
+                        // สร้างในเสร็จ
+                        Class_Invoice.Generate(false, trx_no, id_member, point_use, point_increase, transfer,cash, cash_change);
                     }
                 }
             }

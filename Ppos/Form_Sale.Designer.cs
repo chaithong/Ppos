@@ -352,6 +352,7 @@
             dataGridView_item.TabIndex = 2;
             dataGridView_item.TabStop = false;
             dataGridView_item.Visible = false;
+            dataGridView_item.CellMouseDoubleClick += dataGridView_item_CellMouseDoubleClick;
             dataGridView_item.CellMouseEnter += dataGridView_item_CellMouseEnter;
             dataGridView_item.CellMouseLeave += dataGridView_item_CellMouseLeave;
             dataGridView_item.CellMouseUp += dataGridView_item_CellMouseUp;

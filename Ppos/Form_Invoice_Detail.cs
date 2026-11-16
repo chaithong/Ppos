@@ -312,7 +312,13 @@ namespace Ppos
         {
             try
             {
-                Class_Void.update_void(Form_Check_Invoice.trx_no_detail, Form_Check_Invoice.id_member_void, Form_Check_Invoice.point_use, Form_Check_Invoice.point_inc);
+                Class_Void.update_void(Form_Check_Invoice.trx_no_detail, 
+                    Form_Check_Invoice.id_member_void, 
+                    Form_Check_Invoice.point_use, 
+                    Form_Check_Invoice.point_inc,
+                    Form_Check_Invoice.transfer,
+                    Form_Check_Invoice.cash,
+                    Form_Check_Invoice.cash_change);
 
             }
             catch (Exception ex)

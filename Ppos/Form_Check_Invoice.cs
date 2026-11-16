@@ -16,6 +16,7 @@ namespace Ppos
     {
         public static string trx_no_void = "", id_member_void = "";
         public static int point_use, point_inc;
+        public static double transfer,cash,cash_change;
 
         int count_search, set_search = 5;
 
@@ -127,6 +128,10 @@ namespace Ppos
                             point_use = (int)double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["discount_point"].Value!.ToString()!);
                             point_inc = (int)double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["point_increase"].Value!.ToString()!);
 
+                            transfer = double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["pay_transfer"].Value!.ToString()!);
+                            cash = double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["pay_cash"].Value!.ToString()!);
+                            cash_change = double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["change"].Value!.ToString()!);
+
                             dataGridView_invoice.Enabled = false;
                             backgroundWorker_void.RunWorkerAsync();
 
@@ -142,6 +147,10 @@ namespace Ppos
 
                         point_use = (int)double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["discount_point"].Value!.ToString()!);
                         point_inc = (int)double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["point_increase"].Value!.ToString()!);
+
+                        transfer = double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["pay_transfer"].Value!.ToString()!);
+                        cash = double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["pay_cash"].Value!.ToString()!);
+                        cash_change = double.Parse(dataGridView_invoice.Rows[e.RowIndex].Cells["change"].Value!.ToString()!);
 
                         open_detail();
                     }
@@ -202,7 +211,7 @@ namespace Ppos
         {
             try
             {
-                Class_Void.update_void(trx_no_void, id_member_void, point_use, point_inc);
+                Class_Void.update_void(trx_no_void, id_member_void, point_use, point_inc,transfer,cash,cash_change);
 
             }
             catch (Exception ex)

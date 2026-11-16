@@ -28,7 +28,8 @@ namespace Ppos.Class
                         {
                             DateTime targetDate = DateTime.Now;
                             string julianDateShort = $"{targetDate:yy}{targetDate.DayOfYear:D3}";
-                            return Class_Parameter.store_no + julianDateShort + dt_running.Rows[0][0].ToString()!;
+                            //return Class_Parameter.store_no + julianDateShort + dt_running.Rows[0][0].ToString()!;
+                            return "INV-" + DateTime.Now.ToString("ddMMyyyy") +"-"+ dt_running.Rows[0][0].ToString()!;
                         }
                     }
                 }

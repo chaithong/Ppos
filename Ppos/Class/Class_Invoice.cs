@@ -17,7 +17,7 @@ namespace Ppos.Class
     internal class Class_Invoice
     {
    
-        public static void Generate(string trx_no,string id_member,int dec_point,int inc_point ,double cash,double transfer , double change)
+        public static void Generate(bool inv_sale, string trx_no,string id_member,int dec_point,int inc_point ,double transfer , double cash, double cash_change)
         {
             try
             {
@@ -28,7 +28,34 @@ namespace Ppos.Class
 
                 if (File.Exists(fontRegularPath)) FontManager.RegisterFontFromFile(fontRegularPath);
                 if (File.Exists(fontBoldPath)) FontManager.RegisterFontFromFile(fontBoldPath);
-        
+
+                // path save
+               
+                string path_save;
+                if (!System.IO.Directory.Exists(Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1])))
+                {
+                    System.IO.Directory.CreateDirectory(Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1]));
+                }
+                // สร้าง path sale
+                if (inv_sale)
+                {
+                    if (!System.IO.Directory.Exists(Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1], "Sale")))
+                    {
+                        System.IO.Directory.CreateDirectory(Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1], "Sale"));
+                    }
+                    path_save = Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1], "Sale",trx_no+".pdf");
+                }
+                else
+                {
+                    if (!System.IO.Directory.Exists(Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1], "Void")))
+                    {
+                        System.IO.Directory.CreateDirectory(Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1], "Void"));
+                    }
+                    path_save = Path.Combine(Form_Login.invoice_path, trx_no.Split("-")[1], "Void",trx_no+".pdf");
+                }
+
+
+
                 byte[] qrCodeBytes = GenerateQrCodeBytes(trx_no);
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
@@ -86,7 +113,15 @@ namespace Ppos.Class
                                     col.Item().PaddingTop(4).AlignCenter().Text(store_name).FontSize(13).Bold();
                                     col.Item().AlignCenter().Text(address).FontSize(8);
                                     col.Item().AlignCenter().Text("โทร : "+phone).FontSize(8);
-                                    col.Item().AlignCenter().Text("ใบเสร็จรับเงิน").FontSize(8);
+                                    if(inv_sale)
+                                    {
+                                        col.Item().AlignCenter().Text("ใบเสร็จรับเงิน").FontSize(9).Bold();
+                                    }
+                                    else
+                                    {
+                                        col.Item().AlignCenter().Text("ยกเลิก").FontSize(9).Bold();
+                                    }
+                                   
 
                                     col.Item().PaddingTop(6).LineHorizontal(0.5f);
                                     col.Item().PaddingTop(4).Row(row =>
@@ -171,8 +206,7 @@ namespace Ppos.Class
                                         table.Cell().PaddingVertical(2).AlignRight().Text(disPoint.ToString("0.00")).FontSize(9);
                                     }
                                     // ลดปัดเศษ
-                                    disRound = Math.Round(priceTotal - disPro - disMember - disCustom - Math.Round(priceNet), 2);
-
+                                    disRound = Math.Round(priceTotal - disPro - disMember - disCustom - disPoint - Math.Round(priceNet), 2);
                                     if (disRound >0)
                                     {
                                         table.Cell().ColumnSpan(2).PaddingVertical(2).Text("ส่วนลดปัดเศษ").FontSize(9);
@@ -186,19 +220,17 @@ namespace Ppos.Class
                                     if (transfer > 0)
                                     {
                                         table.Cell().ColumnSpan(2).PaddingVertical(2).Text("เงินโอน").FontSize(9);
-                                        table.Cell().PaddingVertical(2).AlignRight().Text(transfer.ToString("0.00")).FontSize(9);
+                                        table.Cell().PaddingVertical(2).AlignRight().Text(transfer.ToString("#,##0.00")).FontSize(9);
                                     }
                                     // เงินสด
                                     if (cash > 0)
                                     {
                                         table.Cell().ColumnSpan(2).PaddingVertical(2).Text("เงินสด").FontSize(9);
-                                        table.Cell().PaddingVertical(2).AlignRight().Text(cash.ToString("0.00")).FontSize(9);
-                                        // เงินทอน
-                                        if (change > 0)
-                                        {
-                                            table.Cell().ColumnSpan(2).PaddingVertical(2).Text("เงินทอน").FontSize(9);
-                                            table.Cell().PaddingVertical(2).AlignRight().Text(change.ToString("0.00")).FontSize(9);
-                                        }
+                                        table.Cell().PaddingVertical(2).AlignRight().Text(cash.ToString("#,##0.00")).FontSize(9);
+                                        // เงินทอน                                   
+                                        table.Cell().ColumnSpan(2).PaddingVertical(2).Text("เงินทอน").FontSize(9);
+                                        table.Cell().PaddingVertical(2).AlignRight().Text(cash_change.ToString("#,##0.00")).FontSize(9);
+                                        
                                     }
 
 
@@ -245,17 +277,41 @@ namespace Ppos.Class
                                         if (dt_member.Rows.Count > 0)
                                         {
                                             col.Item().PaddingTop(5).AlignLeft().Text("สมาชิก : "+ dt_member.Rows[0]["phone"].ToString()).FontSize(9).Bold();
-                                            col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : "+
-                                                (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(9);
+                                            if(inv_sale)
+                                            {
+                                                col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +
+                                              (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(9);
+                                            }
+                                            else
+                                            {
+                                                col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +
+                                              (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(9);
+                                            }
+                                          
                                             if(dec_point > 0 || inc_point >0)
                                             {
                                                 if(dec_point > 0)
                                                 {
-                                                    col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ใช้แต้ม : " + dec_point).FontSize(8);
+                                                    if(inv_sale)
+                                                    {
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ใช้แต้ม : " + dec_point).FontSize(8);
+                                                    }
+                                                    else
+                                                    {
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("คืนแต้ม : " + dec_point).FontSize(8);
+                                                    }
                                                 }
                                                 if(inc_point >0)
                                                 {
-                                                    col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ได้แต้ม : " + inc_point).FontSize(8);
+                                                    if(inv_sale)
+                                                    {
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ได้แต้ม : " + inc_point).FontSize(8);
+                                                    }
+                                                    else
+                                                    {
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ดึงแต้ม : " + inc_point).FontSize(8);
+                                                    }
+                                                   
                                                 }
                                                 
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือสุทธิ : " + dt_member.Rows[0]["point_balance"].ToString()).FontSize(9);
@@ -276,17 +332,17 @@ namespace Ppos.Class
 
                             });
                         })
-                .GeneratePdf(System.IO.Path.Combine(Form_Login.invoice_path, trx_no + ".pdf"));
+                .GeneratePdf(path_save);
                     }
                 }
                 // เปิดไฟล์ PDF ด้วยโปรแกรมอ่าน PDF เริ่มต้นของ Windows
                //  Process.Start(new ProcessStartInfo(System.IO.Path.Combine(Form_Login.invoice_path, trx_no + ".pdf")) { UseShellExecute = true });
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-           
+
         }
         public static byte[] GenerateQrCodeBytes(string content)
         {

@@ -128,8 +128,8 @@ namespace Ppos
                 }
                 else
                 {
-                    if (store_no.Text.Trim() != string.Empty)
-                    {
+                   // if (store_no.Text.Trim() != string.Empty)
+                  //  {
                         if (store_name.Text.Trim() != string.Empty)
                         {
                             // ถ้ามีภาพ master
@@ -159,12 +159,12 @@ namespace Ppos
                             MessageBox.Show("กรุณากรองชื่อร้านก่อนบันทึก !!!", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             store_name.Focus();
                         }
-                    }
+                  /*  }
                     else
                     {
                         MessageBox.Show("กรุณากรองรหัสร้านก่อนบันทึก !!!", "แจ้งเตือน", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         store_no.Focus();
-                    }
+                    }*/
 
                 }
             }
