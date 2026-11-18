@@ -209,6 +209,179 @@ namespace Ppos.Class
                             }
 
                         }
+                        // ตั้งค่า
+                        cmd_sqlite.CommandText = "SELECT title,desc  FROM Invoice_Set ";
+                        using (var reader = cmd_sqlite.ExecuteReader())
+                        {
+                            dt = new DataTable();
+                            dt.Load(reader);
+                            if (dt.Rows.Count > 0)
+                            {
+                                for (int i = 0; i < dt.Rows.Count; i++)
+                                {
+                                    if (dt.Rows[i]["title"].ToString() == "print")
+                                    {
+                                        Class_Parameter.inv_print = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "print_name")
+                                    {
+                                        Class_Parameter.inv_print_name = dt.Rows[i]["desc"].ToString()!;
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "logo")
+                                    {
+                                        Class_Parameter.inv_logo = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "address")
+                                    {
+                                        Class_Parameter.inv_address = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "address_fontsize")
+                                    {
+                                        Class_Parameter.inv_address_fontsize = float.Parse( dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "address_bold")
+                                    {
+                                        Class_Parameter.inv_address_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "phone")
+                                    {
+                                        Class_Parameter.inv_phone = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "phone_fontsize")
+                                    {
+                                        Class_Parameter.inv_phone_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "phone_bold")
+                                    {
+                                        Class_Parameter.inv_phone_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "type_fontsize")
+                                    {
+                                        Class_Parameter.inv_type_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "type_bold")
+                                    {
+                                        Class_Parameter.inv_type_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "line1_point")
+                                    {
+                                        Class_Parameter.inv_line_point = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "trx_no_fontsize")
+                                    {
+                                        Class_Parameter.inv_trx_no_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "trx_no_bold")
+                                    {
+                                        Class_Parameter.inv_trx_no_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "head_fontsize")
+                                    {
+                                        Class_Parameter.inv_head_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "head_bold")
+                                    {
+                                        Class_Parameter.inv_head_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "item_fontsize")
+                                    {
+                                        Class_Parameter.inv_item_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "item_bold")
+                                    {
+                                        Class_Parameter.inv_item_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "sum_fontsize")
+                                    {
+                                        Class_Parameter.inv_sum_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "sum_bold")
+                                    {
+                                        Class_Parameter.inv_sum_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "net_fontsize")
+                                    {
+                                        Class_Parameter.inv_net_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "net_bold")
+                                    {
+                                        Class_Parameter.inv_net_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "sum_vat")
+                                    {
+                                        Class_Parameter.inv_sum_vat = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "pro")
+                                    {
+                                        Class_Parameter.inv_pro = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "pro_head_fontsize")
+                                    {
+                                        Class_Parameter.inv_pro_head_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "pro_head_bold")
+                                    {
+                                        Class_Parameter.inv_pro_head_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "pro_fontsize")
+                                    {
+                                        Class_Parameter.inv_pro_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "pro_bold")
+                                    {
+                                        Class_Parameter.inv_pro_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "member")
+                                    {
+                                        Class_Parameter.inv_member = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "member_head_fontsize")
+                                    {
+                                        Class_Parameter.inv_member_head_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "member_head_bold")
+                                    {
+                                        Class_Parameter.inv_member_head_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "member_fontsize")
+                                    {
+                                        Class_Parameter.inv_member_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "member_bold")
+                                    {
+                                        Class_Parameter.inv_member_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "bar")
+                                    {
+                                        Class_Parameter.inv_bar = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "bar_fontsize")
+                                    {
+                                        Class_Parameter.inv_bar_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "bar_bold")
+                                    {
+                                        Class_Parameter.inv_bar_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "thank_fontsize")
+                                    {
+                                        Class_Parameter.inv_thank_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "thank_bold")
+                                    {
+                                        Class_Parameter.inv_thank_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                }
+                            }
+
+                        }
                     }
                 }
                

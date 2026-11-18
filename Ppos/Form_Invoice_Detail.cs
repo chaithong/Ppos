@@ -9,12 +9,14 @@ using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Windows.Forms;
+using YourProjectNamespace;
 
 namespace Ppos
 {
     public partial class Form_Invoice_Detail : Form
     {
         public bool void_bill = false;
+        private Class_PdfImageViewer _pdfViewer;
         public Form_Invoice_Detail()
         {
             InitializeComponent();
@@ -22,7 +24,11 @@ namespace Ppos
             {
                 this.DoubleBuffered = true;
 
+                // ผูก Panel และ PictureBox เข้ากับคลาสจัดการ
+                _pdfViewer = new Class_PdfImageViewer(panel_invoice, pictureBox_invoice);
 
+                // ปรับขนาด tablelayoutpanel_back
+                new TableLayoutResizer(tableLayoutPanel_back, this);
 
                 dataGridView_item.GetType().GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(dataGridView_item, true, null);
                 foreach (DataGridViewColumn column in dataGridView_item.Columns)
@@ -119,6 +125,17 @@ namespace Ppos
         {
             try
             {
+                // โหลดหน้าแรก (0), ความชัด 200 DPI, และย่อให้พอดีหน้าต่างอัตโนมัติ
+                if (Form_Check_Invoice.trx_no_status == "ขาย")
+                {
+                    _pdfViewer.LoadPdf(Path.Combine(Form_Login.invoice_path, Form_Check_Invoice.trx_no_detail.Split("-")[1], "Sale", Form_Check_Invoice.trx_no_detail + ".pdf"), pageIndex: 0, dpi: 200, fitToWindow: true);
+                }
+                else
+                {
+                    _pdfViewer.LoadPdf(Path.Combine(Form_Login.invoice_path, Form_Check_Invoice.trx_no_detail.Split("-")[1], "Void", Form_Check_Invoice.trx_no_detail + ".pdf"), pageIndex: 0, dpi: 200, fitToWindow: true);
+
+                }
+
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -154,7 +171,7 @@ namespace Ppos
                         if (dt.Rows.Count > 0)
                         {
                             Image pro;
-                            double sum_qty = 0, sum_price = 0, dis_pro = 0, dis_member = 0, dis_point = 0,dis_custom = 0, dis_round = 0, price_net = 0;
+                            double sum_qty = 0, sum_price = 0, dis_pro = 0, dis_member = 0, dis_point = 0, dis_custom = 0, dis_round = 0, price_net = 0;
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
                                 pro = new Bitmap(30, 30);
@@ -297,6 +314,7 @@ namespace Ppos
         {
             try
             {
+                dataGridView_item.Focus();
                 if (MessageBox.Show("ต้องการยกเลิกบิล " + Form_Check_Invoice.trx_no_detail + " ใช่หรือไม่ ?", "ยกเลิกบิล", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
                 {
                     backgroundWorker_void.RunWorkerAsync();
@@ -312,9 +330,9 @@ namespace Ppos
         {
             try
             {
-                Class_Void.update_void(Form_Check_Invoice.trx_no_detail, 
-                    Form_Check_Invoice.id_member_void, 
-                    Form_Check_Invoice.point_use, 
+                Class_Void.update_void(Form_Check_Invoice.trx_no_detail,
+                    Form_Check_Invoice.id_member_void,
+                    Form_Check_Invoice.point_use,
                     Form_Check_Invoice.point_inc,
                     Form_Check_Invoice.transfer,
                     Form_Check_Invoice.cash,
@@ -357,6 +375,43 @@ namespace Ppos
             try
             {
                 button_void.Font = new Font(button_void.Font.FontFamily, button_void.Font.Size - 2, button_void.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Form_Invoice_Detail_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                _pdfViewer?.Dispose();
+                //  base.OnFormClosed(e);
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void pictureBox_bill_DoubleClick(object sender, EventArgs e)
+        {
+            try
+            {
+                _pdfViewer.FitToWindow();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void panel_bill_Resize(object sender, EventArgs e)
+        {
+            try
+            {
+                _pdfViewer.FitToWindow();
             }
             catch
             {

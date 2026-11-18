@@ -139,6 +139,60 @@ namespace Ppos.Class
 
         public static bool keypad_numeric { get; set; } = true;
 
-       
+        // Invoice set
+        public static bool inv_print { get; set; } = true;
+        public static string inv_print_name { get; set; } = "";
+
+        public static bool inv_logo { get; set; } = true;
+
+        public static bool inv_address { get; set; } = true;
+        public static float inv_address_fontsize { get; set; } = 8;
+        public static bool inv_address_bold { get; set; } = false;
+
+        public static bool inv_phone { get; set; } = true;
+        public static float inv_phone_fontsize { get; set; } = 8;
+        public static bool inv_phone_bold { get; set; } = true;
+
+        public static float inv_type_fontsize { get; set; } = 8;
+        public static bool inv_type_bold { get; set; } = true;
+
+        public static bool inv_line_point { get; set; } = true;
+
+        public static float inv_trx_no_fontsize { get; set; } = 9;
+        public static bool inv_trx_no_bold { get; set; } = true;
+
+        public static float inv_head_fontsize { get; set; } = 9;
+        public static bool inv_head_bold { get; set; } = true;
+
+        public static float inv_item_fontsize { get; set; } = 8;
+        public static bool inv_item_bold { get; set; } = false;
+
+        public static float inv_sum_fontsize { get; set; } 
+        public static bool inv_sum_bold { get; set; } 
+
+        public static float inv_net_fontsize { get; set; } 
+        public static bool inv_net_bold { get; set; } 
+
+        public static bool inv_sum_vat { get; set; } 
+
+        public static bool inv_pro { get; set; } 
+        public static float inv_pro_head_fontsize { get; set; }
+        public static bool inv_pro_head_bold { get; set; } 
+        public static float inv_pro_fontsize { get; set; } 
+        public static bool inv_pro_bold { get; set; } 
+
+        public static bool inv_member { get; set; } 
+        public static float inv_member_head_fontsize { get; set; } 
+        public static bool inv_member_head_bold { get; set; } 
+        public static float inv_member_fontsize { get; set; } 
+        public static bool inv_member_bold { get; set; }
+
+        public static bool inv_bar { get; set; }
+        public static float inv_bar_fontsize { get; set; }
+        public static bool inv_bar_bold { get; set; }
+
+        public static float inv_thank_fontsize { get; set; }
+        public static bool inv_thank_bold { get; set; }
+
     }
 }

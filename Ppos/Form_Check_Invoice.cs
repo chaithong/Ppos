@@ -191,7 +191,8 @@ namespace Ppos
             try
             {
                 Form_Invoice_Detail form_Invoice_Detail = new Form_Invoice_Detail();
-                form_Invoice_Detail.Size = new Size(this.Width / 2, this.Height);
+                form_Invoice_Detail.Width = (int)(this.Width * (2.0/3.0));
+                form_Invoice_Detail.Height = this.Height;
                 form_Invoice_Detail.ShowDialog(this);
                 if (form_Invoice_Detail.void_bill)
                 {

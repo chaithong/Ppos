@@ -29,7 +29,7 @@ namespace Ppos.Class
         }
         private void InitViewProperties()
         {
-            _View.Cursor = Cursors.Hand;
+           // _View.Cursor = Cursors.Hand;
             _View.MultiSelect = false;
             _View.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             _View.MouseDown += _View_MouseDown;

@@ -92,6 +92,7 @@ public class TableLayoutResizer
 
             if (Math.Abs(tablePoint.X - col0Width) <= 5)
             {
+              
                 _tableLayoutPanel.Cursor = Cursors.SizeWE;
                 currentCtrl.Cursor = Cursors.SizeWE;
             }

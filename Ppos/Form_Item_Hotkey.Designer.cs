@@ -95,6 +95,8 @@
             backgroundWorker_sort = new System.ComponentModel.BackgroundWorker();
             backgroundWorker_row_height = new System.ComponentModel.BackgroundWorker();
             timer_title = new System.Windows.Forms.Timer(components);
+            label7 = new Label();
+            label9 = new Label();
             panel_search.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
             tableLayoutPanel_back.SuspendLayout();
@@ -470,6 +472,7 @@
             tableLayoutPanel_hot.Controls.Add(label6, 0, 1);
             tableLayoutPanel_hot.Controls.Add(comboBox_hot_back_date, 1, 0);
             tableLayoutPanel_hot.Controls.Add(comboBox_hot_limit, 1, 1);
+            tableLayoutPanel_hot.Controls.Add(label9, 2, 0);
             tableLayoutPanel_hot.Dock = DockStyle.Fill;
             tableLayoutPanel_hot.Location = new Point(0, 470);
             tableLayoutPanel_hot.Margin = new Padding(0);
@@ -516,7 +519,7 @@
             comboBox_hot_back_date.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_hot_back_date.Font = new Font("Segoe UI", 12F);
             comboBox_hot_back_date.FormattingEnabled = true;
-            comboBox_hot_back_date.Items.AddRange(new object[] { "1", "2", "3", "7", "15", "30", "60" });
+            comboBox_hot_back_date.Items.AddRange(new object[] { "0", "1", "2", "3", "7", "15", "30", "60" });
             comboBox_hot_back_date.Location = new Point(148, 2);
             comboBox_hot_back_date.Margin = new Padding(0);
             comboBox_hot_back_date.Name = "comboBox_hot_back_date";
@@ -791,6 +794,7 @@
             tableLayoutPanel_last.Controls.Add(label3, 0, 0);
             tableLayoutPanel_last.Controls.Add(label4, 0, 1);
             tableLayoutPanel_last.Controls.Add(comboBox_last_limit, 1, 1);
+            tableLayoutPanel_last.Controls.Add(label7, 2, 0);
             tableLayoutPanel_last.Dock = DockStyle.Fill;
             tableLayoutPanel_last.Location = new Point(0, 340);
             tableLayoutPanel_last.Margin = new Padding(0);
@@ -807,7 +811,7 @@
             comboBox_last_back_date.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox_last_back_date.Font = new Font("Segoe UI", 12F);
             comboBox_last_back_date.FormattingEnabled = true;
-            comboBox_last_back_date.Items.AddRange(new object[] { "1", "2", "3", "7", "15", "30", "60" });
+            comboBox_last_back_date.Items.AddRange(new object[] { "0", "1", "2", "3", "7", "15", "30", "60" });
             comboBox_last_back_date.Location = new Point(148, 2);
             comboBox_last_back_date.Margin = new Padding(0);
             comboBox_last_back_date.Name = "comboBox_last_back_date";
@@ -1060,6 +1064,36 @@
             // 
             timer_title.Tick += timer_title_Tick;
             // 
+            // label7
+            // 
+            label7.Dock = DockStyle.Fill;
+            label7.Font = new Font("Segoe UI", 12F);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(248, 0);
+            label7.Margin = new Padding(0);
+            label7.Name = "label7";
+            label7.Size = new Size(64, 40);
+            label7.TabIndex = 0;
+            label7.Text = "วัน";
+            label7.TextAlign = ContentAlignment.MiddleLeft;
+            label7.MouseEnter += label_enter;
+            label7.MouseLeave += label_leave;
+            // 
+            // label9
+            // 
+            label9.Dock = DockStyle.Fill;
+            label9.Font = new Font("Segoe UI", 12F);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(248, 0);
+            label9.Margin = new Padding(0);
+            label9.Name = "label9";
+            label9.Size = new Size(64, 40);
+            label9.TabIndex = 0;
+            label9.Text = "วัน";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
+            label9.MouseEnter += label_enter;
+            label9.MouseLeave += label_leave;
+            // 
             // Form_Item_Hotkey
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1161,5 +1195,6 @@
         private DataGridViewTextBoxColumn name;
         private DataGridViewTextBoxColumn unit;
         private DataGridViewTextBoxColumn price;
+        private Label label9;
     }
 }

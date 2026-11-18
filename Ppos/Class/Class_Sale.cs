@@ -1697,7 +1697,6 @@ namespace Ppos.Class
             }
         }
 
-
         public static DataTable pro_mix_sum_item(string pro_id)
         {
             try
@@ -1974,8 +1973,6 @@ namespace Ppos.Class
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
        
         public static bool pro_set_check_pro(string pro_id)
         {

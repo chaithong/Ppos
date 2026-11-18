@@ -23,11 +23,12 @@ namespace Ppos.Class
                         cmd_sqlite.CommandText = @"delete from Item_Hotkey where pag = 5";
                         cmd_sqlite.ExecuteNonQuery();
                         cmd_sqlite.CommandText = @"INSERT INTO Item_Hotkey (created_by,created_date,updated_by,updated_date,pag,item_code,small_barcode,barcode,column,row)  
-                                                   select '"+ Class_Parameter.User_Login + @"',datetime('now', 'localtime'),'','',5,hot.item_code,hot.small_barcode,hot.item_barcode,0,0
+                                                   select '"+ Class_Parameter.User_Login + @"',datetime('now', 'localtime'),'','',5,hot.item_code,hot.small_barcode,hot.item_barcode,qty,price
                                                    from (
-                                                   SELECT ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name ,sum(ib.item_qty)
+                                                   SELECT ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name ,sum(ib.item_qty) as qty ,sum(ib.price_net) as price
                                                    from Invoice_Body ib 
                                                    join Item i on i.code = ib.item_code and i.effective_hotkey = true
+                                                   join Invoice_Head ih on ih.trx_no = ib.trx_no and ih.status = 'C'
                                                    where ib.void = false
                                                    and date(ib.created_date) >= date('now', 'localtime', '-" + Class_Parameter.hotkey_hot_sale_back_date+@" days')
                                                    group by ib.small_barcode,ib.item_barcode,ib.item_code,ib.item_name 

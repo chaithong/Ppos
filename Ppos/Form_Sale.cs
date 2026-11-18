@@ -425,11 +425,17 @@ namespace Ppos
 
                                 button.Name = dt.Rows[i]["code"].ToString() + "|" + dt.Rows[i]["small_barcode"].ToString() + "|" + dt.Rows[i]["barcode"].ToString();
 
-                                if (Class_Parameter.hotkey_pag == 4 || Class_Parameter.hotkey_pag == 5) // ถ้าเลือก pag ล่าสุดหรือขายดี
+                                if (Class_Parameter.hotkey_pag == 4) // ขายล่าสุด
                                 {
                                     button.Text = dt.Rows[i]["name"].ToString() + Environment.NewLine +
                                         "คงเหลือ : " + Convert.ToDouble(dt.Rows[i]["qty"]).ToString("#,##0.###") + " " + dt.Rows[i]["unit"].ToString() + Environment.NewLine +
                                  "ราคา : " + dt.Rows[i]["price"].ToString() + " บาท";
+                                }
+                                else if (Class_Parameter.hotkey_pag == 5) // ขายดี จำนวนเก็บไว้ใน column มูลค่าเก็บไว้ row
+                                {
+                                    button.Text = dt.Rows[i]["name"].ToString() + Environment.NewLine +
+                                       "ขายแล้ว : " + Convert.ToDouble(dt.Rows[i]["column"]).ToString("#,##0.###") + " " + dt.Rows[i]["unit"].ToString() + Environment.NewLine +
+                                "มูลค่ารวม : " + Convert.ToDouble(dt.Rows[i]["row"]).ToString("#,##0.##") + " บาท";
                                 }
                                 else
                                 {
@@ -1123,6 +1129,44 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
                                 textBox_search.Text = "";
 
                             }
+                            else // ไม่พบสมาชิกจะหาบิลขาย
+                            {
+                                // 
+                                cmd_sqlite.CommandText = @"SELECT ih.id,ih.created_by,strftime('%d/%m/%Y',ih.created_date) as date,time(ih.created_date) as time, ih.status, ih.trx_no, ih.item_qty, ih.price_sum, ih.id_member, 
+                                                   ih.percent_discount_member, ih.point_increase, ih.discount_promotion,
+                                                   ih.discount_member, ih.discount_custom, ih.discount_point, ih.discount_round, ih.price_net, ih.pay_cash, ih.pay_transfer, ih.change, 
+                                                   ih.price_non_vat, ih.price_vat, ih.vat, ih.void_date, ih.return_date, ih.trx_no_reference,coalesce(m.phone,'') as phone
+                                                   FROM Invoice_Head ih
+                                                   left join Member m on m.id = ih.id_member 
+                                                   where ih.trx_no = '" + textBox_search.Text + "'";
+                                reader = cmd_sqlite.ExecuteReader();
+                                System.Data.DataTable dt = new System.Data.DataTable();
+                                dt.Load(reader);
+
+
+                                if (dt.Rows.Count > 0)
+                                {
+                                    if (dt.Rows[0]["status"].ToString() == "C")
+                                    {
+                                        Form_Check_Invoice.trx_no_status = "ขาย";
+                                    }
+                                    else if (dt.Rows[0]["status"].ToString() == "V")
+                                    {
+                                        Form_Check_Invoice.trx_no_status = "ยกเลิก";
+                                    }
+
+                                    Form_Check_Invoice.trx_no_detail = dt.Rows[0]["trx_no"].ToString()!;
+
+                                    Form_Check_Invoice.id_member_void = dt.Rows[0]["id_member"].ToString()!;
+
+                                    Form_Check_Invoice.point_use = Convert.ToInt32(dt.Rows[0]["discount_point"]);
+                                    Form_Check_Invoice.point_inc = Convert.ToInt32(dt.Rows[0]["point_increase"]);
+                                    Form_Invoice_Detail form_Invoice_Detail = new Form_Invoice_Detail();
+                                    form_Invoice_Detail.Width = (int)(this.Width * (2.0 / 3.0));
+                                    form_Invoice_Detail.Height = this.Height;
+                                    form_Invoice_Detail.ShowDialog(this);
+                                }
+                            }
                         }
                         textBox_search.Text = "";
                     }
@@ -1266,7 +1310,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
         {
             try
             {
-                if(e.ColumnIndex == dataGridView_item.Columns["item_name"]!.Index)
+                if (e.ColumnIndex == dataGridView_item.Columns["item_name"]!.Index)
                 {
                     var mouseArgs = new DataGridViewCellMouseEventArgs(
                         dataGridView_item.Columns["edit"]!.Index,
@@ -1276,7 +1320,7 @@ hole FROM Invoice_Body_Temp where void = false and hole = false ";
        );
                     dataGridView_item_CellMouseUp(sender, mouseArgs);
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -2712,7 +2756,5 @@ hole FROM Invoice_Body_Temp where void = false ";
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-       
     }
 }

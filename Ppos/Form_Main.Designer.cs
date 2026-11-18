@@ -50,6 +50,7 @@
             panel_setting = new Panel();
             button_setting_config_pro = new Button();
             button_setting_camera = new Button();
+            button_setting_invoice = new Button();
             button_setting_user = new Button();
             button_setting_store = new Button();
             panel_report = new Panel();
@@ -441,6 +442,7 @@
             panel_setting.BackColor = Color.White;
             panel_setting.Controls.Add(button_setting_config_pro);
             panel_setting.Controls.Add(button_setting_camera);
+            panel_setting.Controls.Add(button_setting_invoice);
             panel_setting.Controls.Add(button_setting_user);
             panel_setting.Controls.Add(button_setting_store);
             panel_setting.Dock = DockStyle.Top;
@@ -460,7 +462,7 @@
             button_setting_config_pro.FlatStyle = FlatStyle.Flat;
             button_setting_config_pro.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_setting_config_pro.ForeColor = Color.DimGray;
-            button_setting_config_pro.Location = new Point(40, 150);
+            button_setting_config_pro.Location = new Point(40, 200);
             button_setting_config_pro.Name = "button_setting_config_pro";
             button_setting_config_pro.Size = new Size(320, 50);
             button_setting_config_pro.TabIndex = 7;
@@ -481,7 +483,7 @@
             button_setting_camera.FlatStyle = FlatStyle.Flat;
             button_setting_camera.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             button_setting_camera.ForeColor = Color.DimGray;
-            button_setting_camera.Location = new Point(40, 100);
+            button_setting_camera.Location = new Point(40, 150);
             button_setting_camera.Name = "button_setting_camera";
             button_setting_camera.Size = new Size(320, 50);
             button_setting_camera.TabIndex = 6;
@@ -491,6 +493,27 @@
             button_setting_camera.Click += button_setting_camera_Click;
             button_setting_camera.MouseEnter += button_MouseEnter;
             button_setting_camera.MouseLeave += button_MouseLeave;
+            // 
+            // button_setting_invoice
+            // 
+            button_setting_invoice.BackColor = Color.White;
+            button_setting_invoice.Dock = DockStyle.Top;
+            button_setting_invoice.FlatAppearance.BorderSize = 0;
+            button_setting_invoice.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_setting_invoice.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_setting_invoice.FlatStyle = FlatStyle.Flat;
+            button_setting_invoice.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            button_setting_invoice.ForeColor = Color.DimGray;
+            button_setting_invoice.Location = new Point(40, 100);
+            button_setting_invoice.Name = "button_setting_invoice";
+            button_setting_invoice.Size = new Size(320, 50);
+            button_setting_invoice.TabIndex = 8;
+            button_setting_invoice.Text = "- ตั้งค่าใบเสร็จรับเงิน";
+            button_setting_invoice.TextAlign = ContentAlignment.MiddleLeft;
+            button_setting_invoice.UseVisualStyleBackColor = false;
+            button_setting_invoice.Click += button_setting_invoice_Click;
+            button_setting_invoice.MouseEnter += button_MouseEnter;
+            button_setting_invoice.MouseLeave += button_MouseLeave;
             // 
             // button_setting_user
             // 
@@ -1056,6 +1079,7 @@
         private Button button_setting;
         private Panel panel_menu;
         private Panel panel_setting;
+        private Button button_setting_invoice;
         private Button button_setting_user;
         private System.Windows.Forms.Timer timer;
         private Panel panel_item;

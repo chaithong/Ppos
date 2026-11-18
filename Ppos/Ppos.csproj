@@ -29,9 +29,11 @@
     <PackageReference Include="AForge.Video" Version="2.2.5" />
     <PackageReference Include="AForge.Video.DirectShow" Version="2.2.5" />
     <PackageReference Include="Hardware.Info" Version="110.0.0.1" />
+    <PackageReference Include="PDFtoImage" Version="5.4.0" />
     <PackageReference Include="QRCoder" Version="1.8.1" />
     <PackageReference Include="QuestPDF" Version="2026.9.2" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
+    <PackageReference Include="ZXing.Net.Bindings.SkiaSharp" Version="0.16.25" />
   </ItemGroup>
 
   <ItemGroup>

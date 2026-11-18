@@ -47,7 +47,7 @@ namespace Ppos
                 panel_back.Location = new Point(button_menu.Width, 0);
                 panel_menu_back.Width = pictureBox_logo.Width;
 
-                 //this.Size = new Size(1024, 768);
+                //this.Size = new Size(1024, 768);
 
                 this.StartPosition = FormStartPosition.Manual;
                 this.Location = Screen.PrimaryScreen!.WorkingArea.Location;
@@ -182,24 +182,24 @@ namespace Ppos
             {
                 label_date.Text = DateTime.Now.ToString("dd/MM/yyyy", cultures);
                 label_time.Text = DateTime.Now.ToString("HH:mm:ss", cultures);
-                 drive = new DriveInfo(mainDriveLetter);
+                drive = new DriveInfo(mainDriveLetter);
 
-                 if (drive.IsReady)
-                 {
-                     // แปลงหน่วยจาก Bytes เป็น Gigabytes (GB)
-                     totalSizeGb = drive.TotalSize / (1024.0 * 1024.0 * 1024.0);
-                     freeSpaceGb = drive.AvailableFreeSpace / (1024.0 * 1024.0 * 1024.0);
-                     usedSpaceGb = totalSizeGb - freeSpaceGb;
-                     usedPercentage = (usedSpaceGb / totalSizeGb) * 100;
-                     // เรียกดึงค่าเป็น % มาแสดงผลได้ทันที
-                     this.Text = Class_Parameter.Version + " (" + Class_Parameter.User_Login + ")" +
-                 " ( CPU : " + _monitor.GetCpuUsage().ToString("00.00") + "% , " +
-                 " RAM : " + _monitor.GetRamUsagePercentage().ToString("00.00") + "% , " +
-                 " DISK : " + _monitor.GetDiskUsagePercentage().ToString("00.00") + "% , " +
-                 " DRIVE : " + usedPercentage.ToString("00.00") + "% )" +
-                 " ใช้สำหรับทดสอบเท่านั้น *ห้ามจำหน่าย*";
+                if (drive.IsReady)
+                {
+                    // แปลงหน่วยจาก Bytes เป็น Gigabytes (GB)
+                    totalSizeGb = drive.TotalSize / (1024.0 * 1024.0 * 1024.0);
+                    freeSpaceGb = drive.AvailableFreeSpace / (1024.0 * 1024.0 * 1024.0);
+                    usedSpaceGb = totalSizeGb - freeSpaceGb;
+                    usedPercentage = (usedSpaceGb / totalSizeGb) * 100;
+                    // เรียกดึงค่าเป็น % มาแสดงผลได้ทันที
+                    this.Text = Class_Parameter.Version + " (" + Class_Parameter.User_Login + ")" +
+                " ( CPU : " + _monitor.GetCpuUsage().ToString("00.00") + "% , " +
+                " RAM : " + _monitor.GetRamUsagePercentage().ToString("00.00") + "% , " +
+                " DISK : " + _monitor.GetDiskUsagePercentage().ToString("00.00") + "% , " +
+                " DRIVE : " + usedPercentage.ToString("00.00") + "% )" +
+                " ใช้สำหรับทดสอบเท่านั้น *ห้ามจำหน่าย*";
 
-                 }
+                }
 
             }
             catch
@@ -269,7 +269,7 @@ namespace Ppos
         {
             try
             {
-               
+
                 timer_tab_menu.Start();
 
             }
@@ -508,7 +508,7 @@ namespace Ppos
                         if (b.Name != "button_sale")
                         {
                             b.BackColor = Color.White;
-                           
+
                         }
 
                         // b.FlatAppearance.MouseOverBackColor = Color.Transparent;
@@ -521,7 +521,7 @@ namespace Ppos
                         {
                             b.FlatStyle = FlatStyle.Standard;
                         }
-                       // b.FlatAppearance.MouseOverBackColor = Color.Cyan;
+                        // b.FlatAppearance.MouseOverBackColor = Color.Cyan;
 
 
                     }
@@ -933,6 +933,21 @@ namespace Ppos
 
             }
         }
+        private void button_setting_invoice_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Class_Parameter.Active && !Class_Parameter.runbackground)
+                {
+                    Form_Setting_Invoice form_Setting_Invoice = new Form_Setting_Invoice();
+                    submenu_click(form_Setting_Invoice, (Button)sender);
+                }
+            }
+            catch
+            {
+
+            }
+        }
         private void button_setting_camera_Click(object sender, EventArgs e)
         {
             try
@@ -1318,12 +1333,14 @@ new Size(pictureBox_logo.Height * Ppos.Properties.Resources.logo_Ppos.Width / Pp
                 Form_Calendar form_Calendar = new Form_Calendar();
                 form_Calendar.ShowDialog(this);
 
-              
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }

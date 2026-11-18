@@ -567,7 +567,7 @@ namespace Ppos
             }
             catch (Exception ex)
             {
-               // this.Enabled = true;
+                this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -591,7 +591,7 @@ namespace Ppos
             }
             catch (Exception ex)
             {
-               // this.Enabled = true;
+                this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -613,7 +613,7 @@ namespace Ppos
             }
             catch (Exception ex)
             {
-               // this.Enabled = true;
+                this.Enabled = true;
                 MessageBox.Show(ex.Message, "Error !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

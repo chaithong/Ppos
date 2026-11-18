@@ -4,6 +4,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 using QuestPDF.Previewer;
+using SkiaSharp;
 using System;
 using System.Data;
 using System.Data.SQLite;
@@ -11,6 +12,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
+using ZXing;
+using ZXing.SkiaSharp;
 
 namespace Ppos.Class
 {
@@ -56,7 +59,8 @@ namespace Ppos.Class
 
 
 
-                byte[] qrCodeBytes = GenerateQrCodeBytes(trx_no);
+                byte[] codeBytes = GenerateQrCodeBytes(trx_no);
+              //  byte[] codeBytes = GenerateBarCodeBytes(trx_no);
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -75,7 +79,12 @@ namespace Ppos.Class
                             dt_store.Rows[0]["postal_code"].ToString();
                         string phone = dt_store.Rows[0]["phone"].ToString()!;
                         // สินค้า
-                        cmd_sqlite.CommandText = "SELECT trx_no, small_barcode, item_barcode, item_code, item_name, item_qty, item_unit, item_price, item_price_sum, item_cost_avg, small_qty, qty_small, pro_id, pro_type, pro_desc, criterion_type, criterion_value, offer_type, offer_value, discount_type, repeat, discount_promotion, id_member, percent_discount_member, discount_member, discount_custom, discount_point, discount_round, price_net, price_non_vat, price_vat, vat, sale_vat, premium, effective_member FROM Invoice_Body " +
+                        cmd_sqlite.CommandText = "SELECT trx_no, small_barcode, item_barcode, item_code, item_name, item_qty, item_unit, " +
+                            "item_price, item_price_sum, item_cost_avg, small_qty, qty_small, " +
+                            "pro_id, pro_type, pro_desc, criterion_type, criterion_value, offer_type, offer_value, discount_type, repeat, " +
+                            "discount_promotion, id_member, percent_discount_member, discount_member, discount_custom, discount_point, discount_round, " +
+                            "price_net, price_non_vat, price_vat, vat, sale_vat, premium, effective_member " +
+                            "FROM Invoice_Body " +
                             "where trx_no = '"+trx_no+"' and void = false";
                         er = cmd_sqlite.ExecuteReader();
                         DataTable dt_item = new DataTable();
@@ -89,6 +98,9 @@ namespace Ppos.Class
                         double disPoint = 0;
                         double disRound = 0;
                         double priceNet = 0;
+                        double price_non_vat = 0;
+                        double price_vat = 0;
+                        double vat = 0;
                         // สร้างเอกสาร PDF
                         Document.Create(container =>
                         {
@@ -112,21 +124,21 @@ namespace Ppos.Class
 
                                     col.Item().PaddingTop(4).AlignCenter().Text(store_name).FontSize(13).Bold();
                                     col.Item().AlignCenter().Text(address).FontSize(8);
-                                    col.Item().AlignCenter().Text("โทร : "+phone).FontSize(8);
+                                    col.Item().AlignCenter().Text("โทร "+phone).FontSize(8);
                                     if(inv_sale)
                                     {
                                         col.Item().AlignCenter().Text("ใบเสร็จรับเงิน").FontSize(9).Bold();
                                     }
                                     else
                                     {
-                                        col.Item().AlignCenter().Text("ยกเลิก").FontSize(9).Bold();
+                                        col.Item().AlignCenter().Text("ยกเลิกใบเสร็จรับเงิน").FontSize(9).Bold();
                                     }
                                    
 
                                     col.Item().PaddingTop(6).LineHorizontal(0.5f);
                                     col.Item().PaddingTop(4).Row(row =>
                                     {
-                                        row.RelativeItem().Text($"เลขบิล: {trx_no}").FontSize(8);
+                                        row.RelativeItem().Text($"{trx_no}").FontSize(8);
                                         row.RelativeItem().AlignRight().Text($"{DateTime.Now:dd/MM/yyyy HH:mm}").FontSize(8);
                                     });
                                     col.Item().PaddingVertical(4).LineHorizontal(0.5f);
@@ -150,7 +162,7 @@ namespace Ppos.Class
                                         header.Cell().Text("รายการ").Bold();
                                         header.Cell().AlignRight().Text("จำนวน").Bold();
                                         header.Cell().AlignRight().Text("รวม").Bold();
-                                        header.Cell().ColumnSpan(3).PaddingVertical(2).LineHorizontal(0.5f);
+                                        header.Cell().ColumnSpan(3).PaddingVertical(2).LineHorizontal(0.5f).LineDashPattern(new float[] { 1, 2 });
                                     });
 
                                     // วนลูปแสดงรายการสินค้า
@@ -169,6 +181,9 @@ namespace Ppos.Class
                                         disCustom += Convert.ToDouble(row["discount_custom"]);
                                         disPoint += Convert.ToDouble(row["discount_point"]);
                                         priceNet += Convert.ToDouble(row["price_net"]);
+                                        price_non_vat += Convert.ToDouble(row["price_non_vat"]);
+                                        price_vat += Convert.ToDouble(row["price_vat"]);
+                                        vat += Convert.ToDouble(row["vat"]);
                                     }
 
                                     // เส้นคั่นและยอดรวมสุทธิ
@@ -232,7 +247,23 @@ namespace Ppos.Class
                                         table.Cell().PaddingVertical(2).AlignRight().Text(cash_change.ToString("#,##0.00")).FontSize(9);
                                         
                                     }
+                                       table.Cell().ColumnSpan(3).PaddingVertical(4).LineHorizontal(0.5f);
 
+                                    // สินค้าไม่มีภาษี                              
+
+                                    table.Cell().ColumnSpan(2).PaddingVertical(2).Text("สินค้าไม่มีภาษี").FontSize(9);
+                                        table.Cell().PaddingVertical(2).AlignRight().Text(price_non_vat.ToString("#,##0.00")).FontSize(9);
+                                    
+                                    // สินค้ามีภาษี                              
+                                   
+                                        table.Cell().ColumnSpan(2).PaddingVertical(2).Text("สินค้ามีภาษี").FontSize(9);
+                                        table.Cell().PaddingVertical(2).AlignRight().Text(price_vat.ToString("#,##0.00")).FontSize(9);
+                                    
+                                    // ภาษี                              
+                                  
+                                        table.Cell().ColumnSpan(2).PaddingVertical(2).Text("ภาษี").FontSize(9);
+                                        table.Cell().PaddingVertical(2).AlignRight().Text(vat.ToString("#,##0.00")).FontSize(9);
+                                    
 
                                 });
                                
@@ -280,12 +311,12 @@ namespace Ppos.Class
                                             if(inv_sale)
                                             {
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +
-                                              (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(9);
+                                              (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(8);
                                             }
                                             else
                                             {
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +
-                                              (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(9);
+                                              (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(8);
                                             }
                                           
                                             if(dec_point > 0 || inc_point >0)
@@ -294,22 +325,22 @@ namespace Ppos.Class
                                                 {
                                                     if(inv_sale)
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ใช้แต้ม : " + dec_point).FontSize(8);
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ใช้แต้ม : -" + dec_point).FontSize(8);
                                                     }
                                                     else
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("คืนแต้ม : " + dec_point).FontSize(8);
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("คืนแต้ม : +" + dec_point).FontSize(8);
                                                     }
                                                 }
                                                 if(inc_point >0)
                                                 {
                                                     if(inv_sale)
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ได้แต้ม : " + inc_point).FontSize(8);
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ได้แต้ม : +" + inc_point).FontSize(8);
                                                     }
                                                     else
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ดึงแต้ม : " + inc_point).FontSize(8);
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ดึงแต้ม : -" + inc_point).FontSize(8);
                                                     }
                                                    
                                                 }
@@ -321,18 +352,18 @@ namespace Ppos.Class
                                     }
                                     //// บาร์โค้ดท้ายบิล
                                     col.Item().PaddingTop(5).LineHorizontal(0.5f);
-                                    col.Item().PaddingTop(5).AlignCenter().Text("สแกน QR Code เพื่อตรวจสอบใบเสร็จ").FontSize(8);
+                                    col.Item().PaddingTop(5).AlignCenter().Text("สแกนเพื่อตรวจสอบใบเสร็จ").FontSize(8);
 
                                     // วาง QR Code ตรงกลาง กว้าง 75pt
-                                    col.Item().PaddingVertical(4).AlignCenter().Width(75).Image(qrCodeBytes).FitWidth();
+                                    col.Item().PaddingVertical(4).AlignCenter().Width(75).Image(codeBytes).FitWidth();
+                                   // col.Item().PaddingVertical(4).AlignCenter().Image(codeBytes);
 
                                     col.Item().AlignCenter().Text(trx_no).FontSize(7);
                                     col.Item().PaddingTop(4).AlignCenter().Text("..ขอบคุณที่ใช้บริการ..").FontSize(9).Bold();
                                 });
 
                             });
-                        })
-                .GeneratePdf(path_save);
+                        }).GeneratePdf(path_save);
                     }
                 }
                 // เปิดไฟล์ PDF ด้วยโปรแกรมอ่าน PDF เริ่มต้นของ Windows
@@ -353,5 +384,25 @@ namespace Ppos.Class
                 return qrCode.GetGraphic(20);
             }
         }
+        private static byte[] GenerateBarCodeBytes(string content)
+        {
+            // 2. สร้างภาพบาร์โค้ดด้วย ZXing.Net + SkiaSharp
+            var barcodeWriter = new BarcodeWriter
+            {
+                Format = BarcodeFormat.CODE_128, // เลือกรูปแบบบาร์โค้ด เช่น CODE_128, QR_CODE, EAN_13
+                Options = new ZXing.Common.EncodingOptions
+                {
+                    Width = 400,
+                    Height = 50,
+                    Margin = 5,
+                    PureBarcode = true
+                }
+            };
+            using SKBitmap bitmap = barcodeWriter.Write(content);
+            using SKImage image = SKImage.FromBitmap(bitmap);
+            using SKData encodedData = image.Encode(SKEncodedImageFormat.Png, 100);
+            return encodedData.ToArray();
+        }
+
     }
 }
