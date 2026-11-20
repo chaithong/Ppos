@@ -461,6 +461,8 @@ namespace Ppos.Class
                                     desc TEXT
                                     )";
                         cmd_sqlite.ExecuteNonQuery();
+
+                       
                         // print
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
                                                    SELECT '',datetime('now', 'localtime'),'print', 'True' 
@@ -471,11 +473,39 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'),'print_name', '' 
                                                    WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'print_name') ";
                         cmd_sqlite.ExecuteNonQuery();
+                        // width
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'width', '80' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'width') ";
+                        cmd_sqlite.ExecuteNonQuery();
+                        // margin
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'margin', '5' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'margin') ";
+                        cmd_sqlite.ExecuteNonQuery();
+                       
                         // logo
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
                                                    SELECT '',datetime('now', 'localtime'),'logo', 'True' 
                                                    WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'logo') ";
                         cmd_sqlite.ExecuteNonQuery();
+                        // logo_width
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'logo_width', '50' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'logo_width') ";
+                        cmd_sqlite.ExecuteNonQuery();
+
+                        // name_fontsize
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'name_fontsize', '13' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'name_fontsize') ";
+                        cmd_sqlite.ExecuteNonQuery();
+                        // name_bold
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'name_bold', 'True' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'name_bold') ";
+                        cmd_sqlite.ExecuteNonQuery();
+
                         // address
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
                                                    SELECT '',datetime('now', 'localtime'),'address', 'True' 
@@ -506,10 +536,10 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'),'phone_bold', 'False' 
                                                    WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'phone_bold') ";
                         cmd_sqlite.ExecuteNonQuery();
-                        // type_ontsize
+                        // type_fontsize
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
-                                                   SELECT '',datetime('now', 'localtime'),'type_ontsize', '8' 
-                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'type_ontsize') ";
+                                                   SELECT '',datetime('now', 'localtime'),'type_fontsize', '8' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'type_fontsize') ";
                         cmd_sqlite.ExecuteNonQuery();
                         // type_bold
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 

@@ -11,6 +11,9 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Net;
 using System.Runtime.Serialization.DataContracts;
 using System.Security.Cryptography;
@@ -20,6 +23,8 @@ using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 using YourProjectNamespace;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Ppos
 {
@@ -28,6 +33,7 @@ namespace Ppos
         int count_search, set_search = 5;
         string trx_no = "";
         private Class_PdfImageViewer _pdfViewer;
+        string text_bold = "ตัวหนา", text_regular = "ตัวบาง", text_show = "แสดง", text_notshow = "ไม่แสดง";
         public Form_Setting_Invoice()
         {
             InitializeComponent();
@@ -41,11 +47,45 @@ namespace Ppos
 
                 // ตั้งค่า License (จำเป็น)
                 QuestPDF.Settings.License = LicenseType.Community;
-                string fontRegularPath = System.IO.Path.Combine(Application.StartupPath, "Font", "Sarabun-Regular.ttf");
-                string fontBoldPath = System.IO.Path.Combine(Application.StartupPath, "Font", "Sarabun-Bold.ttf");
+
+                string fontRegularPath = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "Font", "Sarabun-Regular.ttf");
+                string fontBoldPath = System.IO.Path.Combine(System.Windows.Forms.Application.StartupPath, "Font", "Sarabun-Bold.ttf");
 
                 if (File.Exists(fontRegularPath)) FontManager.RegisterFontFromFile(fontRegularPath);
                 if (File.Exists(fontBoldPath)) FontManager.RegisterFontFromFile(fontBoldPath);
+
+                comboBox_width.Text = Class_Parameter.inv_width.ToString();
+                comboBox_margin.Text = Class_Parameter.inv_margin.ToString();
+                comboBox_logo_width.Text = Class_Parameter.inv_logo_width.ToString();
+                comboBox_width.MouseWheel += ComboBox_MouseWheel;
+                comboBox_margin.MouseWheel += ComboBox_MouseWheel;
+                comboBox_logo_width.MouseWheel += ComboBox_MouseWheel;
+
+                comboBox_name_fontsize.Text = Class_Parameter.inv_name_fontsize.ToString();
+                comboBox_name_bold.Text = (Class_Parameter.inv_name_bold) ? text_bold : text_regular;
+                comboBox_name_fontsize.MouseWheel += ComboBox_MouseWheel;
+                comboBox_name_bold.MouseWheel += ComboBox_MouseWheel;
+
+                comboBox_address.Text = (Class_Parameter.inv_address) ? text_show : text_notshow;
+                comboBox_address_fontsize.Text = Class_Parameter.inv_address_fontsize.ToString();
+                comboBox_address_bold.Text = (Class_Parameter.inv_address_bold) ? text_bold : text_regular;
+                comboBox_address.MouseWheel += ComboBox_MouseWheel;
+                comboBox_address_fontsize.MouseWheel += ComboBox_MouseWheel;
+                comboBox_address_bold.MouseWheel += ComboBox_MouseWheel;
+
+                comboBox_phone.Text = (Class_Parameter.inv_phone) ? text_show : text_notshow;
+                comboBox_phone_fontsize.Text = Class_Parameter.inv_phone_fontsize.ToString();
+                comboBox_phone_bold.Text = (Class_Parameter.inv_phone_bold) ? text_bold : text_regular;
+                comboBox_phone.MouseWheel += ComboBox_MouseWheel;
+                comboBox_phone_fontsize.MouseWheel += ComboBox_MouseWheel;
+                comboBox_phone_bold.MouseWheel += ComboBox_MouseWheel;
+
+                comboBox_type_fontsize.Text = Class_Parameter.inv_type_fontsize.ToString();
+                comboBox_type_bold.Text = (Class_Parameter.inv_type_bold) ? text_bold : text_regular;
+                comboBox_type_fontsize.MouseWheel += ComboBox_MouseWheel;
+                comboBox_type_bold.MouseWheel += ComboBox_MouseWheel;
+
+
                 // แสดง master
                 gen_trx_no(true, "", 0, 0, 0, 0, 0);
             }
@@ -54,8 +94,23 @@ namespace Ppos
                 this.Close();
             }
         }
-        // 1. ฟังก์ชันสร้างโครงสร้างใบเสร็จ
 
+        private void ComboBox_MouseWheel(object? sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e is HandledMouseEventArgs handledArgs)
+                {
+                    handledArgs.Handled = true;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        // 1. ฟังก์ชันสร้างโครงสร้างใบเสร็จ
         public static byte[] GenerateQrCodeBytes(string content)
         {
             using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
@@ -69,11 +124,21 @@ namespace Ppos
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        // ฟังก์ชันแปลง System.Drawing.Image เป็น byte[]
+        public byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new MemoryStream())
+            {
+                // บันทึกเป็น PNG เพื่อรักษาคุณภาพและความโปร่งใส (ถ้ามี)
+                imageIn.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                return ms.ToArray();
             }
         }
         private void gen_trx_no(bool inv_sale, string id_member, int dec_point, int inc_point, double transfer, double cash, double cash_change)
@@ -84,12 +149,12 @@ namespace Ppos
                 // ตั้งค่าความละเอียดของภาพ (ค่าเริ่มต้นคือ 72 DPI ซึ่งอาจจะเบลอ แนะนำ 150 - 300 DPI)
                 var imageSettings = new ImageGenerationSettings
                 {
-                    ImageFormat = ImageFormat.Png,
+                    ImageFormat = QuestPDF.Infrastructure.ImageFormat.Png,
                     RasterDpi = 200
                 };
 
                 byte[] codeBytes = GenerateQrCodeBytes((trx_no != "") ? trx_no : trx_no_master);
-               
+
                 using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
                 {
                     con_sqlite.Open();
@@ -157,11 +222,13 @@ namespace Ppos
                             double price_non_vat = 0;
                             double price_vat = 0;
                             double vat = 0;
+
+
                             container.Page(page =>
                             {
                                 // ตั้งขนาดสลิป 80mm ความยาวปรับตามเนื้อหาอัตโนมัติ
-                                page.ContinuousSize(80, Unit.Millimetre);
-                                page.Margin(5, Unit.Millimetre);
+                                page.ContinuousSize(Class_Parameter.inv_width, Unit.Millimetre);
+                                page.Margin(Class_Parameter.inv_margin, Unit.Millimetre);
                                 page.DefaultTextStyle(x => x.FontFamily("Sarabun").FontSize(9));
 
                                 // ==========================================
@@ -170,48 +237,63 @@ namespace Ppos
                                 page.Header().Column(col =>
                                 {
                                     // แสดง logo
-                                    if(Class_Parameter.inv_logo)
+                                    if (Class_Parameter.inv_logo)
                                     {
                                         // โหลดรูปโลโก้จาก Path โดยตรง (เช็กก่อนว่ามีไฟล์อยู่จริง)
                                         if (File.Exists(Form_Login.logo_path + @"\Logo.Png"))
                                         {
-                                            col.Item().AlignCenter().Width(30, Unit.Millimetre).Image(Form_Login.logo_path + @"\Logo.Png");
+                                            float w = (Class_Parameter.inv_width - (Class_Parameter.inv_margin * 2)) * (Class_Parameter.inv_logo_width / 100);
+                                            using (FileStream bitmapFile = new FileStream(Form_Login.logo_path + @"\Logo.Png", FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                                            {
+                                                System.Drawing.Image img = new Bitmap(bitmapFile);
+                                                col.Item().AlignCenter().Width(w, Unit.Millimetre).Image(ImageToByteArray(img));
+                                            }
+
                                         }
-                                    }   
+                                    }
                                     // ชื่อร้าน
-                                    col.Item().PaddingTop(4).AlignCenter().Text(store_name).FontSize(13).Bold();
+                                    // ตัวหนา
+                                    if (Class_Parameter.inv_name_bold)
+                                    {
+                                        col.Item().PaddingTop(4).AlignCenter().Text(store_name).FontSize(Class_Parameter.inv_name_fontsize).Bold();
+                                    }
+                                    else
+                                    {
+                                        col.Item().PaddingTop(4).AlignCenter().Text(store_name).FontSize(Class_Parameter.inv_name_fontsize);
+                                    }
+
 
                                     // แสดงที่อยู่
-                                    if(Class_Parameter.inv_address)
+                                    if (Class_Parameter.inv_address)
                                     {
                                         // ตัวหนา
-                                        if(Class_Parameter.inv_address_bold)
+                                        if (Class_Parameter.inv_address_bold)
                                         {
                                             col.Item().AlignCenter().Text(address).FontSize(Class_Parameter.inv_address_fontsize).Bold();
                                         }
                                         else
                                         {
                                             col.Item().AlignCenter().Text(address).FontSize(Class_Parameter.inv_address_fontsize);
-                                        }                                                                                                  
+                                        }
                                     }
                                     // แสดงเบอร์โทร
                                     if (Class_Parameter.inv_phone)
                                     {
                                         // ตัวหนา
-                                        if(Class_Parameter.inv_phone_bold)
+                                        if (Class_Parameter.inv_phone_bold)
                                         {
                                             col.Item().AlignCenter().Text("เบอร์โทร " + phone).FontSize(Class_Parameter.inv_phone_fontsize).Bold();
                                         }
                                         else
                                         {
                                             col.Item().AlignCenter().Text("เบอร์โทร " + phone).FontSize(Class_Parameter.inv_phone_fontsize);
-                                        }                                      
+                                        }
                                     }
                                     // ประเภทใบเสร็จ
                                     if (inv_sale)
                                     {
                                         // ตัวหนา
-                                        if(Class_Parameter.inv_type_bold)
+                                        if (Class_Parameter.inv_type_bold)
                                         {
                                             col.Item().PaddingTop(4).AlignCenter().Text("ใบเสร็จรับเงิน").FontSize(Class_Parameter.inv_type_fontsize).Bold();
 
@@ -279,7 +361,7 @@ namespace Ppos
                                     table.Header(header =>
                                     {
                                         // ตัวหนา
-                                        if(Class_Parameter.inv_head_bold)
+                                        if (Class_Parameter.inv_head_bold)
                                         {
                                             header.Cell().Text("รายการ").FontSize(Class_Parameter.inv_head_fontsize).Bold();
                                             header.Cell().AlignRight().Text("จำนวน").FontSize(Class_Parameter.inv_head_fontsize).Bold();
@@ -291,7 +373,7 @@ namespace Ppos
                                             header.Cell().AlignRight().Text("จำนวน").FontSize(Class_Parameter.inv_head_fontsize);
                                             header.Cell().AlignRight().Text("รวม").FontSize(Class_Parameter.inv_head_fontsize);
                                         }
-                                       
+
                                         // เส้นเป็นจุด
                                         if (Class_Parameter.inv_line_point)
                                         {
@@ -301,7 +383,7 @@ namespace Ppos
                                         {
                                             header.Cell().ColumnSpan(3).PaddingVertical(2).LineHorizontal(0.5f);
                                         }
-                                       
+
                                     });
 
                                     // วนลูปแสดงรายการสินค้า
@@ -309,7 +391,7 @@ namespace Ppos
                                     foreach (DataRow row in dt_item.Rows)
                                     {
                                         // ตัวหนา
-                                        if(Class_Parameter.inv_item_bold)
+                                        if (Class_Parameter.inv_item_bold)
                                         {
                                             table.Cell().PaddingVertical(2).Text(row["item_name"].ToString()).FontSize(Class_Parameter.inv_item_fontsize).Bold();
                                             table.Cell().PaddingVertical(2).AlignRight().Text(Convert.ToDouble(row["item_qty"]).ToString("#,##0.###")).FontSize(Class_Parameter.inv_item_fontsize).Bold();
@@ -346,9 +428,9 @@ namespace Ppos
                                     {
                                         table.Cell().ColumnSpan(3).PaddingVertical(4).LineHorizontal(0.5f);
                                     }
-                                   // sum
-                                   // ตัวหนา
-                                   if(Class_Parameter.inv_sum_bold)
+                                    // sum
+                                    // ตัวหนา
+                                    if (Class_Parameter.inv_sum_bold)
                                     {
                                         table.Cell().PaddingVertical(2).Text("จำนวนรวม").FontSize(Class_Parameter.inv_sum_fontsize).Bold();
                                         table.Cell().PaddingVertical(2).AlignRight().Text(qtyTotal.ToString("#,##0.###")).FontSize(Class_Parameter.inv_sum_fontsize).Bold();
@@ -435,10 +517,10 @@ namespace Ppos
                                         }
                                     }
 
-                                   
+
                                     // สุทธิ
                                     // ตัวหนา
-                                    if(Class_Parameter.inv_net_bold)
+                                    if (Class_Parameter.inv_net_bold)
                                     {
                                         table.Cell().ColumnSpan(2).PaddingVertical(2).Text("ยอดรวมสุทธิ").FontSize(Class_Parameter.inv_net_fontsize).Bold();
                                         table.Cell().PaddingVertical(2).AlignRight().Text(priceNet.ToString("#,##0.00")).FontSize(Class_Parameter.inv_net_fontsize).Bold();
@@ -451,7 +533,7 @@ namespace Ppos
                                     }
 
                                     // ตัวหนา
-                                    if(Class_Parameter.inv_sum_bold)
+                                    if (Class_Parameter.inv_sum_bold)
                                     {
                                         // เงินโอน     
                                         if (transfer > 0)
@@ -489,7 +571,7 @@ namespace Ppos
 
                                         }
                                     }
-                                     // แสดง sum_vat
+                                    // แสดง sum_vat
                                     if (Class_Parameter.inv_sum_vat)
                                     {
                                         // เส้นเป็นจุด
@@ -536,8 +618,8 @@ namespace Ppos
                                         {
                                             col.Item().PaddingTop(5).LineHorizontal(0.5f);
                                         }
-                                           // ตัวหนา
-                                        if(Class_Parameter.inv_pro_head_bold)
+                                        // ตัวหนา
+                                        if (Class_Parameter.inv_pro_head_bold)
                                         {
                                             col.Item().PaddingTop(5).AlignLeft().Text("โปรโมชั่น").FontSize(Class_Parameter.inv_pro_head_fontsize).Bold();
                                         }
@@ -545,7 +627,7 @@ namespace Ppos
                                         {
                                             col.Item().PaddingTop(5).AlignLeft().Text("โปรโมชั่น").FontSize(Class_Parameter.inv_pro_head_fontsize);
                                         }
-                                       
+
                                         if (trx_no != string.Empty)
                                         {
                                             cmd_sqlite.CommandText = "SELECT pro_desc FROM Invoice_Body " +
@@ -559,7 +641,7 @@ namespace Ppos
                                                 foreach (DataRow dr in dt_pro.Rows)
                                                 {
                                                     // ตัวหนา
-                                                    if(Class_Parameter.inv_pro_bold)
+                                                    if (Class_Parameter.inv_pro_bold)
                                                     {
                                                         col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text(dr["pro_desc"].ToString()).FontSize(Class_Parameter.inv_pro_fontsize).Bold();
 
@@ -583,7 +665,7 @@ namespace Ppos
                                             {
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ซื้อเสื้อ 2 ตัว ลด 50 บาท").FontSize(Class_Parameter.inv_pro_fontsize);
                                             }
-                                                
+
                                         }
 
                                     }
@@ -600,7 +682,7 @@ namespace Ppos
                                         {
                                             col.Item().PaddingTop(5).LineHorizontal(0.5f);
                                         }
-                                           
+
 
                                         if (id_member != string.Empty)
                                         {
@@ -629,12 +711,12 @@ namespace Ppos
                                                     // ต้วหนา
                                                     if (Class_Parameter.inv_member_bold)
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +(Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize).Bold();
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " + (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize).Bold();
 
                                                     }
                                                     else
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +(Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize);
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " + (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) + dec_point - inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize);
 
                                                     }
                                                 }
@@ -643,12 +725,12 @@ namespace Ppos
                                                     // ต้วหนา
                                                     if (Class_Parameter.inv_member_bold)
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +(Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize).Bold();
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " + (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize).Bold();
 
                                                     }
                                                     else
                                                     {
-                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " +(Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize);
+                                                        col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : " + (Convert.ToInt32(dt_member.Rows[0]["point_balance"]) - dec_point + inc_point).ToString()).FontSize(Class_Parameter.inv_member_fontsize);
 
                                                     }
                                                 }
@@ -736,7 +818,7 @@ namespace Ppos
                                         else // master
                                         {
                                             // ต้วหนา
-                                            if(Class_Parameter.inv_member_head_bold)
+                                            if (Class_Parameter.inv_member_head_bold)
                                             {
                                                 col.Item().PaddingTop(5).AlignLeft().Text("สมาชิก : 0987654321").FontSize(Class_Parameter.inv_member_head_fontsize).Bold();
                                             }
@@ -744,24 +826,24 @@ namespace Ppos
                                             {
                                                 col.Item().PaddingTop(5).AlignLeft().Text("สมาชิก : 0987654321").FontSize(Class_Parameter.inv_member_head_fontsize);
                                             }
-                                           
+
                                             // ตัวหนา
                                             if (Class_Parameter.inv_member_bold)
                                             {
-                                               
+
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : 200").FontSize(Class_Parameter.inv_member_fontsize).Bold();
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ใช้แต้ม : -100").FontSize(Class_Parameter.inv_member_fontsize).Bold();
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ได้แต้ม : +10").FontSize(Class_Parameter.inv_member_fontsize).Bold();
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือสุทธิ : 110").FontSize(Class_Parameter.inv_member_fontsize).Bold();
                                             }
                                             else
-                                            {                              
+                                            {
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือ : 200").FontSize(Class_Parameter.inv_member_fontsize);
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ใช้แต้ม : -100").FontSize(Class_Parameter.inv_member_fontsize);
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("ได้แต้ม : +10").FontSize(Class_Parameter.inv_member_fontsize);
                                                 col.Item().PaddingTop(2).PaddingLeft(5).AlignLeft().Text("แต้มคงเหลือสุทธิ : 110").FontSize(Class_Parameter.inv_member_fontsize);
                                             }
-                                          
+
                                         }
 
                                     }
@@ -775,13 +857,13 @@ namespace Ppos
                                     {
                                         col.Item().PaddingTop(5).LineHorizontal(0.5f);
                                     }
-                                   
+
                                     // บาร์
-                                    if(Class_Parameter.inv_bar)
+                                    if (Class_Parameter.inv_bar)
                                     {
-                                 
+
                                         // ตัวหนา
-                                        if(Class_Parameter.inv_bar_bold)
+                                        if (Class_Parameter.inv_bar_bold)
                                         {
                                             col.Item().PaddingTop(5).AlignCenter().Text("สแกนเพื่อตรวจสอบใบเสร็จ").FontSize(Class_Parameter.inv_bar_fontsize).Bold();
                                         }
@@ -789,11 +871,11 @@ namespace Ppos
                                         {
                                             col.Item().PaddingTop(5).AlignCenter().Text("สแกนเพื่อตรวจสอบใบเสร็จ").FontSize(Class_Parameter.inv_bar_fontsize);
                                         }
-                                      
+
 
                                         // วาง QR Code ตรงกลาง กว้าง 75pt
                                         col.Item().PaddingVertical(1).AlignCenter().Width(75).Image(codeBytes).FitWidth();
-                               
+
                                         if (trx_no != string.Empty)
                                         {
                                             // ตัวหนา
@@ -805,11 +887,11 @@ namespace Ppos
                                             {
                                                 col.Item().AlignCenter().Text(trx_no).FontSize(Class_Parameter.inv_bar_fontsize);
                                             }
-                                               
+
                                         }
                                         else
                                         {
-                           
+
                                             // ตัวหนา
                                             if (Class_Parameter.inv_bar_bold)
                                             {
@@ -819,11 +901,11 @@ namespace Ppos
                                             {
                                                 col.Item().AlignCenter().Text("INV-01012026-0001").FontSize(Class_Parameter.inv_bar_fontsize);
                                             }
-                                              
+
                                         }
                                     }
-                                 // ตัวหนา
-                                    if(Class_Parameter.inv_thank_bold)
+                                    // ตัวหนา
+                                    if (Class_Parameter.inv_thank_bold)
                                     {
                                         col.Item().PaddingTop(4).AlignCenter().Text("..ขอบคุณที่ใช้บริการ..").FontSize(Class_Parameter.inv_thank_fontsize).Bold();
                                     }
@@ -831,7 +913,7 @@ namespace Ppos
                                     {
                                         col.Item().PaddingTop(4).AlignCenter().Text("..ขอบคุณที่ใช้บริการ..").FontSize(Class_Parameter.inv_thank_fontsize);
                                     }
-                                   
+
                                 });
 
                             });
@@ -904,8 +986,8 @@ namespace Ppos
         {
             try
             {
-                count_search ++;
-                if(count_search == set_search)
+                count_search++;
+                if (count_search == set_search)
                 {
                     count_search = 0;
                     timer_search.Stop();
@@ -914,6 +996,12 @@ namespace Ppos
                     {
                         pictureBox_invoice.Image.Dispose();
                         pictureBox_invoice.Image = null;
+                    }
+                    // ลบภาพ master
+                    if (System.IO.File.Exists(Form_Login.invoice_path + @"\Master.pdf"))
+                    {
+                        System.IO.File.Delete(Form_Login.invoice_path + @"\Master.pdf");
+
                     }
                     // ถ้ามีตัวอักษรใน textbox
                     if (textBox_trx_no.Text != string.Empty)
@@ -958,7 +1046,438 @@ namespace Ppos
                         gen_trx_no(true, "", 0, 0, 0, 0, 0);
                     }
                 }
-               
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBox_width_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Class_Parameter.inv_width = float.Parse(comboBox_width.Text);
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_width + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'width'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_margin_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Class_Parameter.inv_margin = float.Parse(comboBox_margin.Text);
+
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_margin + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'margin'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+
+
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_logo_width_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+
+                Class_Parameter.inv_logo_width = float.Parse(comboBox_logo_width.Text);
+
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_logo_width + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'logo_width'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+
+
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_name_fontsize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Class_Parameter.inv_name_fontsize = float.Parse(comboBox_name_fontsize.Text);
+
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_name_fontsize + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'name_fontsize'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_name_bold_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        if (comboBox_name_bold.Text == "ตัวหนา")
+                        {
+                            Class_Parameter.inv_name_bold = true;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'True', ";
+                        }
+                        else
+                        {
+                            Class_Parameter.inv_name_bold = false;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'False', ";
+                        }
+                        cmd_sqlite.CommandText += "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'name_bold'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_address_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        if (comboBox_address.Text == text_show)
+                        {
+                            Class_Parameter.inv_address = true;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'True', ";
+                        }
+                        else
+                        {
+                            Class_Parameter.inv_address = false;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'False', ";
+                        }
+                        cmd_sqlite.CommandText += "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'address'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_address_fontsize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Class_Parameter.inv_address_fontsize = float.Parse(comboBox_address_fontsize.Text);
+
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_address_fontsize + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'address_fontsize'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_address_bold_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        if (comboBox_address_bold.Text == "ตัวหนา")
+                        {
+                            Class_Parameter.inv_address_bold = true;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'True', ";
+                        }
+                        else
+                        {
+                            Class_Parameter.inv_address_bold = false;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'False', ";
+                        }
+                        cmd_sqlite.CommandText += "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'address_bold'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void comboBox_phone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        if (comboBox_phone.Text == text_show)
+                        {
+                            Class_Parameter.inv_phone = true;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'True', ";
+                        }
+                        else
+                        {
+                            Class_Parameter.inv_phone = false;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'False', ";
+                        }
+                        cmd_sqlite.CommandText += "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'phone'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBox_phone_fontsize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Class_Parameter.inv_phone_fontsize = float.Parse(comboBox_phone_fontsize.Text);
+
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_phone_fontsize + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'phone_fontsize'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBox_phone_bold_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        if (comboBox_phone_bold.Text == "ตัวหนา")
+                        {
+                            Class_Parameter.inv_phone_bold = true;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'True', ";
+                        }
+                        else
+                        {
+                            Class_Parameter.inv_phone_bold = false;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'False', ";
+                        }
+                        cmd_sqlite.CommandText += "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'phone_bold'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBox_type_fontsize_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Class_Parameter.inv_type_fontsize = float.Parse(comboBox_type_fontsize.Text);
+
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = '" + Class_Parameter.inv_type_fontsize + "', " +
+                                                "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'type_fontsize'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void comboBox_type_bold_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                using (SQLiteConnection con_sqlite = new SQLiteConnection(Form_Login.sqlite_path))
+                {
+                    con_sqlite.Open();
+                    using (SQLiteCommand cmd_sqlite = new SQLiteCommand(con_sqlite))
+                    {
+                        if (comboBox_type_bold.Text == "ตัวหนา")
+                        {
+                            Class_Parameter.inv_type_bold = true;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'True', ";
+                        }
+                        else
+                        {
+                            Class_Parameter.inv_type_bold = false;
+                            cmd_sqlite.CommandText = "UPDATE Invoice_Set SET desc = 'False', ";
+                        }
+                        cmd_sqlite.CommandText += "updated_by = '" + Class_Parameter.User_Login + "', " +
+                                                "updated_date = datetime('now', 'localtime') " +
+                                                "WHERE title = 'type_bold'";
+                        cmd_sqlite.ExecuteNonQuery();
+                    }
+                }
+                if (pictureBox_invoice.Image != null)
+                {
+                    count_search = 0;
+                    timer_search.Start();
+                }
             }
             catch
             {

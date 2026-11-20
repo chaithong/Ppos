@@ -140,10 +140,18 @@ namespace Ppos.Class
         public static bool keypad_numeric { get; set; } = true;
 
         // Invoice set
+
         public static bool inv_print { get; set; } = true;
         public static string inv_print_name { get; set; } = "";
 
+        public static float inv_width { get; set; } = 80;
+        public static float inv_margin { get; set; } = 5;
+
         public static bool inv_logo { get; set; } = true;
+        public static float inv_logo_width { get; set; } = 50;
+
+        public static float inv_name_fontsize { get; set; } = 13;
+        public static bool inv_name_bold { get; set; } = true;
 
         public static bool inv_address { get; set; } = true;
         public static float inv_address_fontsize { get; set; } = 8;

@@ -227,10 +227,34 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.inv_print_name = dt.Rows[i]["desc"].ToString()!;
                                     }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "width")
+                                    {
+                                        Class_Parameter.inv_width = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "margin")
+                                    {
+                                        Class_Parameter.inv_margin = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+
                                     else if (dt.Rows[i]["title"].ToString() == "logo")
                                     {
                                         Class_Parameter.inv_logo = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "logo_width")
+                                    {
+                                        Class_Parameter.inv_logo_width = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "name_fontsize")
+                                    {
+                                        Class_Parameter.inv_name_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "name_bold")
+                                    {
+                                        Class_Parameter.inv_name_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
                                     else if (dt.Rows[i]["title"].ToString() == "address")
                                     {
                                         Class_Parameter.inv_address = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
