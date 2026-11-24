@@ -169,6 +169,8 @@ namespace Ppos.Class
         public static float inv_trx_no_fontsize { get; set; } = 9;
         public static bool inv_trx_no_bold { get; set; } = true;
 
+        public static string inv_column_size { get; set; } = "60|20|20";
+
         public static float inv_head_fontsize { get; set; } = 9;
         public static bool inv_head_bold { get; set; } = true;
 
@@ -181,7 +183,9 @@ namespace Ppos.Class
         public static float inv_net_fontsize { get; set; } 
         public static bool inv_net_bold { get; set; } 
 
-        public static bool inv_sum_vat { get; set; } 
+        public static bool inv_sum_vat { get; set; }
+        public static float inv_sum_vat_fontsize { get; set; }
+        public static bool inv_sum_vat_bold { get; set; }
 
         public static bool inv_pro { get; set; } 
         public static float inv_pro_head_fontsize { get; set; }

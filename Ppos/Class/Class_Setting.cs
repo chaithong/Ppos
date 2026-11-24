@@ -299,6 +299,10 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.inv_trx_no_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "column_size")
+                                    {
+                                        Class_Parameter.inv_column_size = dt.Rows[i]["desc"].ToString()!;
+                                    }
                                     else if (dt.Rows[i]["title"].ToString() == "head_fontsize")
                                     {
                                         Class_Parameter.inv_head_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
@@ -337,6 +341,14 @@ namespace Ppos.Class
                                     else if (dt.Rows[i]["title"].ToString() == "sum_vat")
                                     {
                                         Class_Parameter.inv_sum_vat = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "sum_vat_fontsize")
+                                    {
+                                        Class_Parameter.inv_sum_vat_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "sum_vat_bold")
+                                    {
+                                        Class_Parameter.inv_sum_vat_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
                                     }
 
                                     else if (dt.Rows[i]["title"].ToString() == "pro")

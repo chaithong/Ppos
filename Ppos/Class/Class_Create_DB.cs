@@ -561,6 +561,11 @@ namespace Ppos.Class
                                                    SELECT '',datetime('now', 'localtime'),'trx_no_bold', 'False' 
                                                    WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'trx_no_bold') ";
                         cmd_sqlite.ExecuteNonQuery();
+                        // column_size
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'column_size', '60|20|20' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'column_size') ";
+                        cmd_sqlite.ExecuteNonQuery();
                         // head_fontsize
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
                                                    SELECT '',datetime('now', 'localtime'),'head_fontsize', '8' 
@@ -605,6 +610,16 @@ namespace Ppos.Class
                         cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
                                                    SELECT '',datetime('now', 'localtime'),'sum_vat', 'True' 
                                                    WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'sum_vat') ";
+                        cmd_sqlite.ExecuteNonQuery();
+                        // sum_vat_fontsize
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'sum_vat_fontsize', '8' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'sum_vat_fontsize') ";
+                        cmd_sqlite.ExecuteNonQuery();
+                        // sum_vat_bold
+                        cmd_sqlite.CommandText = @"INSERT INTO Invoice_Set(updated_by, updated_date, title,desc) 
+                                                   SELECT '',datetime('now', 'localtime'),'sum_vat_bold', 'False' 
+                                                   WHERE NOT EXISTS(SELECT 1 from Invoice_Set where title = 'sum_vat_bold') ";
                         cmd_sqlite.ExecuteNonQuery();
 
                         // pro
