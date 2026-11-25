@@ -87,13 +87,17 @@
             label_dis_custom = new Label();
             backgroundWorker_void = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_back = new TableLayoutPanel();
+            tableLayoutPanel_invoice = new TableLayoutPanel();
             panel_invoice = new Panel();
             pictureBox_invoice = new PictureBox();
+            button_print = new Button();
+            backgroundWorker_print = new System.ComponentModel.BackgroundWorker();
             tableLayoutPanel_bill.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView_item).BeginInit();
             tableLayoutPanel_bottom.SuspendLayout();
             tableLayoutPanel_detail_sum.SuspendLayout();
             tableLayoutPanel_back.SuspendLayout();
+            tableLayoutPanel_invoice.SuspendLayout();
             panel_invoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox_invoice).BeginInit();
             SuspendLayout();
@@ -423,8 +427,7 @@
             tableLayoutPanel_bottom.ColumnCount = 3;
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 150F));
-            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_bottom.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
             tableLayoutPanel_bottom.Controls.Add(button_void, 2, 0);
             tableLayoutPanel_bottom.Controls.Add(label_member, 1, 0);
             tableLayoutPanel_bottom.Controls.Add(label_member_title, 0, 0);
@@ -447,11 +450,11 @@
             button_void.FlatStyle = FlatStyle.Flat;
             button_void.Font = new Font("Segoe UI", 12F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 0);
             button_void.ForeColor = Color.Red;
-            button_void.Location = new Point(359, 3);
+            button_void.Location = new Point(309, 3);
             button_void.Name = "button_void";
-            button_void.Size = new Size(144, 94);
+            button_void.Size = new Size(194, 94);
             button_void.TabIndex = 0;
-            button_void.Text = "ยกเลิกบิล";
+            button_void.Text = "ยกเลิกใบเสร็จ";
             button_void.TextAlign = ContentAlignment.BottomCenter;
             button_void.TextImageRelation = TextImageRelation.ImageAboveText;
             button_void.UseVisualStyleBackColor = false;
@@ -468,7 +471,7 @@
             label_member.Location = new Point(200, 0);
             label_member.Margin = new Padding(0);
             label_member.Name = "label_member";
-            label_member.Size = new Size(156, 100);
+            label_member.Size = new Size(106, 100);
             label_member.TabIndex = 1;
             label_member.TextAlign = ContentAlignment.MiddleLeft;
             label_member.MouseEnter += label_enter;
@@ -775,8 +778,8 @@
             tableLayoutPanel_back.ColumnCount = 2;
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
             tableLayoutPanel_back.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40F));
+            tableLayoutPanel_back.Controls.Add(tableLayoutPanel_invoice, 1, 0);
             tableLayoutPanel_back.Controls.Add(tableLayoutPanel_bill, 0, 0);
-            tableLayoutPanel_back.Controls.Add(panel_invoice, 1, 0);
             tableLayoutPanel_back.Dock = DockStyle.Fill;
             tableLayoutPanel_back.Location = new Point(0, 0);
             tableLayoutPanel_back.Margin = new Padding(0);
@@ -786,28 +789,69 @@
             tableLayoutPanel_back.Size = new Size(844, 851);
             tableLayoutPanel_back.TabIndex = 1;
             // 
+            // tableLayoutPanel_invoice
+            // 
+            tableLayoutPanel_invoice.ColumnCount = 1;
+            tableLayoutPanel_invoice.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_invoice.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel_invoice.Controls.Add(panel_invoice, 0, 1);
+            tableLayoutPanel_invoice.Controls.Add(button_print, 0, 0);
+            tableLayoutPanel_invoice.Dock = DockStyle.Fill;
+            tableLayoutPanel_invoice.Location = new Point(506, 0);
+            tableLayoutPanel_invoice.Margin = new Padding(0);
+            tableLayoutPanel_invoice.Name = "tableLayoutPanel_invoice";
+            tableLayoutPanel_invoice.RowCount = 2;
+            tableLayoutPanel_invoice.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            tableLayoutPanel_invoice.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel_invoice.Size = new Size(338, 851);
+            tableLayoutPanel_invoice.TabIndex = 1;
+            // 
             // panel_invoice
             // 
             panel_invoice.BackColor = Color.White;
             panel_invoice.Controls.Add(pictureBox_invoice);
             panel_invoice.Cursor = Cursors.Hand;
             panel_invoice.Dock = DockStyle.Fill;
-            panel_invoice.Location = new Point(511, 0);
+            panel_invoice.Location = new Point(5, 40);
             panel_invoice.Margin = new Padding(5, 0, 0, 0);
             panel_invoice.Name = "panel_invoice";
-            panel_invoice.Size = new Size(333, 851);
+            panel_invoice.Size = new Size(333, 811);
             panel_invoice.TabIndex = 1;
             panel_invoice.Resize += panel_bill_Resize;
             // 
             // pictureBox_invoice
             // 
             pictureBox_invoice.Cursor = Cursors.Hand;
-            pictureBox_invoice.Location = new Point(3, 9);
+            pictureBox_invoice.Location = new Point(13, 12);
             pictureBox_invoice.Name = "pictureBox_invoice";
-            pictureBox_invoice.Size = new Size(320, 827);
+            pictureBox_invoice.Size = new Size(308, 425);
             pictureBox_invoice.TabIndex = 0;
             pictureBox_invoice.TabStop = false;
             pictureBox_invoice.DoubleClick += pictureBox_bill_DoubleClick;
+            // 
+            // button_print
+            // 
+            button_print.Dock = DockStyle.Fill;
+            button_print.FlatAppearance.BorderSize = 0;
+            button_print.FlatAppearance.MouseDownBackColor = Color.Transparent;
+            button_print.FlatAppearance.MouseOverBackColor = Color.Transparent;
+            button_print.FlatStyle = FlatStyle.Flat;
+            button_print.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button_print.Location = new Point(5, 0);
+            button_print.Margin = new Padding(5, 0, 0, 0);
+            button_print.Name = "button_print";
+            button_print.Size = new Size(333, 40);
+            button_print.TabIndex = 2;
+            button_print.Text = "ปริ้น";
+            button_print.UseVisualStyleBackColor = true;
+            button_print.Click += button_print_Click;
+            button_print.MouseEnter += button_print_MouseEnter;
+            button_print.MouseLeave += button_print_MouseLeave;
+            // 
+            // backgroundWorker_print
+            // 
+            backgroundWorker_print.DoWork += backgroundWorker_print_DoWork;
+            backgroundWorker_print.RunWorkerCompleted += backgroundWorker_print_RunWorkerCompleted;
             // 
             // Form_Invoice_Detail
             // 
@@ -829,6 +873,7 @@
             tableLayoutPanel_bottom.ResumeLayout(false);
             tableLayoutPanel_detail_sum.ResumeLayout(false);
             tableLayoutPanel_back.ResumeLayout(false);
+            tableLayoutPanel_invoice.ResumeLayout(false);
             panel_invoice.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox_invoice).EndInit();
             ResumeLayout(false);
@@ -886,5 +931,8 @@
         private TableLayoutPanel tableLayoutPanel_back;
         private Panel panel_invoice;
         private PictureBox pictureBox_invoice;
+        private TableLayoutPanel tableLayoutPanel_invoice;
+        private Button button_print;
+        private System.ComponentModel.BackgroundWorker backgroundWorker_print;
     }
 }

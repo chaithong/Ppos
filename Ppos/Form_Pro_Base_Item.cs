@@ -262,7 +262,12 @@ namespace Ppos
                         }
                     }
                 }
-              
+                comboBox_criterion.MouseWheel += ComboBox_MouseWheel;
+                comboBox_offer.MouseWheel += ComboBox_MouseWheel;
+                comboBox_repeat.MouseWheel += ComboBox_MouseWheel;
+                comboBox_discount_type.MouseWheel += ComboBox_MouseWheel;
+
+
             }
             catch (Exception ex)
             {
@@ -271,6 +276,20 @@ namespace Ppos
             }
 
 
+        }
+        private void ComboBox_MouseWheel(object? sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e is HandledMouseEventArgs handledArgs)
+                {
+                    handledArgs.Handled = true;
+                }
+            }
+            catch
+            {
+
+            }
         }
         private void dataGridView_promotion_MouseWheel(object sender, MouseEventArgs e)
         {

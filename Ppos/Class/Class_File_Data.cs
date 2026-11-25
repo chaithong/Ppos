@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using Hardware.Info;
 using System.Text;
+using System.IO;
 
 namespace Ppos.Class
 {

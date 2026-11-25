@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
@@ -257,8 +258,8 @@ namespace Ppos
                                         nick_name = " (" + dt.Rows[0]["nick_name"].ToString() + ")";
                                     }
 
-                                    label_member.Text = dt.Rows[0]["first_name"].ToString() + " " + dt.Rows[0]["last_name"].ToString() + nick_name;
-
+                                    /* label_member.Text = dt.Rows[0]["first_name"].ToString() + " " + dt.Rows[0]["last_name"].ToString() + nick_name;*/
+                                    label_member.Text = dt.Rows[0]["phone"].ToString() + nick_name;
                                 }
                                 else
                                 {
@@ -394,7 +395,29 @@ namespace Ppos
 
             }
         }
+        private void button_print_MouseEnter(object sender, EventArgs e)
+        {
+            try
+            {
+                button_print.Font = new Font(button_print.Font.FontFamily, button_print.Font.Size + 2, button_print.Font.Style);
+            }
+            catch
+            {
 
+            }
+        }
+
+        private void button_print_MouseLeave(object sender, EventArgs e)
+        {
+            try
+            {
+                button_print.Font = new Font(button_print.Font.FontFamily, button_print.Font.Size - 2, button_print.Font.Style);
+            }
+            catch
+            {
+
+            }
+        }
         private void pictureBox_bill_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -418,5 +441,56 @@ namespace Ppos
 
             }
         }
+
+        private void button_print_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Class_Parameter.inv_print_name != "ไม่ปริ้น")
+                {
+                    button_print.Enabled = false;
+                    backgroundWorker_print.RunWorkerAsync();
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void backgroundWorker_print_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                if (Form_Check_Invoice.trx_no_status == "ขาย")
+                {
+                    Class_Invoice.PrintPdfFile(Path.Combine(Form_Login.invoice_path, Form_Check_Invoice.trx_no_detail.Split("-")[1], "Sale", Form_Check_Invoice.trx_no_detail + ".pdf"), Class_Parameter.inv_print_name);
+                }
+                else
+                {
+                    Class_Invoice.PrintPdfFile(Path.Combine(Form_Login.invoice_path, Form_Check_Invoice.trx_no_detail.Split("-")[1], "Void", Form_Check_Invoice.trx_no_detail + ".pdf"), Class_Parameter.inv_print_name);
+                }
+
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void backgroundWorker_print_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            try
+            {
+                button_print.Enabled = true;
+            }
+            catch
+            {
+
+            }
+        }
+
+      
     }
 }

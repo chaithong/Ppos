@@ -157,6 +157,10 @@ namespace Ppos.Class
         public static float inv_address_fontsize { get; set; } = 8;
         public static bool inv_address_bold { get; set; } = false;
 
+        public static bool inv_tax_id { get; set; } = true;
+        public static float inv_tax_id_fontsize { get; set; } = 8;
+        public static bool inv_tax_id_bold { get; set; } = true;
+
         public static bool inv_phone { get; set; } = true;
         public static float inv_phone_fontsize { get; set; } = 8;
         public static bool inv_phone_bold { get; set; } = true;
@@ -170,6 +174,7 @@ namespace Ppos.Class
         public static bool inv_trx_no_bold { get; set; } = true;
 
         public static string inv_column_size { get; set; } = "60|20|20";
+        public static bool inv_point_0 { get; set; } = true;
 
         public static float inv_head_fontsize { get; set; } = 9;
         public static bool inv_head_bold { get; set; } = true;
@@ -199,12 +204,13 @@ namespace Ppos.Class
         public static float inv_member_fontsize { get; set; } 
         public static bool inv_member_bold { get; set; }
 
-        public static bool inv_bar { get; set; }
+        public static string inv_bar { get; set; } = "Barcode";
         public static float inv_bar_fontsize { get; set; }
         public static bool inv_bar_bold { get; set; }
 
         public static float inv_thank_fontsize { get; set; }
         public static bool inv_thank_bold { get; set; }
+        public static string inv_thank_desc { get; set; } = "..ขอบคุณที่ใช้บริการ..";
 
     }
 }

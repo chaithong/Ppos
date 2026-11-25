@@ -267,6 +267,20 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.inv_address_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
                                     }
+
+                                    else if (dt.Rows[i]["title"].ToString() == "tax_id")
+                                    {
+                                        Class_Parameter.inv_tax_id = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "tax_id_fontsize")
+                                    {
+                                        Class_Parameter.inv_tax_id_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "tax_id_bold")
+                                    {
+                                        Class_Parameter.inv_tax_id_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
                                     else if (dt.Rows[i]["title"].ToString() == "phone")
                                     {
                                         Class_Parameter.inv_phone = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
@@ -303,6 +317,11 @@ namespace Ppos.Class
                                     {
                                         Class_Parameter.inv_column_size = dt.Rows[i]["desc"].ToString()!;
                                     }
+                                    else if (dt.Rows[i]["title"].ToString() == "point_0")
+                                    {
+                                        Class_Parameter.inv_point_0 = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+
                                     else if (dt.Rows[i]["title"].ToString() == "head_fontsize")
                                     {
                                         Class_Parameter.inv_head_fontsize = float.Parse(dt.Rows[i]["desc"].ToString()!);
@@ -395,7 +414,7 @@ namespace Ppos.Class
 
                                     else if (dt.Rows[i]["title"].ToString() == "bar")
                                     {
-                                        Class_Parameter.inv_bar = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                        Class_Parameter.inv_bar = dt.Rows[i]["desc"].ToString()!;
                                     }
                                     else if (dt.Rows[i]["title"].ToString() == "bar_fontsize")
                                     {
@@ -413,6 +432,10 @@ namespace Ppos.Class
                                     else if (dt.Rows[i]["title"].ToString() == "thank_bold")
                                     {
                                         Class_Parameter.inv_thank_bold = Convert.ToBoolean(dt.Rows[i]["desc"].ToString());
+                                    }
+                                    else if (dt.Rows[i]["title"].ToString() == "thank_desc")
+                                    {
+                                        Class_Parameter.inv_thank_desc = dt.Rows[i]["desc"].ToString()!;
                                     }
                                 }
                             }
